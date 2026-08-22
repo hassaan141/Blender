@@ -1,0 +1,28 @@
+# --- unrelated marketing / CAD dump (2.0 GB) --------------------------------
+BS MP Gentle Systems Inbound/
+
+# --- large binaries excluded from the first push ----------------------------
+# There is very little free disk on the machine this repo was created from, and
+# git-lfs is not installed. Everything below is either REGENERABLE or already
+# held outside git, so leaving it out costs nothing:
+#
+#   blend/conform/   -> regenerate with scripts/build_rig.py from the v4 URDF
+#   bingo_urdf_rev_3/-> superseded by "bingo_urdf v4_w_ear_joints" (legs identical)
+#   raw/             -> regenerate with scripts/bake_motion.py from the blends
+#   output/          -> renders, reproducible
+#   *.stp            -> 70 MB CAD from the Berlin engineers, held separately
+#
+# blend/legacy_art_rig/ is the ONE thing here that is not regenerable -- it is
+# the animator's source. Keep it backed up outside git until LFS is available.
+blend/
+bingo_urdf_rev_3/
+raw/
+output/
+*.stp
+*.blend1
+
+# --- junk -------------------------------------------------------------------
+.DS_Store
+__pycache__/
+*.pyc
+.vscode/

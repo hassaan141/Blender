@@ -1,0 +1,14 @@
+# Binary assets: no line-ending translation, no textual diffs.
+# NOTE: these are plain git blobs today because git-lfs was not installed when
+# the repo was created. To move them to LFS later:
+#   git lfs install && git lfs track "*.blend" "*.stp" "*.STL" "*.usd" "*.npz" "*.mp4"
+# then re-commit. Nothing here exceeds GitHub's 100 MB per-file limit.
+*.blend binary
+*.blend1 binary
+*.stp   binary
+*.STL   binary
+*.usd   binary
+*.npz   binary
+*.mp4   binary
+*.png   binary
+*.pdf   binary
