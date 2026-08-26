@@ -1,0 +1,113 @@
+What was actually wrong
+  
+  Three distinct problems, only the first of which the handoff had identified.
+  
+  1. The underlying dynamics problem (pre-existing, correctly diagnosed in the handoff)
+  
+  The contact-locked baseline fell at frame 27 from an uncontrolled negative base roll during the
+  low-margin support transfer around frames 15–23. The tracker never commands root pose — it commands
+  only joint targets — so a root correction only helps physics after leg IK converts it into a
+  physically different leg trajectory. Retiming was tested and correctly rejected: slowing frames
+  12–36 stretches a statically poor support transfer and removes the fore/aft momentum the frame
+  27–36 front-to-hind transfer needs (2× retiming moved the fall only 27→28).
+  
+  The correction is two-sided, and this is the crux: too little roll and it keeps tipping negative;
+  too much roll held too long and it tips positive (the handoff's release-at-50 trial fell at 61
+  "tipping the opposite way").
+  
+  2. The real blocker: the chosen operating point sat on the bifurcation ridge
+  
+  The handoff's blocker was that its best candidate completed unbaked but the Blender-baked
+  equivalent fell at frame 45, despite the two files differing by only 3.58e-7 rad. It labelled this
+  "knife-edge dynamics" but left the mechanism open.
+  
+  I closed it by reading what the tracker actually consumes:
+  
+  dof_positions   -> set_joint_position_target, cast to float32   COMMANDED
+  root_pos/quat   -> frame-0 init only (write_root_link_pose_to_sim)
+  dof_velocities  -> only under --vel-ff (off)
+  body_positions[1:] (knees) -> never read
+  
+  Then diffing the two files field by field:
+  
+  dof_positions            3.58e-07 rad   ~1 float32 ULP at ~1-2 rad
+  body_positions[0] (root) 0.0 mm
+  body_positions[1:] knees up to 9.98 mm   <- unused by sim
+  body_rotations[1:] knees up to 0.094     <- unused by sim
+  
+  The knee deltas were just FK-convention differences between balance_adjust's V4Kin and Blender's
+  FK, and are never read. So the two files command essentially identical targets: the divergence was
+  genuine chaotic amplification, not a data or Stage 3 defect.
+  
+  I then measured how close to the ridge that point was, by perturbing dof_positions by ±1 ULP
+  (np.nextafter) and running the unchanged tracker:
+  
+  roll +5.0, release 42:  clean COMPLETES
+                          seed1 fall 51   seed2 fall 56   seed3 COMPLETES
+                          seed4 fall 56   seed5 COMPLETES seed6 COMPLETES
+                          -> 4/7
+  
+  That is the whole story of the blocker. Roll +5.0° sat almost exactly on the positive-tip boundary,
+  so the last bit of the float32 mantissa decided which way it fell. Its unbaked "success" was one
+  draw of a coin, and the bake was a second draw.
+  
+  3. Two process bugs I introduced
+  
+  My first cycle script installed each bake's output over its own bake input, so every iteration's
+  float32 LSBs depended on the previous iteration. Symptom: identical parameters produced "completes"
+  and then "fall 51". Fixed by baking to a staging file and leaving the source immutable — verified
+  by md5 across three cycles, after which e42/e41/e40 reproduced their earlier metrics exactly.
+  Separately, a rm -f on a path passed as both input and output deleted the canonical blend; restored
+  from .blend1 and verified (22 bones, 4 foot_tip_local keys, action intact).
+  
+  The fix
+  
+  One parameter: roll +5.0° → +4.5°. Window, shift, ramp and everything else unchanged.
+  
+  python3 stage4/balance_adjust.py --motion motions/timid_v4.npz --out <cand> \
+    --start 8 --end 42 --ramp 8 --shift-y -0.025 --roll-deg 4.5
+  
+  Why it works
+  
+  +4.5° still supplies enough correction to arrest the original negative roll, but backs the
+  trajectory off the positive-tip boundary that +5.0° was sitting on. It is a move to the interior of
+  the stability basin, not a different mechanism.
+  
+  The evidence that it is interior rather than lucky:
+  
+  baked, ramp 8, shift-y -0.025:
+    roll +5.0  release 40/41/42/43/44 -> fall 50 / 51 / 45,51 / 56 / 51    0 of 5
+    roll +4.5  release 40/41/42       -> COMPLETES, COMPLETES, COMPLETES   3 of 3
+               release 44             -> fall 55
+  
+  Three different release frames all surviving a real ~3e-7 rad perturbation (the bake) is far
+  stronger than one point surviving once. The unbaked 45-combo grid showed the same shape from the
+  other direction: ramp=8 completed 15/15, ramp=7 only at roll 5.0, ramp=9 failed at roll 4.5 — so
+  ramp 8 was already the wide axis, and roll was the axis still mis-set.
+  
+  Consistent with being further from the tipping boundary, root orientation error fell even though
+  the correction got smaller:
+  
+                      roll +5.0 (unbaked, marginal)   roll +4.5 (baked, final)
+  root ori err        12.70 / 24.52 deg               10.25 / 19.33 deg
+  joint tracking      0.0196 / 0.3669 rad             0.0198 / 0.3710 rad
+  max tilt            44.3 deg                        44.7 deg
+  contacts            3.47 / 4                        3.32 / 4
+  
+  A smaller correction producing less residual orientation error is the signature of moving away from
+  a near-topple rather than of correcting less.
+  
+  Caveats worth carrying into Stage 5
+  
+  The export result depended on the blend's file path: the same blend content exported from /tmp/
+  gave root round-trip 0.0 m, and from blend_sources/ gave 4.66e-10 m. I did not isolate the cause
+  (most likely relative-path resolution inside the blend). It no longer matters for the deliverable
+  because the installed canonical blend re-exports bit-identically to motions/timid_v4.npz
+  (np.array_equal True), so blend and NPZ cannot drift. But it means "re-bake and get the same bits"
+  is only guaranteed from the same path.
+  
+  Max tilt is 44.7° against a 70° fall threshold. That is a real near-topple, and the reference is
+  still dynamically marginal by its own audit — ZMP inside support 88%, worst margin −229 mm, two
+  frames requiring μ>1.0. Per your stage boundary that is Stage 5's job; I did not chase further
+  margin. bl_SP_J, br_SP_J and bl_knee torque-saturate on >5% of frames, up from two joints on the
+  baseline, so effort headroom is thin at the hind legs.

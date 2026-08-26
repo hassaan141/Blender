@@ -112,6 +112,10 @@ def main():
     ap.add_argument("--urdf", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--no-meshes", action="store_true")
+    ap.add_argument("--exact-limits", action="store_true",
+                    help="use the URDF joint limits verbatim (no author-friendly margin)")
+    ap.add_argument("--rest-pose", action="store_true",
+                    help="save at the exact URDF zero pose (skip the crouch default pose)")
     a = ap.parse_args(argv)
 
     urdf_dir = os.path.dirname(os.path.abspath(a.urdf))
@@ -274,11 +278,15 @@ def main():
         c.use_limit_x = c.use_limit_y = True
         c.min_x = c.max_x = c.min_y = c.max_y = 0.0
         c.use_limit_z = True
-        key = "SY" if "SY" in jn else ("knee" if "knee" in jn else ("SP" if "SP" in jn else jn))
-        m = MARGIN[key]
-        lo, hi = m if isinstance(m, tuple) else (-m, m)
-        # never exceed what the URDF actually allows
-        c.min_z, c.max_z = max(lo, joints[jn]["lo"]), min(hi, joints[jn]["hi"])
+        if a.exact_limits:
+            # robot-accurate retarget rig: URDF limits verbatim, no author margin
+            c.min_z, c.max_z = joints[jn]["lo"], joints[jn]["hi"]
+        else:
+            key = "SY" if "SY" in jn else ("knee" if "knee" in jn else ("SP" if "SP" in jn else jn))
+            m = MARGIN[key]
+            lo, hi = m if isinstance(m, tuple) else (-m, m)
+            # never exceed what the URDF actually allows
+            c.min_z, c.max_z = max(lo, joints[jn]["lo"]), min(hi, joints[jn]["hi"])
     for leg in ("fl", "fr", "bl", "br"):
         pb = arm.pose.bones[f"{leg}_foot_tip"]
         pb.lock_rotation = (True, True, True)
@@ -357,7 +365,7 @@ def main():
     # With IK active the joint bones are driven by the foot controls, so the pose
     # has to be expressed by MOVING THE CONTROLS -- keying the joints would just
     # be overridden by the solver.
-    for leg, (sy, sp, kn) in CROUCH.items():
+    for leg, (sy, sp, kn) in ({} if a.rest_pose else CROUCH).items():
         R0, p0 = frames[f"{leg}_knee"]
         rest_tip = p0 + R0 @ Vector((0, 0, -SHANK_LEN))
         # where that foot ends up in the standing pose, from URDF FK

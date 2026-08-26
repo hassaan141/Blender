@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'fl_SY_J', 'fl_SP_J', 'fl_knee', 'tail_pitch', 'tail_yaw', 'bl_SY_J', 'bl_SP_J', 'bl_knee', 'fr_SY_J', 'fr_SP_J', 'fr_knee', 'br_SY_J', 'br_SP_J', 'br_knee', 'head_pitch_joint', 'head_yaw', 'head_roll', ]

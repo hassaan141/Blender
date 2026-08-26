@@ -1,0 +1,634 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="bingo_urdf_w_ear_joints">
+  <link name="origin">
+    <inertial>
+      <origin xyz="-0.00369421850320559 -7.35632780571151E-06 0.00259980817781924" rpy="0 0 0" />
+      <mass value="0.302364834397792" />
+      <inertia ixx="0.000383582823270223" ixy="8.0357520069312E-11" ixz="-2.50366801882845E-06" iyy="0.000379922050755306" iyz="-6.7902300823901E-08" izz="0.000477553525577372" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/origin.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/origin.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="fl_shoulder_yaw">
+    <inertial>
+      <origin xyz="-0.0147805081640678 0.00282330814972668 7.03383449996917E-06" rpy="0 0 0" />
+      <mass value="0.0157498725219084" />
+      <inertia ixx="4.63017831884009E-06" ixy="-3.4726577553562E-09" ixz="1.96248347666093E-09" iyy="3.15395998253738E-06" iyz="9.89630364640949E-09" izz="2.34458132911704E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_shoulder_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_shoulder_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_SY_J" type="revolute">
+    <origin xyz="0.0590935 0.022 -1.31666669999919E-05" rpy="0 0 0" />
+    <parent link="origin" />
+    <child link="fl_shoulder_yaw" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.42" upper="0.42" effort="0" velocity="0" />
+  </joint>
+  <link name="fl_shoulder_pitch">
+    <inertial>
+      <origin xyz="-0.00498177422306434 -0.0124579078612619 -0.0176202966166028" rpy="0 0 0" />
+      <mass value="0.162558169582584" />
+      <inertia ixx="0.000141955652117416" ixy="7.17058873241107E-07" ixz="-2.73366038222773E-05" iyy="0.00018245392114611" iyz="2.98284188584369E-06" izz="6.04983242287264E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_shoulder_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_shoulder_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_SP_J" type="revolute">
+    <origin xyz="0.026925 0.046999994556 0" rpy="0 0 0" />
+    <parent link="fl_shoulder_yaw" />
+    <child link="fl_shoulder_pitch" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="fl_knee">
+    <inertial>
+      <origin xyz="0.0201575823232263 -0.0288485490792351 -0.0710189669880859" rpy="0 0 0" />
+      <mass value="0.153379187068528" />
+      <inertia ixx="5.06612508456175E-05" ixy="8.55026795038193E-09" ixz="5.34910021345775E-06" iyy="5.74455865749507E-05" iyz="2.58320366434824E-07" izz="3.16199821510561E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_knee.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.690196078431373 0.690196078431373 0.690196078431373 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fl_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fl_knee" type="revolute">
+    <origin xyz="-0.025493902035933 0.013709005444 -0.07846565646582" rpy="0 0 0" />
+    <parent link="fl_shoulder_pitch" />
+    <child link="fl_knee" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="tail_pitch">
+    <inertial>
+      <origin xyz="-0.000525322683118917 2.16833274214869E-19 1.38777878078145E-17" rpy="0 0 0" />
+      <mass value="0.003" />
+      <inertia ixx="1.2000000000000002e-07" ixy="0.0" ixz="0.0" iyy="1.2000000000000002e-07" iyz="0.0" izz="1.2000000000000002e-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/tail_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/tail_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="tail_pitch" type="revolute">
+    <origin xyz="-0.107621297365426 0 0.0350980226072767" rpy="0 -0.523305470133414 0" />
+    <parent link="origin" />
+    <child link="tail_pitch" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+  </joint>
+  <link name="tail_yaw">
+    <inertial>
+      <origin xyz="-1.78289489191907E-05 2.3308253477323E-07 0.0646037764785108" rpy="0 0 0" />
+      <mass value="0.0714519832068728" />
+      <inertia ixx="4.07850247513831E-05" ixy="-1.01289076278842E-12" ixz="-8.32119766927558E-09" iyy="4.07751198297111E-05" iyz="8.92139988348233E-12" izz="1.16247776821556E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/tail_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/tail_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="tail_yaw" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="tail_pitch" />
+    <child link="tail_yaw" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+  </joint>
+  <link name="bl_shoulder_yaw">
+    <inertial>
+      <origin xyz="0.015527548011877 0.00323504134909056 0.000337773536376648" rpy="0 0 0" />
+      <mass value="0.0142579070170896" />
+      <inertia ixx="4.23236346345999E-06" ixy="3.29058593998456E-09" ixz="2.25733293732424E-09" iyy="2.94221960480245E-06" iyz="6.05267846660876E-08" izz="2.1417025062991E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_shoulder_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_shoulder_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="bl_SY_J" type="revolute">
+    <origin xyz="-0.0590085 0.022 -1.31666669999815E-05" rpy="0 0 0" />
+    <parent link="origin" />
+    <child link="bl_shoulder_yaw" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.42" upper="0.42" effort="0" velocity="0" />
+  </joint>
+  <link name="bl_shoulder_pitch">
+    <inertial>
+      <origin xyz="-0.00763934958495553 -0.0117826390345591 -0.0177676492392093" rpy="0 0 0" />
+      <mass value="0.160607477594304" />
+      <inertia ixx="0.000137806944238676" ixy="1.29765587400812E-06" ixz="-3.23607736047424E-05" iyy="0.000182550234121862" iyz="2.91238694565897E-06" izz="6.46997188970001E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_shoulder_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_shoulder_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="bl_SP_J" type="revolute">
+    <origin xyz="-0.026963268343236 0.04700277995213 -9.0894081781024E-05" rpy="0 0 0" />
+    <parent link="bl_shoulder_yaw" />
+    <child link="bl_shoulder_pitch" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.57" upper="1.57" effort="0" velocity="0" />
+  </joint>
+  <link name="bl_knee">
+    <inertial>
+      <origin xyz="0.0152240513857386 -0.0288466423469693 -0.0723470658970611" rpy="0 0 0" />
+      <mass value="0.152929776779382" />
+      <inertia ixx="5.08607769723861E-05" ixy="1.61861375964891E-08" ixz="4.16227751836656E-06" iyy="5.69249018611076E-05" iyz="2.31616990250867E-07" izz="3.0882957672812E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_knee.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/bl_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="bl_knee" type="revolute">
+    <origin xyz="-0.030905043956813 0.013709005444 -0.0764926680017592" rpy="0 0 0" />
+    <parent link="bl_shoulder_pitch" />
+    <child link="bl_knee" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.57" upper="1.57" effort="0" velocity="0" />
+  </joint>
+  <link name="fr_shoulder_yaw">
+    <inertial>
+      <origin xyz="-0.014654010118473 -0.00266256792561551 7.24633132577306E-05" rpy="0 0 0" />
+      <mass value="0.0160189843349006" />
+      <inertia ixx="4.63412464514039E-06" ixy="3.47994669529837E-09" ixz="1.96272246493511E-09" iyy="3.15623731449643E-06" iyz="-9.91060637011548E-09" izz="2.34685260303228E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_shoulder_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_shoulder_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_SY_J" type="revolute">
+    <origin xyz="0.0590935 -0.022 -1.31666669999919E-05" rpy="0 0 0" />
+    <parent link="origin" />
+    <child link="fr_shoulder_yaw" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.42" upper="0.42" effort="0" velocity="0" />
+  </joint>
+  <link name="fr_shoulder_pitch">
+    <inertial>
+      <origin xyz="-0.00522256674202436 0.0121135631154457 -0.0175465355849416" rpy="0 0 0" />
+      <mass value="0.162497497144351" />
+      <inertia ixx="0.000141853448878477" ixy="-8.12286064939401E-07" ixz="-2.78500275834632E-05" iyy="0.000183026802503737" iyz="-2.9510497250204E-06" izz="6.11506456372241E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_shoulder_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.8 0.807843137254902 0.8 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_shoulder_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_SP_J" type="revolute">
+    <origin xyz="0.026925 -0.047002779952131 0" rpy="0 0 0" />
+    <parent link="fr_shoulder_yaw" />
+    <child link="fr_shoulder_pitch" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="fr_knee">
+    <inertial>
+      <origin xyz="0.0201682816551077 0.0288455102120607 -0.0710258496855704" rpy="0 0 0" />
+      <mass value="0.153379811845886" />
+      <inertia ixx="5.0679730687125E-05" ixy="-5.30240284251272E-09" ixz="5.3683774020358E-06" iyy="5.74456475357727E-05" iyz="-2.58574721128106E-07" izz="3.16017143298986E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_knee.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/fr_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fr_knee" type="revolute">
+    <origin xyz="-0.0254756225259461 -0.013709005444 -0.0784680996132534" rpy="0 0 0" />
+    <parent link="fr_shoulder_pitch" />
+    <child link="fr_knee" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="br_shoulder_yaw">
+    <inertial>
+      <origin xyz="0.015720491214334 -0.00319221100870472 0.000269961254563304" rpy="0 0 0" />
+      <mass value="0.0139501405654818" />
+      <inertia ixx="4.22823488135388E-06" ixy="-3.29377397928948E-09" ixz="2.25813609738675E-09" iyy="2.93983722217667E-06" iyz="-6.05152454966086E-08" izz="2.13930930109643E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_shoulder_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_shoulder_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="br_SY_J" type="revolute">
+    <origin xyz="-0.0590085 -0.0219840462710474 -1.31724636072694E-05" rpy="0 0 0" />
+    <parent link="origin" />
+    <child link="br_shoulder_yaw" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.42" upper="0.42" effort="0" velocity="0" />
+  </joint>
+  <link name="br_shoulder_pitch">
+    <inertial>
+      <origin xyz="-0.00769815583200174 0.0119274905657238 -0.017231144498763" rpy="0 0 0" />
+      <mass value="0.161157362607619" />
+      <inertia ixx="0.000137366883792081" ixy="-1.39048094765236E-06" ixz="-3.28319593037561E-05" iyy="0.0001825886673418" iyz="-2.87415619626421E-06" izz="6.51851072625031E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_shoulder_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_shoulder_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="br_SP_J" type="revolute">
+    <origin xyz="-0.0269249999999997 -0.0470187336810836 0" rpy="0 0 0" />
+    <parent link="br_shoulder_yaw" />
+    <child link="br_shoulder_pitch" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="br_knee">
+    <inertial>
+      <origin xyz="0.0152121260338619 0.0288435857439394 -0.0723608307867923" rpy="0 0 0" />
+      <mass value="0.152931180681163" />
+      <inertia ixx="5.08852252959117E-05" ixy="-1.30553774243868E-08" ixz="4.15990597447031E-06" iyy="5.69254841304493E-05" iyz="-2.3256644271854E-07" izz="3.08593215743803E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_knee.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.290196078431373 0.290196078431373 0.290196078431373 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/br_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="br_knee" type="revolute">
+    <origin xyz="-0.030905043956813 -0.013709005444 -0.0764926680017595" rpy="0 0 0" />
+    <parent link="br_shoulder_pitch" />
+    <child link="br_knee" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.56" upper="1.56" effort="0" velocity="0" />
+  </joint>
+  <link name="head_pitch">
+    <inertial>
+      <origin xyz="0.0148937208237399 -0.000311654054099721 0.0369003932743689" rpy="0 0 0" />
+      <mass value="0.0103442642644936" />
+      <inertia ixx="2.4607258219042E-06" ixy="-2.0029685433314E-09" ixz="1.47479741823876E-06" iyy="6.12734155609907E-06" iyz="-1.64749723216187E-08" izz="5.46377557219485E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_pitch_joint" type="revolute">
+    <origin xyz="0.0860835000000005 0 -1.31666670001723E-05" rpy="0 0 0" />
+    <parent link="origin" />
+    <child link="head_pitch" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.65" upper="0.05" effort="0" velocity="0" />
+  </joint>
+  <link name="head_yaw">
+    <inertial>
+      <origin xyz="0 -9.40395480654498E-23 0" rpy="0 0 0" />
+      <mass value="0.005" />
+      <inertia ixx="2.8800000000000004e-07" ixy="0.0" ixz="0.0" iyy="2.8800000000000004e-07" iyz="0.0" izz="2.8800000000000004e-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_yaw.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_yaw" type="revolute">
+    <origin xyz="0.0197949010920084 0 0.0497270820655865" rpy="0 0.378842198520397 0" />
+    <parent link="head_pitch" />
+    <child link="head_yaw" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+  </joint>
+  <link name="head_roll">
+    <inertial>
+      <origin xyz="-0.00610717887606627 0.000207512790543979 0.0715649146290181" rpy="0 0 0" />
+      <mass value="0.707682611031251" />
+      <inertia ixx="0.00096944303766034" ixy="-1.20646760244042E-06" ixz="3.02961175220502E-05" iyy="0.00113848088905651" iyz="-7.14393745561038E-07" izz="0.00117754656085964" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_roll.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/head_roll.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="head_yaw" />
+    <child link="head_roll" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.78" upper="0.78" effort="0" velocity="0" />
+  </joint>
+  <link name="l_ear_pitch">
+    <inertial>
+      <origin xyz="4.97942199308155E-06 -4.89413013241013E-08 4.50512334881914E-07" rpy="0 0 0" />
+      <mass value="0.002" />
+      <inertia ixx="5.120000000000001e-08" ixy="0.0" ixz="0.0" iyy="5.120000000000001e-08" iyz="0.0" izz="5.120000000000001e-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/l_ear_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/l_ear_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_ear_pitch" type="continuous">
+    <origin xyz="-0.0323604164866384 0.0524870491552141 0.104418979552685" rpy="0 -0.378842198520397 0" />
+    <parent link="head_roll" />
+    <child link="l_ear_pitch" />
+    <axis xyz="0.0277059542431696 -0.913681333794185 -0.405485881844922" />
+    <limit lower="-3" upper="3" effort="0" velocity="0" />
+  </joint>
+  <link name="l_ear_roll">
+    <inertial>
+      <origin xyz="0.00689276820592832 0.00320867775450576 -0.0249336149025192" rpy="0 0 0" />
+      <mass value="0.0179671269904425" />
+      <inertia ixx="2.89294186258015E-06" ixy="8.09228793459123E-09" ixz="1.96569187465003E-08" iyy="5.04726385992549E-06" iyz="3.33348457399317E-07" izz="2.82313729791351E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/l_ear_roll.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/l_ear_roll.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_ear_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="l_ear_pitch" />
+    <child link="l_ear_roll" />
+    <axis xyz="-0.99588439861597 0.00978826026731674 -0.0901024669709235" />
+    <limit lower="-1.5" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="r_ear_pitch">
+    <inertial>
+      <origin xyz="5.47903311676201E-06 -4.946390716562E-06 -4.52917376406181E-06" rpy="0 0 0" />
+      <mass value="0.002" />
+      <inertia ixx="5.120000000000001e-08" ixy="0.0" ixz="0.0" iyy="5.120000000000001e-08" iyz="0.0" izz="5.120000000000001e-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/r_ear_pitch.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/r_ear_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_ear_pitch" type="continuous">
+    <origin xyz="-0.0322143915471349 -0.0513893279125991 0.104107335499855" rpy="0 -0.378842198520397 0" />
+    <parent link="head_roll" />
+    <child link="r_ear_pitch" />
+    <axis xyz="-0.0277809746837011 -0.91332018468149 0.406293560986379" />
+    <limit lower="-3" upper="3" effort="0" velocity="0" />
+  </joint>
+  <link name="r_ear_roll">
+    <inertial>
+      <origin xyz="0.00687156901696785 -0.00430474777126746 -0.0245825600674019" rpy="0 0 0" />
+      <mass value="0.0179671380753027" />
+      <inertia ixx="2.89294948594762E-06" ixy="-7.88792279607966E-09" ixz="1.96562371237384E-08" iyy="5.04669293315283E-06" iyz="-3.35319634472638E-07" izz="2.8237360030517E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/r_ear_roll.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bingo_urdf_w_ear_joints/meshes/r_ear_roll.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_ear_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="r_ear_pitch" />
+    <child link="r_ear_roll" />
+    <axis xyz="-0.995884792016035 -0.00978807186482341 -0.0900981391614038" />
+    <limit lower="0" upper="1.5" effort="0" velocity="0" />
+  </joint>
+</robot>

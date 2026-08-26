@@ -109,7 +109,17 @@ def main():
         body_rot[i, 0] = [q.w, q.x, q.y, q.z]
 
         for k, l in enumerate(LEGS):
-            tips[i, k] = M @ ev.pose.bones[f"{l}_foot_tip"].head
+            tip_name = f"{l}_foot_tip"
+            if tip_name in ev.pose.bones:
+                tips[i, k] = M @ ev.pose.bones[tip_name].head
+            else:
+                # Final baked Stage 2 files intentionally remove helper bones.
+                # Reconstruct the same contact point from metadata stored in the
+                # armature and the evaluated physical knee transform.
+                key = f"{l}_foot_tip_local"
+                if key not in rig:
+                    raise KeyError(f"missing both {tip_name} and armature metadata {key}")
+                tips[i, k] = M @ (ev.pose.bones[f"{l}_knee"].matrix @ Vector(rig[key]))
             body_pos[i, k + 1] = tips[i, k]
             qk = (M @ ev.pose.bones[f"{l}_knee"].matrix).to_quaternion()
             body_rot[i, k + 1] = [qk.w, qk.x, qk.y, qk.z]
