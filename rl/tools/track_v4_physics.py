@@ -274,7 +274,17 @@ def main():
     vel_sat = np.abs(D["q_vel"]) >= (vel_lim[None, :] - 1e-3)
     tq_sat = np.abs(D["torque"]) >= (eff_lim[None, :] - 1e-4)
 
-    fallen = (D["root_pos"][:, 2] < 0.5 * float(root_ref[0][2])) | (tilt > 70.0)
+    # "Fallen" has to be measured against the REFERENCE, not against absolutes.
+    # Laidback lies down to 54 mm and Eccentric is an authored SIT held at 47-78 deg
+    # of tilt: a fixed 70 deg / half-of-frame-0-height rule scores both as falls on
+    # frames where the robot is doing exactly what was authored. Compare instead the
+    # angle between the actual and the reference up-axis, and the height against the
+    # reference height at THAT frame.
+    up_ref = np.array([quat_to_R(q)[:, 2] for q in D["root_quat_ref"]])
+    up_act = np.array([quat_to_R(q)[:, 2] for q in D["root_quat"]])
+    tilt_vs_ref = np.degrees(np.arccos(np.clip((up_ref * up_act).sum(1), -1, 1)))
+    ref_z = np.maximum(D["root_pos_ref"][:, 2], 1e-3)
+    fallen = (D["root_pos"][:, 2] < 0.5 * ref_z) | (tilt_vs_ref > 45.0)
     first_fall = int(np.where(fallen)[0][0]) if fallen.any() else -1
 
     os.makedirs(args.out, exist_ok=True)
@@ -299,9 +309,15 @@ def main():
     print(f"[[ fallen/collapsed      : "
           f"{'frame ' + str(first_fall) if first_fall >= 0 else 'no'}"
           f" | root z {D['root_pos'][:,2].min():.3f}..{D['root_pos'][:,2].max():.3f} m"
-          f" | max tilt {tilt.max():.1f} deg", flush=True)
+          f" | max tilt {tilt.max():.1f} deg (ref {np.degrees(np.arccos(np.clip(up_ref[:,2],-1,1))).max():.1f})"
+          f" | max tilt vs REF {tilt_vs_ref.max():.1f} deg", flush=True)
     print(f"[[ contacts per frame    : mean {D['contacts'].sum(1).mean():.2f} of 4"
           f" | frames with none {int((D['contacts'].sum(1) == 0).sum())}", flush=True)
+    if "contacts" in m.files and np.asarray(m["contacts"]).shape == D["contacts"].shape:
+        ref_ct = np.asarray(m["contacts"], bool)
+        agree = 100.0 * float((ref_ct == D["contacts"]).mean())
+        print(f"[[ contact agreement     : {agree:.1f}% vs the reference schedule "
+              f"(reference mean {ref_ct.sum(1).mean():.2f} of 4)", flush=True)
     if "paw_xy" in D:
         _sl = []
         for i in range(1, T):

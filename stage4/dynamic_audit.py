@@ -20,7 +20,7 @@ m=np.load(a.motion,allow_pickle=True)
 q=m["dof_positions"].astype(float); nm=[str(x) for x in m["dof_names"]]
 rp=(m["root_pos"] if "root_pos" in m.files else m["body_positions"][:,0]).astype(float)
 rq=(m["root_quat"] if "root_quat" in m.files else m["body_rotations"][:,0]).astype(float); T=len(q)
-out=[]; COM=[]; PXY=[]; SUP=[]
+out=[]; COM=[]; PXY=[]; SUP=[]; PZ=[]
 for i in range(T):
     d={n:q[i,nm.index(n)] for n in nm}
     fr={"origin":(quat_to_mat(rq[i]),rp[i].copy())}; st=["origin"]
@@ -52,7 +52,7 @@ for i in range(T):
         mg=-abs(float(e[0]/L*(C[1]-aa[1])-e[1]/L*(C[0]-aa[0])))
     elif n==1: mg=-float(np.linalg.norm(C[:2]-pxy[sup][0]))
     else: mg=-9.99
-    out.append((n,mg)); COM.append(C); PXY.append(pxy); SUP.append(sup)
+    out.append((n,mg)); COM.append(C); PXY.append(pxy); SUP.append(sup); PZ.append(pz)
 out=np.array(out); n=out[:,0]; mg=out[:,1]
 print(f"{a.motion.split('/')[-1]}: statically stable {int((mg>0).sum())}/{T} = {100*(mg>0).mean():.0f}%"
       f" | supports "+" ".join(f"{k}:{int((n==k).sum())}" for k in range(5))
@@ -60,7 +60,7 @@ print(f"{a.motion.split('/')[-1]}: statically stable {int((mg>0).sum())}/{T} = {
 
 
 # ---- dynamic feasibility: ZMP (cart-table) + required friction ratio ---------
-COM=np.array(COM); PXY=np.array(PXY); SUP=np.array(SUP)
+COM=np.array(COM); PXY=np.array(PXY); SUP=np.array(SUP); PZ=np.array(PZ)
 fps=float(m["fps"]); dt=1.0/fps
 V=np.gradient(COM,dt,axis=0); A=np.gradient(V,dt,axis=0)
 g=9.81; az=A[:,2]+g
@@ -96,11 +96,12 @@ if len(bad):
     print("  ZMP-infeasible windows:", ", ".join(f"{a}-{b}" for a,b in runs[:14]))
 if a.frames:
     first,last=(int(x) for x in a.frames.split("-",1))
-    print("  frame support mask static_mm zmp_mm com_xy_mm zmp_xy_mm support_center_xy_mm")
+    print("  frame support mask paw_z_mm static_mm zmp_mm com_xy_mm zmp_xy_mm support_center_xy_mm")
     for i in range(max(0,first),min(T-1,last)+1):
         center=PXY[i][SUP[i]].mean(0) if SUP[i].any() else np.full(2,np.nan)
         mask="".join("1" if x else "0" for x in SUP[i])
-        print(f"  {i:4d} {int(n[i]):d} {mask} {mg[i]*1000:+8.1f} {zm[i]*1000:+8.1f} "
+        ztxt="("+",".join(f"{z*1000:+.1f}" for z in PZ[i])+")"
+        print(f"  {i:4d} {int(n[i]):d} {mask} {ztxt:>25s} {mg[i]*1000:+8.1f} {zm[i]*1000:+8.1f} "
               f"({COM[i,0]*1000:+7.1f},{COM[i,1]*1000:+7.1f}) "
               f"({zmp[i,0]*1000:+7.1f},{zmp[i,1]*1000:+7.1f}) "
               f"({center[0]*1000:+7.1f},{center[1]*1000:+7.1f})")

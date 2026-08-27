@@ -29,7 +29,7 @@ import numpy as np
 from scipy.optimize import least_squares
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "stage4")))
-from v4_kinematics import (V4Kin, LEGS, DOF_ORDER, HEAD_CHAIN, TAIL_CHAIN,
+from v4_kinematics import (V4Kin, LEGS, DOF_ORDER, HEAD_CHAIN, TAIL_CHAIN, axis_rot,
                            LEAR_CHAIN, REAR_CHAIN, mat_to_quat, quat_to_mat,
                            rotvec_of)
 from contact_model import ContactModel, HULLS_NPZ
@@ -117,12 +117,28 @@ def solve_leg(kin, leg, ankle_target, knee_target, contact_target, q0, lim,
     return r.x, errs
 
 
-def solve_chain(kin, names, R_target, q0, lim):
+def solve_chain(kin, names, R_target, q0, lim, continuity=0.0, q_prev=None):
+    """Orientation IK for one expressive chain, seeded from the previous frame.
+
+    `continuity` matters wherever the target is OUT OF REACH, which for the head is
+    most of several clips: a 3-DOF chain against an unreachable orientation has
+    several almost-equally-bad minima, and a purely local solve will hop between them
+    from one frame to the next. On Eccentric that produced a 22.9 deg single-frame
+    FLICK of the head at robot frames 236-259 - the head sat pinned at head_roll's
+    +44.7 deg stop, snapped across the workspace and snapped back. The eye reads that
+    as a glitch, not as a joint limit. A small penalty toward the previous frame's
+    solution costs almost nothing where the target IS reachable (the orientation
+    residual dominates) and picks the near branch where it is not."""
+    qp = q0 if q_prev is None else q_prev
+
     def resid(q):
-        return rotvec_of(kin.chain_rot(names, q).T @ R_target)
+        r = rotvec_of(kin.chain_rot(names, q).T @ R_target)
+        if continuity > 0.0:
+            return np.concatenate([r, continuity * (q - qp)])
+        return r
     r = least_squares(resid, q0, bounds=(lim[:, 0], lim[:, 1]),
                       method='trf', xtol=1e-12, ftol=1e-12, max_nfev=200)
-    err = float(np.linalg.norm(resid(r.x)))
+    err = float(np.linalg.norm(rotvec_of(kin.chain_rot(names, r.x).T @ R_target)))
     return r.x, err
 
 
@@ -137,6 +153,46 @@ def main():
     ap.add_argument("--urdf", required=True)
     ap.add_argument("--collision-hulls", default=HULLS_NPZ)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--root-cap", type=float, default=0.035,
+                    help="metres. Bound on the residual body offset the contact solve "
+                         "may add on top of Ashley's scaled hip-centroid path. This is a "
+                         "direct trade: a tighter cap keeps the body exactly where Ashley "
+                         "put it and forces the planted paws to skate instead; a looser "
+                         "one moves the body a little and keeps the feet welded to the "
+                         "floor. Physics only tracks the second kind, so prefer to loosen "
+                         "it and MEASURE the root deviation rather than pay in slip.")
+    ap.add_argument("--expr-vel", type=float, default=8.0,
+                    help="rad/s cap on the HEAD and TAIL joints, applied "
+                         "as a forward-backward projection after the chain solve. 8.0 "
+                         "is the v4 head/tail velocity limit. Lowering it is the "
+                         "cheaper way to stop an out-of-reach head FLICKING between "
+                         "equivalent minima - it bounds how fast the chain may cross "
+                         "the workspace without penalising the reachable part of the "
+                         "motion the way --expr-continuity does.")
+    ap.add_argument("--yaw-align", choices=("heading", "travel"), default="heading",
+                    help="which direction the exported world frame is built around: "
+                         "the character's frame-0 heading (default, unchanged) or its "
+                         "net travel. Cosmetic - a rigid yaw about Z - but it decides "
+                         "whether a crabbing clip runs along a Blender axis or across "
+                         "the grid diagonally.")
+    ap.add_argument("--ear-vel", type=float, default=8.0,
+                    help="rad/s cap for the EAR joints only, kept separate from "
+                         "--expr-vel so slowing a limit-bound head does not also slow "
+                         "the ears, which track Ashley well on every clip.")
+    ap.add_argument("--expr-continuity", type=float, default=0.15,
+                    help="temporal continuity weight for the head/tail/ear orientation "
+                         "IK, in radians of joint change per radian of orientation "
+                         "error. Stops the chain hopping between equivalent minima "
+                         "when the target is past the v4 limits (see solve_chain).")
+    ap.add_argument("--stance-weight", type=float, default=2500.0,
+                    help="how hard a scheduled stance foot is held to its world "
+                         "touchdown anchor, against the 5:3:2 ankle:knee:toe objective "
+                         "that shapes the leg. High keeps the foot welded to the floor "
+                         "and lets the authored ankle position drift; low reproduces "
+                         "Ashley's leg more exactly and lets the foot skate. Physics "
+                         "only tracks the first kind - measure before lowering it.")
+    ap.add_argument("--root-step", type=float, default=0.004,
+                    help="metres/frame rate limit on that offset (keeps it smooth)")
     a = ap.parse_args()
 
     d = np.load(a.keypoints, allow_pickle=True)
@@ -244,6 +300,24 @@ def main():
     A = S0.T                                            # source-world -> robot-origin
     print(f"[[ axis align: yaw-only, heading {np.degrees(np.arctan2(fwd0[1], fwd0[0])):+.1f} deg "
           f"(up forced to world +Z)")
+    if a.yaw_align == "travel":
+        # Put the clip's NET TRAVEL along world +X. Purely a choice of world frame -
+        # a rigid yaw about Z, with gravity along Z, so nothing physical changes. It
+        # exists because the default (frame-0 heading -> +X) leaves a clip whose
+        # character CRABS running diagonally across the Blender grid, which reads as
+        # a retarget error when it is not. Eccentric is the case: Ashley's body faces
+        # 27.0 deg off her own direction of travel and the v4 retarget reproduces
+        # that to 0.2 deg, but her travel happens to lie along her -Y axis while ours
+        # ends up 28 deg off +X.
+        _c = np.array([np.mean([sp[RMAP[l]][i] for l in LEGS], 0) for i in (0, T - 1)])
+        _t = (A @ (_c[1] - _c[0]))[:2]
+        if np.linalg.norm(_t) > 1e-9:
+            _t /= np.linalg.norm(_t)
+            _R = np.array([[_t[0], _t[1], 0.0], [-_t[1], _t[0], 0.0], [0.0, 0.0, 1.0]])
+            A = _R @ A
+            print(f"[[ yaw-align=travel: rotated the world frame by "
+                  f"{np.degrees(np.arctan2(-_t[1], _t[0])):+.1f} deg so the net travel "
+                  f"runs along +X")
     meansp = np.mean([urdf_sp[l] for l in LEGS], 0)
     sp_centroid = np.array([np.mean([sp[RMAP[l]][i] for l in LEGS], 0)
                             for i in range(T)])
@@ -302,9 +376,24 @@ def main():
             al = RMAP[l]
             # Carry only Ashley's animated SP displacement onto the exact v4
             # rest layout; do not force the v4 pivots into Ashley's narrower rig.
-            sp_layout_delta = ((sp[al][i] - sp_centroid[i])
-                               - (sp[al][0] - sp0_centroid)) * s_master
-            sp_target = urdf_sp[l] + R_b[i].T @ (A @ sp_layout_delta)
+            #
+            # This delta MUST be taken in Ashley's own body frame. Differencing
+            # the WORLD-space hip offset against frame 0 (the old form) measures
+            # the body's rigid ROTATION as if it were scapula translation: a hip
+            # 70 mm off the centroid on a clip that yaws 90 deg reads as ~100 mm
+            # of shoulder travel that never happened. Measured on the six clips,
+            # the world-frame form reports 19-79 mm mean (up to 194 mm) of hip
+            # motion and tracks body yaw almost perfectly, while the true
+            # body-frame motion is 1.5-9.3 mm mean, <=25 mm max. Added to a leg
+            # whose ankle target already sits at 150-200 mm of a 203.6 mm reach,
+            # that artefact pushed DeadPan's front-leg targets outside the
+            # reachable ball on 78% of frames (mean ankle IK error 62 mm) and
+            # forced the planted paws to skate. Mapping both endpoints through
+            # R_b[i].T @ A cancels the rotation exactly, since
+            # R_b[i].T @ A == C_anat.T @ Rbody[i].T.
+            sp_off_i = R_b[i].T @ (A @ (sp[al][i] - sp_centroid[i]))
+            sp_off_0 = R_b[0].T @ (A @ (sp[al][0] - sp0_centroid))
+            sp_target = urdf_sp[l] + (sp_off_i - sp_off_0) * s_master
 
             avec = R_b[i].T @ (A @ ((ankle[al][i] - sp[al][i]) * s_leg[l]))
             ankle_tgt[i, k] = sp_target + avec
@@ -376,16 +465,61 @@ def main():
 
     # Put the clip onto one physical floor with one clip-wide shift. This replaces
     # the old independent per-frame root-Z grounding that broke temporal locks.
+    _child = {}
+    for _n, _j in kin.j.items():
+        _child.setdefault(_j["parent"], []).append(_n)
+
+    def whole_body_low(i, want_link=False):
+        """Lowest collision-hull z over EVERY link at frame i, in world."""
+        dd = {DOF_ORDER[c]: dof[i, c] for c in range(21)}
+        fr = {"origin": (R_b[i], t_b[i].copy())}
+        st = ["origin"]; best = 1e9
+        while st:
+            par = st.pop(); Rp, pp = fr[par]
+            for jn in _child.get(par, []):
+                J = kin.j[jn]; pj = pp + Rp @ J["xyz"]
+                fr[J["child"]] = (Rp @ J["R"] @ axis_rot(J["axis"], dd.get(jn, 0.0)), pj)
+                st.append(J["child"])
+        who = None
+        for ln, (R_, p_) in fr.items():
+            if ln in contact_model.hull:
+                z_ = float((contact_model.hull[ln] @ R_.T + p_)[:, 2].min())
+                if z_ < best:
+                    best, who = z_, ln
+        return (best, who) if want_link else best
+
     touchdown = []
     for k in range(4):
         touchdown.extend(i for i in range(T) if ct[i, k] and (i == 0 or not ct[i-1, k]))
     if not touchdown:
         raise RuntimeError("source contact schedule contains no touchdown")
-    touchdown_z = []
-    for k in range(4):
-        touchdown_z.extend(initial_lowest[i, k, 2] for i in range(T)
-                           if ct[i, k] and (i == 0 or not ct[i-1, k]))
-    ground_level = float(np.median(touchdown_z))
+    # The floor is the plane that the robot RESTS on, which is not always a paw.
+    # Eccentric is an authored SIT: only the two front paws ever touch down, and
+    # levelling on them alone left the torso hull 40-46 mm BELOW the floor for all
+    # 370 frames. Take the whole-robot lowest point at each scheduled stance frame
+    # instead - for a walk that point IS the planted paw, so nothing changes, and
+    # for a sit it is the torso, which is exactly the surface being sat on.
+    stance_frames = np.where(ct.any(1))[0]
+    low_link = [whole_body_low(i, True) for i in stance_frames]
+    torso_frac = float(np.mean([not any(w[1].startswith(l + "_") for l in LEGS)
+                                for w in low_link])) if low_link else 0.0
+    touchdown_z = [initial_lowest[i, k, 2] for k in range(4) for i in range(T)
+                   if ct[i, k] and (i == 0 or not ct[i-1, k])]
+    paw_level = float(np.median(touchdown_z))
+    body_level = float(np.median([w[0] for w in low_link])) if low_link else paw_level
+    # Which surface is the clip resting ON? If the lowest point during stance is a
+    # LEG link, it is a walk and the touchdown paws define the floor. If it is the
+    # torso/head/tail, it is a SIT and the paws never define it - Eccentric levelled
+    # on its two front touchdowns left the torso hull 40-46 mm underground for all
+    # 370 frames. Measured, forcing the whole-body rule on the walking clips instead
+    # regresses them (DeadPan static support 93% -> 73%, slip 1.19 -> 1.49 mm/frame),
+    # because their lowest stance point is a thigh that legitimately hangs below the
+    # paw. So switch on WHICH LINK, not on the height.
+    use_body = torso_frac > 0.5
+    ground_level = body_level if use_body else paw_level
+    print(f"[[ floor: {'whole-body (SIT: torso is lowest on '+format(100*torso_frac,'.0f')+'% of stance frames)' if use_body else 'paw touchdowns (walk)'}"
+          f" -> {ground_level*1000:+.1f} mm | paw rule {paw_level*1000:+.1f} mm, "
+          f"whole-body rule {body_level*1000:+.1f} mm")
     t_b[:, 2] -= ground_level
     initial_support[:, :, 2] -= ground_level
     initial_lowest[:, :, 2] -= ground_level
@@ -435,7 +569,7 @@ def main():
                              continuity=continuity, floor_z=0.0)
         return solve_leg(kin, l, ankle_tgt[i, k], knee_tgt[i, k],
                          contact_tgt[i, k], q0, bounds, support_hull[l], R_b[i],
-                         root_pos=t_b[i], contact_weight=2500.0,
+                         root_pos=t_b[i], contact_weight=a.stance_weight,
                          continuity=continuity, floor_z=0.0,
                          contact_world_target=contact_anchor[i, k])
 
@@ -473,25 +607,85 @@ def main():
     lim_h = kin.chain_limits(HEAD_CHAIN); lim_t = kin.chain_limits(TAIL_CHAIN)
     lim_l = kin.chain_limits(LEAR_CHAIN); lim_r = kin.chain_limits(REAR_CHAIN)
     qh = np.zeros(3); qt = np.zeros(2); ql = np.zeros(2); qr = np.zeros(2)
+    qh_free = np.zeros(3); qt_free = np.zeros(2)
+    ql_free = np.zeros(2); qr_free = np.zeros(2)
+    WIDE = 3.5                       # radians of headroom for the unconstrained solve
+    wide_h = np.column_stack([np.full(3, -WIDE), np.full(3, WIDE)])
+    wide_t = np.column_stack([np.full(2, -WIDE), np.full(2, WIDE)])
+    wide_l = wide_r = np.column_stack([np.full(2, -WIDE), np.full(2, WIDE)])
+    demand = np.zeros((T, 9))
+    ori_lim = np.zeros((T, 4)); ori_free = np.zeros((T, 4))
     hres = np.zeros(T); ear_res = np.zeros((T, 2))
     for i in range(T):
-        qh, eh = solve_chain(kin, HEAD_CHAIN, hd_t[i] @ R0["h"], qh, lim_h)
-        qt, et = solve_chain(kin, TAIL_CHAIN, tl_t[i] @ R0["t"], qt, lim_t)
+        qh, eh = solve_chain(kin, HEAD_CHAIN, hd_t[i] @ R0["h"], qh, lim_h,
+                             a.expr_continuity, qh)
+        qt, et = solve_chain(kin, TAIL_CHAIN, tl_t[i] @ R0["t"], qt, lim_t,
+                             a.expr_continuity, qt)
         # The ears inherit the achieved physical head.  Solve each visible
         # terminal ear orientation relative to that head, using the complete
         # source-body rest->animated delta and the target's own zero frames.
         H = kin.chain_rot(HEAD_CHAIN, qh)
         target_l_full = el_t[i] @ (R0["h"] @ R0["l"])
         target_r_full = er_t[i] @ (R0["h"] @ R0["r"])
-        ql, _ = solve_chain(kin, LEAR_CHAIN, H.T @ target_l_full, ql, lim_l)
-        qr, _ = solve_chain(kin, REAR_CHAIN, H.T @ target_r_full, qr, lim_r)
+        ql, _ = solve_chain(kin, LEAR_CHAIN, H.T @ target_l_full, ql, lim_l,
+                            a.expr_continuity, ql)
+        qr, _ = solve_chain(kin, REAR_CHAIN, H.T @ target_r_full, qr, lim_r,
+                            a.expr_continuity, qr)
         dof[i, 12:15] = qh; dof[i, 15:17] = qt; dof[i, 17:19] = ql; dof[i, 19:21] = qr
+        # What the SOURCE actually asks of each expressive joint, with the v4 limits
+        # lifted. The clipped angle above says the joint is at its stop; this says by
+        # how much Ashley overshot it, which is the number the mechanical team needs.
+        qh_f, _ = solve_chain(kin, HEAD_CHAIN, hd_t[i] @ R0["h"], qh_free, wide_h)
+        qt_f, _ = solve_chain(kin, TAIL_CHAIN, tl_t[i] @ R0["t"], qt_free, wide_t)
+        # The ears are solved against the ACHIEVED (limited) head in both cases, so
+        # the comparison isolates the ear's own limits instead of also inheriting the
+        # head's clipping.
+        ql_f, _ = solve_chain(kin, LEAR_CHAIN, H.T @ target_l_full, ql_free, wide_l)
+        qr_f, _ = solve_chain(kin, REAR_CHAIN, H.T @ target_r_full, qr_free, wide_r)
+        demand[i, 0:3] = qh_f; demand[i, 3:5] = qt_f
+        demand[i, 5:7] = ql_f; demand[i, 7:9] = qr_f
+        qh_free, qt_free, ql_free, qr_free = qh_f, qt_f, ql_f, qr_f
+        # Orientation error of the LIMITED solve against the target, and of the
+        # unlimited one. The difference is the part the JOINT LIMITS cost, as opposed
+        # to the part the 3-DOF chain cannot represent at any limit. Unlike a joint
+        # angle this is unambiguous - a pitch-yaw-roll chain has several equivalent
+        # decompositions, which is why the raw demand can read 166 deg.
+        for _ci, (_ch, _qa, _qb, _tg) in enumerate((
+                (HEAD_CHAIN, qh, qh_f, hd_t[i] @ R0["h"]),
+                (TAIL_CHAIN, qt, qt_f, tl_t[i] @ R0["t"]),
+                (LEAR_CHAIN, ql, ql_f, H.T @ target_l_full),
+                (REAR_CHAIN, qr, qr_f, H.T @ target_r_full))):
+            ori_lim[i, _ci] = np.linalg.norm(rotvec_of(
+                kin.chain_rot(_ch, _qa).T @ _tg))
+            ori_free[i, _ci] = np.linalg.norm(rotvec_of(
+                kin.chain_rot(_ch, _qb).T @ _tg))
         hres[i] = eh
         ear_res[i, 0] = np.linalg.norm(rotvec_of((H @ kin.chain_rot(LEAR_CHAIN, ql)).T
                                                  @ target_l_full))
         ear_res[i, 1] = np.linalg.norm(rotvec_of((H @ kin.chain_rot(REAR_CHAIN, qr)).T
                                                  @ target_r_full))
     print(f"[[ head decompose residual mean {hres.mean():.3f} rad (unrepresentable part)")
+    print("[[ expressive chain orientation error (deg): what the eye actually sees")
+    print(f"[[   {'chain':6s} {'within v4 limits':>22s} {'limits lifted':>18s} "
+          f"{'cost of the LIMITS':>20s}")
+    for _ci, _nm in enumerate(("head", "tail", "earL", "earR")):
+        _a = np.degrees(ori_lim[:, _ci]); _b = np.degrees(ori_free[:, _ci])
+        print(f"[[   {_nm:6s}  mean {_a.mean():5.1f} p95 {np.percentile(_a,95):5.1f}"
+              f"   mean {_b.mean():5.1f} p95 {np.percentile(_b,95):5.1f}"
+              f"      mean {(_a-_b).mean():5.1f} max {(_a-_b).max():5.1f}")
+    EXPR = DOF_ORDER[12:21]
+    lims_all = kin.all_limits()
+    print("[[ expressive joint DEMAND vs v4 limit (what Ashley asks for, limits lifted):")
+    for _c, _n in enumerate(EXPR):
+        _j = 12 + _c
+        _lo, _hi = lims_all[_j]
+        _d = demand[:, _c]
+        _over = float(np.mean((_d < _lo - 1e-4) | (_d > _hi + 1e-4)))
+        _flag = "" if _over < 0.02 else (
+            f"   <-- clipped on {100*_over:.0f}% of frames, "
+            f"overshoot up to {np.degrees(max(_lo - _d.min(), _d.max() - _hi)):.0f} deg")
+        print(f"     {_n:18s} demand [{np.degrees(_d.min()):+7.1f},{np.degrees(_d.max()):+7.1f}] "
+              f"limit [{np.degrees(_lo):+7.1f},{np.degrees(_hi):+7.1f}] deg{_flag}")
     print(f"[[ visible ear residual mean L={ear_res[:,0].mean():.3f} R={ear_res[:,1].mean():.3f} rad")
     for fr in (1, 60, 94, 121, 127, 128, 180):
         where = np.where(frames == fr)[0]
@@ -534,7 +728,8 @@ def main():
                 y[i] = np.clip(y[i], y[i+1] - max_step, y[i+1] + max_step)
         return y
 
-    dof[:, 12:21] = project_rate(dof[:, 12:21], 8.0 * dt)
+    dof[:, 12:17] = project_rate(dof[:, 12:17], a.expr_vel * dt)   # head + tail
+    dof[:, 17:21] = project_rate(dof[:, 17:21], a.ear_vel * dt)    # ears
 
     # Recompute the final visible ear errors after expression rate projection.
     for i in range(T):
@@ -617,8 +812,8 @@ def main():
             row[i-1] = -2*np.sqrt(w_acc); row[i] = np.sqrt(w_acc)
             rows.append(row); rhs.append(np.zeros(3))
         root_raw = np.linalg.lstsq(np.vstack(rows), np.vstack(rhs), rcond=None)[0]
-        root_off = cap_norm(root_raw, 0.035)
-        max_step = 0.004
+        root_off = cap_norm(root_raw, a.root_cap)
+        max_step = a.root_step
         for _ in range(10):
             for i in range(1, T):
                 dlt = root_off[i] - root_off[i-1]; n = np.linalg.norm(dlt)
@@ -628,7 +823,7 @@ def main():
                 dlt = root_off[i] - root_off[i+1]; n = np.linalg.norm(dlt)
                 if n > max_step:
                     root_off[i] = root_off[i+1] + dlt * (max_step / n)
-            root_off = cap_norm(root_off, 0.035)
+            root_off = cap_norm(root_off, a.root_cap)
         t_b = base_t + root_off
         refresh_contact_targets(t_b)
 
@@ -736,7 +931,10 @@ def main():
              ear_orientation_error=ear_res.astype(np.float32),
              leg_map=np.array([f"{al}->{MAP[al]}" for al in ALEGS]),
              collision_hulls=np.array(a.collision_hulls),
-             saturation=sat, source=d["source"])
+             saturation=sat, expressive_demand=demand.astype(np.float32),
+             expressive_ori_err=ori_lim.astype(np.float32),
+             expressive_ori_err_unlimited=ori_free.astype(np.float32),
+             source=d["source"])
     print(f"[[ wrote {a.out}")
 
 

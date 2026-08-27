@@ -36,8 +36,16 @@ for k in ("body_rotations", "root_quat"):
     if k in d:
         q = d[k].astype(float); q /= (np.linalg.norm(q, axis=-1, keepdims=True) + 1e-12)
         d[k] = q.astype(np.float32)
-if "contacts" in d and len(m["contacts"]) == T:
-    d["contacts"] = m["contacts"][np.clip(np.round(src).astype(int), 0, T - 1)]
+# Resample EVERY per-frame array, not just "contacts": the boolean schedules and
+# the world-point tracks are consumed downstream and must stay in step with the
+# motion (same fix as stage4/retime.py).
+idx = np.clip(np.round(src).astype(int), 0, T - 1)
+for k in list(d):
+    v = np.asarray(d[k])
+    if v.ndim >= 1 and v.shape[0] == T and k not in (
+            "dof_positions", "body_positions", "body_rotations", "root_pos",
+            "root_quat", "head_tail_positions", "ear_positions", "dof_velocities"):
+        d[k] = v[idx] if v.dtype == bool or v.dtype.kind in "iub" else resamp(v).astype(v.dtype)
 dt = 1.0 / float(m["fps"])
 d["dof_velocities"] = np.gradient(d["dof_positions"].astype(float), dt, axis=0).astype(np.float32)
 d["stage4_retime"] = np.array([s, e, a.factor], float)

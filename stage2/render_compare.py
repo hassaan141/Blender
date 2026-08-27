@@ -12,8 +12,13 @@ from mathutils import Vector
 
 FRAMES = {  # forward, anatomical left, up, root-bone, armature
     "robot":  (Vector((1, 0, 0)), Vector((0, 1, 0)), Vector((0, 0, 1)), "root", "Bingo_Robot"),
-    # Ashley is left-handed before the solver reflection: forward +Y, left +X.
-    "ashley": (Vector((0, 1, 0)), Vector((1, 0, 0)), Vector((0, 0, 1)), "def_Pelvis", "Bingo_Rig"),
+    # Ashley is left-handed before the solver reflection (her forward is +Y and her
+    # rig-labelled left is +X). solve_spatial_retarget reflects x -> -x exactly once
+    # to make the source right-handed, so her ANATOMICAL left - the side that becomes
+    # the robot's left - is -X. Using +X here puts the two cameras on opposite sides
+    # of the character and the stills come out mirrored, which makes a side-by-side
+    # comparison read as a pose error that is not there.
+    "ashley": (Vector((0, 1, 0)), Vector((-1, 0, 0)), Vector((0, 0, 1)), "def_Pelvis", "Bingo_Rig"),
 }
 
 
@@ -90,6 +95,10 @@ def main():
     ap.add_argument("--decimate", type=float, default=0.12,
                     help="temporary robot mesh ratio for fast workbench comparison")
     ap.add_argument("--frames", help="comma-separated exact frames (overrides --every)")
+    ap.add_argument("--ground", type=float, default=None,
+                    help="source-unit height of the character's floor (the 'ground' "
+                         "field of stage2/out/<clip>_contacts.npz). Only the robot's "
+                         "floor is at 0 by construction.")
     a = ap.parse_args(argv)
 
     sc = bpy.context.scene
@@ -115,6 +124,44 @@ def main():
                 bpy.ops.object.modifier_apply(modifier=mod.name)
                 ob.select_set(False)
     fwd, left, up = FRAMES[a.target][0], FRAMES[a.target][1], FRAMES[a.target][2]
+    # The table above is a WORLD-axis fallback. Which way the character actually
+    # faces is a property of the clip, not of the rig: Cheeky opens facing +Y and
+    # Eccentric faces the other way, so a fixed world heading photographs one from
+    # the front and the other from behind and the sheet reads as a huge pose error.
+    # Take the heading from the anatomy at the middle frame instead.
+    sc.frame_set((sc.frame_start + sc.frame_end) // 2)
+    dg0 = bpy.context.evaluated_depsgraph_get()
+    try:
+        if a.target == "ashley":
+            ev0 = bpy.data.objects["Bingo_Rig"].evaluated_get(dg0)
+            M0 = bpy.data.objects["Bingo_Rig"].matrix_world
+            front = (M0 @ ev0.pose.bones["def_Arm.L"].head
+                     + M0 @ ev0.pose.bones["def_Arm.R"].head) / 2.0
+            back = (M0 @ ev0.pose.bones["def_Leg.L"].head
+                    + M0 @ ev0.pose.bones["def_Leg.R"].head) / 2.0
+            h = front - back
+            # Ashley is left-handed; her anatomical left is -X after the solver's
+            # single x -> -x reflection (see FRAMES).
+            h.z = 0.0
+            if h.length > 1e-6:
+                fwd = h.normalized(); left = -up.cross(fwd)
+        else:
+            # Same anatomical construction as Ashley's - front hip centre minus back
+            # hip centre - rather than a bone's local axis, whose convention differs
+            # between the two rigs.
+            ob0 = bpy.data.objects["Bingo_Robot"]
+            ev0 = ob0.evaluated_get(dg0)
+            M0 = ob0.matrix_world
+            pbs = ev0.pose.bones
+            front = (M0 @ pbs["fl_SY_J"].head + M0 @ pbs["fr_SY_J"].head) / 2.0
+            back = (M0 @ pbs["bl_SY_J"].head + M0 @ pbs["br_SY_J"].head) / 2.0
+            h = front - back
+            h.z = 0.0
+            if h.length > 1e-6:
+                fwd = h.normalized(); left = up.cross(fwd)
+        print(f"[[ {a.target} heading {fwd.x:+.2f},{fwd.y:+.2f} (from anatomy)")
+    except Exception as _e:
+        print(f"[[ heading fallback to world axes ({_e})")
 
     f0, f1 = sc.frame_start, sc.frame_end
     samples = list(range(f0, f1 + 1, max(1, (f1 - f0) // 8)))
@@ -132,7 +179,8 @@ def main():
         sc.collection.objects.link(lo_); lo_.rotation_euler = e; lt.energy = energy
 
     # big ground plane at z=0 (covers travel)
-    ground_z = -2.93 if a.target == "ashley" else 0.0
+    ground_z = 0.0 if a.target == "robot" else (
+        a.ground if a.ground is not None else -2.93)
     bpy.ops.mesh.primitive_plane_add(size=csize * 40, location=(0, 0, ground_z))
 
     if a.engine == "workbench":

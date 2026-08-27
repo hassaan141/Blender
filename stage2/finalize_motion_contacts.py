@@ -35,6 +35,13 @@ def main():
     out["contact_speed_tolerance"] = s["contact_speed_tolerance"]
     out["contact_geometry"] = s["collision_hulls"]
     out["contact_stage2_source"] = np.array(a.stage2)
+    # Carry through any Stage-4 reference modifications so the audits score the
+    # motion against the schedule/tempo it was actually built to.
+    for k in ("stage4_planted", "wrench_offset", "glide_removed",
+              "stage4_retime_factor", "stage4_retime", "stage4_balance_window",
+              "stage4_root_shift", "stage4_dz"):
+        if k in s.files:
+            out[k] = s[k]
     np.savez(a.out, **out)
     print(f"[[ exact bake match: joints {qerr:.3g} rad | root {rerr:.3g} m | "
           f"orientation {aerr:.3g} deg")

@@ -37,9 +37,19 @@ if "body_rotations" in d:                       # renormalise quaternions
 if "root_quat" in d:
     q = d["root_quat"].astype(float); q /= (np.linalg.norm(q, axis=-1, keepdims=True) + 1e-12)
     d["root_quat"] = q.astype(np.float32)
-if "contacts" in d and len(d["contacts"]) == T:
-    idx = np.clip(np.round(src).astype(int), 0, T - 1)
-    d["contacts"] = m["contacts"][idx]
+# Every per-frame array must be resampled, not just "contacts": the boolean
+# schedules (source_contacts, physical_height_contacts) and the world-space point
+# tracks are consumed downstream, and leaving them at the OLD length silently
+# desynchronises them from the motion (finalize_motion_contacts then fails on a
+# shape mismatch, which is the good case - a same-length array would just be wrong).
+idx = np.clip(np.round(src).astype(int), 0, T - 1)
+for k in list(d):
+    v = np.asarray(d[k])
+    if v.ndim >= 1 and v.shape[0] == T and k not in (
+            "dof_positions", "body_positions", "body_rotations", "dof_velocities",
+            "root_pos", "root_quat", "head_tail_positions", "ear_positions"):
+        d[k] = v[idx] if v.dtype == bool or v.dtype.kind in "iub" else \
+            resamp(v).astype(v.dtype)
 dt = 1.0 / float(m["fps"])
 d["dof_velocities"] = np.gradient(d["dof_positions"].astype(float), dt, axis=0).astype(np.float32)
 d["stage4_retime_factor"] = np.array(a.factor)

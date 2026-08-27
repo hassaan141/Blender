@@ -38,8 +38,15 @@ def main():
     ap.add_argument("--ramp", type=int, default=8)
     ap.add_argument("--shift-x", type=float, default=0.0, help="metres")
     ap.add_argument("--shift-y", type=float, required=True, help="metres")
+    ap.add_argument("--shift-z", type=float, default=0.0, help="metres")
     ap.add_argument("--roll-deg", type=float, default=0.0,
                     help="small local body-roll correction inside the window")
+    ap.add_argument("--pitch-deg", type=float, default=0.0,
+                    help="small local body-pitch correction inside the window")
+    ap.add_argument("--yaw-deg", type=float, default=0.0,
+                    help="small local body-yaw/steering correction inside the window")
+    ap.add_argument("--hold-end", action="store_true",
+                    help="keep the correction through the last selected frame")
     a = ap.parse_args()
 
     m = np.load(a.motion, allow_pickle=True)
@@ -61,13 +68,21 @@ def main():
     weight[s:e + 1] = 1.0
     weight[s:min(e + 1, s + ramp)] = smoothstep(
         np.linspace(0.0, 1.0, min(ramp, e - s + 1)))
-    weight[max(s, e - ramp + 1):e + 1] = smoothstep(
-        np.linspace(1.0, 0.0, min(ramp, e - s + 1)))
-    delta = weight[:, None] * np.array([a.shift_x, a.shift_y, 0.0])
+    if not a.hold_end:
+        weight[max(s, e - ramp + 1):e + 1] = smoothstep(
+            np.linspace(1.0, 0.0, min(ramp, e - s + 1)))
+    delta = weight[:, None] * np.array([a.shift_x, a.shift_y, a.shift_z])
     root = root_ref + delta
     roll = np.radians(a.roll_deg) * weight
-    Rroot = np.array([Rref[i] @ axis_rot(np.array([1.0, 0.0, 0.0]), roll[i])
-                      for i in range(T)])
+    pitch = np.radians(a.pitch_deg) * weight
+    yaw = np.radians(a.yaw_deg) * weight
+    Rroot = np.array([
+        Rref[i]
+        @ axis_rot(np.array([1.0, 0.0, 0.0]), roll[i])
+        @ axis_rot(np.array([0.0, 1.0, 0.0]), pitch[i])
+        @ axis_rot(np.array([0.0, 0.0, 1.0]), yaw[i])
+        for i in range(T)
+    ])
     root_quat = np.array([mat_to_quat(R) for R in Rroot])
 
     hull = {leg: cm.hull[f"{leg}_knee"] for leg in LEGS}
@@ -157,7 +172,7 @@ def main():
         support_speed=support_speed.astype(np.float32),
         collision_hulls=np.array(HULLS_NPZ),
         stage4_balance_window=np.array([s, e, ramp], dtype=np.int32),
-        stage4_root_shift=np.array([a.shift_x, a.shift_y, 0.0]),
+        stage4_root_shift=np.array([a.shift_x, a.shift_y, a.shift_z]),
     )
     if "body_positions" in out:
         bp = out["body_positions"].copy(); bp[:, 0] = root
@@ -169,8 +184,10 @@ def main():
 
     dq = np.abs(q - q_ref)
     print(f"[[ root shift window {s}-{e}, ramp {ramp}: "
-          f"({a.shift_x*1000:+.1f}, {a.shift_y*1000:+.1f}) mm, "
-          f"roll {a.roll_deg:+.1f} deg")
+          f"({a.shift_x*1000:+.1f}, {a.shift_y*1000:+.1f}, "
+          f"{a.shift_z*1000:+.1f}) mm, "
+          f"roll {a.roll_deg:+.1f} deg, pitch {a.pitch_deg:+.1f} deg, "
+          f"yaw {a.yaw_deg:+.1f} deg")
     print(f"[[ leg correction mean/max {np.degrees(dq[:, :12].mean()):.2f}/"
           f"{np.degrees(dq[:, :12].max()):.2f} deg")
     print(f"[[ ankle error mean/max {np.mean(ankle_err)*1000:.2f}/"

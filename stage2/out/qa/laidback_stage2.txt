@@ -1,0 +1,52 @@
+[[ leg map: direct residual 21.6 mm | mirror 21.6 mm -> using DIRECT
+[[ correspondence: aFL->fl  aFR->fr  aBL->bl  aBR->br
+[[ per-leg scale (m/unit): fl=0.00941  fr=0.00941  bl=0.00939  br=0.00939  master=0.00940
+[[ axis align: yaw-only, heading -125.1 deg (up forced to world +Z)
+[[ body tilt from level (absolute): mean 6.4 deg  f0 3.5  min 0.1  max 43.4
+[[ root: orientation from pelvis, position from hip centroid | hip-place residual mean 19.4 mm max 21.3 mm
+[[ floor: paw touchdowns (walk) -> -10.2 mm | paw rule -10.2 mm, whole-body rule -30.8 mm
+[[ physical floor: preliminary touchdown median -10.2 mm -> one clip-wide shift; 1309 scheduled stance foot-frames
+[[ head decompose residual mean 0.649 rad (unrepresentable part)
+[[ expressive chain orientation error (deg): what the eye actually sees
+[[   chain        within v4 limits      limits lifted   cost of the LIMITS
+[[   head    mean  37.2 p95  98.2   mean   0.0 p95   0.0      mean  37.2 max 100.1
+[[   tail    mean  12.0 p95  39.2   mean   1.9 p95   3.7      mean  10.1 max  49.4
+[[   earL    mean  15.6 p95  34.9   mean  15.4 p95  34.9      mean   0.2 max   4.6
+[[   earR    mean  20.7 p95  83.9   mean  11.8 p95  43.4      mean   8.9 max  53.6
+[[ expressive joint DEMAND vs v4 limit (what Ashley asks for, limits lifted):
+     head_pitch_joint   demand [  -14.9, +166.0] limit [  -37.2,   +2.9] deg   <-- clipped on 77% of frames, overshoot up to 163 deg
+     head_yaw           demand [  -85.6,  +18.9] limit [  -34.4,  +34.4] deg   <-- clipped on 82% of frames, overshoot up to 51 deg
+     head_roll          demand [ -106.2, +115.0] limit [  -44.7,  +44.7] deg   <-- clipped on 16% of frames, overshoot up to 70 deg
+     tail_pitch         demand [  -84.6,   +4.9] limit [  -34.4,  +34.4] deg   <-- clipped on 41% of frames, overshoot up to 50 deg
+     tail_yaw           demand [   -0.5,  +17.2] limit [  -34.4,  +34.4] deg
+     l_ear_pitch        demand [   -0.0, +130.7] limit [ -171.9, +171.9] deg
+     l_ear_roll         demand [  -98.4,  +16.9] limit [  -85.9,   +0.0] deg   <-- clipped on 40% of frames, overshoot up to 17 deg
+     r_ear_pitch        demand [  -81.8,  +68.5] limit [ -171.9, +171.9] deg
+     r_ear_roll         demand [  -39.6, +171.0] limit [   +0.0,  +85.9] deg   <-- clipped on 46% of frames, overshoot up to 85 deg
+[[ visible ear residual mean L=0.273 R=0.362 rad
+[[ continuity refinement: max velocity legs=10.00 expression=8.00 rad/s
+[[ contact anchor root solve: foot slip 0.13 -> 0.14 mm/stance-frame; raw max 121.1 mm -> bounded max 35.0 mm; step max 4.0 mm
+[[ physical contact schedule: source/physical match 94.5% | source 1309 foot-frames, physical 1227
+[[ collision support z: min -16.8 mm | scheduled stance mean +1.36 mm max +36.54 mm
+[[ joint-limit saturation (>0.5% of frames):
+     fl_SY_J              5.8%  frames 1-373  limit [-0.42,0.42]
+     fl_SP_J             16.2%  frames 116-193  limit [-1.56,1.56]
+     fl_knee              2.1%  frames 362-371  limit [-1.56,1.56]
+     fr_SY_J              2.5%  frames 40-129  limit [-0.42,0.42]
+     fr_SP_J             12.1%  frames 130-187  limit [-1.56,1.56]
+     fr_knee              1.9%  frames 363-371  limit [-1.56,1.56]
+     bl_SY_J             13.1%  frames 128-388  limit [-0.42,0.42]
+     bl_knee              2.7%  frames 373-385  limit [-1.57,1.57]
+     br_SY_J              7.3%  frames 128-385  limit [-0.42,0.42]
+     br_SP_J              5.0%  frames 145-168  limit [-1.56,1.56]
+     br_knee              2.3%  frames 374-384  limit [-1.56,1.56]
+     head_pitch_joint    85.6%  frames 48-480  limit [-0.65,0.05]
+     head_yaw            82.5%  frames 30-480  limit [-0.60,0.60]
+     head_roll           61.7%  frames 104-480  limit [-0.78,0.78]
+     tail_pitch          40.8%  frames 67-445  limit [-0.60,0.60]
+     l_ear_roll          46.2%  frames 1-384  limit [-1.50,0.00]
+     r_ear_roll          51.0%  frames 1-480  limit [0.00,1.50]
+[[ ankle IK error: mean 37.22 mm  p95 70.72 mm  max 82.90 mm
+[[ knee shape error: mean 33.99 mm | rigid contact error mean 30.14 mm
+[[ max |dof vel| legs 10.00 (lim 10) | expr 8.00 (lim 8) rad/s
+[[ wrote stage2/out/laidback_retarget.npz

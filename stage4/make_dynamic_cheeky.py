@@ -38,8 +38,10 @@ def main():
     m = np.load(a.motion, allow_pickle=True)
     d = {k: m[k] for k in m.files}
     q = m["dof_positions"].astype(float); names = [str(x) for x in m["dof_names"]]
-    rp = m["body_positions"][:, 0].astype(float).copy()
-    rq = m["body_rotations"][:, 0].astype(float)
+    rp = (m["root_pos"] if "root_pos" in m.files
+          else m["body_positions"][:, 0]).astype(float).copy()
+    rq = (m["root_quat"] if "root_quat" in m.files
+          else m["body_rotations"][:, 0]).astype(float)
     T = len(q)
 
     def paw_z(i, dz=0.0):
@@ -77,14 +79,50 @@ def main():
     # never leave a paw through the floor
     pen = np.array([min(0.0, (PZ0[i] + dz[i]).min()) for i in range(T)])
     dz = dz - gsmooth(pen, 2.0)
+    # Smoothing deliberately spreads the lift over neighbouring frames, but it
+    # can under-correct the deepest frame.  Finish with the minimum exact lift
+    # needed by each frame so the documented no-penetration guarantee is true.
+    remaining = np.minimum(0.0, (PZ0 + dz[:, None]).min(axis=1))
+    dz = dz - remaining
 
     rp_new = rp.copy(); rp_new[:, 2] += dz
     PZ1 = np.array([paw_z(i, dz[i]) for i in range(T)])
-    bp = d["body_positions"].astype(float).copy(); bp[:, 0, 2] += dz
-    d["body_positions"] = bp.astype(np.float32)
+    if "body_positions" in d:
+        bp = d["body_positions"].astype(float).copy(); bp[:, :, 2] += dz[:, None]
+        d["body_positions"] = bp.astype(np.float32)
     d["root_pos"] = rp_new.astype(np.float32)
     d["root_quat"] = rq.astype(np.float32)
     d["stage4_dz"] = dz.astype(np.float32)
+
+    # q and root orientation are unchanged, so every cached physical contact
+    # point receives exactly the same vertical translation as the root.  Refresh
+    # these fields instead of leaving pre-ground-pass contact metadata behind.
+    for key in ("planted_points_world", "support_patch_world", "tips_world",
+                "contacts_world"):
+        if key in d:
+            pts = np.asarray(d[key], float).copy()
+            pts[:, :, 2] += dz[:, None]
+            d[key] = pts.astype(np.float32)
+    height_tol = (float(m["contact_height_tolerance"])
+                  if "contact_height_tolerance" in m.files else 0.005)
+    speed_tol = (float(m["contact_speed_tolerance"])
+                 if "contact_speed_tolerance" in m.files else 0.014)
+    physical = PZ1 <= height_tol
+    source_contacts = (np.asarray(m["source_contacts"], bool)
+                       if "source_contacts" in m.files else np.asarray(ct, bool))
+    if "planted_points_world" in d:
+        support = np.asarray(d["planted_points_world"], float)
+        support_speed = np.linalg.norm(
+            np.gradient(support, 1.0 / float(m["fps"]), axis=0), axis=2)
+    else:
+        support_speed = np.zeros_like(PZ1)
+    contacts = physical & (source_contacts | (support_speed <= speed_tol))
+    d["contacts"] = contacts
+    d["source_contacts"] = source_contacts
+    d["physical_height_contacts"] = physical
+    d["support_speed"] = support_speed.astype(np.float32)
+    d["contact_height_tolerance"] = np.array(height_tol)
+    d["contact_speed_tolerance"] = np.array(speed_tol)
     np.savez(a.out, **d)
 
     s0 = (PZ0 < 0.005).sum(1); s1 = (PZ1 < 0.005).sum(1)
