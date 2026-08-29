@@ -9,6 +9,8 @@ Variables (all optional):
 
   SOLVE_ARGS    extra arguments for stage2/solve_spatial_retarget.py
   GROUND_ARGS   extra arguments for stage4/ground_fix.py
+  UNCOLLIDE     1 = run stage2/uncollide.py (shank vs torso self-collision)
+  UNCOLLIDE_ARGS extra arguments for it
   WRENCH        1 = run stage4/wrench_refine.py + stage4/reik_root.py
   WRENCH_ARGS   extra arguments for wrench_refine
   NOGLIDE       1 = delete the reference's horizontal body travel

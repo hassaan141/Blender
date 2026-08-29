@@ -48,6 +48,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("motion")
     ap.add_argument("--body", default="origin", help="link whose hull is the obstacle")
+    ap.add_argument("--parts", default="shoulder_pitch,knee")
     ap.add_argument("--frames", default=None)
     ap.add_argument("--report", type=float, default=0.002,
                     help="metres of penetration worth listing")
@@ -61,7 +62,7 @@ def main():
     rp = (m["root_pos"] if "root_pos" in m.files else m["body_positions"][:, 0]).astype(float)
     rq = (m["root_quat"] if "root_quat" in m.files else m["body_rotations"][:, 0]).astype(float)
     T = len(q)
-    parts = [f"{l}_{s}" for l in LEGS for s in ("shoulder_pitch", "knee")
+    parts = [f"{l}_{s}" for l in LEGS for s in a.parts.split(",")
              if f"{l}_{s}" in cm.hull]
     body_local = cm.hull[a.body]
     eq = ConvexHull(body_local).equations                # in the body link's frame

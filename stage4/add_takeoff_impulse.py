@@ -91,8 +91,22 @@ def main():
     dt = 1.0 / float(m["fps"])
     out["dof_positions"] = q.astype(np.float32)
     out["dof_velocities"] = np.gradient(q, dt, axis=0).astype(np.float32)
-    out["stage4_takeoff_window"] = np.array([s, p, e], np.int32)
-    out["stage4_takeoff_push"] = np.array([a.push_x, 0.0, a.push_z])
+    old_windows = (np.asarray(m["stage4_takeoff_windows"], np.int32).reshape(-1, 3)
+                   if "stage4_takeoff_windows" in m.files else
+                   (np.asarray(m["stage4_takeoff_window"], np.int32).reshape(-1, 3)
+                    if "stage4_takeoff_window" in m.files else
+                    np.empty((0, 3), np.int32)))
+    old_pushes = (np.asarray(m["stage4_takeoff_pushes"], float).reshape(-1, 3)
+                  if "stage4_takeoff_pushes" in m.files else
+                  (np.asarray(m["stage4_takeoff_push"], float).reshape(-1, 3)
+                   if "stage4_takeoff_push" in m.files else
+                   np.empty((0, 3), float)))
+    old_legs = ([str(x) for x in np.asarray(m["stage4_takeoff_legs"]).reshape(-1)]
+                if "stage4_takeoff_legs" in m.files else [])
+    out["stage4_takeoff_windows"] = np.vstack([old_windows, [s, p, e]])
+    out["stage4_takeoff_pushes"] = np.vstack(
+        [old_pushes, [a.push_x, 0.0, a.push_z]])
+    out["stage4_takeoff_legs"] = np.asarray(old_legs + [",".join(selected)])
     np.savez(a.out, **out)
 
     dq = np.abs(q - q_ref)

@@ -44,6 +44,9 @@ p.add_argument("--vel-ff", action="store_true",
                     "the drive at saturation and turns the PD into bang-bang. Measured on "
                     "Timid at Kd 2/4/4: fall frame 39 -> 38, mean joint error 0.0242 -> "
                     "0.0340 rad. Revisit if the effort ceiling ever rises.")
+p.add_argument("--torque-ff", action="store_true",
+               help="apply stage4_torque_residual from dynamic_retarget.py as "
+                    "actuator feed-forward; configured effort limits still apply")
 p.add_argument("--kp-scale", type=float, default=None, help="diagnostic: scale every Kp")
 p.add_argument("--kd", default=None,
                help="override damping, 'SY=..,SP=..,knee=..,head=..,tail=..'")
@@ -56,6 +59,51 @@ p.add_argument("--friction", type=float, default=None,
                     "enough to let planted paws slide.")
 p.add_argument("--settle", type=int, default=0,
                help="physics steps to settle holding frame 0 before tracking starts")
+p.add_argument("--base-balance", type=float, default=0.0, metavar="GAIN",
+               help="contact-safe roll/pitch feedback through the physical legs. "
+                    "0 disables it; 1 applies the geometric correction needed to "
+                    "keep the reference paw plane level. This is joint feedback, "
+                    "not a force on the floating base.")
+p.add_argument("--balance-cap-m", type=float, default=0.025,
+               help="maximum per-leg vertical balance correction in metres")
+p.add_argument("--balance-cap-rad", type=float, default=0.18,
+               help="maximum balance correction per leg joint in radians")
+p.add_argument("--balance-start", type=int, default=0,
+               help="first reference frame using base-balance feedback")
+p.add_argument("--balance-end", type=int, default=-1,
+               help="last feedback frame; -1 means the end of the clip")
+p.add_argument("--balance-windows", default=None,
+               help="optional comma-separated feedback ranges, e.g. "
+                    "'115-140,168-193'; overrides --balance-start/end")
+p.add_argument("--whole-body", action="store_true",
+               help="contact-aware whole-body root tracking through physical leg IK; "
+                    "never applies forces or poses directly to the floating root")
+p.add_argument("--contact-source", default=None,
+               help="npz carrying the intended stance schedule (defaults to --motion)")
+p.add_argument("--contact-field", default="source_contacts",
+               help="intended stance field; falls back to 'contacts' when absent")
+p.add_argument("--wb-pos-gain", type=float, default=0.20,
+               help="fraction of root position error converted to stance-paw displacement")
+p.add_argument("--wb-vel-horizon", type=float, default=0.08,
+               help="seconds of root linear-velocity error added to the position correction")
+p.add_argument("--wb-rot-gain", type=float, default=0.35,
+               help="fraction of root rotation-vector error converted to stance-paw displacement")
+p.add_argument("--wb-ang-horizon", type=float, default=0.06,
+               help="seconds of root angular-velocity error added to the rotation correction")
+p.add_argument("--wb-max-pos", type=float, default=0.045,
+               help="per-axis stance-paw translation correction cap, metres")
+p.add_argument("--wb-max-rot", type=float, default=0.30,
+               help="per-axis stance-paw rotation correction cap, radians")
+p.add_argument("--wb-max-dq", type=float, default=0.30,
+               help="maximum residual applied to any leg joint, radians")
+p.add_argument("--wb-pos-axes", default="1,1,1",
+               help="comma-separated body-x,y,z tracking multipliers")
+p.add_argument("--wb-rot-axes", default="1,1,1",
+               help="comma-separated body-roll,pitch,yaw tracking multipliers")
+p.add_argument("--wb-support", choices=("planned", "actual", "both"), default="both",
+               help="which stance set receives whole-body corrections")
+p.add_argument("--wb-windows", default=None,
+               help="comma-separated whole-body feedback frame ranges; default is full clip")
 p.add_argument("--diverge-rad", type=float, default=0.20,
                help="joint error that counts as meaningful divergence")
 p.add_argument("--diverge-m", type=float, default=0.05,
@@ -72,7 +120,7 @@ from isaaclab.assets import Articulation
 sys.path.insert(0, "/home/hassaan/Bingo/Blender/rl/bingo_rl")
 sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage2")
 from bingo_rl.bingo_v4 import BINGO_V4_CFG
-from v4_kinematics import LEGS
+from v4_kinematics import V4Kin, LEGS
 sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage4")
 from contact_model import ContactModel
 
@@ -90,6 +138,24 @@ def quat_to_R(q):
     return np.array([[1-2*(y*y+z*z), 2*(x*y-w*z), 2*(x*z+w*y)],
                      [2*(x*y+w*z), 1-2*(x*x+z*z), 2*(y*z-w*x)],
                      [2*(x*z-w*y), 2*(y*z+w*x), 1-2*(x*x+y*y)]])
+
+
+def rotvec_from_R(R):
+    """Stable rotation vector for the modest per-step attitude errors used here."""
+    c = np.clip((np.trace(R) - 1.0) * 0.5, -1.0, 1.0)
+    a = float(np.arccos(c))
+    v = 0.5 * np.array([R[2, 1] - R[1, 2],
+                        R[0, 2] - R[2, 0],
+                        R[1, 0] - R[0, 1]])
+    s = float(np.sin(a))
+    return v if a < 1e-7 or abs(s) < 1e-7 else v * (a / s)
+
+
+def nlerp_quat(q0, q1, a):
+    """Shortest-path normalized interpolation; sufficient at 120 Hz."""
+    q1 = q1 if np.dot(q0, q1) >= 0.0 else -q1
+    q = (1.0 - a) * q0 + a * q1
+    return q / (np.linalg.norm(q) + 1e-12)
 
 
 def main():
@@ -111,6 +177,59 @@ def main():
     fps = float(m["fps"]); T = dof_ref.shape[0]
     control_dt = 1.0 / fps
     decim = max(1, int(round(control_dt / args.physics_dt)))
+    root_lv_ref = (m["body_linear_velocities"][:, 0].astype(np.float64)
+                   if "body_linear_velocities" in m.files else
+                   np.gradient(root_ref, control_dt, axis=0))
+    root_av_ref = (m["body_angular_velocities"][:, 0].astype(np.float64)
+                   if "body_angular_velocities" in m.files else np.zeros((T, 3)))
+    torque_ff_npz = np.zeros_like(dof_ref)
+    if args.torque_ff:
+        if "stage4_torque_residual" not in m.files:
+            raise ValueError("--torque-ff requires stage4_torque_residual in the motion")
+        raw = np.asarray(m["stage4_torque_residual"], float)
+        if raw.shape != (T, 4, 3):
+            raise ValueError(f"stage4_torque_residual shape {raw.shape}, expected {(T, 4, 3)}")
+        for lk, leg in enumerate(LEGS):
+            for jj, suffix in enumerate(("SY_J", "SP_J", "knee")):
+                torque_ff_npz[:, npz_names.index(f"{leg}_{suffix}")] = raw[:, lk, jj]
+
+    # Linearized physical-leg IK used by the optional landing stabilizer.  A
+    # floating base cannot be orientation-controlled directly; instead, a lifted
+    # side's paws are extended through SP/knee joints.  Precompute each frame's
+    # local paw position and least-norm dq/dz so runtime feedback stays cheap.
+    balance_paw = balance_dq_dz = q_lo = q_hi = None
+    if args.base_balance:
+        urdf = os.path.abspath(os.path.join(
+            os.path.dirname(__file__), "..", "..", "URDF",
+            "bingo_urdf v4_w_ear_joints", "urdf",
+            "bingo_urdf_w_ear_joints_physics.urdf"))
+        kin_balance = V4Kin(urdf)
+        leg_npz = [[npz_names.index(f"{leg}_SY_J"),
+                    npz_names.index(f"{leg}_SP_J"),
+                    npz_names.index(f"{leg}_knee")] for leg in LEGS]
+        balance_paw = np.zeros((T, 4, 3))
+        balance_dq_dz = np.zeros((T, 4, 3))
+        eps = 1e-4
+        for i in range(T):
+            for k, leg in enumerate(LEGS):
+                qleg = dof_ref[i, leg_npz[k]].copy()
+                ankle = kin_balance.leg_points(leg, qleg)[2]
+                balance_paw[i, k] = ankle
+                jz = np.zeros(3)
+                # SY is intentionally excluded: it is already the most limited
+                # axis and changing it would turn landing balance into steering.
+                for j in (1, 2):
+                    qq = qleg.copy(); qq[j] += eps
+                    jz[j] = (kin_balance.leg_points(leg, qq)[2][2] - ankle[2]) / eps
+                balance_dq_dz[i, k] = jz / (np.dot(jz, jz) + 1e-4)
+        q_lo = np.array([kin_balance.j[n]["lo"] for n in npz_names])
+        q_hi = np.array([kin_balance.j[n]["hi"] for n in npz_names])
+        if args.balance_windows:
+            balance_windows = [tuple(int(x) for x in part.split("-", 1))
+                               for part in args.balance_windows.split(",")]
+        else:
+            balance_windows = [(args.balance_start,
+                                T - 1 if args.balance_end < 0 else args.balance_end)]
 
     # ---- FULL physics: gravity, ground, collisions, contacts -------------------
     _sc = SimulationCfg(dt=args.physics_dt, device=dev, gravity=(0.0, 0.0, -9.81))
@@ -160,6 +279,40 @@ def main():
     knee_i = {l: body_names.index(f"{l}_knee") for l in LEGS}
     cm = ContactModel()   # true collision-hull contact, not a fixed paw point
 
+    # Full-pose feedback is converted into support-point motion through the exact
+    # v4 leg FK.  This is the model-based inner controller in the TMR loop: the
+    # simulator remains the full dynamics model and the floating root is untouched.
+    wb_kin = wb_leg_npz = wb_lo = wb_hi = None
+    # The intended contact schedule is part of the Stage-4 objective even when
+    # online whole-body feedback is disabled.  Prefer the source-authored schedule;
+    # the derived `contacts` field in older files can be stale.
+    cp = args.contact_source or args.motion
+    cr = np.load(cp, allow_pickle=True)
+    cf = args.contact_field if args.contact_field in cr.files else "contacts"
+    wb_contacts = (np.asarray(cr[cf], bool) if cf in cr.files and len(cr[cf]) == T
+                   else np.zeros((T, 4), bool))
+    if args.whole_body:
+        urdf = os.path.abspath(os.path.join(
+            os.path.dirname(__file__), "..", "..", "URDF",
+            "bingo_urdf v4_w_ear_joints", "urdf",
+            "bingo_urdf_w_ear_joints_physics.urdf"))
+        wb_kin = V4Kin(urdf)
+        wb_leg_npz = [[npz_names.index(f"{leg}_SY_J"),
+                       npz_names.index(f"{leg}_SP_J"),
+                       npz_names.index(f"{leg}_knee")] for leg in LEGS]
+        wb_lo = np.array([wb_kin.j[n]["lo"] for n in npz_names])
+        wb_hi = np.array([wb_kin.j[n]["hi"] for n in npz_names])
+        if cf not in cr.files or len(cr[cf]) != T:
+            raise ValueError(f"whole-body contact schedule must have {T} frames: {cp}")
+        wb_contacts = np.asarray(cr[cf], bool)
+        wb_pos_axes = np.asarray([float(x) for x in args.wb_pos_axes.split(",")])
+        wb_rot_axes = np.asarray([float(x) for x in args.wb_rot_axes.split(",")])
+        if wb_pos_axes.shape != (3,) or wb_rot_axes.shape != (3,):
+            raise ValueError("--wb-pos-axes and --wb-rot-axes require three values")
+        wb_windows = ([tuple(int(x) for x in p.split("-", 1))
+                       for p in args.wb_windows.split(",")]
+                      if args.wb_windows else [(0, T - 1)])
+
     # effort / velocity limits, per joint, from the actuator groups
     def to_np(v):
         if isinstance(v, torch.Tensor):
@@ -180,6 +333,19 @@ def main():
     print(f"[[ motion {args.motion}", flush=True)
     print(f"[[ {T} frames @ {fps:g} fps | physics {1/args.physics_dt:g} Hz | decimation {decim}", flush=True)
     print(f"[[ gravity ON, ground ON, contacts ON | 21 joints mapped by name", flush=True)
+    if args.base_balance:
+        print(f"[[ physical base-balance feedback gain {args.base_balance:g} | "
+              f"caps {args.balance_cap_m*1000:g} mm / {args.balance_cap_rad:g} rad | "
+              f"windows {balance_windows}", flush=True)
+    if args.whole_body:
+        print(f"[[ whole-body contact IK | pos {args.wb_pos_gain:g} + "
+              f"{args.wb_vel_horizon:g}s*vel | rot {args.wb_rot_gain:g} + "
+              f"{args.wb_ang_horizon:g}s*ang | caps {args.wb_max_pos:g}m/"
+              f"{args.wb_max_rot:g}rad/{args.wb_max_dq:g}rad | "
+              f"planned contacts {int(wb_contacts.sum())}", flush=True)
+    if args.torque_ff:
+        print(f"[[ contact-wrench torque feed-forward ON | max requested "
+              f"{np.abs(torque_ff_npz).max():.3f} Nm", flush=True)
 
     def ref_target(i):
         jp = torch.zeros((1, len(isaac_names)), device=dev, dtype=torch.float32)
@@ -190,6 +356,11 @@ def main():
         jv = torch.zeros((1, len(isaac_names)), device=dev, dtype=torch.float32)
         jv[0, idx] = torch.tensor(vel_ref[i], device=dev, dtype=torch.float32)
         return jv
+
+    def ref_effort(i):
+        je = torch.zeros((1, len(isaac_names)), device=dev, dtype=torch.float32)
+        je[0, idx] = torch.tensor(torque_ff_npz[i], device=dev, dtype=torch.float32)
+        return je
 
     # ---- initialise ONCE from reference frame 0 --------------------------------
     q0 = ref_target(0)
@@ -205,25 +376,110 @@ def main():
           f"no teleporting from here on", flush=True)
 
     # ---- logs -------------------------------------------------------------------
-    L = {k: [] for k in ("q_ref", "q_act", "q_err", "q_vel", "torque",
+    L = {k: [] for k in ("q_ref", "q_cmd", "q_act", "q_err", "q_vel", "torque",
+                         "torque_ff",
                          "root_pos", "root_pos_ref", "root_quat", "root_quat_ref",
-                         "root_lin_vel", "root_ang_vel", "paw_z", "contacts")}
+                         "root_lin_vel", "root_ang_vel", "paw_z", "contacts",
+                         "planned_contacts", "wb_corr")}
 
     for i in range(T):
         tgt = ref_target(i)
         nxt = ref_target(min(i + 1, T - 1))
         vt = ref_vel(i)
         vn = ref_vel(min(i + 1, T - 1))
+        et = ref_effort(i)
+        en = ref_effort(min(i + 1, T - 1))
         for k in range(decim):
             if args.hold:
                 sub, subv = tgt, vt
+                sube = et
             else:                       # first-order hold to the physics rate
                 f = (k + 1) / decim
                 sub = tgt * (1.0 - f) + nxt * f
                 subv = vt * (1.0 - f) + vn * f
+                sube = et * (1.0 - f) + en * f
+            wb_corr = np.zeros(len(npz_names))
+            wb_active = args.whole_body and any(a <= i <= b for a, b in wb_windows)
+            if wb_active:
+                j1 = min(i + 1, T - 1)
+                rp_act = robot.data.root_pos_w[0].detach().cpu().numpy()
+                rq_act = robot.data.root_quat_w[0].detach().cpu().numpy()
+                rv_act = robot.data.root_lin_vel_w[0].detach().cpu().numpy()
+                rw_act = robot.data.root_ang_vel_w[0].detach().cpu().numpy()
+                rp_des = (1.0 - f) * root_ref[i] + f * root_ref[j1]
+                rq_des = nlerp_quat(quat_ref[i], quat_ref[j1], f)
+                rv_des = (1.0 - f) * root_lv_ref[i] + f * root_lv_ref[j1]
+                rw_des = (1.0 - f) * root_av_ref[i] + f * root_av_ref[j1]
+                Ra, Rd = quat_to_R(rq_act), quat_to_R(rq_des)
+                # Desired body displacement/rotation expressed in the current body.
+                dp_body = (args.wb_pos_gain * (Ra.T @ (rp_des - rp_act))
+                           + args.wb_vel_horizon * (Ra.T @ (rv_des - rv_act)))
+                dr_body = (args.wb_rot_gain * rotvec_from_R(Ra.T @ Rd)
+                           + args.wb_ang_horizon * (Ra.T @ (rw_des - rw_act)))
+                dp_body = wb_pos_axes * np.clip(
+                    dp_body, -args.wb_max_pos, args.wb_max_pos)
+                dr_body = wb_rot_axes * np.clip(
+                    dr_body, -args.wb_max_rot, args.wb_max_rot)
+                base_npz = sub[0, idx].detach().cpu().numpy().copy()
+                bp_now = robot.data.body_pos_w[0].detach().cpu().numpy()
+                bq_now = robot.data.body_quat_w[0].detach().cpu().numpy()
+                actual_support = cm.paw_heights(bp_now, bq_now, body_names) < CONTACT_H
+                # Planned stance preserves authored timing; actual stance avoids
+                # applying a ground-reaction correction to a foot still in swing.
+                planned = ({"planned": wb_contacts[i], "actual": actual_support,
+                            "both": wb_contacts[i] | actual_support}[args.wb_support])
+                eps = 1e-4
+                for lk, leg in enumerate(LEGS):
+                    if not planned[lk]:
+                        continue
+                    ids_npz = wb_leg_npz[lk]
+                    qleg = base_npz[ids_npz].copy()
+                    hull = cm.hull[f"{leg}_knee"]
+                    paw = wb_kin.leg_points(
+                        leg, qleg, support_hull=hull, world_R=Ra,
+                        support_softness=0.001)[3]
+                    J = np.zeros((3, 3))
+                    for jj in range(3):
+                        qq = qleg.copy(); qq[jj] += eps
+                        pp = wb_kin.leg_points(
+                            leg, qq, support_hull=hull, world_R=Ra,
+                            support_softness=0.001)[3]
+                        J[:, jj] = (pp - paw) / eps
+                    # Fixed stance paw: desired body translation/rotation is made
+                    # by moving the paw oppositely in body coordinates.
+                    paw_delta = -dp_body - np.cross(dr_body, paw)
+                    dq = J.T @ np.linalg.solve(J @ J.T + 2e-4 * np.eye(3), paw_delta)
+                    dq = np.clip(dq, -args.wb_max_dq, args.wb_max_dq)
+                    wb_corr[ids_npz] = dq
+                    base_npz[ids_npz] = qleg + dq
+                base_npz = np.clip(base_npz, wb_lo, wb_hi)
+                sub[0, idx] = torch.tensor(base_npz, device=dev, dtype=torch.float32)
+            balance_active = (args.base_balance and any(
+                a <= i <= b for a, b in balance_windows))
+            if balance_active:
+                rq_act = robot.data.root_quat_w[0].detach().cpu().numpy()
+                Rerr = quat_to_R(quat_ref[i]).T @ quat_to_R(rq_act)
+                theta = 0.5 * np.array([
+                    Rerr[2, 1] - Rerr[1, 2],
+                    Rerr[0, 2] - Rerr[2, 0],
+                    Rerr[1, 0] - Rerr[0, 1],
+                ])
+                corr = np.zeros(len(npz_names))
+                for lk, ids_npz in enumerate(leg_npz):
+                    x, y = balance_paw[i, lk, :2]
+                    dz = args.base_balance * (-theta[0] * y + theta[1] * x)
+                    dz = float(np.clip(dz, -args.balance_cap_m, args.balance_cap_m))
+                    dq = np.clip(balance_dq_dz[i, lk] * dz,
+                                 -args.balance_cap_rad, args.balance_cap_rad)
+                    corr[ids_npz] = dq
+                base_npz = sub[0, idx].detach().cpu().numpy() + corr
+                base_npz = np.clip(base_npz, q_lo, q_hi)
+                sub[0, idx] = torch.tensor(base_npz, device=dev, dtype=torch.float32)
             robot.set_joint_position_target(sub)
             robot.set_joint_velocity_target(subv if args.vel_ff
                                             else torch.zeros_like(subv))
+            robot.set_joint_effort_target(sube if args.torque_ff
+                                          else torch.zeros_like(sube))
             robot.write_data_to_sim()
             sim.step(render=not args.headless)
             robot.update(args.physics_dt)
@@ -237,8 +493,10 @@ def main():
         bq = robot.data.body_quat_w[0].detach().cpu().numpy()
         pz = cm.paw_heights(bp, bq, body_names)
 
-        L["q_ref"].append(q_tgt); L["q_act"].append(q_act)
+        q_cmd = sub[0].detach().cpu().numpy().copy()
+        L["q_ref"].append(q_tgt); L["q_cmd"].append(q_cmd); L["q_act"].append(q_act)
         L["q_err"].append(np.abs(q_act - q_tgt))
+        L["torque_ff"].append(sube[0].detach().cpu().numpy().copy())
         L["q_vel"].append(robot.data.joint_vel[0].detach().cpu().numpy().copy())
         try:
             L["torque"].append(robot.data.applied_torque[0].detach().cpu().numpy().copy())
@@ -251,6 +509,8 @@ def main():
         pxy = np.array([(bp[knee_i[l]])[:2] for l in LEGS])
         L.setdefault("paw_xy", []).append(pxy)
         L["paw_z"].append(pz); L["contacts"].append(pz < CONTACT_H)
+        L["planned_contacts"].append(wb_contacts[i])
+        L["wb_corr"].append(wb_corr)
 
         if args.headless and (i % 60 == 0 or i == T - 1):
             print(f"[[ t={i:4d} qerr max {np.abs(q_act-q_tgt).max():.3f} rad | "
@@ -289,7 +549,8 @@ def main():
 
     os.makedirs(args.out, exist_ok=True)
     stem = os.path.join(args.out, os.path.splitext(os.path.basename(args.motion))[0] + "_stage4")
-    np.savez(stem + ".npz", joint_names=np.array(isaac_names), fps=np.array(fps), **D)
+    np.savez(stem + ".npz", joint_names=np.array(isaac_names), fps=np.array(fps),
+             effort_limits=eff_lim, velocity_limits=vel_lim, **D)
     with open(stem + ".csv", "w") as f:
         f.write("frame,qerr_max,qerr_mean,root_pos_err_m,root_ori_err_deg,root_z,"
                 "tilt_deg,n_contacts,max_jvel,max_torque\n")
@@ -313,8 +574,8 @@ def main():
           f" | max tilt vs REF {tilt_vs_ref.max():.1f} deg", flush=True)
     print(f"[[ contacts per frame    : mean {D['contacts'].sum(1).mean():.2f} of 4"
           f" | frames with none {int((D['contacts'].sum(1) == 0).sum())}", flush=True)
-    if "contacts" in m.files and np.asarray(m["contacts"]).shape == D["contacts"].shape:
-        ref_ct = np.asarray(m["contacts"], bool)
+    if wb_contacts.shape == D["contacts"].shape and wb_contacts.any():
+        ref_ct = wb_contacts
         agree = 100.0 * float((ref_ct == D["contacts"]).mean())
         print(f"[[ contact agreement     : {agree:.1f}% vs the reference schedule "
               f"(reference mean {ref_ct.sum(1).mean():.2f} of 4)", flush=True)

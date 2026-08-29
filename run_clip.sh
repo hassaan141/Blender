@@ -23,6 +23,7 @@ O=stage2/out
 GROUND=${GROUND:-1}; GROUND_ARGS=""; SOLVE_ARGS=""; POLISH=${POLISH:-0}; POLISH_ARGS=""
 POLISH_STAGE=${POLISH_STAGE:-ground}   # ground | noglide
 WRENCH=0; WRENCH_ARGS=""; NOGLIDE=0; RETIME=""; YAW_ALIGN=""
+UNCOLLIDE=0; UNCOLLIDE_ARGS=""
 [ -f "recipes/${L}.conf" ] && { echo "=== recipe recipes/${L}.conf"; . "recipes/${L}.conf"; }
 
 if [[ " $* " != *" --no-solve "* ]]; then
@@ -52,6 +53,12 @@ if [ "$POLISH" = "1" ] && [ "$POLISH_STAGE" = "ground" ]; then
   echo "=== Stage 2.6 stance polish (material-velocity no-slip)"
   python3 stage2/stance_polish.py --motion $SRC --out $O/${L}_polished.npz $POLISH_ARGS
   SRC=$O/${L}_polished.npz
+fi
+
+if [ "$UNCOLLIDE" = "1" ]; then
+  echo "=== Stage 2.7 push the shank out of the torso (local, paw-preserving)"
+  python3 stage2/uncollide.py --motion $SRC --out $O/${L}_uncollided.npz $UNCOLLIDE_ARGS
+  SRC=$O/${L}_uncollided.npz
 fi
 
 if [ "$WRENCH" = "1" ]; then

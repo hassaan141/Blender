@@ -91,6 +91,12 @@ def main():
     ap.add_argument("--outdir", required=True)
     ap.add_argument("--every", type=int, default=2)
     ap.add_argument("--res", type=int, default=540)
+    ap.add_argument("--azimuth", type=float, default=0.0,
+                    help="degrees to swing the camera around the character, from the "
+                         "default front-3/4. 180 looks from behind - which is the only "
+                         "way to see the hind legs on a clip that sits.")
+    ap.add_argument("--elevation", type=float, default=0.0,
+                    help="degrees to raise/lower the camera from the default")
     ap.add_argument("--engine", choices=("workbench", "eevee"), default="workbench")
     ap.add_argument("--decimate", type=float, default=0.12,
                     help="temporary robot mesh ratio for fast workbench comparison")
@@ -167,6 +173,11 @@ def main():
     samples = list(range(f0, f1 + 1, max(1, (f1 - f0) // 8)))
     csize = char_size(samples, a.target)             # character size (no travel)
     view = (0.62 * fwd - 0.82 * left + 0.26 * up).normalized()
+    if a.azimuth or a.elevation:
+        from mathutils import Matrix as _M
+        view = (_M.Rotation(np.radians(a.azimuth), 3, up) @ view)
+        _side = view.cross(up).normalized()
+        view = (_M.Rotation(np.radians(a.elevation), 3, _side) @ view).normalized()
     dist = (2.35 if a.target == "robot" else 2.6) * csize
 
     cam = bpy.data.cameras.new("cmp"); co = bpy.data.objects.new("cmp", cam)

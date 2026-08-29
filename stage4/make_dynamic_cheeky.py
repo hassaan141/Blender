@@ -32,6 +32,8 @@ def main():
     ap.add_argument("--contacts", default=None, help="Stage 2 solver npz with the intended schedule")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sigma", type=float, default=6.0)
+    ap.add_argument("--metadata-only", action="store_true",
+                    help="refresh physical paw/contact arrays without changing the validated trajectory")
     a = ap.parse_args()
 
     kin = V4Kin(U); cm = ContactModel()
@@ -44,16 +46,23 @@ def main():
           else m["body_rotations"][:, 0]).astype(float)
     T = len(q)
 
-    def paw_z(i, dz=0.0):
-        R0 = quat_to_mat(rq[i]); p0 = rp[i] + np.array([0, 0, dz]); out = []
+    def paw_geom(i, dz=0.0):
+        R0 = quat_to_mat(rq[i]); p0 = rp[i] + np.array([0, 0, dz])
+        patch, low = [], []
         for leg in LEGS:
-            R, p = R0, p0.copy()
-            qq = [q[i, names.index(f"{leg}_{s}")] for s in ("SY_J", "SP_J", "knee")]
-            for nm, qi in zip(kin.leg_chain(leg), qq):
-                J = kin.j[nm]; p = p + R @ J["xyz"]; R = R @ J["R"] @ axis_rot(J["axis"], qi)
-            w = cm.hull[f"{leg}_knee"] @ R.T + p
-            out.append(w[:, 2].min())
-        return np.array(out)
+            qq = [q[i, names.index(f"{leg}_{s}")]
+                  for s in ("SY_J", "SP_J", "knee")]
+            soft = kin.leg_points(
+                leg, qq, support_hull=cm.hull[f"{leg}_knee"],
+                world_R=R0, support_softness=0.001)[3]
+            exact = kin.leg_points(
+                leg, qq, support_hull=cm.hull[f"{leg}_knee"], world_R=R0)[3]
+            patch.append(p0 + R0 @ soft)
+            low.append(p0 + R0 @ exact)
+        return np.asarray(patch), np.asarray(low)
+
+    def paw_z(i, dz=0.0):
+        return paw_geom(i, dz)[1][:, 2]
 
     PZ0 = np.array([paw_z(i) for i in range(T)])
 
@@ -66,24 +75,30 @@ def main():
     if ct is None:
         ct = PZ0 < (PZ0.min(1)[:, None] + 0.010)   # feet within 10 mm of the lowest
 
-    # per-frame dz putting the intended planted paws on the floor
-    dz = np.full(T, np.nan)
-    for i in range(T):
-        s = ct[i]
-        if s.any():
-            dz[i] = -PZ0[i, s].min()
-    ok = ~np.isnan(dz)
-    idx = np.arange(T)
-    dz = np.interp(idx, idx[ok], dz[ok]) if ok.any() else np.zeros(T)
-    dz = gsmooth(dz, a.sigma)
-    # never leave a paw through the floor
-    pen = np.array([min(0.0, (PZ0[i] + dz[i]).min()) for i in range(T)])
-    dz = dz - gsmooth(pen, 2.0)
-    # Smoothing deliberately spreads the lift over neighbouring frames, but it
-    # can under-correct the deepest frame.  Finish with the minimum exact lift
-    # needed by each frame so the documented no-penetration guarantee is true.
-    remaining = np.minimum(0.0, (PZ0 + dz[:, None]).min(axis=1))
-    dz = dz - remaining
+    if a.metadata_only:
+        # The reference has already passed the dynamic replay.  Even a tiny
+        # root-height rewrite changes touchdown timing, so only refresh the
+        # derived collision/contact data in this mode.
+        dz = np.zeros(T)
+    else:
+        # per-frame dz putting the intended planted paws on the floor
+        dz = np.full(T, np.nan)
+        for i in range(T):
+            s = ct[i]
+            if s.any():
+                dz[i] = -PZ0[i, s].min()
+        ok = ~np.isnan(dz)
+        idx = np.arange(T)
+        dz = np.interp(idx, idx[ok], dz[ok]) if ok.any() else np.zeros(T)
+        dz = gsmooth(dz, a.sigma)
+        # never leave a paw through the floor
+        pen = np.array([min(0.0, (PZ0[i] + dz[i]).min()) for i in range(T)])
+        dz = dz - gsmooth(pen, 2.0)
+        # Smoothing deliberately spreads the lift over neighbouring frames, but it
+        # can under-correct the deepest frame.  Finish with the minimum exact lift
+        # needed by each frame so the documented no-penetration guarantee is true.
+        remaining = np.minimum(0.0, (PZ0 + dz[:, None]).min(axis=1))
+        dz = dz - remaining
 
     rp_new = rp.copy(); rp_new[:, 2] += dz
     PZ1 = np.array([paw_z(i, dz[i]) for i in range(T)])
@@ -94,15 +109,17 @@ def main():
     d["root_quat"] = rq.astype(np.float32)
     d["stage4_dz"] = dz.astype(np.float32)
 
-    # q and root orientation are unchanged, so every cached physical contact
-    # point receives exactly the same vertical translation as the root.  Refresh
-    # these fields instead of leaving pre-ground-pass contact metadata behind.
-    for key in ("planted_points_world", "support_patch_world", "tips_world",
-                "contacts_world"):
-        if key in d:
-            pts = np.asarray(d[key], float).copy()
-            pts[:, :, 2] += dz[:, None]
-            d[key] = pts.astype(np.float32)
+    # Recompute collision contact points from the final q/root, because Stage-4
+    # takeoff strokes may have changed the legs after cached Stage-2 points were
+    # created. Merely shifting old points would leave contact timing stale.
+    geom = [paw_geom(i, dz[i]) for i in range(T)]
+    patches = np.asarray([x[0] for x in geom])
+    lows = np.asarray([x[1] for x in geom])
+    support = patches.copy(); support[:, :, 2] = lows[:, :, 2]
+    d["support_patch_world"] = patches.astype(np.float32)
+    d["tips_world"] = lows.astype(np.float32)
+    d["contacts_world"] = lows.astype(np.float32)
+    d["planted_points_world"] = support.astype(np.float32)
     height_tol = (float(m["contact_height_tolerance"])
                   if "contact_height_tolerance" in m.files else 0.005)
     speed_tol = (float(m["contact_speed_tolerance"])
@@ -110,12 +127,8 @@ def main():
     physical = PZ1 <= height_tol
     source_contacts = (np.asarray(m["source_contacts"], bool)
                        if "source_contacts" in m.files else np.asarray(ct, bool))
-    if "planted_points_world" in d:
-        support = np.asarray(d["planted_points_world"], float)
-        support_speed = np.linalg.norm(
-            np.gradient(support, 1.0 / float(m["fps"]), axis=0), axis=2)
-    else:
-        support_speed = np.zeros_like(PZ1)
+    support_speed = np.linalg.norm(
+        np.gradient(support, 1.0 / float(m["fps"]), axis=0), axis=2)
     contacts = physical & (source_contacts | (support_speed <= speed_tol))
     d["contacts"] = contacts
     d["source_contacts"] = source_contacts
