@@ -120,6 +120,10 @@ def main():
                     mod.show_render = False
                     mod.show_viewport = False
         if a.target == "robot" and 0 < a.decimate < 1:
+            # Animator-authored files may be saved while the armature is in Pose
+            # Mode.  Object selection operators are invalid in that context.
+            if bpy.context.object is not None and bpy.context.object.mode != 'OBJECT':
+                bpy.ops.object.mode_set(mode='OBJECT')
             bpy.ops.object.select_all(action='DESELECT')
             for ob in list(bpy.context.scene.objects):
                 if ob.type != 'MESH' or len(ob.data.vertices) < 5000:

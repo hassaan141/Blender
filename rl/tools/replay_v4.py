@@ -34,6 +34,8 @@ p.add_argument("--ground", action="store_true",
                help="spawn the ground plane. Off for verification: a paw resting on "
                     "or through the floor generates CONTACT forces, which are physics "
                     "and would perturb a kinematic replay.")
+p.add_argument("--scene", choices=("living-room", "plain"), default="living-room",
+               help="GUI background; living-room is visual-only and does not alter replay")
 p.add_argument("--urdf", default="/home/hassaan/Bingo/Blender/URDF/"
                                  "bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints.urdf")
 AppLauncher.add_app_launcher_args(p)
@@ -49,6 +51,7 @@ sys.path.insert(0, "/home/hassaan/Bingo/Blender/rl/bingo_rl")
 sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage2")
 from bingo_rl.bingo_v4 import BINGO_V4_CFG
 from v4_kinematics import V4Kin, LEGS, quat_to_mat
+from indoor_scene import living_room_camera, spawn_living_room
 
 
 def quat_angle_deg(qa, qb):
@@ -78,6 +81,8 @@ def main():
     # verification, where paw contact would perturb a kinematic replay.
     if args.ground or not args.headless:
         sim_utils.GroundPlaneCfg().func("/World/ground", sim_utils.GroundPlaneCfg())
+    if not args.headless and args.scene == "living-room":
+        spawn_living_room(sim_utils)
     sim_utils.DomeLightCfg(intensity=2500.0).func(
         "/World/light", sim_utils.DomeLightCfg(intensity=2500.0))
     robot = Articulation(BINGO_V4_CFG.replace(prim_path="/World/Robot"))
@@ -112,8 +117,12 @@ def main():
     if not args.headless:
         # frame the clip ONCE, then hand the camera to the user
         c0 = root_pos.mean(0)
-        sim.set_camera_view(eye=(c0[0] + 0.6, c0[1] - 0.6, c0[2] + 0.30),
-                            target=(c0[0], c0[1], c0[2]))
+        if args.scene == "living-room":
+            eye, target = living_room_camera(c0)
+        else:
+            eye = (c0[0] + 1.15, c0[1] - 1.55, c0[2] + 0.72)
+            target = (c0[0], c0[1] + 0.10, c0[2] + 0.08)
+        sim.set_camera_view(eye=eye, target=target)
         print("[[ camera framed once - orbit/pan freely (use --follow to chase)", flush=True)
     kin = V4Kin(args.urdf)
     body_names = list(robot.data.body_names)

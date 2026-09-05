@@ -28,7 +28,8 @@ p = argparse.ArgumentParser()
 p.add_argument("--motion", required=True)
 p.add_argument("--out", default="/home/hassaan/Bingo/Blender/stage4/out")
 p.add_argument("--physics-dt", type=float, default=1.0 / 120.0)
-p.add_argument("--loops", type=int, default=1, help="GUI only: replay the clip N times")
+p.add_argument("--loops", type=int, default=1,
+               help="GUI only: total number of physics playbacks; 0 repeats forever")
 p.add_argument("--hold", action="store_true",
                help="zero-order-hold the target across the decimation window "
                     "(old behaviour). Default interpolates to the physics rate: a "
@@ -59,6 +60,11 @@ p.add_argument("--friction", type=float, default=None,
                     "enough to let planted paws slide.")
 p.add_argument("--settle", type=int, default=0,
                help="physics steps to settle holding frame 0 before tracking starts")
+p.add_argument("--post-hold-sec", type=float, default=0.0,
+               help="after the clip, keep updating the PD controller at the final pose "
+                    "for this many seconds and report stability (useful headless QA)")
+p.add_argument("--scene", choices=("living-room", "plain"), default="living-room",
+               help="GUI background; living-room is visual-only and cannot alter physics")
 p.add_argument("--base-balance", type=float, default=0.0, metavar="GAIN",
                help="contact-safe roll/pitch feedback through the physical legs. "
                     "0 disables it; 1 applies the geometric correction needed to "
@@ -123,6 +129,7 @@ from bingo_rl.bingo_v4 import BINGO_V4_CFG
 from v4_kinematics import V4Kin, LEGS
 sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage4")
 from contact_model import ContactModel
+from indoor_scene import living_room_camera, spawn_living_room
 
 CONTACT_H = 0.005          # paw within 5 mm of the floor counts as contact
 
@@ -241,6 +248,8 @@ def main():
     else:
         _gp = sim_utils.GroundPlaneCfg()
     _gp.func("/World/ground", _gp)
+    if not args.headless and args.scene == "living-room":
+        spawn_living_room(sim_utils)
     sim_utils.DomeLightCfg(intensity=2500.0).func(
         "/World/light", sim_utils.DomeLightCfg(intensity=2500.0))
     cfg = BINGO_V4_CFG.replace(prim_path="/World/Robot")
@@ -269,6 +278,14 @@ def main():
         print(f"[[ armature override {av}", flush=True)
     robot = Articulation(cfg)
     sim.reset()
+    if not args.headless:
+        c0 = root_ref.mean(0)
+        if args.scene == "living-room":
+            eye, target = living_room_camera(c0)
+        else:
+            eye = (c0[0] + 1.15, c0[1] - 1.55, c0[2] + 0.72)
+            target = (c0[0], c0[1] + 0.10, c0[2] + 0.08)
+        sim.set_camera_view(eye=eye, target=target)
 
     isaac_names = list(robot.data.joint_names)
     body_names = list(robot.data.body_names)
@@ -517,7 +534,40 @@ def main():
                   f"root z {rp[2]:+.3f} (ref {root_ref[i][2]:+.3f}) | "
                   f"contacts {int((pz < CONTACT_H).sum())}", flush=True)
 
+    # Keep the explicit actuator controller alive during post-rollout validation.
+    # Calling sim.step() alone leaves the final computed torque stale; that was the
+    # reason the GUI robot collapsed after a correctly completed reaction clip.
+    hold_tgt = ref_target(T - 1)
+    hold_zero = torch.zeros_like(hold_tgt)
+    hold_eff = ref_effort(T - 1) if args.torque_ff else hold_zero
+
+    def controlled_final_hold(render):
+        robot.set_joint_position_target(hold_tgt)
+        robot.set_joint_velocity_target(hold_zero)
+        robot.set_joint_effort_target(hold_eff)
+        robot.write_data_to_sim()
+        sim.step(render=render)
+        robot.update(args.physics_dt)
+
+    hold_n = max(0, int(round(args.post_hold_sec / args.physics_dt)))
+    hold_pos_err = []; hold_ori_err = []; hold_z = []; hold_contacts = []
+    for _ in range(hold_n):
+        controlled_final_hold(False)
+        hp = robot.data.root_pos_w[0].detach().cpu().numpy().copy()
+        hq = robot.data.root_quat_w[0].detach().cpu().numpy().copy()
+        bp = robot.data.body_pos_w[0].detach().cpu().numpy()
+        bq = robot.data.body_quat_w[0].detach().cpu().numpy()
+        hold_pos_err.append(np.linalg.norm(hp - root_ref[-1]))
+        hold_ori_err.append(float(quat_angle_deg(hq[None], quat_ref[-1][None])[0]))
+        hold_z.append(float(hp[2]))
+        hold_contacts.append(int((cm.paw_heights(bp, bq, body_names) < CONTACT_H).sum()))
+
     D = {k: np.asarray(v) for k, v in L.items()}
+    if hold_n:
+        D["post_hold_position_error"] = np.asarray(hold_pos_err)
+        D["post_hold_orientation_error_deg"] = np.asarray(hold_ori_err)
+        D["post_hold_root_z"] = np.asarray(hold_z)
+        D["post_hold_contacts"] = np.asarray(hold_contacts)
 
     # ---- analysis ---------------------------------------------------------------
     qerr = D["q_err"]
@@ -599,15 +649,68 @@ def main():
               f" (eff lim {eff_lim[j]:.2f})", flush=True)
     sat_any = [isaac_names[j] for j in range(len(isaac_names)) if tq_sat[:, j].mean() > 0.05]
     print(f"[[ joints torque-saturated >5% of frames: {sat_any if sat_any else 'none'}", flush=True)
+    if hold_n:
+        print(f"[[ post-hold {args.post_hold_sec:g}s       : root error max "
+              f"{max(hold_pos_err)*1000:.1f} mm / {max(hold_ori_err):.2f} deg | "
+              f"root z {min(hold_z):.3f}..{max(hold_z):.3f} m | "
+              f"contacts {min(hold_contacts)}..{max(hold_contacts)}", flush=True)
     print(f"[[ wrote {stem}.npz and {stem}.csv", flush=True)
 
     if not args.headless:
         import time
-        for _ in range(max(0, args.loops - 1)):
-            pass
-        print("[[ done - close the window to quit", flush=True)
-        while app.is_running():
+        # The validation rollout above is playback 1.  Replays use the exact
+        # joint-command trajectory recorded during that rollout, reset the robot
+        # to frame 0, and continue stepping full physics.  This also preserves
+        # any whole-body/balance correction that produced q_cmd.
+        played = 1
+        while app.is_running() and (args.loops == 0 or played < max(1, args.loops)):
+            played += 1
+            total = "forever" if args.loops == 0 else str(args.loops)
+            print(f"[[ playing physics loop {played}/{total}", flush=True)
+            robot.write_root_link_pose_to_sim(pose0)
+            robot.write_root_com_velocity_to_sim(torch.zeros((1, 6), device=dev))
+            robot.write_joint_state_to_sim(q0, torch.zeros_like(q0))
+            robot.set_joint_position_target(q0)
+            robot.set_joint_velocity_target(torch.zeros_like(q0))
+            robot.set_joint_effort_target(torch.zeros_like(q0))
+            robot.write_data_to_sim()
             sim.step(render=True)
+            robot.update(args.physics_dt)
+
+            for i in range(T):
+                if not app.is_running():
+                    break
+                start_cmd = q0 if i == 0 else torch.tensor(
+                    D["q_cmd"][i - 1], device=dev, dtype=torch.float32).unsqueeze(0)
+                end_cmd = torch.tensor(
+                    D["q_cmd"][i], device=dev, dtype=torch.float32).unsqueeze(0)
+                v0 = ref_vel(i)
+                v1 = ref_vel(min(i + 1, T - 1))
+                e0 = (torch.zeros_like(q0) if i == 0 else torch.tensor(
+                    D["torque_ff"][i - 1], device=dev,
+                    dtype=torch.float32).unsqueeze(0))
+                e1 = torch.tensor(
+                    D["torque_ff"][i], device=dev, dtype=torch.float32).unsqueeze(0)
+                for k in range(decim):
+                    tick = time.perf_counter()
+                    f = 1.0 if args.hold else (k + 1) / decim
+                    cmd = start_cmd * (1.0 - f) + end_cmd * f
+                    vcmd = v0 * (1.0 - f) + v1 * f
+                    ecmd = e0 * (1.0 - f) + e1 * f
+                    robot.set_joint_position_target(cmd)
+                    robot.set_joint_velocity_target(vcmd if args.vel_ff
+                                                    else torch.zeros_like(vcmd))
+                    robot.set_joint_effort_target(ecmd if args.torque_ff
+                                                  else torch.zeros_like(ecmd))
+                    robot.write_data_to_sim()
+                    sim.step(render=True)
+                    robot.update(args.physics_dt)
+                    remaining = args.physics_dt - (time.perf_counter() - tick)
+                    if remaining > 0:
+                        time.sleep(remaining)
+        print("[[ animation complete - actively holding the final pose; close the window to quit", flush=True)
+        while app.is_running():
+            controlled_final_hold(True)
     os._exit(0)
 
 

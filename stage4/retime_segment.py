@@ -48,7 +48,15 @@ for k in list(d):
         d[k] = v[idx] if v.dtype == bool or v.dtype.kind in "iub" else resamp(v).astype(v.dtype)
 dt = 1.0 / float(m["fps"])
 d["dof_velocities"] = np.gradient(d["dof_positions"].astype(float), dt, axis=0).astype(np.float32)
-d["stage4_retime"] = np.array([s, e, a.factor], float)
+segment = np.array([s, e, a.factor], float)
+if "stage4_retime_segments" in m.files:
+    previous = np.asarray(m["stage4_retime_segments"], float).reshape(-1, 3)
+elif "stage4_retime" in m.files:
+    previous = np.asarray(m["stage4_retime"], float).reshape(-1, 3)
+else:
+    previous = np.empty((0, 3), float)
+d["stage4_retime_segments"] = np.vstack([previous, segment])
+d["stage4_retime"] = segment       # backward compatibility for older readers
 np.savez(a.out, **d)
 v = np.abs(d["dof_velocities"])
 print(f"[[ retimed frames {s}-{e} x{a.factor} : {T} -> {T2} frames "

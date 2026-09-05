@@ -21,6 +21,11 @@ output/
 *.stp
 *.blend1
 
+# NVIDIA's official Residential Pack is downloaded selectively by
+# tools/fetch_residential_assets.py. Keep the 1+ GB vendor payload local while
+# tracking the small composed room in assets/environments/.
+assets/vendor/
+
 # --- junk -------------------------------------------------------------------
 .DS_Store
 __pycache__/

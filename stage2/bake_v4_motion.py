@@ -34,8 +34,16 @@ def main():
     m = np.load(a.motion, allow_pickle=True)
     fps = int(round(float(m["fps"])))
     dof = m["dof_positions"].astype(float)
-    root_pos = m["root_pos"].astype(float)
-    root_quat = m["root_quat"].astype(float)   # wxyz
+    # Stage 2 solver files store the root directly.  Direct-v4 Stage 3/4 files
+    # use the canonical whole-body schema, where body 0 is the physical root.
+    # Accept both so achieved physics trajectories can be baked for visual
+    # comparison without converting or altering the motion data.
+    if "root_pos" in m and "root_quat" in m:
+        root_pos = m["root_pos"].astype(float)
+        root_quat = m["root_quat"].astype(float)   # wxyz
+    else:
+        root_pos = m["body_positions"][:, 0].astype(float)
+        root_quat = m["body_rotations"][:, 0].astype(float)  # wxyz
     T = dof.shape[0]
 
     arm = bpy.data.objects[a.rig]

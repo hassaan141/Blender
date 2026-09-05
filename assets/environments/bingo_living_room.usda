@@ -1,0 +1,294 @@
+#usda 1.0
+(
+    defaultPrim = "BingoLivingRoom"
+    doc = "Bingo's visual-only indoor set, composed from NVIDIA Residential Assets Pack models."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "BingoLivingRoom"
+{
+    def Scope "Looks"
+    {
+        def Material "OakFloor"
+        {
+            token outputs:surface.connect = </BingoLivingRoom/Looks/OakFloor/PBR.outputs:surface>
+            def Shader "PBR"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.31, 0.145, 0.06)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.38
+                token outputs:surface
+            }
+        }
+        def Material "WarmPlaster"
+        {
+            token outputs:surface.connect = </BingoLivingRoom/Looks/WarmPlaster/PBR.outputs:surface>
+            def Shader "PBR"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.78, 0.72, 0.62)
+                float inputs:roughness = 0.82
+                token outputs:surface
+            }
+        }
+        def Material "DarkMetal"
+        {
+            token outputs:surface.connect = </BingoLivingRoom/Looks/DarkMetal/PBR.outputs:surface>
+            def Shader "PBR"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.025, 0.032, 0.038)
+                float inputs:metallic = 0.75
+                float inputs:roughness = 0.3
+                token outputs:surface
+            }
+        }
+        def Material "WindowSky"
+        {
+            token outputs:surface.connect = </BingoLivingRoom/Looks/WindowSky/PBR.outputs:surface>
+            def Shader "PBR"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.30, 0.60, 0.82)
+                color3f inputs:emissiveColor = (0.13, 0.28, 0.44)
+                float inputs:roughness = 0.12
+                token outputs:surface
+            }
+        }
+        def Material "WhiteTrim"
+        {
+            token outputs:surface.connect = </BingoLivingRoom/Looks/WhiteTrim/PBR.outputs:surface>
+            def Shader "PBR"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.91, 0.89, 0.84)
+                float inputs:roughness = 0.52
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Architecture"
+    {
+        def Cube "Floor"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/OakFloor>
+            double3 xformOp:scale = (3.8, 3.25, 0.025)
+            double3 xformOp:translate = (0, 0, -0.024)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "BackWall"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WarmPlaster>
+            double3 xformOp:scale = (3.8, 0.04, 1.5)
+            double3 xformOp:translate = (0, 3.25, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "LeftWall"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WarmPlaster>
+            double3 xformOp:scale = (0.04, 3.25, 1.5)
+            double3 xformOp:translate = (-3.8, 0, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "RightWall"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WarmPlaster>
+            double3 xformOp:scale = (0.04, 3.25, 1.5)
+            double3 xformOp:translate = (3.8, 0, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "Ceiling"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/OakFloor>
+            double3 xformOp:scale = (3.8, 3.25, 0.045)
+            double3 xformOp:translate = (0, 0, 3.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "BackBaseboard"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WhiteTrim>
+            double3 xformOp:scale = (3.8, 0.055, 0.065)
+            double3 xformOp:translate = (0, 3.18, 0.065)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "LeftBaseboard"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WhiteTrim>
+            double3 xformOp:scale = (0.055, 3.2, 0.065)
+            double3 xformOp:translate = (-3.73, 0, 0.065)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def Cube "RightBaseboard"
+        {
+            double size = 2
+            rel material:binding = </BingoLivingRoom/Looks/WhiteTrim>
+            double3 xformOp:scale = (0.055, 3.2, 0.065)
+            double3 xformOp:translate = (3.73, 0, 0.065)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Xform "Window"
+        {
+            def Cube "View"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/WindowSky>
+                double3 xformOp:scale = (0.92, 0.025, 0.92)
+                double3 xformOp:translate = (-2.45, 3.19, 1.82)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "FrameTop"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (1.0, 0.045, 0.04)
+                double3 xformOp:translate = (-2.45, 3.14, 2.78)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "FrameBottom"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (1.0, 0.045, 0.04)
+                double3 xformOp:translate = (-2.45, 3.14, 0.86)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "FrameLeft"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (0.04, 0.045, 1.0)
+                double3 xformOp:translate = (-3.41, 3.14, 1.82)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "FrameRight"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (0.04, 0.045, 1.0)
+                double3 xformOp:translate = (-1.49, 3.14, 1.82)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "MullionVertical"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (0.025, 0.05, 0.92)
+                double3 xformOp:translate = (-2.45, 3.13, 1.82)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+            def Cube "MullionHorizontal"
+            {
+                double size = 2
+                rel material:binding = </BingoLivingRoom/Looks/DarkMetal>
+                double3 xformOp:scale = (0.92, 0.05, 0.025)
+                double3 xformOp:translate = (-2.45, 3.13, 1.82)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Xform "BlueRug" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Decor/Rugs/Blue_Rugs.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (0, -0.05, 0.001)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "Sofa" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/FurnitureSets/Appleseed/Appleseed_Sofa.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (-0.48, 2.63, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "Chair" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/FurnitureSets/Appleseed/Appleseed_Chair.usd@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, -18)
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (1.50, 2.48, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Xform "Loveseat" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/FurnitureSets/Appleseed/Appleseed_Loveseat.usd@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 90)
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (-3.26, 0.55, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Xform "EndTable" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/FurnitureSets/Appleseed/Appleseed_EndTable.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (-1.93, 2.58, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "TableLamp" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Lighting/Table Lamps/Mechant.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (-1.93, 2.58, 0.635)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "MediaConsole" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/MediaTables/Manchester.usd@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 90)
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (3.34, 0.40, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Xform "Television" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Electronics/Televisions/TV_Wall.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (3.55, 0.40, 1.20)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "ConsolePlant" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Plants/Plant_01.usd@
+    )
+    {
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (3.04, -0.22, 0.59)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "DecoratedConsole" (
+        prepend references = @../vendor/nvidia_residential/Assets/ArchVis/Residential/Furniture/FurnitureSets/Appleseed/Appleseed_SofaTable_Var01.usd@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 90)
+        double3 xformOp:scale = (0.01, 0.01, 0.01)
+        double3 xformOp:translate = (-3.31, 2.15, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
