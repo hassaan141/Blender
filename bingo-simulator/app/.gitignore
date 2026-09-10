@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.vite/
+# ~40 MB of MuJoCo / ONNX Runtime binaries. package.json pins the versions, so
+# `npm install && ../tools/vendor_runtime.sh` reproduces them byte for byte.
+public/vendor/

@@ -1,0 +1,150 @@
+{
+ "schema_version": 1,
+ "robot": {
+  "model": "bingo_v4",
+  "urdf": "URDF/bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints_physics.urdf",
+  "mjcf": "robot/bingo_scene.xml",
+  "num_joints": 21,
+  "num_actuated_by_policy": 12,
+  "total_mass_kg": 2.459195
+ },
+ "control": {
+  "physics_hz": 120,
+  "control_hz": 24,
+  "decimation": 5
+ },
+ "observation": {
+  "dim": 66,
+  "schema": [
+   {
+    "name": "base_lin_vel",
+    "dim": 3,
+    "frame": "body"
+   },
+   {
+    "name": "base_ang_vel",
+    "dim": 3,
+    "frame": "body"
+   },
+   {
+    "name": "projected_gravity",
+    "dim": 3,
+    "frame": "body"
+   },
+   {
+    "name": "velocity_commands",
+    "dim": 3,
+    "order": [
+     "vx",
+     "vy",
+     "yaw_rate"
+    ]
+   },
+   {
+    "name": "joint_pos_rel",
+    "dim": 21,
+    "note": "all 21 joints, minus default_joint_pose"
+   },
+   {
+    "name": "joint_vel",
+    "dim": 21,
+    "note": "all 21 joints"
+   },
+   {
+    "name": "last_action",
+    "dim": 12,
+    "note": "leg actions only"
+   }
+  ],
+  "note": "All 21 joints are observed although only 12 are actioned, so the Task-2 expressive joints are already in the leg policy's observation and it can learn to balance against head/tail/ear motion without an obs-shape change."
+ },
+ "action": {
+  "dim": 12,
+  "joints": [
+   "fl_SY_J",
+   "fl_SP_J",
+   "fl_knee",
+   "fr_SY_J",
+   "fr_SP_J",
+   "fr_knee",
+   "bl_SY_J",
+   "bl_SP_J",
+   "bl_knee",
+   "br_SY_J",
+   "br_SP_J",
+   "br_knee"
+  ],
+  "transform": "q_target = default_joint_pose[j] + action_scale[j] * action[j]",
+  "scale": [
+   0.125,
+   0.195,
+   0.17,
+   0.125,
+   0.195,
+   0.17,
+   0.125,
+   0.195,
+   0.17,
+   0.125,
+   0.195,
+   0.17
+  ]
+ },
+ "joint_order": [
+  "fl_SY_J",
+  "fl_SP_J",
+  "fl_knee",
+  "fr_SY_J",
+  "fr_SP_J",
+  "fr_knee",
+  "bl_SY_J",
+  "bl_SP_J",
+  "bl_knee",
+  "br_SY_J",
+  "br_SP_J",
+  "br_knee",
+  "head_pitch_joint",
+  "head_yaw",
+  "head_roll",
+  "tail_pitch",
+  "tail_yaw",
+  "l_ear_pitch",
+  "l_ear_roll",
+  "r_ear_pitch",
+  "r_ear_roll"
+ ],
+ "default_joint_pose": [
+  0.0,
+  0.81,
+  0.8932,
+  0.0,
+  -0.8109,
+  -0.8938,
+  0.0,
+  0.3932,
+  0.8913,
+  0.0,
+  0.3936,
+  -0.8913,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "normalization": {
+  "type": "none",
+  "note": "Task-1 env sets actor_obs_normalization=False (agents.py)."
+ },
+ "policies": [],
+ "status": "NO_POLICY",
+ "status_detail": "No Bingo locomotion policy has been trained yet. The Task-1 environment exists on branch claude/bingo-locomotion-rl but has never been run: this environment has no GPU and no Isaac Lab. The simulator therefore runs physics and expression only, and reports NO_POLICY rather than faking locomotion with animation.",
+ "provenance": {
+  "generated_by": "bingo-simulator (hand-authored placeholder)",
+  "replace_with": "an exporter run against the trained checkpoint"
+ }
+}

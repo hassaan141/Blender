@@ -323,7 +323,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out-dir", default=os.path.join(SIM_ROOT, "app/public/robot"))
     ap.add_argument("--check", action="store_true", help="compile the result in MuJoCo")
-    ap.add_argument("--copy-meshes", action="store_true", default=True)
+    ap.add_argument("--copy-meshes", action="store_true", default=False,
+                    help="also copy the RAW CAD meshes next to the MJCF. Off by "
+                         "default: the MJCF collides against the convex hulls in "
+                         "collision/ (written by export_render_model.py), so the raw "
+                         "45 MB of CAD tessellation is dead weight in the app bundle.")
     a = ap.parse_args()
 
     os.makedirs(a.out_dir, exist_ok=True)

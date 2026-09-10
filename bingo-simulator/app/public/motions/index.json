@@ -1,0 +1,51 @@
+{
+ "ready": [
+  {
+   "name": "Yes",
+   "file": "motions/yes.json",
+   "frames": 55,
+   "duration_s": 2.292,
+   "evidence": "Stage 4 pass: 55 frames, completes, 4/4 contacts (MEMORY.md)"
+  },
+  {
+   "name": "No",
+   "file": "motions/no.json",
+   "frames": 19,
+   "duration_s": 0.792,
+   "evidence": "Stage 4 pass: 19 frames, completes, 4/4 contacts (MEMORY.md)"
+  },
+  {
+   "name": "What",
+   "file": "motions/what.json",
+   "frames": 71,
+   "duration_s": 2.958,
+   "evidence": "Stage 4 pass: 71 frames, completes, 4/4 contacts (MEMORY.md)"
+  }
+ ],
+ "not_ready": [
+  {
+   "name": "Cheeky",
+   "reason": "Stage 4 completes but world-space fidelity is not a holistic pass (1.405 m / 77.8 deg error). MEMORY.md: survival alone is not complete."
+  },
+  {
+   "name": "Timid",
+   "reason": "Stage 4 completes but world-space fidelity is not a holistic pass (0.611 m / 11.3 deg error)."
+  },
+  {
+   "name": "DeadPan",
+   "reason": "No Stage-4 pass recorded."
+  },
+  {
+   "name": "Eccentric",
+   "reason": "No Stage-4 pass recorded; the clip is an authored sit."
+  },
+  {
+   "name": "Enthusiastic",
+   "reason": "No Stage-4 pass recorded."
+  },
+  {
+   "name": "Laidback",
+   "reason": "No Stage-4 pass recorded."
+  }
+ ]
+}

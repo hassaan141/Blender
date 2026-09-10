@@ -1,0 +1,5 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; background: #0d0f12; color: #e6e8ea;
+  font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+canvas { display: block; }
