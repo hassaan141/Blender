@@ -1,0 +1,817 @@
+{
+ "robot": "bingo_v4",
+ "base_link": "origin",
+ "dof_order": [
+  "fl_SY_J",
+  "fl_SP_J",
+  "fl_knee",
+  "fr_SY_J",
+  "fr_SP_J",
+  "fr_knee",
+  "bl_SY_J",
+  "bl_SP_J",
+  "bl_knee",
+  "br_SY_J",
+  "br_SP_J",
+  "br_knee",
+  "head_pitch_joint",
+  "head_yaw",
+  "head_roll",
+  "tail_pitch",
+  "tail_yaw",
+  "l_ear_pitch",
+  "l_ear_roll",
+  "r_ear_pitch",
+  "r_ear_roll"
+ ],
+ "mesh_dir": "render",
+ "collision_dir": "collision",
+ "bodies": [
+  {
+   "name": "origin",
+   "parent": null,
+   "joint": null,
+   "joint_type": "free",
+   "joint_axis": null,
+   "joint_range": null,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rpy": [
+    0,
+    0,
+    0
+   ],
+   "mesh": "origin.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fl_shoulder_yaw",
+   "parent": "origin",
+   "joint": "fl_SY_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.42,
+    0.42
+   ],
+   "pos": [
+    0.0590935,
+    0.022,
+    -1.31666669999919e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fl_shoulder_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fl_shoulder_pitch",
+   "parent": "fl_shoulder_yaw",
+   "joint": "fl_SP_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    0.026925,
+    0.046999994556,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fl_shoulder_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fl_knee",
+   "parent": "fl_shoulder_pitch",
+   "joint": "fl_knee",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    -0.025493902035933,
+    0.013709005444,
+    -0.07846565646582
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fl_knee.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tail_pitch",
+   "parent": "origin",
+   "joint": "tail_pitch",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.6,
+    0.6
+   ],
+   "pos": [
+    -0.107621297365426,
+    0.0,
+    0.0350980226072767
+   ],
+   "rpy": [
+    0.0,
+    -0.523305470133414,
+    0.0
+   ],
+   "mesh": "tail_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "tail_yaw",
+   "parent": "tail_pitch",
+   "joint": "tail_yaw",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.6,
+    0.6
+   ],
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "tail_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "bl_shoulder_yaw",
+   "parent": "origin",
+   "joint": "bl_SY_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.42,
+    0.42
+   ],
+   "pos": [
+    -0.0590085,
+    0.022,
+    -1.31666669999815e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "bl_shoulder_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "bl_shoulder_pitch",
+   "parent": "bl_shoulder_yaw",
+   "joint": "bl_SP_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.57,
+    1.57
+   ],
+   "pos": [
+    -0.026963268343236,
+    0.04700277995213,
+    -9.0894081781024e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "bl_shoulder_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "bl_knee",
+   "parent": "bl_shoulder_pitch",
+   "joint": "bl_knee",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.57,
+    1.57
+   ],
+   "pos": [
+    -0.030905043956813,
+    0.013709005444,
+    -0.0764926680017592
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "bl_knee.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fr_shoulder_yaw",
+   "parent": "origin",
+   "joint": "fr_SY_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.42,
+    0.42
+   ],
+   "pos": [
+    0.0590935,
+    -0.022,
+    -1.31666669999919e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fr_shoulder_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fr_shoulder_pitch",
+   "parent": "fr_shoulder_yaw",
+   "joint": "fr_SP_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    0.026925,
+    -0.047002779952131,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fr_shoulder_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "fr_knee",
+   "parent": "fr_shoulder_pitch",
+   "joint": "fr_knee",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    -0.0254756225259461,
+    -0.013709005444,
+    -0.0784680996132534
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "fr_knee.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "br_shoulder_yaw",
+   "parent": "origin",
+   "joint": "br_SY_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.42,
+    0.42
+   ],
+   "pos": [
+    -0.0590085,
+    -0.0219840462710474,
+    -1.31724636072694e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "br_shoulder_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "br_shoulder_pitch",
+   "parent": "br_shoulder_yaw",
+   "joint": "br_SP_J",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    -0.0269249999999997,
+    -0.0470187336810836,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "br_shoulder_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "br_knee",
+   "parent": "br_shoulder_pitch",
+   "joint": "br_knee",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "joint_range": [
+    -1.56,
+    1.56
+   ],
+   "pos": [
+    -0.030905043956813,
+    -0.013709005444,
+    -0.0764926680017595
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "br_knee.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "head_pitch",
+   "parent": "origin",
+   "joint": "head_pitch_joint",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.65,
+    0.05
+   ],
+   "pos": [
+    0.0860835000000005,
+    0.0,
+    -1.31666670001723e-05
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "head_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "head_yaw",
+   "parent": "head_pitch",
+   "joint": "head_yaw",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "joint_range": [
+    -0.6,
+    0.6
+   ],
+   "pos": [
+    0.0197949010920084,
+    0.0,
+    0.0497270820655865
+   ],
+   "rpy": [
+    0.0,
+    0.378842198520397,
+    0.0
+   ],
+   "mesh": "head_yaw.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "head_roll",
+   "parent": "head_yaw",
+   "joint": "head_roll",
+   "joint_type": "revolute",
+   "joint_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "joint_range": [
+    -0.78,
+    0.78
+   ],
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "head_roll.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "l_ear_pitch",
+   "parent": "head_roll",
+   "joint": "l_ear_pitch",
+   "joint_type": "continuous",
+   "joint_axis": [
+    0.0277059542431696,
+    -0.913681333794185,
+    -0.405485881844922
+   ],
+   "joint_range": [
+    -3.0,
+    3.0
+   ],
+   "pos": [
+    -0.0323604164866384,
+    0.0524870491552141,
+    0.104418979552685
+   ],
+   "rpy": [
+    0.0,
+    -0.378842198520397,
+    0.0
+   ],
+   "mesh": "l_ear_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "l_ear_roll",
+   "parent": "l_ear_pitch",
+   "joint": "l_ear_roll",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -0.99588439861597,
+    0.00978826026731674,
+    -0.0901024669709235
+   ],
+   "joint_range": [
+    -1.5,
+    0.0
+   ],
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "l_ear_roll.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "r_ear_pitch",
+   "parent": "head_roll",
+   "joint": "r_ear_pitch",
+   "joint_type": "continuous",
+   "joint_axis": [
+    -0.0277809746837011,
+    -0.91332018468149,
+    0.406293560986379
+   ],
+   "joint_range": [
+    -3.0,
+    3.0
+   ],
+   "pos": [
+    -0.0322143915471349,
+    -0.0513893279125991,
+    0.104107335499855
+   ],
+   "rpy": [
+    0.0,
+    -0.378842198520397,
+    0.0
+   ],
+   "mesh": "r_ear_pitch.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "r_ear_roll",
+   "parent": "r_ear_pitch",
+   "joint": "r_ear_roll",
+   "joint_type": "revolute",
+   "joint_axis": [
+    -0.995884792016035,
+    -0.00978807186482341,
+    -0.0900981391614038
+   ],
+   "joint_range": [
+    0.0,
+    1.5
+   ],
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh": "r_ear_roll.STL",
+   "mesh_pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mesh_rpy": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "note": "Driven ENTIRELY from MuJoCo state. The render rig sets each body's local rotation from the corresponding joint angle and the root from the free joint; it must never be animated independently."
+}

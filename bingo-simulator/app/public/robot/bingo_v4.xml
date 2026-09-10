@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <mujoco model="bingo_v4">
-  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" balanceinertia="true" autolimits="true"/>
+  <compiler angle="radian" meshdir="collision" inertiafromgeom="false" balanceinertia="true" autolimits="true"/>
   <option timestep="0.008333333" gravity="0 0 -9.81" integrator="implicitfast" cone="elliptic"/>
   <size njmax="600" nconmax="200"/>
   <default>
