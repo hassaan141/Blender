@@ -1,0 +1,35 @@
+============================================================================================
+BINGO MuJoCo <-> URDF/Isaac VALIDATION
+============================================================================================
+model     /home/user/Blender/bingo-simulator/app/public/robot/bingo_v4.xml
+reference /home/user/Blender/URDF/bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints_physics.urdf
+          stage2/v4_kinematics.V4Kin (the FK the Stage-2/4 pipeline uses)
+compiled  nbody=23 njnt=22 nq=28 nv=27 nu=21 mass=2.45920 kg  timestep=0.008333333
+
+KINEMATICS AND MASS PROPERTIES (exact - a failure here is a conversion bug)
+  [ok  ] FK vs V4Kin (leg knee pos)         max error 0.0001 um over 500 random poses at bl_knee   (tol 1 um)
+  [ok  ] FK vs V4Kin (chain orientation)    max error 2.96e-06 deg at earL   (tol 1e-3 deg)
+  [ok  ] joint axes and limits              all 21 match the URDF   (tol 1e-9)
+  [ok  ] per-link mass                      max error 4.174e-10 kg at fl_shoulder_pitch   (tol 1e-9 kg)
+  [ok  ] total mass                         MuJoCo 2.459195327 kg vs URDF 2.459195326 kg (diff 1.29e-09)   (tol 1e-7 kg)
+  [ok  ] stance paw heights level           spread 0.0007 mm, heights [2.001 2.001 2.001 2.002] mm   (tol 0.1 mm)
+  [ok  ] stance paws on the floor           mean paw z +2.001 mm at base 0.182 m   (tol 3 mm)
+
+DYNAMICS (behavioural - MuJoCo and PhysX never agree bit-for-bit)
+  using bingo_scene.xml (the robot alone has no floor to stand on)
+  [ok  ] standing equilibrium (3 s)         base z 0.1820 -> 0.1814 m (sank +0.6 mm), tilt 0.19 deg, max joint err 0.0043 rad   (tol sink<20mm tilt<10deg)
+  [ok  ] gravity drop 50 mm                 landed at z 0.1814 m (min 0.1771), base speed 0.0000 m/s   (tol settles <0.05 m/s)
+  [ok  ] single-joint step response         fl_SP_J -> +0.9593 (target +0.9600, err 0.0007); fl_knee -> +0.7457 (target +0.7432, err 0.0025); head_yaw -> +0.2017 (target +0.2000, err 0.0017)   (tol 0.05 rad)
+  [ok  ] contacts are the four paws         4/4 paw links in contact, 7 contact point(s) total   (tol 4 paws)
+
+ISAAC-SIDE TRACE COMPARISON
+  NOT RUN. Isaac Sim needs an RTX GPU and is not available here, so no
+  command-trace comparison was performed. Everything above is verified
+  against the URDF, which is the model Isaac itself consumes - that
+  catches conversion errors but does NOT prove dynamic agreement.
+  Record a trace with rl/tools/eval_velocity.py on the training machine
+  and re-run with --isaac-trace to close this gap.
+
+============================================================================================
+11/11 checks passed
+============================================================================================

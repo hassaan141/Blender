@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<mujoco model="bingo_v4">
+  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" balanceinertia="true" autolimits="true"/>
+  <option timestep="0.008333333" gravity="0 0 -9.81" integrator="implicitfast" cone="elliptic"/>
+  <size njmax="600" nconmax="200"/>
+  <default>
+    <geom condim="4" friction="0.8 0.02 0.001" margin="0.001" rgba="0.7 0.72 0.75 1" contype="1" conaffinity="0"/>
+    <joint damping="0.0" frictionloss="0.0"/>
+  </default>
+  <asset>
+    <mesh name="origin.STL" file="origin.STL" inertia="shell"/>
+    <mesh name="fl_shoulder_yaw.STL" file="fl_shoulder_yaw.STL" inertia="shell"/>
+    <mesh name="fl_shoulder_pitch.STL" file="fl_shoulder_pitch.STL" inertia="shell"/>
+    <mesh name="fl_knee.STL" file="fl_knee.STL" inertia="shell"/>
+    <mesh name="tail_pitch.STL" file="tail_pitch.STL" inertia="shell"/>
+    <mesh name="tail_yaw.STL" file="tail_yaw.STL" inertia="shell"/>
+    <mesh name="bl_shoulder_yaw.STL" file="bl_shoulder_yaw.STL" inertia="shell"/>
+    <mesh name="bl_shoulder_pitch.STL" file="bl_shoulder_pitch.STL" inertia="shell"/>
+    <mesh name="bl_knee.STL" file="bl_knee.STL" inertia="shell"/>
+    <mesh name="fr_shoulder_yaw.STL" file="fr_shoulder_yaw.STL" inertia="shell"/>
+    <mesh name="fr_shoulder_pitch.STL" file="fr_shoulder_pitch.STL" inertia="shell"/>
+    <mesh name="fr_knee.STL" file="fr_knee.STL" inertia="shell"/>
+    <mesh name="br_shoulder_yaw.STL" file="br_shoulder_yaw.STL" inertia="shell"/>
+    <mesh name="br_shoulder_pitch.STL" file="br_shoulder_pitch.STL" inertia="shell"/>
+    <mesh name="br_knee.STL" file="br_knee.STL" inertia="shell"/>
+    <mesh name="head_pitch.STL" file="head_pitch.STL" inertia="shell"/>
+    <mesh name="head_yaw.STL" file="head_yaw.STL" inertia="shell"/>
+    <mesh name="head_roll.STL" file="head_roll.STL" inertia="shell"/>
+    <mesh name="l_ear_pitch.STL" file="l_ear_pitch.STL" inertia="shell"/>
+    <mesh name="l_ear_roll.STL" file="l_ear_roll.STL" inertia="shell"/>
+    <mesh name="r_ear_pitch.STL" file="r_ear_pitch.STL" inertia="shell"/>
+    <mesh name="r_ear_roll.STL" file="r_ear_roll.STL" inertia="shell"/>
+  </asset>
+  <worldbody>
+    <body name="origin" pos="0 0 0.182000">
+      <freejoint name="root"/>
+      <inertial pos="-0.0036942185 -7.35632781e-06 0.00259980818" mass="0.302364834" fullinertia="0.000383582823 0.000379922051 0.000477553526 8.03575201e-11 -2.50366802e-06 -6.79023008e-08"/>
+      <geom name="origin_col" type="mesh" mesh="origin.STL" pos="0 0 0" group="3"/>
+      <body name="fl_shoulder_yaw" pos="0.0590935 0.022 -1.3166667e-05">
+        <inertial pos="-0.0147805082 0.00282330815 7.0338345e-06" mass="0.0157498725" fullinertia="4.63017832e-06 3.15395998e-06 2.34458133e-06 -3.47265776e-09 1.96248348e-09 9.89630365e-09"/>
+        <joint name="fl_SY_J" type="hinge" axis="-1 0 0" pos="0 0 0" range="-0.42 0.42" limited="true" armature="0.01"/>
+        <geom name="fl_shoulder_yaw_col" type="mesh" mesh="fl_shoulder_yaw.STL" pos="0 0 0" group="3"/>
+        <body name="fl_shoulder_pitch" pos="0.026925 0.0469999946 0">
+          <inertial pos="-0.00498177422 -0.0124579079 -0.0176202966" mass="0.16255817" fullinertia="0.000141955652 0.000182453921 6.04983242e-05 7.17058873e-07 -2.73366038e-05 2.98284189e-06"/>
+          <joint name="fl_SP_J" type="hinge" axis="0 1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+          <geom name="fl_shoulder_pitch_col" type="mesh" mesh="fl_shoulder_pitch.STL" pos="0 0 0" group="3"/>
+          <body name="fl_knee" pos="-0.025493902 0.0137090054 -0.0784656565">
+            <inertial pos="0.0201575823 -0.0288485491 -0.071018967" mass="0.153379187" fullinertia="5.06612508e-05 5.74455866e-05 3.16199822e-05 8.55026795e-09 5.34910021e-06 2.58320366e-07"/>
+            <joint name="fl_knee" type="hinge" axis="0 -1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+            <geom name="fl_knee_col" type="mesh" mesh="fl_knee.STL" pos="0 0 0" group="3"/>
+          </body>
+        </body>
+      </body>
+      <body name="fr_shoulder_yaw" pos="0.0590935 -0.022 -1.3166667e-05">
+        <inertial pos="-0.0146540101 -0.00266256793 7.24633133e-05" mass="0.0160189843" fullinertia="4.63412465e-06 3.15623731e-06 2.3468526e-06 3.4799467e-09 1.96272246e-09 -9.91060637e-09"/>
+        <joint name="fr_SY_J" type="hinge" axis="1 0 0" pos="0 0 0" range="-0.42 0.42" limited="true" armature="0.01"/>
+        <geom name="fr_shoulder_yaw_col" type="mesh" mesh="fr_shoulder_yaw.STL" pos="0 0 0" group="3"/>
+        <body name="fr_shoulder_pitch" pos="0.026925 -0.04700278 0">
+          <inertial pos="-0.00522256674 0.0121135631 -0.0175465356" mass="0.162497497" fullinertia="0.000141853449 0.000183026803 6.11506456e-05 -8.12286065e-07 -2.78500276e-05 -2.95104973e-06"/>
+          <joint name="fr_SP_J" type="hinge" axis="0 -1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+          <geom name="fr_shoulder_pitch_col" type="mesh" mesh="fr_shoulder_pitch.STL" pos="0 0 0" group="3"/>
+          <body name="fr_knee" pos="-0.0254756225 -0.0137090054 -0.0784680996">
+            <inertial pos="0.0201682817 0.0288455102 -0.0710258497" mass="0.153379812" fullinertia="5.06797307e-05 5.74456475e-05 3.16017143e-05 -5.30240284e-09 5.3683774e-06 -2.58574721e-07"/>
+            <joint name="fr_knee" type="hinge" axis="0 1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+            <geom name="fr_knee_col" type="mesh" mesh="fr_knee.STL" pos="0 0 0" group="3"/>
+          </body>
+        </body>
+      </body>
+      <body name="bl_shoulder_yaw" pos="-0.0590085 0.022 -1.3166667e-05">
+        <inertial pos="0.015527548 0.00323504135 0.000337773536" mass="0.014257907" fullinertia="4.23236346e-06 2.9422196e-06 2.14170251e-06 3.29058594e-09 2.25733294e-09 6.05267847e-08"/>
+        <joint name="bl_SY_J" type="hinge" axis="1 0 0" pos="0 0 0" range="-0.42 0.42" limited="true" armature="0.01"/>
+        <geom name="bl_shoulder_yaw_col" type="mesh" mesh="bl_shoulder_yaw.STL" pos="0 0 0" group="3"/>
+        <body name="bl_shoulder_pitch" pos="-0.0269632683 0.04700278 -9.08940818e-05">
+          <inertial pos="-0.00763934958 -0.011782639 -0.0177676492" mass="0.160607478" fullinertia="0.000137806944 0.000182550234 6.46997189e-05 1.29765587e-06 -3.23607736e-05 2.91238695e-06"/>
+          <joint name="bl_SP_J" type="hinge" axis="0 1 0" pos="0 0 0" range="-1.57 1.57" limited="true" armature="0.01"/>
+          <geom name="bl_shoulder_pitch_col" type="mesh" mesh="bl_shoulder_pitch.STL" pos="0 0 0" group="3"/>
+          <body name="bl_knee" pos="-0.030905044 0.0137090054 -0.076492668">
+            <inertial pos="0.0152240514 -0.0288466423 -0.0723470659" mass="0.152929777" fullinertia="5.0860777e-05 5.69249019e-05 3.08829577e-05 1.61861376e-08 4.16227752e-06 2.3161699e-07"/>
+            <joint name="bl_knee" type="hinge" axis="0 -1 0" pos="0 0 0" range="-1.57 1.57" limited="true" armature="0.01"/>
+            <geom name="bl_knee_col" type="mesh" mesh="bl_knee.STL" pos="0 0 0" group="3"/>
+          </body>
+        </body>
+      </body>
+      <body name="br_shoulder_yaw" pos="-0.0590085 -0.0219840463 -1.31724636e-05">
+        <inertial pos="0.0157204912 -0.00319221101 0.000269961255" mass="0.0139501406" fullinertia="4.22823488e-06 2.93983722e-06 2.1393093e-06 -3.29377398e-09 2.2581361e-09 -6.05152455e-08"/>
+        <joint name="br_SY_J" type="hinge" axis="-1 0 0" pos="0 0 0" range="-0.42 0.42" limited="true" armature="0.01"/>
+        <geom name="br_shoulder_yaw_col" type="mesh" mesh="br_shoulder_yaw.STL" pos="0 0 0" group="3"/>
+        <body name="br_shoulder_pitch" pos="-0.026925 -0.0470187337 0">
+          <inertial pos="-0.00769815583 0.0119274906 -0.0172311445" mass="0.161157363" fullinertia="0.000137366884 0.000182588667 6.51851073e-05 -1.39048095e-06 -3.28319593e-05 -2.8741562e-06"/>
+          <joint name="br_SP_J" type="hinge" axis="0 1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+          <geom name="br_shoulder_pitch_col" type="mesh" mesh="br_shoulder_pitch.STL" pos="0 0 0" group="3"/>
+          <body name="br_knee" pos="-0.030905044 -0.0137090054 -0.076492668">
+            <inertial pos="0.015212126 0.0288435857 -0.0723608308" mass="0.152931181" fullinertia="5.08852253e-05 5.69254841e-05 3.08593216e-05 -1.30553774e-08 4.15990597e-06 -2.32566443e-07"/>
+            <joint name="br_knee" type="hinge" axis="0 1 0" pos="0 0 0" range="-1.56 1.56" limited="true" armature="0.01"/>
+            <geom name="br_knee_col" type="mesh" mesh="br_knee.STL" pos="0 0 0" group="3"/>
+          </body>
+        </body>
+      </body>
+      <body name="head_pitch" pos="0.0860835 0 -1.3166667e-05">
+        <inertial pos="0.0148937208 -0.000311654054 0.0369003933" mass="0.0103442643" fullinertia="2.46072582e-06 6.12734156e-06 5.46377557e-06 -2.00296854e-09 1.47479742e-06 -1.64749723e-08"/>
+        <joint name="head_pitch_joint" type="hinge" axis="0 -1 0" pos="0 0 0" range="-0.65 0.05" limited="true" armature="0.06"/>
+        <geom name="head_pitch_col" type="mesh" mesh="head_pitch.STL" pos="0 0 0" group="3"/>
+        <body name="head_yaw" pos="0.0197949011 0 0.0497270821" euler="0 0.378842199 0">
+          <inertial pos="0 -9.40395481e-23 0" mass="0.005" fullinertia="2.88e-07 2.88e-07 2.88e-07 0 0 0"/>
+          <joint name="head_yaw" type="hinge" axis="-1 0 0" pos="0 0 0" range="-0.6 0.6" limited="true" armature="0.06"/>
+          <geom name="head_yaw_col" type="mesh" mesh="head_yaw.STL" pos="0 0 0" group="3"/>
+          <body name="head_roll" pos="0 0 0">
+            <inertial pos="-0.00610717888 0.000207512791 0.0715649146" mass="0.707682611" fullinertia="0.000969443038 0.00113848089 0.00117754656 -1.2064676e-06 3.02961175e-05 -7.14393746e-07"/>
+            <joint name="head_roll" type="hinge" axis="0 0 -1" pos="0 0 0" range="-0.78 0.78" limited="true" armature="0.06"/>
+            <geom name="head_roll_col" type="mesh" mesh="head_roll.STL" pos="0 0 0" group="3"/>
+            <body name="l_ear_pitch" pos="-0.0323604165 0.0524870492 0.10441898" euler="0 -0.378842199 0">
+              <inertial pos="4.97942199e-06 -4.89413013e-08 4.50512335e-07" mass="0.002" fullinertia="5.12e-08 5.12e-08 5.12e-08 0 0 0"/>
+              <joint name="l_ear_pitch" type="hinge" axis="0.0277059542 -0.913681334 -0.405485882" pos="0 0 0" range="-3 3" limited="true" armature="0.0005"/>
+              <geom name="l_ear_pitch_col" type="mesh" mesh="l_ear_pitch.STL" pos="0 0 0" group="3"/>
+              <body name="l_ear_roll" pos="0 0 0">
+                <inertial pos="0.00689276821 0.00320867775 -0.0249336149" mass="0.017967127" fullinertia="2.89294186e-06 5.04726386e-06 2.8231373e-06 8.09228793e-09 1.96569187e-08 3.33348457e-07"/>
+                <joint name="l_ear_roll" type="hinge" axis="-0.995884399 0.00978826027 -0.090102467" pos="0 0 0" range="-1.5 0" limited="true" armature="0.0005"/>
+                <geom name="l_ear_roll_col" type="mesh" mesh="l_ear_roll.STL" pos="0 0 0" group="3"/>
+              </body>
+            </body>
+            <body name="r_ear_pitch" pos="-0.0322143915 -0.0513893279 0.104107335" euler="0 -0.378842199 0">
+              <inertial pos="5.47903312e-06 -4.94639072e-06 -4.52917376e-06" mass="0.002" fullinertia="5.12e-08 5.12e-08 5.12e-08 0 0 0"/>
+              <joint name="r_ear_pitch" type="hinge" axis="-0.0277809747 -0.913320185 0.406293561" pos="0 0 0" range="-3 3" limited="true" armature="0.0005"/>
+              <geom name="r_ear_pitch_col" type="mesh" mesh="r_ear_pitch.STL" pos="0 0 0" group="3"/>
+              <body name="r_ear_roll" pos="0 0 0">
+                <inertial pos="0.00687156902 -0.00430474777 -0.0245825601" mass="0.0179671381" fullinertia="2.89294949e-06 5.04669293e-06 2.823736e-06 -7.8879228e-09 1.96562371e-08 -3.35319634e-07"/>
+                <joint name="r_ear_roll" type="hinge" axis="-0.995884792 -0.00978807186 -0.0900981392" pos="0 0 0" range="0 1.5" limited="true" armature="0.0005"/>
+                <geom name="r_ear_roll_col" type="mesh" mesh="r_ear_roll.STL" pos="0 0 0" group="3"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="tail_pitch" pos="-0.107621297 0 0.0350980226" euler="0 -0.52330547 0">
+        <inertial pos="-0.000525322683 2.16833274e-19 1.38777878e-17" mass="0.003" fullinertia="1.2e-07 1.2e-07 1.2e-07 0 0 0"/>
+        <joint name="tail_pitch" type="hinge" axis="0 -1 0" pos="0 0 0" range="-0.6 0.6" limited="true" armature="0.02"/>
+        <geom name="tail_pitch_col" type="mesh" mesh="tail_pitch.STL" pos="0 0 0" group="3"/>
+        <body name="tail_yaw" pos="0 0 0">
+          <inertial pos="-1.78289489e-05 2.33082535e-07 0.0646037765" mass="0.0714519832" fullinertia="4.07850248e-05 4.07751198e-05 1.16247777e-05 -1.01289076e-12 -8.32119767e-09 8.92139988e-12"/>
+          <joint name="tail_yaw" type="hinge" axis="-1 0 0" pos="0 0 0" range="-0.6 0.6" limited="true" armature="0.02"/>
+          <geom name="tail_yaw_col" type="mesh" mesh="tail_yaw.STL" pos="0 0 0" group="3"/>
+        </body>
+      </body>
+      <site name="imu" pos="0 0 0" size="0.005"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="fl_SY_J" joint="fl_SY_J" kp="40" kv="0.9" forcerange="-3 3" ctrlrange="-0.42 0.42"/>
+    <position name="fl_SP_J" joint="fl_SP_J" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="fl_knee" joint="fl_knee" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="fr_SY_J" joint="fr_SY_J" kp="40" kv="0.9" forcerange="-3 3" ctrlrange="-0.42 0.42"/>
+    <position name="fr_SP_J" joint="fr_SP_J" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="fr_knee" joint="fr_knee" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="bl_SY_J" joint="bl_SY_J" kp="40" kv="0.9" forcerange="-3 3" ctrlrange="-0.42 0.42"/>
+    <position name="bl_SP_J" joint="bl_SP_J" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.57 1.57"/>
+    <position name="bl_knee" joint="bl_knee" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.57 1.57"/>
+    <position name="br_SY_J" joint="br_SY_J" kp="40" kv="0.9" forcerange="-3 3" ctrlrange="-0.42 0.42"/>
+    <position name="br_SP_J" joint="br_SP_J" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="br_knee" joint="br_knee" kp="120" kv="1.6" forcerange="-3 3" ctrlrange="-1.56 1.56"/>
+    <position name="head_pitch_joint" joint="head_pitch_joint" kp="60" kv="1.8" forcerange="-6 6" ctrlrange="-0.65 0.05"/>
+    <position name="head_yaw" joint="head_yaw" kp="60" kv="1.8" forcerange="-6 6" ctrlrange="-0.6 0.6"/>
+    <position name="head_roll" joint="head_roll" kp="60" kv="1.8" forcerange="-6 6" ctrlrange="-0.78 0.78"/>
+    <position name="tail_pitch" joint="tail_pitch" kp="8" kv="0.2" forcerange="-6 6" ctrlrange="-0.6 0.6"/>
+    <position name="tail_yaw" joint="tail_yaw" kp="8" kv="0.2" forcerange="-6 6" ctrlrange="-0.6 0.6"/>
+    <position name="l_ear_pitch" joint="l_ear_pitch" kp="0.6" kv="0.05" forcerange="-1 1" ctrlrange="-3 3"/>
+    <position name="l_ear_roll" joint="l_ear_roll" kp="0.6" kv="0.05" forcerange="-1 1" ctrlrange="-1.5 0"/>
+    <position name="r_ear_pitch" joint="r_ear_pitch" kp="0.6" kv="0.05" forcerange="-1 1" ctrlrange="-3 3"/>
+    <position name="r_ear_roll" joint="r_ear_roll" kp="0.6" kv="0.05" forcerange="-1 1" ctrlrange="0 1.5"/>
+  </actuator>
+  <sensor>
+    <gyro name="base_gyro" site="imu"/>
+    <accelerometer name="base_acc" site="imu"/>
+    <framequat name="base_quat" objtype="site" objname="imu"/>
+    <velocimeter name="base_vel" site="imu"/>
+  </sensor>
+  <keyframe>
+    <key name="stand" qpos="0 0 0.182 1 0 0 0 0 0.81 0.8932 0 -0.8109 -0.8938 0 0.3932 0.8913 0 0.3936 -0.8913 0 0 0 0 0 0 0 0 0" ctrl="0 0.81 0.8932 0 -0.8109 -0.8938 0 0.3932 0.8913 0 0.3936 -0.8913 0 0 0 0 0 0 0 0 0"/>
+  </keyframe>
+</mujoco>
