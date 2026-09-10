@@ -160,6 +160,14 @@ floor". The sign pattern is the giveaway: the solved stance is
 `fl +0.81 / fr −0.81 / bl +0.39 / br +0.39`, so front legs mirror across L/R but the
 back legs do **not**, and the legacy pose gets both wrong.
 
+Drawn out (`rl/tools/plot_stance_and_action_scale.py` →
+`docs/locomotion/stance_and_action_scale.png`) the consequence is starker than the
+numbers suggest: the legacy support polygon spans x = +0.024 … +0.207 m, so **the
+base origin at x = 0 lies entirely outside it**. The robot's body is not over its
+feet at all, in any orientation — it is a pose that must topple backwards the
+instant gravity is applied, which is consistent with everything Stage 4 recorded
+about it.
+
 **Decision:** `bingo_v4.py` is *not* modified — it is validated Stage-4 physics and
 Stage 5 depends on it (RSI overwrites the init state every reset, so the bad pose is
 harmless there). The locomotion env overrides `init_state.joint_pos` with
