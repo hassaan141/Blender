@@ -7,6 +7,7 @@ from . import track  # noqa: F401  (registers Bingo-Track-Deadpan-Direct-v0)
 from . import track_expr  # noqa: F401  (registers Bingo-TrackExpr-Deadpan-Direct-v0)
 from . import track_v4  # noqa: F401  (registers Bingo-TrackV4-Deadpan-Direct-v0, 21 DOF incl. ears)
 from . import stage5  # noqa: F401  (registers Bingo-Stage5-Timid-Direct-v0, residual RL on Stage 4)
+from . import locomotion  # noqa: F401  (registers Bingo-Velocity-Flat-v4-v0, free locomotion on v4)
 
 gym.register(
     id="Bingo-Velocity-Flat-v0",
