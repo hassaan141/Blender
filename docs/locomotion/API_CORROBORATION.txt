@@ -1,0 +1,109 @@
+====================================================================================================
+ISAAC LAB API CORROBORATION - static, offline
+====================================================================================================
+
+This does NOT verify any API against Isaac Lab. It reports which names the
+new locomotion code shares with Bingo code that already runs on the training
+machine. Run rl/tools/verify_locomotion_api.py there for real verification.
+
+reference corpus : 16 files (38 imports, 6 mdp names, 50 cfg attrs)
+new code         : 7 files (23 imports, 6 mdp names, 43 cfg attrs)
+
+----------------------------------------------------------------------------------------------------
+IMPORTS
+----------------------------------------------------------------------------------------------------
+  corroborated by working Bingo code (18):
+    ok    isaaclab.app.AppLauncher
+    ok    isaaclab.assets.Articulation
+    ok    isaaclab.envs.ManagerBasedRLEnv
+    ok    isaaclab.managers.EventTermCfg
+    ok    isaaclab.managers.RewardTermCfg
+    ok    isaaclab.managers.SceneEntityCfg
+    ok    isaaclab.managers.TerminationTermCfg
+    ok    isaaclab.sensors.ContactSensor
+    ok    isaaclab.sim.PhysxCfg
+    ok    isaaclab.sim.SimulationCfg
+    ok    isaaclab.utils.configclass
+    ok    isaaclab_rl.rsl_rl.RslRlOnPolicyRunnerCfg
+    ok    isaaclab_rl.rsl_rl.RslRlPpoActorCriticCfg
+    ok    isaaclab_rl.rsl_rl.RslRlPpoAlgorithmCfg
+    ok    isaaclab_tasks.manager_based.locomotion.velocity.mdp
+    ok    isaaclab_tasks.manager_based.locomotion.velocity.velocity_env_cfg.LocomotionVelocityRoughEnvCfg
+    ok    isaaclab_tasks.manager_based.locomotion.velocity.velocity_env_cfg.RewardsCfg
+    ok    isaaclab_tasks.manager_based.locomotion.velocity.velocity_env_cfg.TerminationsCfg
+
+  NOT found in working Bingo code (5) - these are the assumptions:
+    ?     isaaclab.utils.io.dump_yaml                          used in train_velocity.py
+    ?     isaaclab_rl.rsl_rl.RslRlVecEnvWrapper                used in eval_velocity.py, play_velocity.py, train_velocity.py
+    ?     isaaclab_tasks.utils.parse_cfg.load_cfg_from_registry used in eval_velocity.py, play_velocity.py, train_velocity.py
+    ?     isaaclab_tasks.utils.parse_env_cfg                   used in eval_velocity.py, play_velocity.py, train_velocity.py
+    ?     rsl_rl.runners.OnPolicyRunner                        used in eval_velocity.py, play_velocity.py, train_velocity.py
+
+----------------------------------------------------------------------------------------------------
+mdp.* NAMES
+----------------------------------------------------------------------------------------------------
+  corroborated by working Bingo code (5):
+    ok    bad_orientation
+    ok    feet_slide
+    ok    is_terminated
+    ok    push_by_setting_velocity
+    ok    root_height_below_minimum
+
+  NOT found in working Bingo code (1) - these are the assumptions:
+    ?     UniformVelocityCommandCfg                            used in bingo_velocity_env_cfg.py, bingo_velocity_mdp.py
+
+----------------------------------------------------------------------------------------------------
+CONFIG ATTRIBUTES
+----------------------------------------------------------------------------------------------------
+  corroborated by working Bingo code (33):
+    ok    actions.joint_pos.joint_names
+    ok    actions.joint_pos.scale
+    ok    curriculum.terrain_levels
+    ok    events.add_base_mass.params
+    ok    events.base_com
+    ok    events.base_external_force_torque
+    ok    events.base_external_force_torque.params
+    ok    events.physics_material.params
+    ok    events.push_robot
+    ok    events.reset_base.params
+    ok    events.reset_robot_joints.params
+    ok    observations.policy.enable_corruption
+    ok    observations.policy.height_scan
+    ok    rewards.action_rate_l2.weight
+    ok    rewards.dof_acc_l2.weight
+    ok    rewards.dof_torques_l2.weight
+    ok    rewards.feet_air_time.params
+    ok    rewards.feet_air_time.weight
+    ok    rewards.flat_orientation_l2.weight
+    ok    rewards.track_ang_vel_z_exp.weight
+    ok    rewards.track_lin_vel_xy_exp.params
+    ok    rewards.track_lin_vel_xy_exp.weight
+    ok    rewards.undesired_contacts
+    ok    scene.env_spacing
+    ok    scene.height_scanner
+    ok    scene.num_envs
+    ok    scene.robot
+    ok    scene.terrain.terrain_generator
+    ok    scene.terrain.terrain_type
+    ok    terminations.bad_orientation
+    ok    terminations.base_contact
+    ok    terminations.base_contact.params
+    ok    terminations.low_base
+
+  NOT found in working Bingo code (10) - these are the assumptions:
+    ?     actions.joint_pos.use_default_offset                 used in bingo_velocity_env_cfg.py
+    ?     commands.base_velocity                               used in bingo_velocity_env_cfg.py
+    ?     commands.base_velocity.resampling_time_range         used in bingo_velocity_env_cfg.py
+    ?     rewards.dof_pos_limits.weight                        used in bingo_velocity_env_cfg.py
+    ?     rewards.track_ang_vel_z_exp.params                   used in bingo_velocity_env_cfg.py
+    ?     rewards.undesired_contacts.params                    used in bingo_velocity_env_cfg.py
+    ?     rewards.undesired_contacts.weight                    used in bingo_velocity_env_cfg.py
+    ?     scene.contact_forces.update_period                   used in bingo_velocity_env_cfg.py
+    ?     sim.dt                                               used in bingo_velocity_env_cfg.py
+    ?     sim.render_interval                                  used in bingo_velocity_env_cfg.py
+
+====================================================================================================
+16 name(s) in the new code are not corroborated by existing Bingo code.
+Each is either a stock Isaac Lab name this project simply never happened to
+use, or a genuine mistake. verify_locomotion_api.py is what tells them apart.
+====================================================================================================

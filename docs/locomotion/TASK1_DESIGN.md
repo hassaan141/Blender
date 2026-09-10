@@ -423,6 +423,47 @@ contact-wrench feasible on only 46% of frames, 39 frames needing friction above 
 
 ---
 
+## What is actually unverified — triaged
+
+`rl/tools/check_api_corroboration.py` (runs anywhere, stdlib only) cross-references
+every Isaac Lab name the new code uses against names already proven by Bingo code
+that has run on the training machine. Result: **56 of 72 names are corroborated; 16
+are not.** Triaged by what breaks if the assumption is wrong:
+
+### HIGH — the environment will not build, or will be silently wrong
+
+| assumption | why it matters | fallback if wrong |
+|---|---|---|
+| `actions.joint_pos.scale` accepts a **dict** | existing Bingo code only ever sets a float (`= 0.25`). The whole per-joint scale design needs dict support. | fall back to a single scale of **0.125** (SY's headroom) — safe for every joint, but costs SP/knee authority |
+| `actions.joint_pos.use_default_offset` exists | `q_target = q_stand + scale·a` depends on it. If absent, actions become absolute targets and the robot will not stand. | set the offset manually via a custom action term |
+| `mdp.UniformVelocityCommandCfg` + subclassing its `class_type` | the categorical command sampler (exact zero, turn-in-place) is built on it | keep the stock uniform command and add zero/turn-in-place by post-processing in an event term |
+
+### MEDIUM — the training scripts break, the environment is fine
+
+`rsl_rl.runners.OnPolicyRunner`, `isaaclab_rl.rsl_rl.RslRlVecEnvWrapper`,
+`isaaclab_tasks.utils.parse_env_cfg`, `…parse_cfg.load_cfg_from_registry`,
+`isaaclab.utils.io.dump_yaml`.
+
+These have **no corroboration in this repo at all**: `rl/README.md` references
+`rl/bingo_rl/scripts/train.py`, but that file is not on disk (it is gitignored or was
+lost), so there is no working training entry point to copy from. If any of these
+names differ, `train_velocity.py` / `play_velocity.py` / `eval_velocity.py` fail at
+import — loudly and immediately, not subtly. The fix is to copy the argument
+handling from Isaac Lab's own bundled
+`scripts/reinforcement_learning/rsl_rl/train.py`, which is guaranteed to match the
+local version.
+
+### LOW — already guarded in code, or trivially adjacent to a corroborated name
+
+`sim.dt`, `sim.render_interval` (Stage 5 passes both to `SimulationCfg`'s
+constructor, so the fields exist); `scene.contact_forces.update_period`,
+`rewards.dof_pos_limits.weight`, `rewards.undesired_contacts.params/.weight` (all
+three are wrapped in `getattr(..., None)` or `is not None` guards, so a missing
+attribute is a no-op rather than a crash); `rewards.track_ang_vel_z_exp.params`
+(`.weight` is corroborated on this exact term and `.params["std"]` on its linear
+counterpart); `commands.base_velocity` and `.resampling_time_range` (the attribute
+is corroborated via `.ranges` and `.heading_command`).
+
 ## Verification gate
 
 Before the first training run, on the training machine:
