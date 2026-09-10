@@ -125,6 +125,16 @@
       "pitch_deg_mean": 2.3039540137760453,
       "roll_deg_mean": 2.3748719857735248
     },
+    "walking_segment": {
+      "n_frames": 13,
+      "fraction_of_clip": 0.06701030927835051,
+      "height_mean_mm": 164.2742363306192,
+      "height_std_mm": 27.990605048068495,
+      "pitch_mean_deg": 7.989915992035698,
+      "pitch_std_deg": 9.030991749924969,
+      "speed_mean_ms": 0.06078217179686353,
+      "speed_max_ms": 0.25876384901023974
+    },
     "expression": {
       "head": {
         "joints": [
@@ -327,6 +337,16 @@
       ],
       "pitch_deg_mean": -10.483338199186287,
       "roll_deg_mean": -4.347852192792224
+    },
+    "walking_segment": {
+      "n_frames": 78,
+      "fraction_of_clip": 0.43333333333333335,
+      "height_mean_mm": 157.62673299282025,
+      "height_std_mm": 16.500166464851457,
+      "pitch_mean_deg": -9.591596279539027,
+      "pitch_std_deg": 13.3556710776127,
+      "speed_mean_ms": 0.08952367777278458,
+      "speed_max_ms": 0.3012042507633927
     },
     "expression": {
       "head": {
@@ -559,6 +579,16 @@
       "pitch_deg_mean": -15.86991126813674,
       "roll_deg_mean": -1.180538278627711
     },
+    "walking_segment": {
+      "n_frames": 224,
+      "fraction_of_clip": 0.5957446808510638,
+      "height_mean_mm": 173.23503230831452,
+      "height_std_mm": 28.86263262537986,
+      "pitch_mean_deg": -7.52150001293459,
+      "pitch_std_deg": 15.85089862557306,
+      "speed_mean_ms": 0.0743994418967459,
+      "speed_max_ms": 0.1951220204157292
+    },
     "expression": {
       "head": {
         "joints": [
@@ -748,6 +778,10 @@
       ],
       "pitch_deg_mean": -60.25254203288797,
       "roll_deg_mean": -1.845209276047837
+    },
+    "walking_segment": {
+      "n_frames": 2,
+      "fraction_of_clip": 0.0036036036036036037
     },
     "expression": {
       "head": {
@@ -963,6 +997,16 @@
       ],
       "pitch_deg_mean": -5.093412295601456,
       "roll_deg_mean": 1.0286524966042736
+    },
+    "walking_segment": {
+      "n_frames": 44,
+      "fraction_of_clip": 0.20952380952380953,
+      "height_mean_mm": 162.7937060865489,
+      "height_std_mm": 26.767676907960702,
+      "pitch_mean_deg": -1.1091446087722705,
+      "pitch_std_deg": 17.047171142765634,
+      "speed_mean_ms": 0.14020032343121644,
+      "speed_max_ms": 0.5884636133801314
     },
     "expression": {
       "head": {
@@ -1181,6 +1225,16 @@
       "pitch_deg_mean": -3.3329642911158417,
       "roll_deg_mean": 0.3602586097080056
     },
+    "walking_segment": {
+      "n_frames": 149,
+      "fraction_of_clip": 0.3104166666666667,
+      "height_mean_mm": 138.50307664615198,
+      "height_std_mm": 44.293667232929316,
+      "pitch_mean_deg": -4.932533782439946,
+      "pitch_std_deg": 12.369267733573283,
+      "speed_mean_ms": 0.08286164632707907,
+      "speed_max_ms": 0.21461419800981085
+    },
     "expression": {
       "head": {
         "joints": [
@@ -1364,6 +1418,10 @@
       ],
       "pitch_deg_mean": 0.0,
       "roll_deg_mean": 0.0
+    },
+    "walking_segment": {
+      "n_frames": 0,
+      "fraction_of_clip": 0.0
     },
     "expression": {
       "head": {
@@ -1549,6 +1607,10 @@
       "pitch_deg_mean": 0.0,
       "roll_deg_mean": 0.0
     },
+    "walking_segment": {
+      "n_frames": 0,
+      "fraction_of_clip": 0.0
+    },
     "expression": {
       "head": {
         "joints": [
@@ -1732,6 +1794,10 @@
       ],
       "pitch_deg_mean": 0.0,
       "roll_deg_mean": 0.0
+    },
+    "walking_segment": {
+      "n_frames": 0,
+      "fraction_of_clip": 0.0
     },
     "expression": {
       "head": {

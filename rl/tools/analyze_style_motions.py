@@ -54,6 +54,11 @@ EXPR_JOINTS = {
 MIN_SWING_FRAMES = 3
 MIN_STANCE_FRAMES = 2
 
+# Horizontal root speed above which the body counts as travelling, for the
+# walking-segment posture measurement. 0.02 m/s is well under every clip's mean
+# walking speed (0.074-0.090 m/s) and well above solver noise.
+WALK_SPEED_MIN = 0.02
+
 
 def quat_to_euler(q):
     """wxyz quaternion array (T,4) -> roll, pitch, yaw (T,) each, radians."""
@@ -178,6 +183,29 @@ def analyse(path):
     n_down = contacts.sum(1)
     gait = classify_gait(phases, n_cycles_min, float(n_down.mean()))
 
+    # ---- posture during the WALKING segment only ---------------------------------
+    # A clip-wide mean height is not a posture set-point when the clip contains a
+    # lie-down or a sit: Laidback's base sweeps 50 -> 194 mm because the character
+    # gets up and lies back down, so its 112.8 mm clip mean describes a transition,
+    # not a stance. Restrict to frames where the body is actually translating and at
+    # least two paws are down, which is the only segment a locomotion policy could
+    # be asked to reproduce.
+    speed_xy = np.linalg.norm(vel_w[:, :2], axis=1)
+    walking = (speed_xy > WALK_SPEED_MIN) & (contacts.sum(1) >= 2)
+    if walking.sum() > 5:
+        walk = {
+            "n_frames": int(walking.sum()),
+            "fraction_of_clip": float(walking.mean()),
+            "height_mean_mm": float(1000 * root[walking, 2].mean()),
+            "height_std_mm": float(1000 * root[walking, 2].std()),
+            "pitch_mean_deg": float(np.degrees(pitch[walking].mean())),
+            "pitch_std_deg": float(np.degrees(pitch[walking].std())),
+            "speed_mean_ms": float(speed_xy[walking].mean()),
+            "speed_max_ms": float(speed_xy[walking].max()),
+        }
+    else:
+        walk = {"n_frames": int(walking.sum()), "fraction_of_clip": float(walking.mean())}
+
     # ---- expression --------------------------------------------------------------
     expr = {}
     for group, names in EXPR_JOINTS.items():
@@ -229,6 +257,7 @@ def analyse(path):
             "pitch_deg_mean": float(np.degrees(pitch.mean())),
             "roll_deg_mean": float(np.degrees(roll.mean())),
         },
+        "walking_segment": walk,
         "expression": expr,
     }
 
@@ -355,6 +384,14 @@ def fmt_report(rows):
           f"p2p {r['height_p2p_mm']:.1f} mm  rms {r['height_rms_mm']:.1f} mm")
         w(f"  body attitude pitch [{r['pitch_deg_range'][0]:+.1f},{r['pitch_deg_range'][1]:+.1f}] mean {r['pitch_deg_mean']:+.1f} deg"
           f"   roll [{r['roll_deg_range'][0]:+.1f},{r['roll_deg_range'][1]:+.1f}] mean {r['roll_deg_mean']:+.1f} deg")
+        wk = a["walking_segment"]
+        if "height_mean_mm" in wk:
+            w(f"  WALKING only  {wk['n_frames']} frames ({100*wk['fraction_of_clip']:.0f}% of clip)  "
+              f"height {wk['height_mean_mm']:.1f} +-{wk['height_std_mm']:.1f} mm  "
+              f"pitch {wk['pitch_mean_deg']:+.1f} +-{wk['pitch_std_deg']:.1f} deg  "
+              f"speed {wk['speed_mean_ms']:.3f} m/s")
+        else:
+            w(f"  WALKING only  {wk['n_frames']} frames - too few to characterise")
         for grp, e in a["expression"].items():
             w(f"  {grp:12s}  p2p " + " ".join(f"{v:.2f}" for v in e["peak_to_peak_rad"])
               + f" rad   rms rate {e['rms_rate_rad_s']:.2f} rad/s")
