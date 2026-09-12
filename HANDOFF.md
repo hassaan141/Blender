@@ -75,18 +75,45 @@ Needs: Isaac Lab at `~/robotics/IsaacLab` (Isaac Sim 4.5.0). Everything else the
 locomotion work touches — the v4 URDF, collision hulls, the v4 USD, the Stage-3
 motions — is tracked in git.
 
-### The path trap
+### The path trap — does NOT affect Task 1
 
-**28 pre-existing files hardcode `/home/hassaan/Bingo/Blender`** (`stage4/*`, most of
-`rl/tools/*`, `run_clip.sh`). If the checkout is anywhere else they fail with
-confusing "file not found" errors:
+28 pre-existing files hardcode `/home/hassaan/Bingo/Blender`. **None of them is on the
+Task-1 path**, so the repo can live anywhere and you do not need root:
 
 ```sh
-sudo mkdir -p /home/hassaan/Bingo
-sudo ln -s "$(pwd)" /home/hassaan/Bingo/Blender
+grep -rn "/home/hassaan" rl/bingo_rl/bingo_rl/   # 0 hits - the RL package is clean
+grep -n  "/home/hassaan" rl/tools/verify_locomotion_api.py \
+                         rl/tools/train_velocity.py \
+                         rl/tools/play_velocity.py \
+                         rl/tools/eval_velocity.py   # 0 hits
 ```
 
-Everything added on this branch uses relative paths and does not care.
+Every asset the package needs is resolved relative to the source file
+(`Path(__file__).resolve().parents[N]`), and `bingo_rl` imports nothing from
+`stage2/` or `stage4/`. The hardcoded files are all Stage-2/Stage-4 animation-pipeline
+tools (`stage4/*`, `stage2/run_all.sh`, `run_clip.sh`, `rl/tools/replay_v4.py`,
+`track_v4_physics.py`, …) which Task 1 never invokes.
+
+**If you later need one of those tools** and cannot `sudo`, rewrite the paths in place
+rather than symlinking:
+
+```sh
+grep -rl "/home/hassaan/Bingo/Blender" --include=*.py --include=*.sh . \
+  | xargs sed -i "s#/home/hassaan/Bingo/Blender#$(pwd)#g"
+```
+
+Keep that out of commits unless the whole team moves — `git update-index
+--skip-worktree <file>` per file, or just `git checkout -- .` when you are done.
+
+One caveat: this was established by reading the code, not by importing it (the branch
+was authored without Isaac Lab). If an import does fail on a missing path, that is new
+information — record it rather than assuming the analysis above was right.
+
+Two USD paths *are* referenced by strings the package builds at import time —
+`URDF/bingo_urdf_rev_1/...` and `URDF/bingo_urdf_rev_3/...`, the latter gitignored and
+absent from a fresh clone. They are only strings in a dataclass and are never opened
+unless you spawn a rev_1/rev_3 task. The locomotion tasks spawn the v4 USD
+(`rl/v4_usd/bingo_v4.usd`), which is tracked.
 
 ---
 
