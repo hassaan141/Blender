@@ -1,227 +1,279 @@
-# Handoff — picking this up on a machine with compute
+# Handoff — Bingo free locomotion (Task 1), then expressive locomotion (Task 2)
 
-Read this first if you are a fresh Claude session, or a human setting one up.
-
-Two branches of work were built in an environment with **no GPU, no Isaac Sim, no
-Isaac Lab and no Blender**. Everything that could be verified without them was
-verified and the numbers are in the repo; everything that could not is labelled
-`NOT RUN` rather than assumed. This file says exactly which is which, and what to do
-first.
+**Branch:** `claude/bingo-locomotion-rl`
+**Read this first.** If you are a fresh Claude session, this file plus
+`docs/locomotion/TASK1_DESIGN.md` is your context. Do not re-derive it.
 
 ---
 
-## 1. Getting it onto the box
+## 1. What we are trying to do
 
-Nothing needs copying by hand. It is all in git.
+Bingo is an expressive 21-DOF quadruped. The existing Stage 1–5 pipeline turns
+Ashley's authored Blender animation into physically feasible robot motion. That
+pipeline **works and is not being changed**.
 
-```sh
-# if the repo is not there yet
-git clone https://github.com/hassaan141/Blender.git
-cd Blender
+This branch is a **separate line of work**: teach Bingo to actually *locomote* under
+command, rather than replay authored performances.
 
-# if it is already there
-git fetch origin
-
-git branch -a | grep claude/
+```
+Task 1   command [vx, vy, yaw_rate] -> RL policy -> 12 leg joint targets -> physics
+Task 2A  + gait/posture parameters (gait frequency, swing height, body height/pitch)
+Task 2B  + personality/style conditioning
 ```
 
-| branch | what is on it |
+This is **not imitation learning**. No personality clip is used as a training
+reference for Task 1.
+
+### Success for Task 1
+
+Bingo is **actually driven by the velocity command** — forward, backward, lateral,
+turn-in-place, start/stop — while staying upright and not saturating its actuators.
+
+Surviving is not success. Oscillating around one pose is not success. A policy that
+marches on the spot scores a *perfect* velocity-tracking reward, because its base
+velocity is zero; that is precisely why `rl/tools/eval_velocity.py` exists and applies
+seven explicit pass/fail gates instead of reporting episode return.
+
+---
+
+## 2. Current state — read this before assuming anything works
+
+Everything on this branch was written in an environment with **no GPU, no Isaac Sim,
+no Isaac Lab**. So:
+
+| | |
 |---|---|
-| `claude/bingo-locomotion-rl` | Task 1 command-conditioned locomotion env + tools, Task 2B data audit |
-| `claude/bingo-web-simulator` | browser simulator: MuJoCo physics twin, render rig, skills, HUD |
+| environment code | written, never executed |
+| API compatibility | **unverified** — checked statically only |
+| training | **never run** |
+| trained policy | **does not exist** (no `.onnx`, no checkpoint anywhere) |
+| Task 2 | not started; blocked on data, see §6 |
 
-They are independent and both branch off `main`. Check out whichever you want to work
-on. The clone is ~230 MB and includes every asset the tools need — the v4 URDF, the
-collision hulls, the Stage-3/4 motions and the v4 USD are all tracked.
+What *was* verified, on CPU, and can be trusted:
 
-### The one thing that will bite you
+- The v4 joint limits, the validated standing pose, and the per-joint action scales —
+  all measured from the URDF and the real collision hulls.
+- The Task-2B motion audit (`rl/tools/analyze_style_motions.py`), run on all nine
+  Stage-3 clips.
+- The eval battery's metric maths (`rl/tools/test_eval_velocity_metrics.py`,
+  4 tests, `python3` only).
 
-**28 pre-existing files hardcode `/home/hassaan/Bingo/Blender`** — `run_clip.sh`, all
-of `stage4/`, most of `rl/tools/`. If the checkout lives anywhere else they break with
-confusing "file not found" errors.
-
-```sh
-# check
-grep -rl "/home/hassaan" --include=*.py --include=*.sh . | wc -l    # 28
-
-# cheapest fix: make the old path real
-sudo mkdir -p /home/hassaan/Bingo
-sudo ln -s /actual/path/to/Blender /home/hassaan/Bingo/Blender
-```
-
-Everything added on these two branches uses relative paths and does not care where the
-repo lives.
-
-### Not in the clone
-
-`.gitignore` excludes `blend/`, `raw/`, `output/`, `bingo_urdf_rev_3/`, `*.stp` and the
-NVIDIA residential assets. None of it is needed for either branch. You also need,
-separately:
-
-- **Isaac Lab** at `~/robotics/IsaacLab` (Isaac Sim 4.5.0) — for the locomotion branch
-- **Blender 5.2** at `~/Bingo/local/blender-5.2.0-linux-x64/blender` — only for the
-  Stage 1-5 animation pipeline, which neither branch touches
-- **Node 20+** — only for the simulator branch
+**Nothing else has ever run.** Treat the env as a well-argued draft, not as working
+code.
 
 ---
 
-## 2. `claude/bingo-locomotion-rl` — run this first
+## 3. Setup
 
-The Task-1 environment exists and has **never been executed**. Not trained, not even
-API-checked, because that needs Isaac Lab. There is no `.onnx` anywhere in the repo.
+```sh
+git clone https://github.com/hassaan141/Blender.git   # or: git fetch origin
+cd Blender
+git checkout claude/bingo-locomotion-rl
+```
 
-### Step 1 — verify the API before anything else
+Needs: Isaac Lab at `~/robotics/IsaacLab` (Isaac Sim 4.5.0). Everything else the
+locomotion work touches — the v4 URDF, collision hulls, the v4 USD, the Stage-3
+motions — is tracked in git.
 
-The env was written against Isaac Lab's API without being able to import it. Every
-assumption is checked by one script:
+### The path trap
+
+**28 pre-existing files hardcode `/home/hassaan/Bingo/Blender`** (`stage4/*`, most of
+`rl/tools/*`, `run_clip.sh`). If the checkout is anywhere else they fail with
+confusing "file not found" errors:
+
+```sh
+sudo mkdir -p /home/hassaan/Bingo
+sudo ln -s "$(pwd)" /home/hassaan/Bingo/Blender
+```
+
+Everything added on this branch uses relative paths and does not care.
+
+---
+
+## 4. The work, in order
+
+### Step 1 — verify the API. Do this before anything else.
+
+The env was written against Isaac Lab's API without being able to import it once.
 
 ```sh
 cd ~/robotics/IsaacLab
-./isaaclab.sh -p <repo>/rl/tools/verify_locomotion_api.py --headless
+./isaaclab.sh -p ~/Bingo/Blender/rl/tools/verify_locomotion_api.py --headless
 ```
 
-It exits non-zero and names the broken assumption. A static pre-check already narrowed
-the risk: **56 of 72 Isaac Lab names used are corroborated** by Bingo code that has
-already run on your machine; 16 are not. Three of those matter
-(`docs/locomotion/TASK1_DESIGN.md`, "What is actually unverified"):
+It exits non-zero and names the broken assumption. **If it fails, fix the config, not
+the check** — the checks encode what `docs/locomotion/TASK1_DESIGN.md` assumes.
 
-| assumption | fallback if wrong |
+A static pre-pass already narrowed the risk (`docs/locomotion/API_CORROBORATION.txt`):
+**56 of 72** Isaac Lab names used are corroborated by Bingo code that already runs on
+this machine. Of the 16 that are not, three matter:
+
+| assumption | if wrong, fall back to |
 |---|---|
-| `actions.joint_pos.scale` accepts a **dict** | one scale of 0.125 (SY's headroom) |
-| `actions.joint_pos.use_default_offset` exists | set the offset in a custom action term |
-| `mdp.UniformVelocityCommandCfg.class_type` is subclassable | stock command + an event term for zero/turn-in-place |
+| `actions.joint_pos.scale` accepts a **dict** | a single scale of **0.125** (SY's headroom); costs SP/knee authority |
+| `actions.joint_pos.use_default_offset` exists | set the stance offset in a custom action term |
+| `mdp.UniformVelocityCommandCfg.class_type` is subclassable | stock uniform command + an event term that injects zero / turn-in-place |
 
-Five more (`OnPolicyRunner`, `RslRlVecEnvWrapper`, `parse_env_cfg`,
-`load_cfg_from_registry`, `dump_yaml`) have **no corroboration at all**, because
-`rl/README.md` points at `rl/bingo_rl/scripts/train.py` and that file is not on disk.
-They fail loudly at import; copy the argument handling from Isaac Lab's own bundled
-`scripts/reinforcement_learning/rsl_rl/train.py` if they differ.
+Five more have **no corroboration at all** — `OnPolicyRunner`, `RslRlVecEnvWrapper`,
+`parse_env_cfg`, `load_cfg_from_registry`, `dump_yaml` — because `rl/README.md` points
+at `rl/bingo_rl/scripts/train.py` and that file is not on disk. They fail loudly at
+import. If they differ, copy the argument handling from Isaac Lab's own bundled
+`scripts/reinforcement_learning/rsl_rl/train.py`, which is guaranteed to match.
 
 ### Step 2 — the stance gate
 
 ```sh
-./isaaclab.sh -p <repo>/rl/tools/play_velocity.py \
+./isaaclab.sh -p ~/Bingo/Blender/rl/tools/play_velocity.py \
     --task Bingo-Velocity-StandTest-v4-Play-v0 --checkpoint none --num_envs 4
 ```
 
-Action scale is 0, so the robot can only hold `STAND_SOLVED`. If it cannot stand, that
-is not a reward problem and training will not fix it.
+Action scale is 0, so Bingo can only hold `STAND_SOLVED`. If it cannot stand here,
+that is not a reward problem and no amount of PPO will fix it.
 
 ### Step 3 — train the curriculum
 
-Eleven cumulative stages, `Bingo-Velocity-Flat-v4-S1-v0` … `-S11-v0`. Obs and action
-shapes are identical across all of them, so each warm-starts from the last.
+Eleven cumulative stages, `Bingo-Velocity-Flat-v4-S1-v0` … `-S11-v0`. Observation and
+action shapes are identical across all of them by construction, so each warm-starts
+from the previous checkpoint.
+
+```
+S1  forward only, nominal physics      S7   observation noise
+S2  + stand (exact zero command)       S8   + friction variation
+S3  + wider velocity range             S9   + mass variation
+S4  + turning                          S10  + reset-state variation
+S5  + reverse / lateral                S11  + pushes
+S6  + start/stop transitions
+```
 
 ```sh
-./isaaclab.sh -p <repo>/rl/tools/train_velocity.py \
+./isaaclab.sh -p ~/Bingo/Blender/rl/tools/train_velocity.py \
     --task Bingo-Velocity-Flat-v4-S1-v0 --num_envs 4096 --headless \
     --kit_args "--/rtx/verifyDriverVersion/enabled=false --no-window"
+
+./isaaclab.sh -p ~/Bingo/Blender/rl/tools/train_velocity.py \
+    --task Bingo-Velocity-Flat-v4-S2-v0 --resume_from <S1 ckpt>.pt --headless
 ```
 
-Do not jump to S11. Aggressive randomisation before a gait exists is how these runs
-fail, and `improved_walking_cfg.py` records that lesson from this project's own history.
+**Do not jump to S11.** Aggressive randomisation before a gait exists is how these
+runs fail, and `improved_walking_cfg.py` records that lesson from this project's own
+history (v3 dragged on three legs; v6 parked one foot as a static prop).
 
-### Step 4 — the completion gate
+### Step 4 — evaluate against the gates
 
 ```sh
-./isaaclab.sh -p <repo>/rl/tools/eval_velocity.py --checkpoint <ckpt>.pt --headless \
-    --report docs/locomotion/EVAL_S<n>.txt --video
+./isaaclab.sh -p ~/Bingo/Blender/rl/tools/eval_velocity.py \
+    --checkpoint <ckpt>.pt --headless --video \
+    --report docs/locomotion/EVAL_S<n>.txt --out docs/locomotion/eval_s<n>.json
 ```
 
-14 fixed command segments, seven pass/fail gates. **Task 1 is complete only when Bingo
-is actually driven by the command** — a policy that survives while marching on the spot
-scores a perfect velocity-tracking reward and fails these gates by design.
-
-### Two things already found and worked around
-
-- `BINGO_V4_CFG.init_state` still carries the **rev_3 pose**, which is not a valid v4
-  stance: measured against the real hulls it puts one paw 207 mm in front of the base
-  while another is at 24 mm, and the base origin ends up outside the support polygon.
-  The locomotion env overrides it locally with `STAND_SOLVED`. `bingo_v4.py` is
-  deliberately untouched — Stage 5 depends on it and RSI overwrites the init state
-  there anyway.
-- Action scale is **per joint** (SY 0.125 / SP 0.195 / knee 0.170), not Stage 5's
-  single 0.3, which would ask SY for 0.90 rad against 0.378 of headroom.
-
-### Task 2 is blocked on data, not code
-
-`docs/locomotion/STYLE_DATA_AUDIT.txt`: of the six personality clips, only Deadpan and
-Laidback are physically plausible walking clips, and during walking the between-clip
-body-height difference (34.7 mm) is **smaller than the within-clip standard deviation**
-of either (±28.9 and ±44.3 mm). Cheeky averages 1.05 feet down at Froude 6.2 — authored
-animation, not locomotion.
-
-Personality *gait* transfer is not supported by this data. What is separable is
-expressive-channel activity (tail RMS rate spans 5×). The acceptance criteria for the
-extra capture that would unblock real Task 2B are in the design report §4.
+14 fixed command segments; seven gates: drives forward, drives backward, turns in
+place, moves laterally, stands still on zero command, no falls, torque not saturated.
 
 ---
 
-## 3. `claude/bingo-web-simulator`
+## 5. Things already found — do not rediscover these
 
-```sh
-cd bingo-simulator/app
-npm install                  # .npmrc sets legacy-peer-deps for R3F v9 + React 19
-../tools/vendor_runtime.sh   # copies MuJoCo + ONNX Runtime out of node_modules
-npm run dev
-```
+**The default stance in `bingo_v4.py` is wrong for v4.** `init_state.joint_pos` still
+carries the rev_3 pose (`SP ±0.3, knee ±0.6`). Measured against the real collision
+hulls it puts one paw 207 mm in front of the base while another is at 24 mm, paws
+8.14 mm out of level, and the base origin ends up **outside** the support polygon —
+a pose that must topple the instant gravity is applied. `stage4/stand_test.py`
+independently records it jamming `fr_SP_J` into its +1.56 limit.
 
-`app/public/vendor/` is gitignored (~40 MB of WASM); `vendor_runtime.sh` reproduces it
-from the versions `package.json` pins.
+The locomotion env overrides it locally with `STAND_SOLVED` (all four paws at exactly
+−0.180 m, spread 0.00 mm, base height 0.182 m). **`bingo_v4.py` is deliberately NOT
+edited** — it is validated Stage-4 physics and Stage 5 depends on it, and RSI
+overwrites the init state there anyway. Keep it that way.
 
-Already verified in a real browser (Chromium + Playwright): 24.6 Hz control / 123 Hz
-physics, 4/4 paw contacts, 0/21 actuators saturated, gestures executing from their
-Stage-4 references.
+**Action scale is per joint, not a scalar.** SY 0.125 / SP 0.195 / knee 0.170, chosen
+so `|action| = 3` lands exactly on each joint's soft limit given its headroom from the
+stance. Stage 5's single 0.3 would ask SY for 0.90 rad against 0.378 of headroom —
+the SY overrun `MEMORY.md` records as warned-but-unsolved. SY's range is 3.7× smaller
+than SP's; one number cannot serve both.
 
-```sh
-python3 bingo-simulator/tools/validate_isaac_mujoco.py   # 11/11, CPU only
-cd bingo-simulator/app && npm run check:rig              # rig vs MuJoCo, 0.02 mm
-```
+**Observation is 66, and all 21 joints are in it** even though only 12 are actioned —
+so Task 2 can move the expressive joints without an observation-shape change. Layout
+verified by arithmetic against a known-good figure: `improved_walking_cfg.py` records
+58 for the 17-joint rev_3 robot, and 3+3+3+3+**17**+**17**+12 = 58.
 
-### The one gap that needs your GPU
-
-The **Isaac ↔ MuJoCo command-trace comparison never ran.** The MJCF is verified against
-the v4 URDF — the same model Isaac consumes — which catches conversion errors but does
-not prove dynamic agreement. To close it:
-
-```sh
-# on this box, once a policy exists
-./isaaclab.sh -p rl/tools/eval_velocity.py --checkpoint <ckpt>.pt --out isaac_trace.json
-python3 bingo-simulator/tools/validate_isaac_mujoco.py --isaac-trace isaac_trace.json
-```
-
-The tool currently prints `NOT RUN` for that section rather than implying parity.
-
-One encouraging signal in the meantime: MuJoCo's standing joint error is **0.0043 rad**
-against Isaac's own documented `stand_test` figure of **0.0041 rad**.
-
-### Wiring a trained policy in
-
-1. Export the checkpoint to ONNX, put it in `bingo-simulator/app/public/policies/`.
-2. Add an entry to `app/public/policy_manifest.json` under `policies` and set
-   `status` away from `NO_POLICY`.
-3. The loader **refuses** a policy whose manifest or ONNX graph disagrees with the
-   runtime — obs dim 66, action dim 12, 24 Hz, canonical joint order. Do not loosen
-   those checks to make a policy load; fix whichever side is wrong. On a quadruped a
-   silently reordered joint vector does not throw, it just walks wrong.
+**Control rate is 24 Hz** (120 Hz physics, decimation 5), matching Stage 4 and
+Stage 5 — *not* the 50 Hz typical of Isaac Lab locomotion tasks. Any weight inherited
+from a 50 Hz config that scales with control rate (`action_rate_l2` above all) is a
+candidate for re-measurement, not a validated value.
 
 ---
 
-## 4. What to tell a fresh Claude session
+## 6. Task 2 is blocked on data, not on code
 
-Point it at this file, then:
+Before writing any style-conditioned policy, read
+`docs/locomotion/STYLE_DATA_AUDIT.txt`. Measured on all nine Stage-3 clips:
 
-- `MEMORY.md` — the project's own source of truth for Stages 1-5. Authoritative over
-  `README.md`, which still describes the older Path A / Path B layout.
-- `docs/locomotion/TASK1_DESIGN.md` — obs/action/reward spec, and the evidence tags
-  (`[MEASURED]` / `[FROM REPO]` / `[INFERRED]`) saying what is actually known.
-- `bingo-simulator/ARCHITECTURE.md` — the simulator design and the Microduck study.
-- The commit messages on both branches carry the measurements and the reasoning,
-  including the failures. They are long on purpose.
+| clip | verdict | why |
+|---|---|---|
+| deadpan | USABLE | 2.48 feet down, Froude 0.02, 7 cycles |
+| laidback | USABLE | 2.56 feet down, Froude 0.03, 6 cycles |
+| timid | MARGINAL | only 2 cycles on the least-active foot |
+| cheeky | NOT LOCOMOTION | **1.05 feet down** (airborne), peak 3.31 m/s, **Froude 6.20** |
+| enthusiastic | NOT LOCOMOTION | travels 0.045 m net — in place |
+| eccentric | NOT LOCOMOTION | hind paws never touch down (authored sit) |
 
-Two standing rules from this work worth repeating to it:
+And during the *walking* segments specifically, the between-clip body-height
+difference (Deadpan 173.2 vs Laidback 138.5 mm = **34.7 mm**) is **smaller than the
+within-clip standard deviation of either** (±28.9 and ±44.3 mm). Walking speed is
+effectively constant across all six (0.061–0.140 m/s).
 
-1. **Stage-4 status is authoritative.** A Stage-3 animation existing does not make a
-   clip usable. Only Yes/No/What have a real Stage-4 pass.
-2. **Do not fake locomotion.** No animation playback, no root teleportation. If there
-   is no policy, the honest output is that the robot stands still and says so.
+**Personality *gait* transfer is not supported by this data.** Do not synthesise a
+"Cheeky gait" and attribute it to Ashley's animation.
+
+What *is* separable is expressive-channel activity — RMS joint rate spans 5× on the
+tail (cheeky 1.80 → laidback 0.35 rad/s) and 3× on the head. That is the defensible
+version of Task 2B today: style conditioning on head/tail/ear behaviour layered on
+the Task-1 policy.
+
+To unblock real personality-gait work, the capture needs, per personality: a
+straight-line walk ≥5 s at roughly constant speed, all four paws cycling, ≥3 clean
+touchdown-to-touchdown cycles per foot, mean feet-down ≥1.5, peak root speed under
+2.3 m/s (Froude 3). That is spec §B.2 with acceptance criteria attached.
+
+---
+
+## 7. Rules
+
+1. **Do not modify the Stage 1–5 pipeline** — `stage2/`, `stage4/`, `stage5/`,
+   `motions/`, `blend_sources/`, or `bingo_v4.py`. Unless a reproducible physics
+   defect demands it, and then say so explicitly.
+2. **Do not fake locomotion.** No animation playback, no root teleportation, no
+   hand-written gait equations. Walking comes from policy inference or it does not
+   happen yet.
+3. **Stage-4 status is authoritative.** A Stage-3 animation existing does not make a
+   clip usable.
+4. **Report honestly.** If something was not run, say NOT RUN. The value of this
+   branch so far is that its claims are tagged `[MEASURED]` / `[FROM REPO]` /
+   `[INFERRED]`; keep that discipline.
+5. Measure before tuning. Every weight in the reward that differs from stock carries
+   its justification inline — add yours the same way.
+
+## 8. Where things are
+
+```
+rl/bingo_rl/bingo_rl/locomotion/     the environment
+  bingo_velocity_env_cfg.py          cfg + the 11 curriculum stages
+  bingo_velocity_mdp.py              categorical command + Bingo reward terms
+  agents/rsl_rl_ppo_cfg.py           PPO config
+rl/tools/
+  verify_locomotion_api.py           RUN FIRST
+  train_velocity.py  play_velocity.py  eval_velocity.py
+  analyze_style_motions.py           Task 2B audit (CPU)
+  test_eval_velocity_metrics.py      offline tests (CPU)
+docs/locomotion/
+  TASK1_DESIGN.md                    the spec, with evidence tags
+  STYLE_DATA_AUDIT.txt               what the personality clips contain
+  API_CORROBORATION.txt              which API names are corroborated
+  README.md                          run order
+```
+
+Also read `MEMORY.md` — the project's own source of truth for Stages 1–5, and
+authoritative over `README.md`, which still describes an older layout.
+
+The commit messages on this branch carry the measurements and the reasoning,
+including what failed. They are long on purpose.
