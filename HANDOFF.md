@@ -264,6 +264,33 @@ touchdown-to-touchdown cycles per foot, mean feet-down ≥1.5, peak root speed u
 
 ---
 
+## 6A. The operator is on a headless SSH session — they cannot see anything
+
+**There is no display.** No Isaac viewer, no GUI, no window. The person running you
+sees only terminal text unless you produce a file and hand it to them.
+
+This changes how you report:
+
+- **Never** say "watch the viewer", "you should see", or "open the GUI". They can't.
+- Every Isaac Lab command needs `--headless`, and this project's known gotcha:
+  `--kit_args "--/rtx/verifyDriverVersion/enabled=false --no-window"` (`rl/README.md`).
+- **Any visual claim must come with a file.** If you say the gait looks better,
+  render it and send the video. If you say training converged, plot it and send the
+  PNG. A claim with no artefact is not reviewable and should not be made.
+- Use the tools' own output flags rather than inventing new ones:
+  `eval_velocity.py --video --report <txt> --out <json>` already writes all three.
+- For plots, matplotlib with the `Agg` backend works with no display
+  (`rl/tools/plot_stance_and_action_scale.py` is the existing pattern).
+- MEMORY.md: use **Blender EEVEE** for headless renders, and note the H.264 encoder
+  may be missing — if `ffmpeg` cannot write mp4, fall back to writing PNG frames and
+  say so rather than silently producing nothing.
+- Surface artefacts explicitly. Print the absolute path of every file you produce, so
+  they can `scp` it, and attach it if your tooling can.
+
+A good report after a training run looks like: the eval table as text, the seven
+gate results, **and** the rendered video plus a reward/tracking plot — not a
+description of what you saw.
+
 ## 7. Rules
 
 1. **Do not modify the Stage 1–5 pipeline** — `stage2/`, `stage4/`, `stage5/`,
