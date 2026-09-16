@@ -226,9 +226,9 @@ class BingoWalkRefEnv(BingoTrackV4Env):
             + 0.20 * torch.exp(-8.0 * vx_err_sq)
             + 0.10 * upright
             - 0.04 * torque_pen
-            - 0.02 * act_rate_pen
+            - 0.06 * act_rate_pen
             - 0.01 * residual_pen
-            - 0.03 * accel_pen
+            - 0.30 * accel_pen
         )
         return r
 

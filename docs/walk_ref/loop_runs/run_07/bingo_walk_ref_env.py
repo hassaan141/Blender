@@ -133,7 +133,15 @@ class BingoWalkRefEnv(BingoTrackV4Env):
         if due.numel() > 0:
             self._resample_command(due)
 
-        speed_ratio = 1.4 * self._cmd_vx / self._nominal_vx
+        # Slow the reference during forward-speed peaks and accelerate it during
+        # troughs. Standing still freezes phase; commanded speed remains the
+        # policy observation and reward target.
+        root_quat = self.robot.data.body_quat_w[:, self.ref_body_index]
+        root_lin_w = self.robot.data.body_lin_vel_w[:, self.ref_body_index]
+        measured_vx = quat_rotate_inverse(root_quat, root_lin_w)[:, 0]
+        phase_vx = torch.clamp(self._cmd_vx + 0.5 * (self._cmd_vx - measured_vx), min=0.0)
+        phase_vx = torch.where(self._cmd_vx > 0.0, phase_vx, 0.0)
+        speed_ratio = 1.4 * phase_vx / self._nominal_vx
         self._clip_time = torch.remainder(
             self._clip_time + self.step_dt * speed_ratio, self.motion_duration
         )

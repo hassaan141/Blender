@@ -1,0 +1,25 @@
+{
+  "parent_run": "run_05",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_05/policy.pt",
+  "hypothesis": "Negative speed feedback in phase-rate mapping slows the reference during peaks and speeds it during troughs, reducing velocity variation without the underspeed caused by stronger smoothness penalties.",
+  "changes": {
+    "phase_speed_feedback_gain": {
+      "before": 0.0,
+      "after": 0.5
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "peak-speed guard failed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_07/policy.pt"
+}

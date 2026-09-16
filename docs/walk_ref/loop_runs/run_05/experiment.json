@@ -1,0 +1,29 @@
+{
+  "parent_run": "run_03",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_03/policy.pt",
+  "hypothesis": "Interpolate phase rate between the retained 1.25 and rejected 1.5 while using alpha 0.2: raise mean speed without crossing the peak-speed guard.",
+  "changes": {
+    "phase_rate_multiplier": {
+      "before": 1.25,
+      "after": 1.4
+    },
+    "residual_ema_alpha": {
+      "before": 0.3,
+      "after": 0.2
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "KEEP",
+  "reason": "priority metric improved; survival, peak, acceleration and reference guards passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_05/policy.pt"
+}

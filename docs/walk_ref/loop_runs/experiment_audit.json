@@ -1,0 +1,64 @@
+{
+  "experiment_count": 8,
+  "max_experiments": 8,
+  "all_runs_complete": true,
+  "retained_sources_match_run_05": true,
+  "experiments": [
+    {
+      "run": "run_01",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "KEEP",
+      "checkpoint_sha256": "d49d9257c3383a83a0c33c7d8a05f623dbc9e7256cff70d618856b2b731c92fd"
+    },
+    {
+      "run": "run_02",
+      "complete": true,
+      "parameter_changes": 1,
+      "decision": "REJECT",
+      "checkpoint_sha256": "15fc6bbb202712042230388ac661048f564903051c2b7242b861b857c9474125"
+    },
+    {
+      "run": "run_03",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "KEEP",
+      "checkpoint_sha256": "cc412fd1cb381c2c7e7be0d0ae948b3837b98cd852fc0f2a627902a95b3c5459"
+    },
+    {
+      "run": "run_04",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "REJECT",
+      "checkpoint_sha256": "bb6402cb9a4707f2b510ce5e5629948edfd7605538d983a0be8a5862b6de1f26"
+    },
+    {
+      "run": "run_05",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "KEEP",
+      "checkpoint_sha256": "2d6b2c1ecb21ac8720857ba6cf877088bb63ba1016a58e78164fb6d389fdc052"
+    },
+    {
+      "run": "run_06",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "REJECT",
+      "checkpoint_sha256": "b60af160f61bc58234ab53ea6627ca5c1961106b00860790669026d6a9f89728"
+    },
+    {
+      "run": "run_07",
+      "complete": true,
+      "parameter_changes": 1,
+      "decision": "REJECT",
+      "checkpoint_sha256": "5e72b2cac1fcf949b75650d11c7e6a62c56015b6f362bcab17aff81c2702fb1c"
+    },
+    {
+      "run": "run_08",
+      "complete": true,
+      "parameter_changes": 2,
+      "decision": "REJECT",
+      "checkpoint_sha256": "1a5a3caf30c249aaecd88f36a9739b292c7ad63b6f49152e05bc11f93aa2036b"
+    }
+  ]
+}

@@ -219,7 +219,7 @@ class BingoWalkRefEnv(BingoTrackV4Env):
         self._prev_qdot = cur_dofv.detach().clone()
 
         r = (
-            0.35 * torch.exp(-2.0 * pose_sq)
+            0.20 * torch.exp(-2.0 * pose_sq)
             + 0.05 * torch.exp(-0.1 * vel_sq)
             + 0.15 * torch.exp(-40.0 * ee_sq)
             + 0.10 * contact_match
@@ -228,7 +228,7 @@ class BingoWalkRefEnv(BingoTrackV4Env):
             - 0.04 * torque_pen
             - 0.02 * act_rate_pen
             - 0.01 * residual_pen
-            - 0.03 * accel_pen
+            - 0.15 * accel_pen
         )
         return r
 

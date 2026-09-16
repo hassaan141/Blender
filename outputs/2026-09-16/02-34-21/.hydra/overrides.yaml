@@ -1,0 +1,3 @@
+- env.vx_range=[0.2,0.3]
+- env.stand_prob=0.0
+- agent.agent.experiment.directory=walk_loop/run_08

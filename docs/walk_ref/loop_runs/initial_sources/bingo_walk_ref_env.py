@@ -133,7 +133,7 @@ class BingoWalkRefEnv(BingoTrackV4Env):
         if due.numel() > 0:
             self._resample_command(due)
 
-        speed_ratio = 1.4 * self._cmd_vx / self._nominal_vx
+        speed_ratio = self._cmd_vx / self._nominal_vx
         self._clip_time = torch.remainder(
             self._clip_time + self.step_dt * speed_ratio, self.motion_duration
         )

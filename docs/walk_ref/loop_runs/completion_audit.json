@@ -1,0 +1,41 @@
+{
+  "bounded_loop_complete": true,
+  "stop_reason": "maximum 8 experiments reached; best rendered; no further experiments launched",
+  "experiment_count": 8,
+  "best_run": "run_05",
+  "rendered_metrics_identical_to_selected": true,
+  "video_probe": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1",
+        "nb_frames": "1463"
+      }
+    ],
+    "format": {
+      "duration": "60.959000"
+    }
+  },
+  "existing_evaluator_unchanged": true,
+  "protected_files_checked": 217,
+  "protected_files_changed": [],
+  "only_tracked_source_changes": [
+    "rl/bingo_rl/bingo_rl/walk_ref/bingo_walk_ref_env.py",
+    "rl/bingo_rl/bingo_rl/walk_ref/bingo_walk_ref_env_cfg.py"
+  ],
+  "selected_source_snapshots_match_current": true,
+  "visual_review": "Compared baseline and retained render using six full-horizon frames and 12 consecutive gait samples over three seconds. The crouched silhouette, alternating flexed-leg stepping, and expressive head/tail motion remain recognizable. Faster cadence is intentional. No collapse or gross gait replacement appears in the sampled frames; the acceleration metric still worsens.",
+  "target_results": {
+    "survive_60s": true,
+    "mean_vx_0_20_to_0_30": true,
+    "vx_std_below_0_06": false,
+    "max_vx_below_0_40": true,
+    "joint_accel_reduced_vs_baseline": false,
+    "residual_action_rate_reduced_vs_baseline": true,
+    "reference_gait_preserved_in_sampled_visual_review": true,
+    "torque_saturation_reduced": false
+  },
+  "all_numeric_targets_met": false
+}

@@ -1,0 +1,29 @@
+{
+  "parent_run": "run_03",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_03/policy.pt",
+  "hypothesis": "Extend the successful phase-rate/filter pairing to bring mean speed into the target band while damping faster residual variation.",
+  "changes": {
+    "phase_rate_multiplier": {
+      "before": 1.25,
+      "after": 1.5
+    },
+    "residual_ema_alpha": {
+      "before": 0.3,
+      "after": 0.2
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "peak-speed guard failed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_04/policy.pt"
+}

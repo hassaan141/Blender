@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=1 /pub0/muhammadf/miniconda3/envs/isaaclab/bin/python rl/tools/eval_walk_loop.py --headless --no_video --checkpoint /pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_07/policy.pt --out_dir /pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_07 --kit_args '--/rtx/verifyDriverVersion/enabled=false --no-window'

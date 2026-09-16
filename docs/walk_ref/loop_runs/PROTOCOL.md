@@ -1,0 +1,9 @@
+# Bounded optimization protocol
+
+Maximum eight warm-started candidates, one focused hypothesis and at most two related parameter changes per candidate. Use 100 PPO iterations (2400 control steps), 512 environments, seed 42, and the final checkpoint, selected before evaluation. Every candidate starts from the retained best checkpoint and configuration. Rejected overrides are discarded.
+
+Evaluate with the existing `rl/tools/eval_walk_loop.py`: one robot, fixed 0.25 m/s command, 60 seconds after one second settling, deterministic policy. The baseline recheck exactly reproduced the supplied baseline metrics. No evaluator metric definitions or physics parameters are changed.
+
+Selection follows the requested priorities: no survival regression; while speed gates fail, reduce velocity RMSE about 0.25 m/s (sqrt((mean-0.25)^2 + std^2)), with no peak-speed regression exceeding 0.02 m/s. Once mean/std gates pass, keep them passed and prioritize removing peak excess above 0.40, then lower acceleration and residual rate, then torque saturation. Reference-error RMS may not exceed 125% of the original baseline (a quantitative guard; final video inspection is also required). Large shaking regressions (>20% acceleration) are rejected. All comparisons and reasons are recorded even if no candidate reaches the targets.
+
+Training logs stay in run directories. Each run records its parent, hypothesis, parameter delta, training command, evaluation command, metrics and decision. The final retained policy is rendered using the same evaluator and the rendered metrics are checked against the retained result. The run limit is a stopping condition, not a claim that all metric targets were met.

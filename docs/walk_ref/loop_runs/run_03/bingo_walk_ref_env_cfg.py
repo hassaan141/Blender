@@ -79,7 +79,7 @@ NOMINAL_VX = 0.660
 # MUST be replicated exactly by any external runtime consuming the ONNX export
 # (see manifest's "residual_filter" field) since the graph itself is stateless and
 # only emits the raw pre-filter action.
-RESIDUAL_EMA_ALPHA = 0.2
+RESIDUAL_EMA_ALPHA = 0.3
 
 
 @configclass

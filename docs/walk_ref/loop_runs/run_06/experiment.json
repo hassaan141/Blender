@@ -1,0 +1,29 @@
+{
+  "parent_run": "run_05",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_05/policy.pt",
+  "hypothesis": "Mean speed and peak are now within target; stronger joint-acceleration and action-rate penalties should suppress shaking and the remaining speed variation.",
+  "changes": {
+    "joint_acceleration_penalty": {
+      "before": 0.03,
+      "after": 0.3
+    },
+    "action_rate_penalty": {
+      "before": 0.02,
+      "after": 0.06
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "velocity RMSE did not improve",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_06/policy.pt"
+}

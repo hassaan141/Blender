@@ -1,0 +1,30 @@
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-WalkRef-v4-Play-v0  checkpoint=/pub0/muhammadf/Blender/logs/skrl/bingo_walk_ref_smooth/stage_C_smooth/checkpoints/best_agent.pt
+command: vx=0.250 m/s  vy=0.000  yaw=0.000  (vy/yaw have no effect: BingoWalkRefEnv only accepts a forward-speed command.)
+duration=60.0s  settle=1.0s  steps_recorded=1440  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.109  std=0.111  max=0.505  (cmd=0.250)
+base roll RMS: 5.060 deg   base pitch RMS: 3.211 deg
+joint accel RMS: 12.237 rad/s^2
+residual action-rate RMS: 0.0201 rad/step
+reference tracking error (rad): mean=0.0630  rms=0.0772  max=0.2506
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J      14.7%
+  fl_knee       9.9%
+  fr_SY_J       0.0%
+  fr_SP_J       2.3%
+  fr_knee       5.1%
+  bl_SY_J       0.0%
+  bl_SP_J       0.8%
+  bl_knee       5.8%
+  br_SY_J       0.0%
+  br_SP_J       1.6%
+  br_knee       7.2%
+====================================================================================================

@@ -1,0 +1,29 @@
+{
+  "parent_run": "run_01",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_01/policy.pt",
+  "hypothesis": "Faster reference timing raised speed but increased acceleration; pair 1.25 phase rate with stronger residual filtering to retain the speed benefit while suppressing shaking.",
+  "changes": {
+    "phase_rate_multiplier": {
+      "before": 1.0,
+      "after": 1.25
+    },
+    "residual_ema_alpha": {
+      "before": 0.5,
+      "after": 0.3
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "KEEP",
+  "reason": "priority metric improved; survival, peak, acceleration and reference guards passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_03/policy.pt"
+}

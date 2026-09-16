@@ -1,0 +1,35 @@
+{
+  "hypothesis": "Target-speed-only curriculum reduces under-speed and bursts by removing fast walking and standing from this short warm start.",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/bingo_walk_ref_smooth/stage_C_smooth/checkpoints/best_agent.pt",
+  "changes": {
+    "vx_range": {
+      "before": [
+        0,
+        0.858
+      ],
+      "after": [
+        0.2,
+        0.3
+      ]
+    },
+    "stand_prob": {
+      "before": 0.35,
+      "after": 0.0
+    }
+  },
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "parent_run": "baseline",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_2400.pt",
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "decision": "KEEP",
+  "reason": "lower velocity RMSE; survival, peak, acceleration and reference guards passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_01/policy.pt"
+}

@@ -1,0 +1,22 @@
+{
+  "run": "run_05",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_05/policy.pt",
+  "runtime_sources": [
+    "run_05/bingo_walk_ref_env.py",
+    "run_05/bingo_walk_ref_env_cfg.py"
+  ],
+  "runtime_parameters": {
+    "phase_rate_multiplier": 1.4,
+    "residual_ema_alpha": 0.2,
+    "residual_scale": 0.3
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "experiments_completed": 8,
+  "status": "complete: eight experiments; best restored and rendered; full metric target not reached",
+  "render": "best_render/eval.mp4",
+  "metrics": "best_render/metrics.json",
+  "completion_audit": "completion_audit.json"
+}
