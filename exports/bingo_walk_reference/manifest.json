@@ -1,0 +1,147 @@
+{
+  "provenance": {
+    "checkpoint": "/pub0/muhammadf/IsaacLab/logs/skrl/bingo_track_deadpan/2026-09-15_16-43-56_ppo_torch/checkpoints/agent_12000.pt",
+    "task": "Bingo-WalkRef-v4-Play-v0",
+    "exported_utc": "2026-09-15T21:05:08.848821+00:00",
+    "repo_commit": "3db4a7b9f017e992fd8695afa53541c827113e7e",
+    "reference_clip": "motions/bingo_walk_v4_upright_grounded.npz"
+  },
+  "control": {
+    "physics_hz": 120,
+    "decimation": 5,
+    "control_hz": 24
+  },
+  "observation": {
+    "total_dim": 70,
+    "order": [
+      {
+        "name": "leg_dof_pos",
+        "dim": 12,
+        "note": "joint_order below, radians"
+      },
+      {
+        "name": "leg_dof_vel",
+        "dim": 12,
+        "note": "joint_order below, rad/s"
+      },
+      {
+        "name": "expr_dof_pos",
+        "dim": 9,
+        "note": "head/tail/ear, radians (feed-forward only, informational)"
+      },
+      {
+        "name": "expr_dof_vel",
+        "dim": 9,
+        "note": "head/tail/ear, rad/s"
+      },
+      {
+        "name": "root_height",
+        "dim": 1
+      },
+      {
+        "name": "root_quat_tangent_norm",
+        "dim": 6
+      },
+      {
+        "name": "root_lin_vel_body",
+        "dim": 3
+      },
+      {
+        "name": "root_ang_vel_body",
+        "dim": 3
+      },
+      {
+        "name": "foot_tips_local",
+        "dim": 12,
+        "note": "4 feet x xyz, root frame"
+      },
+      {
+        "name": "phase_sin_cos",
+        "dim": 2
+      },
+      {
+        "name": "commanded_vx_normalized",
+        "dim": 1,
+        "note": "cmd_vx / NOMINAL_VX"
+      }
+    ],
+    "note": "exact per-dim composition is bingo_rl.amp.bingo_amp_env.compute_obs (proprio) + [sin(phase),cos(phase),cmd_vx/NOMINAL_VX]; verify against that function before hand-porting, this listing is descriptive only."
+  },
+  "action": {
+    "dim": 12,
+    "joint_order": [
+      "fl_SY_J",
+      "fl_SP_J",
+      "fl_knee",
+      "fr_SY_J",
+      "fr_SP_J",
+      "fr_knee",
+      "bl_SY_J",
+      "bl_SP_J",
+      "bl_knee",
+      "br_SY_J",
+      "br_SP_J",
+      "br_knee"
+    ],
+    "residual_scale_rad": {
+      "fl_SY_J": 0.30000001192092896,
+      "fl_SP_J": 0.30000001192092896,
+      "fl_knee": 0.30000001192092896,
+      "fr_SY_J": 0.30000001192092896,
+      "fr_SP_J": 0.30000001192092896,
+      "fr_knee": 0.30000001192092896,
+      "bl_SY_J": 0.30000001192092896,
+      "bl_SP_J": 0.30000001192092896,
+      "bl_knee": 0.30000001192092896,
+      "br_SY_J": 0.30000001192092896,
+      "br_SP_J": 0.30000001192092896,
+      "br_knee": 0.30000001192092896
+    },
+    "default_pose_rad": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": -0.30000001192092896,
+      "fl_knee": 0.6000000238418579,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 0.30000001192092896,
+      "fr_knee": -0.6000000238418579,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": -0.30000001192092896,
+      "bl_knee": 0.6000000238418579,
+      "br_SY_J": 0.0,
+      "br_SP_J": -0.30000001192092896,
+      "br_knee": -0.6000000238418579
+    },
+    "note": "q_target[joint] = q_ref(phase)[joint] + residual_scale[joint] * onnx_output[joint]. q_ref(phase) must come from the runtime's own copy of the reference clip (motions/bingo_walk_v4_upright_grounded.npz), NOT from the network. At |cmd_vx| below stand_blend_vx_frac*NOMINAL_VX, blend q_ref toward default_pose_rad (see phase_update_rule below) instead of using the raw cyclic reference -- this is what makes zero command produce standing."
+  },
+  "phase_update_rule": {
+    "nominal_vx_m_s": 0.66,
+    "clip_duration_s": 1.125,
+    "rule": "phase_time_s += control_dt_s * (cmd_vx / nominal_vx_m_s); phase_time_s %= clip_duration_s; phase = phase_time_s / clip_duration_s",
+    "stand_blend": {
+      "stand_blend_vx_frac": 0.3,
+      "rule": "w = clip(|cmd_vx| / (stand_blend_vx_frac*nominal_vx_m_s), 0, 1); q_ref_used = w * q_ref_cyclic(phase) + (1-w) * default_pose_rad"
+    }
+  },
+  "expressive_joints_feedforward": {
+    "note": "head/tail/ear (9 DOF) are NOT policy outputs; feed them q_ref(phase) directly from the reference clip's own head_tail_positions/ear_positions fields, same phase as the legs."
+  },
+  "pd_gains_expected_by_runtime": {
+    "source": "rl/bingo_rl/bingo_rl/bingo_v4.py (BINGO_V4_CFG, Stage 4 validated physics)",
+    "legs": {
+      "Kp": {
+        "SY": 40,
+        "SP": 120,
+        "knee": 120
+      },
+      "effort_limit_Nm": 3.0
+    },
+    "note": "see bingo_v4.py for the full derivation and head/tail/ear gains; this policy assumes exactly these actuator dynamics (IdealPDActuator, first-order-hold reference across the control-decimation window)."
+  },
+  "onnx_verification": {
+    "max_abs_diff_vs_pytorch_random_obs": 4.172325134277344e-07,
+    "passes_1e-4": true,
+    "num_random_obs_tested": 64,
+    "rollout_vx_trace_max_abs_diff_m_s": 0.4647386148571968,
+    "rollout_steps": 96
+  }
+}

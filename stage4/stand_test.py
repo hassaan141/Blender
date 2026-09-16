@@ -10,9 +10,12 @@ the floor for the commanded pose.
   ./isaaclab.sh -p stage4/stand_test.py --headless
 """
 import argparse, sys, os
+from pathlib import Path
 import numpy as np
 
 from isaaclab.app import AppLauncher
+
+REPO = Path(__file__).resolve().parents[1]
 
 p = argparse.ArgumentParser()
 p.add_argument("--seconds", type=float, default=5.0)
@@ -30,6 +33,7 @@ p.add_argument("--fixbase", action="store_true",
                help="pin the root: isolates leg control from base/contact dynamics")
 p.add_argument("--effort", type=float, default=None,
                help="override LEG effort limit (N m) to test whether 3.0 binds")
+p.add_argument("--tag", default="", help="suffix for the output npz (gain-sweep bookkeeping)")
 AppLauncher.add_app_launcher_args(p)
 args, _ = p.parse_known_args()
 app = AppLauncher(args).app
@@ -39,15 +43,14 @@ import isaaclab.sim as sim_utils
 from isaaclab.sim import SimulationCfg, SimulationContext
 from isaaclab.assets import Articulation
 
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/rl/bingo_rl")
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage2")
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage4")
+sys.path.insert(0, str(REPO / "rl/bingo_rl"))
+sys.path.insert(0, str(REPO / "stage2"))
+sys.path.insert(0, str(REPO / "stage4"))
 from bingo_rl.bingo_v4 import BINGO_V4_CFG
 from v4_kinematics import V4Kin, LEGS, axis_rot
 from contact_model import ContactModel, quat_to_R
 
-URDF = ("/home/hassaan/Bingo/Blender/URDF/bingo_urdf v4_w_ear_joints/urdf/"
-        "bingo_urdf_w_ear_joints_physics.urdf")
+URDF = str(REPO / "URDF/bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints_physics.urdf")
 CONTACT_H = 0.005
 
 
@@ -255,8 +258,10 @@ def main():
     ok = all(C.values())
     print(f"[[ STAND_TEST {'PASS' if ok else 'FAIL'}", flush=True)
 
-    os.makedirs("/home/hassaan/Bingo/Blender/stage4/out", exist_ok=True)
-    np.savez("/home/hassaan/Bingo/Blender/stage4/out/stand_test.npz",
+    out_dir = REPO / "stage4/out/gain_sweep"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    suffix = f"_{args.tag}" if args.tag else ""
+    np.savez(str(out_dir / f"stand_test{suffix}.npz"),
              root_pos=RP, root_quat=RQ, q=Q, paw_z=PZ, torque=TQ,
              joint_names=np.array(names), target=want, torso_z=torso_z)
     if not args.headless:

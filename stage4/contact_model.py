@@ -11,9 +11,11 @@ hull of its STL).
 
 Pure numpy; importable from Isaac's python.
 """
+from pathlib import Path
+
 import numpy as np
 
-HULLS_NPZ = "/home/hassaan/Bingo/Blender/stage4/out/collision_hulls.npz"
+HULLS_NPZ = str(Path(__file__).resolve().parent / "out/collision_hulls.npz")
 LEGS = ["fl", "fr", "bl", "br"]
 PAW_LINKS = {l: f"{l}_knee" for l in LEGS}
 

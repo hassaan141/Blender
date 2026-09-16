@@ -17,10 +17,19 @@ for ob in bpy.data.objects:
         if ad and ad.action:
             act = ad.action
             fr = act.frame_range
-            P(f"  action '{act.name}'  frame_range {tuple(round(v,1) for v in fr)}  fcurves {len(act.fcurves)}")
+            if hasattr(act, "fcurves"):
+                fcurves = list(act.fcurves)
+            else:
+                # Blender 5.x layered Action API
+                fcurves = []
+                for layer in act.layers:
+                    for strip in layer.strips:
+                        for cb in strip.channelbags:
+                            fcurves.extend(cb.fcurves)
+            P(f"  action '{act.name}'  frame_range {tuple(round(v,1) for v in fr)}  fcurves {len(fcurves)}")
             # bones that are actually animated
             animated = set()
-            for fc in act.fcurves:
+            for fc in fcurves:
                 dp = fc.data_path
                 if dp.startswith('pose.bones["'):
                     animated.add(dp.split('"')[1])

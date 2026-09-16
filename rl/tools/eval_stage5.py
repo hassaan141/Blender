@@ -15,6 +15,8 @@ directly comparable to stage4/out/timid_v4_stage4.csv.
   ./isaaclab.sh -p rl/tools/eval_stage5.py --headless --checkpoint <ckpt.pt>
 """
 import argparse, os, sys
+from pathlib import Path
+
 import numpy as np
 
 from isaaclab.app import AppLauncher
@@ -23,9 +25,9 @@ p = argparse.ArgumentParser()
 p.add_argument("--task", default="Bingo-Stage5-Timid-Play-v0")
 p.add_argument("--checkpoint", default=None,
                help="skrl checkpoint. Omitted => zero residual (Stage 4 PD-only).")
-p.add_argument("--out", default="/home/hassaan/Bingo/Blender/stage5/out")
+p.add_argument("--out", default=str(Path(__file__).resolve().parents[2] / "stage5" / "out"))
 p.add_argument("--label", default=None)
-p.add_argument("--stage4-csv", default="/home/hassaan/Bingo/Blender/stage4/out/timid_v4_stage4.csv")
+p.add_argument("--stage4-csv", default=str(Path(__file__).resolve().parents[2] / "stage4" / "out" / "timid_v4_stage4.csv"))
 p.add_argument("--ref-vel-init", type=int, default=None,
                help="1 = seed root/joint velocity from the reference, 0 = zeros (Stage 4 exact)")
 p.add_argument("--replicate-physics", type=int, default=None,
@@ -39,9 +41,10 @@ app = AppLauncher(args).app
 import torch
 import gymnasium as gym
 
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/rl/bingo_rl")
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage2")
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage4")
+_REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(_REPO / "rl" / "bingo_rl"))
+sys.path.insert(0, str(_REPO / "stage2"))
+sys.path.insert(0, str(_REPO / "stage4"))
 import bingo_rl  # noqa: F401  registers the tasks
 from contact_model import ContactModel
 from v4_kinematics import LEGS

@@ -34,8 +34,9 @@ from isaaclab.sensors import Camera, CameraCfg
 import isaaclab.utils.math as math_utils
 
 import sys
-sys.path.insert(0, "/pub0/muhammadf/BingoRobotics/bingo_rl")
-from bingo_rl.improved_walking_cfg import BINGO_IMPROVED_CFG
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "rl/bingo_rl"))
+from bingo_rl.bingo_v4 import BINGO_V4_CFG
 
 _p = "/pub0/muhammadf/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/direct/humanoid_amp/motions/motion_loader.py"
 _s = importlib.util.spec_from_file_location("ml", _p)
@@ -51,7 +52,7 @@ def main():
     sim_utils.GroundPlaneCfg().func("/World/ground", sim_utils.GroundPlaneCfg())
     sim_utils.DomeLightCfg(intensity=2500.0).func("/World/light", sim_utils.DomeLightCfg(intensity=2500.0))
 
-    robot = Articulation(BINGO_IMPROVED_CFG.replace(prim_path="/World/Robot"))
+    robot = Articulation(BINGO_V4_CFG.replace(prim_path="/World/Robot"))
 
     cam = Camera(CameraCfg(
         prim_path="/World/cam", height=720, width=1280,

@@ -51,13 +51,30 @@ app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
 # --- everything below must come AFTER the app launch -------------------------
+import importlib.metadata as metadata  # noqa: E402
+
 import gymnasium as gym  # noqa: E402
 from rsl_rl.runners import OnPolicyRunner  # noqa: E402
 
 from isaaclab.utils.io import dump_yaml  # noqa: E402
-from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper  # noqa: E402
+from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg  # noqa: E402
 from isaaclab_tasks.utils import parse_env_cfg  # noqa: E402
 from isaaclab_tasks.utils.parse_cfg import load_cfg_from_registry  # noqa: E402
+
+# The rl/README.md-referenced rl/bingo_rl/scripts/train.py this project's tools were
+# meant to mirror is not on disk (see TASK1_DESIGN.md "MEDIUM" risks / API_CORROBORATION.txt),
+# so isaaclab_rl.rsl_rl.OnPolicyRunner/RslRlVecEnvWrapper/parse_env_cfg/
+# load_cfg_from_registry/dump_yaml were never exercised against the local install
+# before this session. [MEASURED] Confirmed working as imported above. One gap
+# found running this script for the first time: the locally installed rsl-rl-lib
+# (5.0.1) deprecated the flat `policy=RslRlPpoActorCriticCfg(...)` runner field in
+# favour of separate `actor`/`critic` RslRlMLPModelCfg objects; without translating
+# the old-style cfg, rsl_rl.algorithms.ppo.construct_algorithm crashes with
+# `KeyError: 'class_name'` because `actor`/`critic` are left as MISSING sentinels.
+# Isaac Lab ships a compat shim for exactly this - it's what its own bundled
+# scripts/reinforcement_learning/rsl_rl/train.py calls - so use it here too rather
+# than hand-rolling the actor/critic translation.
+_INSTALLED_RSL_RL_VERSION = metadata.version("rsl-rl-lib")
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "bingo_rl"))
 import bingo_rl  # noqa: F401,E402  (registers the Bingo tasks)
@@ -74,6 +91,18 @@ def main():
         agent_cfg.max_iterations = args_cli.max_iterations
     if args_cli.run_name:
         agent_cfg.run_name = args_cli.run_name
+    if args_cli.device is not None:
+        # Match Isaac Lab's own bundled train.py: --device picks the sim device,
+        # and the rsl_rl runner needs the same device or obs/network end up split
+        # across GPUs. This machine has two GPUs (2080 Ti at cuda:0, 4090 at
+        # cuda:1); default AppLauncher device is cuda:0, so --device cuda:1 is
+        # needed to actually use the 4090.
+        env_cfg.sim.device = args_cli.device
+        agent_cfg.device = args_cli.device
+
+    # translate the deprecated policy=RslRlPpoActorCriticCfg(...) field into the
+    # actor=/critic= fields rsl-rl 5.0.1 actually reads (see comment above).
+    agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, _INSTALLED_RSL_RL_VERSION)
 
     log_dir = LOG_ROOT / agent_cfg.experiment_name / args_cli.task
     log_dir.mkdir(parents=True, exist_ok=True)

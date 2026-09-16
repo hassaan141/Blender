@@ -58,14 +58,22 @@ if args_cli.video:
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
+import importlib.metadata as metadata  # noqa: E402
+
 import gymnasium as gym  # noqa: E402
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from rsl_rl.runners import OnPolicyRunner  # noqa: E402
 
-from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper  # noqa: E402
+from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg  # noqa: E402
 from isaaclab_tasks.utils import parse_env_cfg  # noqa: E402
 from isaaclab_tasks.utils.parse_cfg import load_cfg_from_registry  # noqa: E402
+
+# See train_velocity.py for why this is needed: the locally installed rsl-rl-lib
+# (5.0.1) deprecated the flat `policy=` runner field in favour of `actor`/`critic`,
+# and Bingo's agent cfgs still use the old field. Without this translation,
+# OnPolicyRunner crashes with KeyError: 'class_name' [MEASURED].
+_INSTALLED_RSL_RL_VERSION = metadata.version("rsl-rl-lib")
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "bingo_rl"))
 import bingo_rl  # noqa: F401,E402
@@ -178,6 +186,10 @@ def main():
     env_cfg.events.base_external_force_torque = None
 
     agent_cfg = load_cfg_from_registry(args_cli.task, "rsl_rl_cfg_entry_point")
+    agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, _INSTALLED_RSL_RL_VERSION)
+    if args_cli.device is not None:
+        env_cfg.sim.device = args_cli.device
+        agent_cfg.device = args_cli.device
 
     env = gym.make(args_cli.task, cfg=env_cfg,
                    render_mode="rgb_array" if args_cli.video else None)

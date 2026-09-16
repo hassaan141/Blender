@@ -25,13 +25,14 @@ app_launcher = AppLauncher(args)
 simulation_app = app_launcher.app
 
 import torch, numpy as np, sys
+from pathlib import Path
 import isaaclab.sim as sim_utils
 from isaaclab.sim import SimulationCfg, SimulationContext
 from isaaclab.assets import Articulation
 from isaaclab.sensors import Camera, CameraCfg
 
-sys.path.insert(0, "/pub0/muhammadf/BingoRobotics/bingo_rl")
-from bingo_rl.improved_walking_cfg import BINGO_IMPROVED_CFG
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "rl/bingo_rl"))
+from bingo_rl.bingo_v4 import BINGO_V4_CFG
 
 _p = "/pub0/muhammadf/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/direct/humanoid_amp/motions/motion_loader.py"
 _s = importlib.util.spec_from_file_location("ml", _p)
@@ -46,7 +47,7 @@ def main():
     sim = SimulationContext(SimulationCfg(dt=PHYS_DT, device=dev))
     sim_utils.GroundPlaneCfg().func("/World/ground", sim_utils.GroundPlaneCfg())
     sim_utils.DomeLightCfg(intensity=2500.0).func("/World/light", sim_utils.DomeLightCfg(intensity=2500.0))
-    cfg = BINGO_IMPROVED_CFG.replace(prim_path="/World/Robot")
+    cfg = BINGO_V4_CFG.replace(prim_path="/World/Robot")
     if args.kp_scale != 1.0:
         import copy as _c
         cfg = _c.deepcopy(cfg)

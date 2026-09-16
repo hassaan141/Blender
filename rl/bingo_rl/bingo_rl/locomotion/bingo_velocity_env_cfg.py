@@ -84,7 +84,21 @@ STAND_SOLVED = {
     "bl_SY_J": +0.0000, "bl_SP_J": +0.3932, "bl_knee": +0.8913,
     "br_SY_J": +0.0000, "br_SP_J": +0.3936, "br_knee": -0.8913,
 }
-EXPR_NEUTRAL = {"head_.*": 0.0, "tail_.*": 0.0, ".*_ear_.*": 0.0}
+# [MEASURED, this session] l_ear_roll / r_ear_roll are one-sided joints (URDF
+# limit -1.5..0 / 0..1.5, see the physics URDF): 0.0 sits exactly at their hard
+# stop. With soft_joint_pos_limit_factor = 0.9 (bingo.py) shrinking the soft range
+# toward the joint's own centre, 0.0 falls entirely outside the soft limit for
+# BOTH - verify_locomotion_api.py's stance check caught this on first run
+# ("stance pose outside soft limits at ['l_ear_roll', 'r_ear_roll']"). Isaac Lab's
+# joint_pos regex resolver (isaaclab.utils.string.resolve_matching_names_values)
+# raises on a joint matching two keys, so ear_pitch and ear_roll need disjoint
+# patterns rather than one general ".*_ear_.*" plus an override. Rest each ear_roll
+# at its own range midpoint - inside the soft limit on both sides, same principle
+# STAND_SOLVED already applies to the legs.
+EXPR_NEUTRAL = {
+    "head_.*": 0.0, "tail_.*": 0.0, ".*_ear_pitch": 0.0,
+    "l_ear_roll": -0.75, "r_ear_roll": +0.75,
+}
 
 # Lowest paw hull is 0.180 m below the base at this pose; spawn 2 mm clear.
 STAND_BASE_HEIGHT = 0.182
@@ -209,6 +223,21 @@ class BingoVelocityFlatEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.sim.render_interval = _DECIMATION
         if getattr(self.scene, "contact_forces", None) is not None:
             self.scene.contact_forces.update_period = self.sim.dt
+            # [MEASURED, this session] The stock sensor targets "Robot/.*", which is
+            # correct for rev_1 (a_11/<link> - links are direct children of the
+            # default prim) but NOT for v4. Opening rl/v4_usd/bingo_v4.usd directly
+            # with pxr shows its default prim "bingo_urdf_w_ear_joints" has a single
+            # child "origin" (a plain Xform, no RigidBody API), and the real bodies -
+            # "origin/origin" (base, RigidBody+ArticulationRoot), "origin/bl_knee",
+            # "origin/fl_shoulder_yaw", etc - are nested one level INSIDE that. So once
+            # spawned at prim_path "Robot", v4's bodies live at "Robot/origin/<name>",
+            # not "Robot/<name>". A regex prim_path only matches one path segment per
+            # "/"-delimited part, so "Robot/.*" matches only the empty "origin"
+            # wrapper and finds zero contact-reporting bodies - exactly the
+            # RuntimeError verify_locomotion_api.py hit on first run. Retarget one
+            # level deeper; body_names filters elsewhere (FOOT_BODIES, BASE_LINK)
+            # already match on leaf name, so they need no change.
+            self.scene.contact_forces.prim_path = "{ENV_REGEX_NS}/Robot/origin/.*"
 
         # ---------------------------------------------------------------- robot
         # Validated v4 physics, with only the stance pose overridden (see above).

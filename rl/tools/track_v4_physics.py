@@ -20,13 +20,16 @@ rigid-paw point of each knee link - the same PAW_CONTACT_LOCAL the retarget used
   ./isaaclab.sh -p rl/tools/track_v4_physics.py --motion motions/eccentric_v4.npz --headless
 """
 import argparse, sys, os
+from pathlib import Path
 import numpy as np
 
 from isaaclab.app import AppLauncher
 
+REPO = Path(__file__).resolve().parents[2]
+
 p = argparse.ArgumentParser()
 p.add_argument("--motion", required=True)
-p.add_argument("--out", default="/home/hassaan/Bingo/Blender/stage4/out")
+p.add_argument("--out", default=str(REPO / "stage4/out"))
 p.add_argument("--physics-dt", type=float, default=1.0 / 120.0)
 p.add_argument("--loops", type=int, default=1,
                help="GUI only: total number of physics playbacks; 0 repeats forever")
@@ -123,12 +126,13 @@ import isaaclab.sim as sim_utils
 from isaaclab.sim import SimulationCfg, SimulationContext
 from isaaclab.assets import Articulation
 
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/rl/bingo_rl")
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage2")
+sys.path.insert(0, str(REPO / "rl/bingo_rl"))
+sys.path.insert(0, str(REPO / "stage2"))
 from bingo_rl.bingo_v4 import BINGO_V4_CFG
 from v4_kinematics import V4Kin, LEGS
-sys.path.insert(0, "/home/hassaan/Bingo/Blender/stage4")
+sys.path.insert(0, str(REPO / "stage4"))
 from contact_model import ContactModel
+sys.path.insert(0, str(REPO / "rl/tools"))
 from indoor_scene import living_room_camera, spawn_living_room
 
 CONTACT_H = 0.005          # paw within 5 mm of the floor counts as contact
