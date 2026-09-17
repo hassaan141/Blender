@@ -1,0 +1,25 @@
+{
+  "parent_run": "run_02",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_02/policy.pt",
+  "hypothesis": "Interpolate the FL torque weight between retained 0.02 and rejected 0.04, seeking the saturation/acceleration/bobbing gains while remaining within the fixed speed constraint.",
+  "changes": {
+    "fl_torque_weight": {
+      "before": 0.02,
+      "after": 0.03
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "KEEP",
+  "reason": "physical gait quality improved; speed/cadence and baseline quality guards passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_04/policy.pt"
+}

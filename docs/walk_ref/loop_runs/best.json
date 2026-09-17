@@ -15,8 +15,9 @@
     "env.stand_prob=0.0"
   ],
   "experiments_completed": 8,
-  "status": "complete: eight experiments; best restored and rendered; full metric target not reached",
+  "status": "INVALIDATED: run_05 exceeds fixed original-baseline acceleration ceiling",
   "render": "best_render/eval.mp4",
   "metrics": "best_render/metrics.json",
-  "completion_audit": "completion_audit.json"
+  "completion_audit": "completion_audit.json",
+  "superseded_by_audit": "../refinement_runs/audit_existing.json"
 }

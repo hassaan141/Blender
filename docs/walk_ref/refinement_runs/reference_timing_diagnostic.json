@@ -1,0 +1,9 @@
+{
+  "reference_frames": 136,
+  "nominal_fps": 120.0,
+  "joint_acceleration_rms_by_frame_min": 18.00438176543206,
+  "mean": 59.48091486566132,
+  "max": 110.96550808558749,
+  "highest_demand_frame": 84,
+  "timing_hypothesis": "Nonuniform reference timing can redistribute phase duration while keeping the full cycle duration and pose order unchanged."
+}

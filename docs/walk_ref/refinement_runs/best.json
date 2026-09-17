@@ -1,0 +1,16 @@
+{
+  "run": "run_05",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/policy.pt",
+  "original_acceleration_baseline": 12.236963272094727,
+  "absolute_acceleration_ceiling": 14.684355926513671,
+  "status": "bounded loop complete; full numeric target not reached",
+  "experiments_completed": 8,
+  "video": "best_render/eval.mp4",
+  "metrics": "best_metrics.json",
+  "runtime_sources": [
+    "run_05/bingo_walk_ref_env.py",
+    "run_05/bingo_walk_ref_env_cfg.py"
+  ],
+  "reference": "run_05/reference.npz",
+  "completion_audit": "completion_audit.json"
+}

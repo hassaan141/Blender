@@ -30,6 +30,9 @@
     "env.stand_prob=0.0"
   ],
   "decision": "KEEP",
-  "reason": "lower velocity RMSE; survival, peak, acceleration and reference guards passed",
-  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_01/policy.pt"
+  "reason": "corrected fixed-baseline protocol passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_01/policy.pt",
+  "original_decision": "KEEP",
+  "original_reason": "lower velocity RMSE; survival, peak, acceleration and reference guards passed",
+  "audit_comparison_checkpoint": "baseline"
 }

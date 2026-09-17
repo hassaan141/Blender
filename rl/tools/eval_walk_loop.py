@@ -52,6 +52,7 @@ parser.add_argument("--settle_seconds", type=float, default=1.0,
                      help="warm-up steps run before recording starts.")
 parser.add_argument("--out_dir", type=str, default=str(DEFAULT_OUT_DIR))
 parser.add_argument("--no_video", action="store_true", help="skip rendering eval.mp4.")
+parser.add_argument("--diagnostics", action="store_true", help="save read-only per-joint/contact/bobbing diagnostics alongside unchanged metrics.")
 AppLauncher.add_app_launcher_args(parser)
 args_cli, _ = parser.parse_known_args()
 
@@ -142,6 +143,9 @@ def main():
     total_steps = settle_steps + duration_steps
 
     log = {k: [] for k in ("vx", "roll_deg", "pitch_deg", "qerr", "resid", "torque", "qdot", "done")}
+    if args_cli.diagnostics:
+        from walk_quality_diagnostics import QualityRecorder
+        diagnostic = QualityRecorder(base, joint_names, out_dir)
 
     obs, _ = wenv.reset()
     with torch.inference_mode():
@@ -154,6 +158,8 @@ def main():
             obs, _, term, tout, _ = wenv.step(action)
 
             if k < settle_steps:
+                if args_cli.diagnostics:
+                    diagnostic.warmup_falls += int(term.sum().item())
                 continue
 
             d = base.robot.data
@@ -179,9 +185,13 @@ def main():
             log["vx"].append(vx_b); log["roll_deg"].append(roll_deg); log["pitch_deg"].append(pitch_deg)
             log["qerr"].append(qerr); log["resid"].append(resid); log["torque"].append(torque)
             log["qdot"].append(qdot); log["done"].append(done)
+            if args_cli.diagnostics:
+                diagnostic.capture(base, action)
 
     D = {k: np.asarray(v) for k, v in log.items()}
     metrics = _summarize(D, joint_names, step_dt, args_cli, checkpoint_path)
+    if args_cli.diagnostics:
+        diagnostic.finish(D, metrics, step_dt)
     env.close()
 
     if video:

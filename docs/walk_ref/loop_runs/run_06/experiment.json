@@ -23,7 +23,10 @@
   },
   "status": "complete",
   "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_2400.pt",
-  "decision": "REJECT",
-  "reason": "velocity RMSE did not improve",
-  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_06/policy.pt"
+  "decision": "KEEP",
+  "reason": "corrected fixed-baseline protocol passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_06/policy.pt",
+  "original_decision": "REJECT",
+  "original_reason": "velocity RMSE did not improve",
+  "audit_comparison_checkpoint": "run_01"
 }

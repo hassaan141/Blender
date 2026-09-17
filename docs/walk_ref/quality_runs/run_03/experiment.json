@@ -1,0 +1,25 @@
+{
+  "parent_run": "run_02",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_02/policy.pt",
+  "hypothesis": "Increase the targeted left-front torque cost while retaining the successful height-stability penalty, testing further saturation reduction without changing cadence or pursuing speed.",
+  "changes": {
+    "fl_torque_weight": {
+      "before": 0.02,
+      "after": 0.04
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "mean speed outside constraint",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_03/policy.pt"
+}

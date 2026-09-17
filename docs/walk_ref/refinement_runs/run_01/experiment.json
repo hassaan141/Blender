@@ -1,0 +1,29 @@
+{
+  "parent_run": "start_recheck",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_06/policy.pt",
+  "hypothesis": "Reduce residual authority and smooth its application to lower joint acceleration and front-left torque spikes while keeping the same reference timing.",
+  "changes": {
+    "ema_alpha": {
+      "before": 0.2,
+      "after": 0.12
+    },
+    "residual_scale": {
+      "before": 0.3,
+      "after": 0.24
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "peak must be below 0.40 m/s; no improvement under refinement priorities",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_01/policy.pt"
+}

@@ -1,0 +1,44 @@
+{
+  "fl_SP_J": {
+    "qdot_rms": 1.0428804159164429,
+    "spring_proxy_rms_Nm": 1.0699868202209473,
+    "damping_proxy_rms_Nm": 1.6686086654663086,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.8631603625109388,
+    "saturated_torque_opposes_velocity_pct": 90.20408163265307
+  },
+  "fr_SP_J": {
+    "qdot_rms": 0.8364184498786926,
+    "spring_proxy_rms_Nm": 0.65113765001297,
+    "damping_proxy_rms_Nm": 1.338269591331482,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.7983322751537619,
+    "saturated_torque_opposes_velocity_pct": 91.0
+  },
+  "fl_knee": {
+    "qdot_rms": 0.5300468802452087,
+    "spring_proxy_rms_Nm": 1.870774745941162,
+    "damping_proxy_rms_Nm": 0.8480749726295471,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.8580016512305993,
+    "saturated_torque_opposes_velocity_pct": 73.77049180327869
+  },
+  "fr_knee": {
+    "qdot_rms": 0.4974859356880188,
+    "spring_proxy_rms_Nm": 1.018192172050476,
+    "damping_proxy_rms_Nm": 0.7959775328636169,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.5870720438982586,
+    "saturated_torque_opposes_velocity_pct": 47.72727272727273
+  },
+  "bl_knee": {
+    "qdot_rms": 0.4226279854774475,
+    "spring_proxy_rms_Nm": 1.3502885103225708,
+    "damping_proxy_rms_Nm": 0.6762047410011292,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.858463297593092,
+    "saturated_torque_opposes_velocity_pct": 34.0
+  },
+  "br_knee": {
+    "qdot_rms": 0.42552927136421204,
+    "spring_proxy_rms_Nm": 0.5911189317703247,
+    "damping_proxy_rms_Nm": 0.6808468699455261,
+    "poststep_pd_proxy_vs_computed_torque_correlation": 0.30413751207362644,
+    "saturated_torque_opposes_velocity_pct": 74.28571428571429
+  }
+}

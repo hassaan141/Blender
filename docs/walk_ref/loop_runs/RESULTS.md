@@ -1,3 +1,5 @@
+> SUPERSEDED: fixed-baseline audit rejects Run 05. Audited starting checkpoint is Run 06; see ../refinement_runs/audit_existing.json. Historical results below are preserved.
+
 # Walking optimization: eight-experiment result
 
 Stopped at the requested limit of eight experiments. **Run 05 is retained. The full metric target was not reached.**

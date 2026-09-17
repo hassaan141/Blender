@@ -1,0 +1,81 @@
+{
+  "best_run": "refinement/run_05",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/policy.pt",
+  "fixed_acceleration_ceiling": 14.684355926513671,
+  "metrics": {
+    "task": "Bingo-WalkRef-v4-Play-v0",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/policy.pt",
+    "num_envs": 1,
+    "command": {
+      "vx": 0.25,
+      "vy": 0.0,
+      "yaw": 0.0,
+      "note": "vy/yaw have no effect: BingoWalkRefEnv only accepts a forward-speed command."
+    },
+    "duration_s": 60.0,
+    "settle_seconds": 1.0,
+    "steps_recorded": 1440,
+    "step_dt": 0.041666666666666664,
+    "effort_limit_Nm": 3.0,
+    "survival": 1.0,
+    "any_fell": false,
+    "fall_time_s": [
+      null
+    ],
+    "vx_mean": 0.1982526183128357,
+    "vx_std": 0.051268357783555984,
+    "vx_max": 0.3854769766330719,
+    "base_roll_rms_deg": 5.138088226318359,
+    "base_pitch_rms_deg": 1.9947394132614136,
+    "joint_accel_rms": 12.53651237487793,
+    "residual_action_rate_rms": 0.01737396791577339,
+    "torque_saturation_pct_per_joint": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 17.01388888888889,
+      "fl_knee": 21.180555555555554,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 13.88888888888889,
+      "fr_knee": 6.111111111111111,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 4.375,
+      "bl_knee": 6.944444444444445,
+      "br_SY_J": 0.0,
+      "br_SP_J": 1.597222222222222,
+      "br_knee": 2.430555555555556
+    },
+    "reference_tracking_error_rad": {
+      "mean": 0.022324398159980774,
+      "rms": 0.02867104299366474,
+      "max": 0.1392056941986084,
+      "mean_per_joint": {
+        "fl_SY_J": 0.020276565104722977,
+        "fl_SP_J": 0.021490296348929405,
+        "fl_knee": 0.029148627072572708,
+        "fr_SY_J": 0.014167308807373047,
+        "fr_SP_J": 0.01906253956258297,
+        "fr_knee": 0.036710742861032486,
+        "bl_SY_J": 0.015248025767505169,
+        "bl_SP_J": 0.01764361374080181,
+        "bl_knee": 0.030823996290564537,
+        "br_SY_J": 0.018105747178196907,
+        "br_SP_J": 0.014421885833144188,
+        "br_knee": 0.030793441459536552
+      }
+    }
+  },
+  "target_status": {
+    "survival_100_percent": true,
+    "mean_vx_0_20_to_0_30": false,
+    "vx_std_below_0_06": true,
+    "max_vx_below_0_40": true,
+    "joint_acceleration_within_original_baseline_plus_20_percent": true
+  },
+  "compared_to_audited_start": {
+    "joint_acceleration_percent_change": -6.1155545169568555,
+    "action_rate_percent_change": 18.62699070545746,
+    "fl_SP_saturation_percentage_point_change": -2.0138888888888893,
+    "fl_knee_saturation_percentage_point_change": -1.9444444444444464
+  },
+  "joint_acceleration_percent_change_vs_invalid_original_run05": -25.642379143212402,
+  "note": "Eight-experiment cap reached. Mean vx remains 0.0017473816871643066 m/s below the requested band. Action-rate RMS is higher than the audited starting checkpoint; no claim that all objectives were met."
+}

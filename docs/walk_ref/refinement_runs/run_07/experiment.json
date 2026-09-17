@@ -1,0 +1,30 @@
+{
+  "parent_run": "run_05",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/policy.pt",
+  "hypothesis": "Reduce filter lag with EMA 0.4 while strengthening the action-rate penalty to limit correction jumps, aiming for steadier motion and lower joint acceleration with unchanged reference timing.",
+  "changes": {
+    "ema_alpha": {
+      "before": 0.3,
+      "after": 0.4
+    },
+    "action_rate_penalty": {
+      "before": 0.06,
+      "after": 0.09
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "effective_reference_timing_strength": 0.5,
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "no improvement under refinement priorities",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_07/policy.pt"
+}

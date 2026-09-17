@@ -1,0 +1,311 @@
+{
+  "motions/bingo_walk_v4_upright_grounded.npz": {
+    "joints": {
+      "fl_SY_J": {
+        "range_rad": 0.41164233535528183,
+        "velocity_rms": 1.32329001988829,
+        "acceleration_rms": 29.289415381908853
+      },
+      "fl_SP_J": {
+        "range_rad": 1.084133893251419,
+        "velocity_rms": 4.788374350499565,
+        "acceleration_rms": 96.04416541385945
+      },
+      "fl_knee": {
+        "range_rad": 0.8097064793109894,
+        "velocity_rms": 3.417966004150619,
+        "acceleration_rms": 86.87414102350996
+      },
+      "fr_SY_J": {
+        "range_rad": 0.3118414618074894,
+        "velocity_rms": 1.2969770596810948,
+        "acceleration_rms": 26.793016275451432
+      },
+      "fr_SP_J": {
+        "range_rad": 0.813413180410862,
+        "velocity_rms": 3.5484042392883484,
+        "acceleration_rms": 67.55470697223635
+      },
+      "fr_knee": {
+        "range_rad": 0.5123385787010193,
+        "velocity_rms": 1.9906216666763803,
+        "acceleration_rms": 69.10685078599427
+      },
+      "bl_SY_J": {
+        "range_rad": 0.336298368871212,
+        "velocity_rms": 1.4016204063236335,
+        "acceleration_rms": 26.767857425328756
+      },
+      "bl_SP_J": {
+        "range_rad": 0.5754887759685516,
+        "velocity_rms": 3.295542653202652,
+        "acceleration_rms": 69.37873879430792
+      },
+      "bl_knee": {
+        "range_rad": 0.2248041033744812,
+        "velocity_rms": 1.3700753106032546,
+        "acceleration_rms": 53.06415784561976
+      },
+      "br_SY_J": {
+        "range_rad": 0.3472209498286247,
+        "velocity_rms": 1.4145997815682674,
+        "acceleration_rms": 35.22781998225356
+      },
+      "br_SP_J": {
+        "range_rad": 0.7234740406274796,
+        "velocity_rms": 2.898726098548163,
+        "acceleration_rms": 62.83346140266911
+      },
+      "br_knee": {
+        "range_rad": 0.3904752731323242,
+        "velocity_rms": 2.0827226760859947,
+        "acceleration_rms": 76.38786267305078
+      }
+    },
+    "left_right_pose_comparison": {
+      "fl_SP_J/fr_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.1505578697021947,
+        "lag_frames": 94,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 1.3328206615779372
+      },
+      "fl_knee/fr_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.17092238457466383,
+        "lag_frames": 90,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 1.5804128616742374
+      },
+      "bl_SP_J/br_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.14370361586441732,
+        "lag_frames": 114,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.7954518664822056
+      },
+      "bl_knee/br_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.07694381635470311,
+        "lag_frames": 106,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.5757191782494755
+      }
+    },
+    "contact_duty_pct": {
+      "fl": 63.970588235294116,
+      "fr": 58.08823529411765,
+      "bl": 80.14705882352942,
+      "br": 65.44117647058823
+    },
+    "body_names": [
+      "origin",
+      "fl_knee",
+      "fr_knee",
+      "bl_knee",
+      "br_knee"
+    ]
+  },
+  "motions/bingo_walk_v4_upright_grounded_loopsmooth.npz": {
+    "joints": {
+      "fl_SY_J": {
+        "range_rad": 0.3895106539130211,
+        "velocity_rms": 1.279664709929674,
+        "acceleration_rms": 28.587769807981864
+      },
+      "fl_SP_J": {
+        "range_rad": 1.081477165222168,
+        "velocity_rms": 4.788216989984459,
+        "acceleration_rms": 96.07290949029789
+      },
+      "fl_knee": {
+        "range_rad": 0.8002573847770691,
+        "velocity_rms": 3.4142552773298993,
+        "acceleration_rms": 86.89708244799063
+      },
+      "fr_SY_J": {
+        "range_rad": 0.31428585574030876,
+        "velocity_rms": 1.2651413837671739,
+        "acceleration_rms": 26.410861687951154
+      },
+      "fr_SP_J": {
+        "range_rad": 0.7739858701825142,
+        "velocity_rms": 3.514937124691233,
+        "acceleration_rms": 67.61905530777865
+      },
+      "fr_knee": {
+        "range_rad": 0.4410133957862854,
+        "velocity_rms": 1.977685754204133,
+        "acceleration_rms": 69.1012960735743
+      },
+      "bl_SY_J": {
+        "range_rad": 0.336298368871212,
+        "velocity_rms": 1.3758878487050203,
+        "acceleration_rms": 26.40862481213668
+      },
+      "bl_SP_J": {
+        "range_rad": 0.661668211221695,
+        "velocity_rms": 3.2848514317576147,
+        "acceleration_rms": 68.35704042627549
+      },
+      "bl_knee": {
+        "range_rad": 0.2248041033744812,
+        "velocity_rms": 1.368113353829001,
+        "acceleration_rms": 53.101755717070255
+      },
+      "br_SY_J": {
+        "range_rad": 0.3490117937326431,
+        "velocity_rms": 1.406230098349795,
+        "acceleration_rms": 35.085053914106446
+      },
+      "br_SP_J": {
+        "range_rad": 0.6755806505680084,
+        "velocity_rms": 2.8769320831669107,
+        "acceleration_rms": 62.95745594297138
+      },
+      "br_knee": {
+        "range_rad": 0.366660475730896,
+        "velocity_rms": 2.0753585431812325,
+        "acceleration_rms": 76.22703695981764
+      }
+    },
+    "left_right_pose_comparison": {
+      "fl_SP_J/fr_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.15523417805198278,
+        "lag_frames": 117,
+        "coordinate_sign": -1,
+        "left_right_amplitude_ratio": 1.3972828276143388
+      },
+      "fl_knee/fr_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.16540819398244963,
+        "lag_frames": 88,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 1.8145874760794634
+      },
+      "bl_SP_J/br_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.10727186189644031,
+        "lag_frames": 113,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.9794066935833401
+      },
+      "bl_knee/br_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.06525041793199514,
+        "lag_frames": 105,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.6131124521298887
+      }
+    },
+    "contact_duty_pct": {
+      "fl": 63.970588235294116,
+      "fr": 58.08823529411765,
+      "bl": 80.14705882352942,
+      "br": 65.44117647058823
+    },
+    "body_names": [
+      "origin",
+      "fl_knee",
+      "fr_knee",
+      "bl_knee",
+      "br_knee"
+    ]
+  },
+  "docs/walk_ref/refinement_runs/run_05/reference.npz": {
+    "joints": {
+      "fl_SY_J": {
+        "range_rad": 0.38900039345026016,
+        "velocity_rms": 1.2790965640717495,
+        "acceleration_rms": 27.826435352636743
+      },
+      "fl_SP_J": {
+        "range_rad": 1.081156075000763,
+        "velocity_rms": 4.777434391449802,
+        "acceleration_rms": 92.50470792549864
+      },
+      "fl_knee": {
+        "range_rad": 0.7994701862335205,
+        "velocity_rms": 3.3775930418143045,
+        "acceleration_rms": 80.07034955054621
+      },
+      "fr_SY_J": {
+        "range_rad": 0.31395236775279045,
+        "velocity_rms": 1.2638176692022147,
+        "acceleration_rms": 25.987158846647475
+      },
+      "fr_SP_J": {
+        "range_rad": 0.7730787545442581,
+        "velocity_rms": 3.5428050188818956,
+        "acceleration_rms": 70.60310262871877
+      },
+      "fr_knee": {
+        "range_rad": 0.4381561875343323,
+        "velocity_rms": 1.991856071763702,
+        "acceleration_rms": 68.79796044143087
+      },
+      "bl_SY_J": {
+        "range_rad": 0.33538440614938736,
+        "velocity_rms": 1.3737491508899615,
+        "acceleration_rms": 25.721290950993442
+      },
+      "bl_SP_J": {
+        "range_rad": 0.6610276401042938,
+        "velocity_rms": 3.3123376497304906,
+        "acceleration_rms": 71.10491158244395
+      },
+      "bl_knee": {
+        "range_rad": 0.22402775287628174,
+        "velocity_rms": 1.3358657257737854,
+        "acceleration_rms": 51.371728298208794
+      },
+      "br_SY_J": {
+        "range_rad": 0.34626946598291397,
+        "velocity_rms": 1.420719755889814,
+        "acceleration_rms": 35.59474965253373
+      },
+      "br_SP_J": {
+        "range_rad": 0.6753173768520355,
+        "velocity_rms": 2.8849652841158506,
+        "acceleration_rms": 61.526405071591704
+      },
+      "br_knee": {
+        "range_rad": 0.3662194609642029,
+        "velocity_rms": 2.05814745413098,
+        "acceleration_rms": 74.90801464263772
+      }
+    },
+    "left_right_pose_comparison": {
+      "fl_SP_J/fr_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.14905418433699585,
+        "lag_frames": 116,
+        "coordinate_sign": -1,
+        "left_right_amplitude_ratio": 1.3985070326219495
+      },
+      "fl_knee/fr_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.16846104749303717,
+        "lag_frames": 87,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 1.8246237505681169
+      },
+      "bl_SP_J/br_SP_J": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.11782657037077301,
+        "lag_frames": 113,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.9788399688242101
+      },
+      "bl_knee/br_knee": {
+        "centered_best_mirror_and_phase_aligned_rms_rad": 0.0652525401506917,
+        "lag_frames": 106,
+        "coordinate_sign": 1,
+        "left_right_amplitude_ratio": 0.611730879310589
+      }
+    },
+    "contact_duty_pct": {
+      "fl": 61.76470588235294,
+      "fr": 58.08823529411765,
+      "bl": 82.35294117647058,
+      "br": 63.970588235294116
+    },
+    "body_names": [
+      "origin",
+      "fl_knee",
+      "fr_knee",
+      "bl_knee",
+      "br_knee"
+    ]
+  }
+}

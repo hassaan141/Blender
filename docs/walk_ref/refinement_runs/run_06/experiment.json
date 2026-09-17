@@ -1,0 +1,26 @@
+{
+  "parent_run": "run_05",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/policy.pt",
+  "hypothesis": "Increase timing redistribution modestly from 0.50 to 0.65 at unchanged cycle duration, testing whether the smoother demand profile retains low variance and acceleration while closing the small mean-speed gap.",
+  "changes": {
+    "reference_timing_strength": {
+      "before": 0.5,
+      "after": 0.65
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "effective_reference_timing_strength": 0.65,
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "REJECT",
+  "reason": "no improvement under refinement priorities",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_06/policy.pt"
+}

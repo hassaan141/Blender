@@ -37,5 +37,7 @@
     "reference_gait_preserved_in_sampled_visual_review": true,
     "torque_saturation_reduced": false
   },
-  "all_numeric_targets_met": false
+  "all_numeric_targets_met": false,
+  "selection_audit_superseded_by": "../refinement_runs/audit_existing.json",
+  "original_selection_invalidated": true
 }

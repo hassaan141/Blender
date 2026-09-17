@@ -1,0 +1,84 @@
+{
+  "experiments": [
+    {
+      "run": "run_01",
+      "decision": "REJECT",
+      "verified": true,
+      "checkpoint_sha256": "a8940e1fae0e1accb9d37fc7017f9f3f5e7232f4492cb248b643e07aedd30477"
+    },
+    {
+      "run": "run_02",
+      "decision": "REJECT",
+      "verified": true,
+      "checkpoint_sha256": "be5c8fa337d115c0835b90ca66f87e811205a15b1a538a0acc88dd2e692bd35d"
+    },
+    {
+      "run": "run_03",
+      "decision": "KEEP",
+      "verified": true,
+      "checkpoint_sha256": "e8a96868ad116264548a46cd46277ff27bac2d661e78b86b79c7d56051e0bb46"
+    },
+    {
+      "run": "run_04",
+      "decision": "KEEP",
+      "verified": true,
+      "checkpoint_sha256": "fc6ef40680fcff22b005afd6cfb6576b079921a987cee7fee2c9de8d834bd28d"
+    },
+    {
+      "run": "run_05",
+      "decision": "KEEP",
+      "verified": true,
+      "checkpoint_sha256": "119ee19e73b2379096e108023960eee5447c1bfa96078ff517823aaec1ac6074"
+    },
+    {
+      "run": "run_06",
+      "decision": "REJECT",
+      "verified": true,
+      "checkpoint_sha256": "9cfd041dfcd1c3c29ffe9f08d3f261d7f0857bd4cc0699a5292fce0310296fff"
+    },
+    {
+      "run": "run_07",
+      "decision": "REJECT",
+      "verified": true,
+      "checkpoint_sha256": "1efbd66ec21abbc2dfa8f47dbdd870b4c9530a7e0e1fcb735b66be5c7cb1f0aa"
+    },
+    {
+      "run": "run_08",
+      "decision": "REJECT",
+      "verified": true,
+      "checkpoint_sha256": "d9ce2ff4f73177660a77aa19208e2fdd414462e3734b98d3cb0f766bea908c61"
+    }
+  ],
+  "count": 8,
+  "limit": 8,
+  "starting_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_06/policy.pt",
+  "best": "run_05",
+  "selection_recomputed_for_all_runs": true,
+  "all_kept_runs_pass_fixed_baseline_acceleration_guard": true,
+  "protected_files_checked": 217,
+  "protected_files_changed": [],
+  "existing_evaluator_unchanged": true,
+  "current_sources_match_best": true,
+  "final_render_pending": false,
+  "rendered_metrics_identical": true,
+  "video_probe": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1",
+        "nb_frames": "1463"
+      }
+    ],
+    "format": {
+      "duration": "60.959000"
+    }
+  },
+  "visual_review": "Compared the final render against the previous best-looking reference-guided gait using six full-horizon frames and twelve consecutive gait samples over three seconds. The crouched body posture, alternating bent-leg stepping, head/tail expression and overall gait silhouette are retained. Timing redistribution changes where time is spent along the same ordered trajectory; total cycle duration is unchanged. No gross gait replacement or collapse is visible in these samples. This sampled review is not a claim that all shaking is eliminated.",
+  "selection_tests_passed": 8,
+  "original_ledger_update_idempotence_verified": true,
+  "full_numeric_target_met": false,
+  "remaining_speed_target": "Mean vx 0.1982526183128357 m/s is below 0.20 m/s",
+  "stop_reason": "Eight new experiments completed; best restored, rendered and verified. No further experiments permitted."
+}

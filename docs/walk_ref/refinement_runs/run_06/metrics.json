@@ -1,0 +1,61 @@
+{
+  "task": "Bingo-WalkRef-v4-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_06/policy.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.25,
+    "vy": 0.0,
+    "yaw": 0.0,
+    "note": "vy/yaw have no effect: BingoWalkRefEnv only accepts a forward-speed command."
+  },
+  "duration_s": 60.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 1440,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.19275563955307007,
+  "vx_std": 0.051237087696790695,
+  "vx_max": 0.3279912769794464,
+  "base_roll_rms_deg": 5.223577976226807,
+  "base_pitch_rms_deg": 2.0212349891662598,
+  "joint_accel_rms": 12.214670181274414,
+  "residual_action_rate_rms": 0.01785685122013092,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 14.722222222222223,
+    "fl_knee": 20.694444444444443,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 13.125,
+    "fr_knee": 5.625,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 4.097222222222222,
+    "bl_knee": 6.388888888888888,
+    "br_SY_J": 0.0,
+    "br_SP_J": 2.638888888888889,
+    "br_knee": 2.7777777777777777
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.0236994419246912,
+    "rms": 0.030801722779870033,
+    "max": 0.1549181342124939,
+    "mean_per_joint": {
+      "fl_SY_J": 0.020825067535042763,
+      "fl_SP_J": 0.01782808266580105,
+      "fl_knee": 0.034558482468128204,
+      "fr_SY_J": 0.014903065748512745,
+      "fr_SP_J": 0.019146349281072617,
+      "fr_knee": 0.04294425994157791,
+      "bl_SY_J": 0.013144681230187416,
+      "bl_SP_J": 0.02042693831026554,
+      "bl_knee": 0.0320165790617466,
+      "br_SY_J": 0.0220484659075737,
+      "br_SP_J": 0.012798359617590904,
+      "br_knee": 0.03375297412276268
+    }
+  }
+}

@@ -20,6 +20,9 @@
   "status": "complete",
   "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_2400.pt",
   "decision": "REJECT",
-  "reason": "peak-speed guard failed",
-  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_07/policy.pt"
+  "reason": "acceleration exceeds 120% of original baseline; peak-speed guard failed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/loop_runs/run_07/policy.pt",
+  "original_decision": "REJECT",
+  "original_reason": "peak-speed guard failed",
+  "audit_comparison_checkpoint": "run_06"
 }

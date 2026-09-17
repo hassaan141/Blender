@@ -60,5 +60,7 @@
       "decision": "REJECT",
       "checkpoint_sha256": "1a5a3caf30c249aaecd88f36a9739b292c7ad63b6f49152e05bc11f93aa2036b"
     }
-  ]
+  ],
+  "selection_audit_superseded_by": "../refinement_runs/audit_existing.json",
+  "original_selection_invalidated": true
 }

@@ -1,0 +1,12 @@
+{
+  "source": "/pub0/muhammadf/Blender/motions/bingo_walk_v4_upright_grounded_loopsmooth.npz",
+  "source_sha256": "c5f0d30d36692c29690c3e4f0fbcc63a4fe1a16452453f6cff12f9e8e8084894",
+  "strength": 0.5,
+  "frames": 136,
+  "fps": 120.0,
+  "duration_unchanged": true,
+  "phase_order_preserved": true,
+  "source_frame_advance_min": 0.8803949929102615,
+  "source_frame_advance_max": 1.1802261033656976,
+  "poses": "linear samples of original ordered trajectory; no pose offsets or amplitudes changed"
+}
