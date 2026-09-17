@@ -1,5 +1,7 @@
 # Bingo — Blender → Simulation Retarget
 
+Current locomotion: [reference-guided walk and canonical baseline](docs/walk_ref/README.md).
+
 Turning authored dog animation in Blender into motion references the Bingo quadruped
 can actually be trained on in Isaac Lab. The robot is defined by
 `bingo_urdf_rev_3/urdf/bingo_urdf_rev_3_real_values.urdf`; everything here exists to get

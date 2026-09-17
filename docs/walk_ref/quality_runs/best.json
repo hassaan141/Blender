@@ -1,14 +1,1 @@
-{
-  "run": "run_05",
-  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
-  "status": "complete",
-  "experiments_completed": 6,
-  "video": "best_render/eval.mp4",
-  "metrics": "best_metrics.json",
-  "diagnosis": "DIAGNOSIS.md",
-  "completion_audit": "completion_audit.json",
-  "runtime_sources": [
-    "run_05/bingo_walk_ref_env.py",
-    "run_05/bingo_walk_ref_env_cfg.py"
-  ]
-}
+../archive/quality_history/best.json

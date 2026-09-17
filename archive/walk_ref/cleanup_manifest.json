@@ -1,0 +1,1556 @@
+{
+  "archived": [
+    {
+      "from": "docs/walk_ref/loop_runs",
+      "to": "docs/walk_ref/archive/loop_runs",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/refinement_runs",
+      "to": "docs/walk_ref/archive/refinement_runs",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/experiment_audit.json",
+      "to": "docs/walk_ref/archive/quality_history/experiment_audit.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/PROTOCOL.md",
+      "to": "docs/walk_ref/archive/quality_history/PROTOCOL.md",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/test_selection.py",
+      "to": "docs/walk_ref/archive/quality_history/test_selection.py",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/run_04",
+      "to": "docs/walk_ref/archive/quality_history/run_04",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/prepare_candidate.py",
+      "to": "docs/walk_ref/archive/quality_history/prepare_candidate.py",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/RESULTS.md",
+      "to": "docs/walk_ref/archive/quality_history/RESULTS.md",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/selection.py",
+      "to": "docs/walk_ref/archive/quality_history/selection.py",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/reference_asymmetry.json",
+      "to": "docs/walk_ref/archive/quality_history/reference_asymmetry.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/best.json",
+      "to": "docs/walk_ref/archive/quality_history/best.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/DIAGNOSIS.md",
+      "to": "docs/walk_ref/archive/quality_history/DIAGNOSIS.md",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/run_01",
+      "to": "docs/walk_ref/archive/quality_history/run_01",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/run_02",
+      "to": "docs/walk_ref/archive/quality_history/run_02",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/run_03",
+      "to": "docs/walk_ref/archive/quality_history/run_03",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/leaderboard.csv",
+      "to": "docs/walk_ref/archive/quality_history/leaderboard.csv",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/run_06",
+      "to": "docs/walk_ref/archive/quality_history/run_06",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/baseline",
+      "to": "docs/walk_ref/archive/quality_history/baseline",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/record_result.py",
+      "to": "docs/walk_ref/archive/quality_history/record_result.py",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/execute_candidate.py",
+      "to": "docs/walk_ref/archive/quality_history/execute_candidate.py",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/preflight_audit.json",
+      "to": "docs/walk_ref/archive/quality_history/preflight_audit.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/best_metrics.json",
+      "to": "docs/walk_ref/archive/quality_history/best_metrics.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/quality_runs/completion_audit.json",
+      "to": "docs/walk_ref/archive/quality_history/completion_audit.json",
+      "compatibility_link": true
+    },
+    {
+      "from": "docs/walk_ref/eval_smooth.json",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_smooth.json",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/EVAL_smooth.txt",
+      "to": "docs/walk_ref/archive/early_walk_ref/EVAL_smooth.txt",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/OPTIMIZATION_GOAL.md",
+      "to": "docs/walk_ref/archive/early_walk_ref/OPTIMIZATION_GOAL.md",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/EVAL_C.txt",
+      "to": "docs/walk_ref/archive/early_walk_ref/EVAL_C.txt",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/eval_C2_video.json",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_C2_video.json",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/eval_video",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_video",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/eval_C.json",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_C.json",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/eval_D.json",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_D.json",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/eval_C2.json",
+      "to": "docs/walk_ref/archive/early_walk_ref/eval_C2.json",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/EVAL_C2_video.txt",
+      "to": "docs/walk_ref/archive/early_walk_ref/EVAL_C2_video.txt",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/pdonly",
+      "to": "docs/walk_ref/archive/early_walk_ref/pdonly",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/smooth",
+      "to": "docs/walk_ref/archive/early_walk_ref/smooth",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/EVAL_C2.txt",
+      "to": "docs/walk_ref/archive/early_walk_ref/EVAL_C2.txt",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/walk_ref/EVAL_D.txt",
+      "to": "docs/walk_ref/archive/early_walk_ref/EVAL_D.txt",
+      "compatibility_link": false
+    },
+    {
+      "from": "docs/locomotion",
+      "to": "docs/walk_ref/archive/command_locomotion",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_01",
+      "to": "archive/locomotion_training/walk_loop/run_01",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_02",
+      "to": "archive/locomotion_training/walk_loop/run_02",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_03",
+      "to": "archive/locomotion_training/walk_loop/run_03",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_04",
+      "to": "archive/locomotion_training/walk_loop/run_04",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_05",
+      "to": "archive/locomotion_training/walk_loop/run_05",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_06",
+      "to": "archive/locomotion_training/walk_loop/run_06",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_07",
+      "to": "archive/locomotion_training/walk_loop/run_07",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_loop/run_08",
+      "to": "archive/locomotion_training/walk_loop/run_08",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_01",
+      "to": "archive/locomotion_training/walk_refinement/run_01",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_02",
+      "to": "archive/locomotion_training/walk_refinement/run_02",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_03",
+      "to": "archive/locomotion_training/walk_refinement/run_03",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_04",
+      "to": "archive/locomotion_training/walk_refinement/run_04",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_05",
+      "to": "archive/locomotion_training/walk_refinement/run_05",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_06",
+      "to": "archive/locomotion_training/walk_refinement/run_06",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_07",
+      "to": "archive/locomotion_training/walk_refinement/run_07",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_refinement/run_08",
+      "to": "archive/locomotion_training/walk_refinement/run_08",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_quality/run_01",
+      "to": "archive/locomotion_training/walk_quality/run_01",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_quality/run_02",
+      "to": "archive/locomotion_training/walk_quality/run_02",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_quality/run_03",
+      "to": "archive/locomotion_training/walk_quality/run_03",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_quality/run_04",
+      "to": "archive/locomotion_training/walk_quality/run_04",
+      "compatibility_link": true
+    },
+    {
+      "from": "logs/skrl/walk_quality/run_06",
+      "to": "archive/locomotion_training/walk_quality/run_06",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/16-20-52",
+      "to": "archive/locomotion_training/hydra/2026-09-16/16-20-52",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-13-11",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-13-11",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-07-03",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-07-03",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-01-43",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-01-43",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-21-01",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-21-01",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-11-13",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-11-13",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/09-57-58",
+      "to": "archive/locomotion_training/hydra/2026-09-16/09-57-58",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-05-34",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-05-34",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/16-17-12",
+      "to": "archive/locomotion_training/hydra/2026-09-16/16-17-12",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-30-18",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-30-18",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-15-01",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-15-01",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-34-21",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-34-21",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/16-24-20",
+      "to": "archive/locomotion_training/hydra/2026-09-16/16-24-20",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-26-22",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-26-22",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/20-25-29",
+      "to": "archive/locomotion_training/hydra/2026-09-16/20-25-29",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/09-54-27",
+      "to": "archive/locomotion_training/hydra/2026-09-16/09-54-27",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-22-31",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-22-31",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/16-12-38",
+      "to": "archive/locomotion_training/hydra/2026-09-16/16-12-38",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-09-16",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-09-16",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/10-17-08",
+      "to": "archive/locomotion_training/hydra/2026-09-16/10-17-08",
+      "compatibility_link": true
+    },
+    {
+      "from": "outputs/2026-09-16/02-18-46",
+      "to": "archive/locomotion_training/hydra/2026-09-16/02-18-46",
+      "compatibility_link": true
+    }
+  ],
+  "deleted": [
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "70b5c308fd3526b6b11ca98133ea8098811e02b19d3022943b6dd444f056ac45",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "57639526a57734f0dee45d78c32262ac3f7cc0a2088ba8e8dc95b302b0f296a6",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "0e69b1e6b79a7cb40c50cf7396976309e84971f9f19789ad50c3f323541e7f31",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "db08b80fccde059cc8498b3a2dc72a181d0e8cc8211b1a154bd801d76e21b722",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "8033b5ecda8ab9d4017aaa6b920c0f634aea052d7368a64d45b327e40b6eacd1",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "87e45876f0936972bd39232aa08dd79b04d26fa97df363468f5cdc68df633faf",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "8aa5a4cf515b2344d05505887ea37e85dea86d6cbe210c3b2a486bb42265d5b7",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "8731062a2f33a65f7f4b7fe292d802f77497e4900367850133f1dc04173cbffa",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_01/2026-09-16_02-07-04_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "40ecb3437f0f20e24af155ad459d35775b414699d47cc59d7631148cee2d1de4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "a77fcd8e5370fbeef2a0c142ca7656142212d74927c4b3460ceb15e161efd082",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "03a4535c4760c72d0d6c641c068bcc7fd09c1bff84b4ab0aa58a77a4f0dc9e37",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "a0414c24e319ff3382041f4b3f4d3a268f8f8c4c746018bd357dd2909337c2f6",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "a8f5d511e38db8bda19c4b2b9e51810de7845958e4c26901f58e8376fc3c0aea",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "16b89083073bda1f8f22044c252e592d6e0c999b4ede965e32ba6dcb70310344",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "ada835ad0146bc85f432647f8f52ac3cb3aea8b321ccf819c3fd583ed5d537cf",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "88a00323c9916459070fe2073821c69ec463960ca1067e7651e8fb5ba1323e83",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "15a08b7dd9bb6d7250f8d75ec8ddbbe6a2033b4efa858003d52f07d563c724b2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_02/2026-09-16_02-11-13_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "b9d42d57be680f1e23344abb2d5b9e2f3dae91594ab32353ef43ecac550dfc4f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "dd72cee7a1a8279f3eb54ca61766aa3d2efb823622553b1b9ca8d264e2aa7fc2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "2a607dfe506074cc63e83d1c1e7fd2418d245ada6b83e8c5fb2e5a8f1f65fa07",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "4e31f267667b7529589f7a8dc5c090517e83c2ede5b9cab2eb81ece652775b96",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "cf0b79080624b1465871a03ba5ad2bf3a36a8195fd7fe7326cc8922b1e15c378",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "0f69d213789226c79304b4e55c428985060af87dfed8fcb862e02e2ff94e4e70",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "fc5d5c1c5bf2e18868d1618bdbe7923660edcb1dcc65f74342610a85119df9fa",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "6d8ae6402df90abea5d4c1e9f31f98cc5071831ab31e69663885febee1499052",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "e39dadb6c157ab89c584e521ed163d8dd97d7729b19e77087123c205f6265558",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_03/2026-09-16_02-15-01_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "763bea7918a0d62f4a99d8e0fcf3879e82735d2dc6567c19f7ed3ac3222529da",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "6d6a38977b1c8cb2ca51c3782ff72559e58696be881f503ac5629ffcc4747ca2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "8b940b7e9075cc50eb507e71e9a45fdb77a6fde651d13fd4cc26aac124d3705c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "178bf2e04acf30a11ebbd9cc885e7bba97f77455db1fc95687c0fb59a1c90342",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "9420a291a9ecda6e687c933f9daf7ab12dceb69feceffb5a7c700fe7ae5d0d6e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "4a8aaa6b370810e3d0cee7536c55e4282a570e78e318ad0b3d42fa11e3c7ff17",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "5394437a681d1e29ef615a09041781f73953d224e550e4f6c270819b9fdd5d04",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "b286e2e2b4575e6289eb4b699738893084ec978c37f95606cf0110193c888810",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "e446c0f940d692dd8e65aa4270b5475283b408d6f9afd85118f30d2dceb721e3",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_04/2026-09-16_02-18-46_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "32a4cb683075cd9eb5c11ae069ca8618b4951c7c8896cffa3a26b8fbb1f6b839",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "005969559ca5364bab939b7a64b7af1a1c149dc09f7367e00cdf6b5d255df768",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "8206ed0a64be13fe109e3ad34936bea4cd70db7484dce2feb3ed88d0eacb4dd3",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "1ec72709697bb0c65b947e42eaeca35627d0f8eebd8f5d22e4ddba806b381077",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "4f8e73085017b8fc04ac6d5eb31cf45bb967cc7c7fdc0c2fbe85e86f94e8f74f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "fcd3f9ea34fd319b59af590dfae46e1275fcce4936b34dedbdf9deecf090efa6",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "7cda29ca9cd67a3d4dc339615a4a68b4647fd82a9881f33769f0ae5eb6963788",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "ee22c959eacf59f0b6390a6fdd03b8d231ac68b7a5a069a2f48f910e110261cf",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "5d9635d94cfc1e9582aa52cd18f3d78147210e0ce2fe8ec229897fa29eeb8707",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_05/2026-09-16_02-22-31_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "1af88147a425fc933b6f863ca2f81811daea699b88e2d41f2f2b5e97ac6d64de",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "dc4018b0cae018ff3df543aeb907142960cae77872189b9a91bdb5f358f6f6cf",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "32fc9b5bc6ecf248bd4851603b5d2ee5782650c6ffec08b2a91853c367b8fcb4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "4f8c5d82314bc8f30c22480e7a24d04feda3a3b453f62d89c612c20966b8d963",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "2ab476006dca03d284cc9750d46e4709521c3e084e276955c7857a4680fc6a73",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "8e9305ee344f54f06fb15291d9a323768526af3cd357b9ed46803ee655b94941",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "157a5797393408640c2c07214c0014ea157a589e4bb65846b802d626dfc65459",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "6a7a771c8fc4cb654642019ba5220c8d781ae2bb3b5e05300287861077510d0e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "b242045f415d9a10fc31494251e942cf7b7ec13cc77acb830353b8e78bcacf50",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_06/2026-09-16_02-26-22_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "6b9f29f4c43b608ee4c99f3ad6c3d580d16f618de1d59236f6b63219c4774ed9",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "55041c1742de8d2b2382eb27d089f18b1de5f2b448f24259ea099611997cc36c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "9033f75220533f16b3d31c8e6871eb655bfe310360750616b745cc05c1ad19d5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "5690941de75ade364316523e4eee996f44bfa18d7fcc078fff8f95d89cd1c269",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "e9c84efc815ec7a6531c482bf10c51a6335561929a40e47a89066424fd979400",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "08754e8ebad1e65418d2c7c67204efb26cef649e27b7e47d72cd2af495abcdf2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "b7e921832a478a0fdb8257347004faa5d1aedfbec7766cce8317adfedc135869",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "9e0a50109b93f50ff1b0191f0b670efb35a079131f3e8cfbcb97d747a2959e73",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "ea4f175325261fdba0f615d0a8b770db264aef9f9b5b36c5426d53bbe7d3fe4d",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_07/2026-09-16_02-30-18_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "ee06dc9f87c6b8484a2239cbb5e4503281df4898c37b9e10ddf6a2d0af142ee3",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "a5d28ec909db97e899cd8c6a933fd36623d7d4349975f5521ef6dacfdc01167c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "3b2748a9b45796d2581c9e714ef3d2e42b7800ba24fde2b41f9c2c31dc171d28",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "d52fcfb2a0d0ddf88a89f6b82c5bc092989dcfd291170ffb21c14e217760f2ff",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "06f29f6c6363b45ddbe99f2f7b8bd02f7b5923e29e1c6614a8b0f95ddf4049a9",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "3d0278fb63dc024b70f07ec18799e065515c38133156d99f11c76939d70c3bc2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "569ab8bc0f9eb0cddb73fbc80147b3b9d28e972aaf30dad0d9c63d73029cac16",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "c1fb5669eea1f0ad7eebf8d7a7f1ca4b9fe05eec18485236a3ee761f301aa0fe",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "31c4fb2d75630ee548b42fab3f010f0a42e05d7744feffcb085ba28b807d4a6a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_loop/run_08/2026-09-16_02-34-21_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "b2162b53d87e24ff563627df8a84e7b75a9144ce39330e1a3c88e37aef4729af",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "32c84caa56f0039f1de16d57e2cc63ee1a9858709a95a199985693b9808506ea",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "442f70cf221246364b862f14ac6811f1439562d78b85d7706fa96c286c4ff982",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "0cbc86141e0e7e3c2c854afb04d99104c2ab4e829fafc0e4d9e01b68b304b6c1",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "68fe9fd42e57a1635234961fbae8358beff6fe070204e241c5981f53c2b7c599",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "d539744000eca173ce2beee2be1e38d48b4d828ba88a0c9cae64f0b64e163b52",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "98d05e87b7cbd7cbcf085396675a2afc823a09b8fa58bef871fb89f96cd22818",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "6dc7961a9984bbdb72a74ad122b46a5d2674b18150f1f95a3ab33dcbe60b442b",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "76752552821765ac8f51b6092fcb2ea83980947dec2b54d7ada5ca896caedc53",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_01/2026-09-16_09-54-27_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "4c4cdbddda054db74406c7d077b27e0266b98fab37057a5a95b8c2def4adeeb0",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "0a0ef383c7409654be3e823a4bc54b30592de495cd181c5fd75f74ebf6e46a9f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "1f3a5022b7b943b702de29f59a9f06a0b8c93e9f8dfd317167a04d6a71720a75",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "6a7116e11a3b5529f2f2f1b609052647349fc21b6a8c4fad05fbc3f1a80140cd",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "a20f06af8bdaaa497cffaefc7f9ccaf1df8fa8fcf900b025f914767d4775e0c5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "6a28f4e1a54579f526ae8d17ce44343770d1975f56e956c6f582b71e3e98bfd4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "19664fff7b0aca70948bc3fcca88b20fe34937a83e23dde39dcaad64bcea91fc",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "dfcabd015be4c943100161b357bc7db44ec6d58d067f1b04e5c4ef0c77e2c6c0",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "6d5e7d810bd0fa8b768e26043e3d527f5b6d136272bbfa4dfc19dd57502d3a81",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_02/2026-09-16_09-57-58_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "afd45ade88244a1c46ccbe8976c518d711c933d94c9f8475f451e7587efe5c2e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "8984d068fd286014151ac56efee3c358141c786d1c9b607bcea2c09e80e5b3cc",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "e85d2683663c9c4950b741eb105a3178e2a781df06ed6e4c8ecfe70ccfe152c4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "4412faf8608ef6de53a2ab12512202e5482360f7f0ecf9bc7660fbc7f9b7a93f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "0acbf3760363e582e8a0adf426e8ae71026be2eb2d83f9c88e247c08425f4a41",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "b462d5020e929733d15df5e9963d7f85317a924702a850efd0ee46dc88f23a57",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "aff1b29bbd8dc7427e4f15b2f450fba183cf47f72991a5eba1838fd179ec36b4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "eeafdf216d824bd6d6629e3950225d2fddf0280d7c76cb11eafee221d7b1d686",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "b17dce266622393bae4f3d8564a888e679dc8cace9d3e87f310c96687ce5af1c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_03/2026-09-16_10-01-43_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "08a65097df5051a24ef3d90086885cf44e995841dd33869fe802906d44bd5f3d",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "0efd8d866b48af3c00d7ad594037949206d0d368241cafa5ae5c338b0001a5f1",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "8178d4d670c3baad4326e1e86ec37bb5e116ef45a2dda8424ffa3c84f65ee8d1",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "89883cee20ba18c4db096afb94660e277d12b502d1220be0acdf2ae22b4d7fc6",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "0209e10853ae367638e386c471470aba0b52d3d4dd10f707844a15477641dadb",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "40ecb078e5dc9a8245dacbfcf3122e0561359a922f250dca68c4cc16d59a6785",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "9b9e7280cf71788074e5964ba9f9624956aca4c8560723dde862b21eaadc4651",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "06b283f0b64bcdcd4820816ac4dca14aa91d5cc012d3864189e6900bbcd52a7a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "f12a14c72229ca8bd4c1db0d44b5111aece536ab9b89355b4fce255657844c84",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_04/2026-09-16_10-05-34_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "d6d84f6dc64d1a3b262e4d1da141df978fad92f73f334faa451655e6e3468587",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "b499b636226a91248045d4cb0db25bb57773519a81a665419fef4ae77110e503",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "23db9537cab21fa9efb65d1a4d752c04abe2a4214206b2b5e557864afbbc95ef",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "88de20440c180f1246f8943449df05a7fd92bd4824a59d5d718731ce59d488d6",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "78ac19212b19f0ef5e8961d3a26d767799c10b2b87145e3c819cf3b6bdb4ff04",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "a08b25e6cb78b7103ba7c909babb7abab2164ad99dd5c4ac6af26dab464bae8f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "2b17951d9eadcfd85a72f7d1fced1e41470fed5ae114277b31361d9dc10d1def",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "bb23ae1f4a332c6ec10ffb73f15bae51c37dae66fc0be97a04516e6eaaf50e02",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "28fe6aa40e05fe6e80b96537865ebca3385741c3c9d00dc0590b23495c57fdd5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_05/2026-09-16_10-09-16_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "a49b9c74f3922b064061cb3bd8040d03a7320f469df069a1399a2534515dc6e3",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "c51a9a09be530f28ef072279261ded223e0378c5682b745756c677d5db4107fe",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "f53cf71f7d53bf7e604f0bd3288b16f286c6684d0eab93b9f6dfd3aab958591a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "4aa1c8c5777c5f9bcbd17bf6d1ac3780e970d337d40374fcb08c852c6a3454c8",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "69b76ad9a70f59d2bf9f7e6322380d4082922ee86ec9316ab51b3d1e7878f68d",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "149a3b41f71d3fc16d13e3aaffdd083be39c20f173d90c3d1b706446705d7484",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "8fc33f7054ca51150382c68c2644fb21abcd6d2257dbbbf813a6b06eee832473",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "d23d925eb4248271b3473a4ada0fb30c4d84fbdbe7016267aa98b3124a484af5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "67134783dbc9d0dc75208cd9921b9fb7ca4d74f6117143f3047e7ea96b8cebb0",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_06/2026-09-16_10-13-11_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "04dcbed081f98971209892d1a73ff41a80ef527e92910ffdab7bdec7f3358f6e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "d6d2fefa434515900d6d6a6cf199605ba423934c56ca57d6eac0419e702a9656",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "587a193776ae3e628ba7b4fc3ad2bf874d64817021dd8cffb61dee0bc5a502da",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "c6c6f564e182744fcae340d1e9b8338bece6044b7010e5523dcbdae1564c346a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "9363bc0915f21bc833dd443bf72b6d9ca8aa6ae5559ba5325e48d8453fb54f71",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "6c8152563af3cf71bbe22beaa85eb9821565e3fb05a31d70867f9b68038a0543",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "5988bb2ea276a3fa6e8cff6a880fb84dad348e2f4fc427fd3ffa73b7b28901ad",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "cd88bf8df1189c94f333b54dbd6cab5d1804c60c09a0455be4d6bf23390ce5fc",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "3c0f69035d2f1fafd884e78aa61cd3893e31cb9e95e9ecdc3e757bd9382b4d72",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_07/2026-09-16_10-17-08_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "ce9013b12002c058058d01be31f833de5b7db8e15cc68cc5617fe8ed9dc2e176",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "e64b3a63616ef2bc05c436e50c70eeb665ba25a0464f6517ca7f1f4768df5b62",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "9d58a149b40e12e66b3b1cf079de903c8ea9fa4cee2b130d1ea6b55a452726ea",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "9f5b696e045fa9fb8a64c71248d04df77eb2020a0e0bb352a6f76b069b4f523c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "1775c117988030847c4c0eaf24898ecb29dfe296435fbc95700862e01e14bd5a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "6e3f32b8c5b1b036ce8f0aae207cde4cf9dd56bca52fc064bdeb1607ee15519f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "258b13cf728767d21f386230d9dbc8cbd3982f1da478ddaaf8b71f9dec92bf0f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "fa38ecfd7d216b779da80f3ed7584aa3f258a0fc54b0a8991b9ca0b8c44e9984",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "18142d031d478e8bb0b328dcec658fc488a6a4e8516de737b3477b8b523f6352",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_refinement/run_08/2026-09-16_10-21-01_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "5acdec6a65a41e7370d96cd02c66e9fd360210478946897a7accc86233277771",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "4a1aaad319ecefd50e2e71f5075ad33aed43a78602089986e9dfa546153ecafa",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "2bd37085a88f12293ab031f0579b08de1c751a0e2999f199ce5eea85b941e7e0",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "18a84bde17affbd2065c636afbc532f774efe88ce14a2d8879738bcba98d213e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "1022bb58542e7ca50bef685201dadc794907a87d7ce5c75561bf4eee593a142e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "d5cc6402c7de4dc57bdf5b2e725bceca1d364d20c655a6b4645689e49288ee26",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "0042e382754262fdd2d4a2346e1a24a432515d73213ee356edcf8775c1fb4562",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "c714b27ea43384378f1772b20d98d48c8970131f4866efdfaf3969d97573619b",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "3dd4fa5e232413e216af576e6bf016cb52c5c40318cf079e9787ce69da166b7e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_01/2026-09-16_16-12-39_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "c5e2cad45619c35d16923829ab22bd7cfe318b3e01dca879c485a516d745cf5e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "3c856874061cd21fdeb04c494d4862bb017906c0347d14a11750212006ee681d",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "1f5e9888f1b1ca591795c65c072fe188358697e0fb553a00f16b3ccf9450f920",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "57c46272487eae897836856e5309fe0e9dc9496469e08fbd0741fd8fb1cfa201",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "29e2d7ab1f7c830791cdbaf3997deb6daadc06f359ee2725f378f4a3ec6da173",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "5c638f100f1f4329c7b3e9398459fbfc849c355e6580423e2be83b6c93af3846",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "4ed9c94f1507b7d6a4671791973d2afc79d70c4fb2b2b111a167123497a990fe",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "c9e3fc5b8c2e80ca1f5d3d451b281c5f27c28232b8c5a9fb050bfd84873677fe",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "6748fb37967e321b0d8f664141270f86cddabfdf95e91d22e2da8dd5bb3e4655",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_02/2026-09-16_16-17-12_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "ba7300e0b60cb1ace5961baac418cc40873334911f7ac56e26829ec5b401565c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "a4f4432f265e7084818bfc8dd7f297df20e4a4d83af7969365f635fd65dfb60d",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "f754be4a1214f1c7b8e0e7aaabe8eb54a03dbe6f2f7c5944f95f7b1047d3c224",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "440b3f364aadda03c9e74de5e40e420a5676203d573ea9b8196eab99a3fa153f",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "213cf2bfe65572b4bae16ec7e7f350fe7936aab1a4e937bf3bb2693026b09fd7",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "6fe8fb93da0303d11482938804acab4e3faf6f98ec089ec6664eb2b5cd2e8b1e",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "6e1ce78aedc6be70d5cb42418253e6fb2e81030bd63dec190222facca82b5405",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "b2654d581e0f32e434368ea19a8750f297909c8800cf980bf5872ab8f310e87c",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "61dabdeb82a395f442ff1e60fc0c749f1974fabcae2fbed332b41427823e4fa5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_03/2026-09-16_16-20-52_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "6cfc419bea0a2c4494782237ad8e54fafec952ed1966ec21636e6fb0e3a78398",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "2066f8f000bb35cfc6535d29d41d0cf5ea4e1baf82858f16d27bd736903321e2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "a385983f673745b2c444cb18f07a21e2bd3158240e9cb6e67573105458ed89fc",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "d2dcb89b92f4d63486592efe4c0817d88f0a0bb9356130b3d13f8dab3703d43a",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "d946e4cbd83844954d11ef4a29e1a14615103e2a0dc7be7c637742d64cc60901",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "f169561188476c3de25f331cce3dd6c2f4a02a2d6f8868e7caaa21c1a13405bd",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "f5d0412a4ecd6a47daf67f1f5c0adf91694dd53760dbaff6ad0aec84aef1f7d5",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "20e84e56609ae7b2a73aa520c6b550e6bd202e230101d1fe8a699fe39c1ca652",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "c3b3cf59eb0c6f8825a6fa6cac808b41b9db8d4dde7e89e2c11bedff92f6f6d2",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_04/2026-09-16_16-24-20_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "7886cf1841707bcca1f22596fc1f74a56f7319c6608ec271c2f222c648bb88b0",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_1200.pt",
+      "bytes": 4858101,
+      "sha256": "6db8f82ed0c0b490546b04f99db05732edf61414a9867fbcfa457749f86ba6bd",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_720.pt",
+      "bytes": 4858021,
+      "sha256": "f240e900b9d728982c643b333d122f715283629c4ecc9bdbf34e4147ce57beed",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_960.pt",
+      "bytes": 4858021,
+      "sha256": "04171d5d2fe7f9536db278c94bc5ce00d3856b2903aac05af385f619435d175b",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_1440.pt",
+      "bytes": 4858101,
+      "sha256": "66e5574b87426a723305df5483164d1efb1ed4d6c97d9c3b97da38de8d4a8fec",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_2160.pt",
+      "bytes": 4858101,
+      "sha256": "4386df828998a1858433bb1d72f2569c62fe161a873be109d742ad88be46fbae",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_1680.pt",
+      "bytes": 4858101,
+      "sha256": "e1902d6796c8db0b8e1e5a048799747703846c8d2f5d71605e5a572ecf2295d4",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_1920.pt",
+      "bytes": 4858101,
+      "sha256": "c692d3f272af73057b56e144b9a1a022404c6d4505161797ba744c411d5dd351",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_480.pt",
+      "bytes": 4858021,
+      "sha256": "cc2fa0e9516b3732819aebb847a1f4f20560e695d503f38c72349f2775ccb2ee",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "logs/skrl/walk_quality/run_06/2026-09-16_20-25-29_ppo_torch/checkpoints/agent_240.pt",
+      "bytes": 4858021,
+      "sha256": "b90a1197cac942a4e20faf8d471a97a1f06887c2e1e57fade6f37a3cd183ce60",
+      "reason": "obsolete intermediate training checkpoint; final/best and run metadata retained"
+    },
+    {
+      "path": "docs/walk_ref/quality_runs/__pycache__",
+      "reason": "generated Python cache"
+    },
+    {
+      "path": "docs/walk_ref/archive/loop_runs/__pycache__",
+      "reason": "generated Python cache"
+    }
+  ],
+  "deduplicated": [],
+  "archive_storage": "archive/walk_ref (docs/walk_ref/archive is a compatibility link; original script directory depth retained)",
+  "kept_after_audit": {
+    "exports": "Both historical ONNX graphs and manifests are unique; labelled historical in exports/README.md.",
+    "outputs": "Reaction, expression-comparison and room/asset previews are unique pipeline handoff artifacts; retained. Winning Hydra launch untouched.",
+    "logs": "Stage 5 and original evaluator-default checkpoints retained; winning quality training directory unchanged.",
+    "videos": "No byte-identical historical videos found; unique comparisons archived."
+  }
+}

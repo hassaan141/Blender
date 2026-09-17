@@ -1,9 +1,1 @@
-# Gait quality: maximum six experiments
-
-Baseline is retained refinement Run 05, remeasured with read-only diagnostic logging. Diagnosis must be complete before reward changes (DIAGNOSIS.md). Its joint acceleration is 12.53651237487793 rad/s², not a moving baseline. All source snapshots and existing work are preserved.
-
-Hard constraints: survival 100%, no warmup falls, mean vx 0.19–0.23, vx std <0.06, max vx <0.40. Forward speed is not ranked or rewarded. Keep the existing reference file, global phase multiplier, training command curriculum and gait cycle unchanged; measured phase period must match baseline within one 24 Hz sample. Reference tracking RMS <=125% of this retained baseline; final visual gait review required.
-
-Quality gates: neither FL SP nor knee saturation may exceed this baseline; joint acceleration must be strictly below baseline; detrended body-height RMS and vertical-velocity RMS must not exceed baseline; mean joint saturation must not exceed baseline. No moving-baseline allowance. Among candidates passing all gates, minimize 50% normalized mean FL SP/knee saturation +25% normalized joint acceleration +25% normalized detrended body-height RMS. This permits measured tradeoffs within baseline bounds, never speed gains purchasing more shaking. Save raw metrics and each reason for rejection. Action rate is reported but is not substituted for actual physical smoothness.
-
-Each experiment has one focused hypothesis and at most two related parameters, warm-started from the retained best. Same 100 PPO iterations/2400 steps, 512 environments, seed 42, predetermined final checkpoint. Existing evaluator at held 0.25 m/s command for 60 seconds after one-second settling, with additional read-only diagnostics. Do not change actuator physics, gains, effort limits or canonical assets. Rejected changes are reverted before the next trial. At six experiments or full satisfactory result, restore the best, render it, verify protected files, and stop. No claim of improvement if every candidate is rejected.
+../archive/quality_history/PROTOCOL.md

@@ -1,0 +1,8 @@
+{
+  "protected_files_checked": 217,
+  "protected_files_changed": [],
+  "reference_and_phase_rate_unchanged_in_all_six": true,
+  "existing_evaluator_metric_definitions_unchanged": true,
+  "baseline_scalar_metrics_exactly_reproduced": true,
+  "diagnosis_completed_before_training": true
+}

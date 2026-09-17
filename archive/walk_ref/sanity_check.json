@@ -1,0 +1,28 @@
+{
+  "protected_file_count": 363,
+  "protected_hash_mismatches": [],
+  "active_document_broken_links": [],
+  "selection_tests": "16 passed (8 quality + 8 refinement)",
+  "archive_compatibility": "Original script directory depth and referenced checkpoint paths retained.",
+  "rl/bingo_rl/bingo_rl/walk_ref/bingo_walk_ref_env.py_matches_snapshot": true,
+  "rl/bingo_rl/bingo_rl/walk_ref/bingo_walk_ref_env_cfg.py_matches_snapshot": true,
+  "metrics.json_replay_exact_match": true,
+  "quality_metrics.json_replay_exact_match": true,
+  "evaluation": {
+    "exit_code": 0,
+    "duration_s": 60,
+    "settle_seconds": 1,
+    "imports": "IsaacLab, bingo_rl, Torch, Gymnasium, skrl and diagnostics imported successfully during full replay",
+    "video_rendered": true,
+    "output_directory": "/tmp/bingo-cleanup-baseline-eval"
+  },
+  "canonical_video_probe": {
+    "format": {
+      "duration": "60.959000",
+      "size": "5313858"
+    }
+  },
+  "reproduction_overwrite_guard": "passed: canonical run rejected without launching evaluator",
+  "broken_compatibility_links": [],
+  "result": "PASS"
+}
