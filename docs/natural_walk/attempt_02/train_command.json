@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/natural_walk/train.py",
+    "--task",
+    "Bingo-NaturalWalk-Train-v0",
+    "--headless",
+    "--num_envs",
+    "512",
+    "--seed",
+    "42",
+    "--max_iterations",
+    "100",
+    "--checkpoint",
+    "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+    "agent.agent.experiment.directory=/pub0/muhammadf/Blender/docs/natural_walk/attempt_02/training",
+    "hydra.run.dir=/pub0/muhammadf/Blender/docs/natural_walk/attempt_02/hydra",
+    "--kit_args",
+    "--/rtx/verifyDriverVersion/enabled=false --no-window"
+  ],
+  "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+  "seed": 42,
+  "max_iterations": 100,
+  "parent": "Locomotion 1 quality Run 05"
+}

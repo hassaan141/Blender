@@ -1,0 +1,64 @@
+{
+  "source": "dog02_walk_02.npz",
+  "dog_leg_len_m": {
+    "fl": 0.19348025201275237,
+    "fr": 0.2001933070772419,
+    "bl": 0.15608492245987102,
+    "br": 0.17716082147970577
+  },
+  "scale_per_leg": {
+    "fl": 0.8592575095102861,
+    "fr": 0.8556553453161758,
+    "bl": 0.9877583055461733,
+    "br": 0.9329735237739654
+  },
+  "base_fit_residual_mm": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "stance_shift_mm": 14.999999999999972,
+  "amplitude_per_leg": {
+    "fl": 0.5,
+    "fr": 0.5,
+    "bl": 0.5,
+    "br": 0.5
+  },
+  "ik_foot_error_mm": {
+    "mean": 0.48393512466646366,
+    "p95": 5.62829201636913,
+    "max": 11.100834335794389
+  },
+  "joint_limit_pct": {
+    "fl_SY_J": 38.333333333333336,
+    "fl_SP_J": 0.0,
+    "fl_knee": 0.0,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 0.0,
+    "fr_knee": 0.0,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 0.0,
+    "bl_knee": 0.0,
+    "br_SY_J": 1.6666666666666667,
+    "br_SP_J": 0.0,
+    "br_knee": 0.0
+  },
+  "max_dof_velocity_rad_s": 5.179117275858725,
+  "frames_over_vel_limit": 0,
+  "foot_slip_mm_per_stance": {
+    "before_correction": 6.16518276970317,
+    "after_correction": 5.365880424489189
+  },
+  "root_travel_m": {
+    "before_correction": 0.12220643147715439,
+    "after_correction": 0.06413706969677123
+  },
+  "duty_factor": {
+    "fl": 0.35,
+    "fr": 0.65,
+    "bl": 0.45,
+    "br": 0.48333333333333334
+  },
+  "rate_limit_smoothing_samples": 0,
+  "ground_shift_mm": -50.995773126781614,
+  "root_method": "yaw_only"
+}

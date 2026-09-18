@@ -1,3 +1,139 @@
+# Locomotion 2 AMP handoff (2026-09-17 session) -- READ THIS FIRST if resuming Locomotion 2
+
+This section documents a SEPARATE, ACTIVE workstream (Locomotion 2: dog-mocap AMP
+style prior + velocity-command PPO for Bingo) from the Locomotion 1 handoff below
+(walk_ref, reference-guided residual RL, a DIFFERENT, already-completed project).
+Do not confuse the two. Locomotion 1's `docs/walk_ref/quality_runs/run_05/` remains
+protected/read-only and untouched by any of this work.
+
+## What this workstream is
+
+Pivoted Locomotion 2 from exact dog-motion retargeting (previous attempt:
+`docs/locomotion2/LOCOMOTION2_PIPELINE_REPORT.md` -- kinematically valid, failed
+Stage 4 physics, robot fell) to AMP (Adversarial Motion Priors): an adversarial
+discriminator compares a morphology-tolerant STYLE FEATURE VECTOR (root-local
+velocities, gravity, per-leg segment directions, normalized paw kinematics,
+contacts -- NOT raw joint angles) computed independently from dog BVH mocap
+(`dataset/lifelike_dog/`) and from Bingo's own simulated state on the validated v4
+asset. A velocity-command task reward (`[vx,vy,yaw_rate]`, vy/yaw pinned to 0 for
+this first controller) gives Bingo a reason to translate. Full design rationale,
+dataset findings, and bug fixes: `docs/locomotion2/amp/AMP_PIPELINE_REPORT.md`
+(READ THIS -- it is the authoritative, continuously-updated record of this
+workstream, more detailed than this handoff section).
+
+## Key files (all new this session)
+
+- `docs/locomotion2/amp/bvh_parser.py` -- generic BVH parser + vectorized FK.
+- `docs/locomotion2/amp/dataset_inspect.py` -> `DATASET_REPORT.md` -- categorized
+  all 33 lifelike_dog clips; found `dog_idle_*.bvh` are NOT stationary (numeric +
+  visual lesson, same class of mistake as the earlier InterPet4D work).
+- `docs/locomotion2/amp/extract_dog_amp_features.py` -> `cache/dog_amp_expert.npz`
+  -- the 61-dim feature schema (documented in the script's own docstring), builds
+  the (feat_t, feat_t+1) expert transition buffer. Two real bugs found/fixed here:
+  wrong per-side leg-scale normalization, and a 4-6x dog-vs-Bingo speed mismatch
+  fixed by RE-TIMING (time-stretching) walk windows to Bingo's target band before
+  resampling to the 30Hz control rate.
+- `rl/bingo_rl/bingo_rl/locomotion2_amp/` -- new gym-registered package
+  (`Bingo-Locomotion2-AMP-Direct-{,Play}-v0`), built on `BINGO_V4_CFG` (protected,
+  unmodified) + Task 1's validated stance/action-scale constants. NOT the old
+  `rl/bingo_rl/bingo_rl/amp/` package (that's the prior, July-2026, rev_3-asset
+  AMP experiment -- kept as historical reference/pattern source only, not extended).
+- `rl/bingo_rl/scripts/eval_locomotion2_amp.py` -- deterministic eval battery
+  (adapted from `rl/tools/eval_velocity.py`'s methodology). One bug fixed:
+  `terminated`/`truncated` from the skrl wrapper are shaped `(N,1)`, must
+  `.reshape(-1)` before building boolean masks.
+- `rl/bingo_rl/scripts/diagnose_gait_cycle.py` -- **the decisive instrument for gait
+  quality**. Rendered video was twice ambiguous/misleading this session (looked
+  frozen at first glance, actually just a panning follow-camera hiding tiny real
+  leg motion). This script logs actual per-joint dof_pos and per-paw height over a
+  rollout and reports peak-to-peak amplitude + FFT dominant frequency per leg --
+  trust this over eyeballing frames.
+- `rl/bingo_rl/scripts/export_locomotion2_amp_onnx.py` -- ONNX export, not yet run
+  (waiting for a checkpoint worth exporting).
+- `docs/locomotion2/amp/EXPERIMENTS.csv` -- leaderboard, all 5 runs so far.
+- `docs/locomotion2/amp/checkpoints/run_0{1..5}_best_agent.pt` -- one checkpoint per run.
+- `docs/locomotion2/amp/loop_runs/run_0{1..5}/` -- metrics.json, report.txt,
+  eval_video/, gait_trace.npz per run.
+
+## Status: COMPLETE for this pass. run_06 is the current best.
+
+6 training runs, each independently evaluated and diagnosed (full trail in
+`EXPERIMENTS.csv` + `AMP_PIPELINE_REPORT.md`). Two real, independently-diagnosed
+defects were found and fixed:
+
+1. **Standing falls (run_01 -> fixed in run_02)**: idle transitions were <0.5% of
+   the expert buffer, so the discriminator never learned "expert standing" and
+   fought the task reward at cmd_vx=0. Fixed by oversampling idle transitions to
+   20% (matching the training-time stand_prob). Standing survival went 0% -> 100%.
+2. **Degenerate gait (run_01 through run_05 -> fixed in run_06)**: the robot
+   tracked commanded velocity excellently but via foot slip + high-frequency
+   (6-12Hz) joint jitter with only 2-9mm paw lift, not a real stride. TWO wrong
+   hypotheses were tried and correctly ruled out with evidence (not guessed and
+   abandoned): `max_air_time`/`max_contact_time` gait-bound penalty (run_03 -- the
+   bound's 0.35s threshold never fires on a 6-12Hz cycle) and `style_reward_scale`
+   1.0->2.5 (run_04) plus `discriminator_gradient_penalty_scale` 5.0->15.0 (run_05)
+   targeting an apparent AMP discriminator-dominance pattern (expert/policy score
+   separation ~15, saturated since early in every run) -- neither moved the
+   discriminator loss floor or the gait amplitude at all. **The actual root cause**:
+   `skrl_amp_cfg.yaml` had `fixed_log_std: True, initial_log_std: -2.9` (~0.008 rad
+   of real per-step joint exploration noise) carried over UNCHANGED from the prior
+   rev_3-era tuning, with `entropy_loss_scale: 0.0` -- the policy had no mechanism
+   to ever discover a larger-amplitude gait through exploration. Raising
+   `initial_log_std` to -1.0 (run_06) produced a qualitatively different, genuine
+   gait: paw lift up to 121mm, joint swings up to 0.75 rad, ~3.7Hz dominant
+   frequency (all now in a plausible/dog-like range), visually confirmed via a
+   cropped frame montage (full-scene video frames had been misleadingly ambiguous
+   twice this session -- trust `diagnose_gait_cycle.py`'s numeric joint/paw traces
+   over eyeballing rendered frames).
+
+**Current best**: `docs/locomotion2/amp/checkpoints/run_06_best_agent.pt`. 6/6 eval
+gates pass (standing, all 4 walk speeds, 60s sustained). Trade-off vs. the
+safer-but-degenerate run_02: torque saturation rose to ~25% (was ~5-8%) and vx
+tracking RMSE to 0.037-0.055 (was 0.007-0.011) -- the real cost of a larger, more
+natural stride, not alarming (roll RMS still ~3deg, survival unaffected). ONNX
+exported and parity-validated (`docs/locomotion2/amp/export/`, single-step diff
+1.9e-6, PASS).
+
+**Not yet attempted / natural next bounded experiments** if resuming this
+workstream: (1) now that a real stride exists, re-tune the action-rate/
+joint-accel/torque regularizer weights upward to recover some of run_02's
+smoothness without losing the real gait; (2) more training iterations at run_06's
+config to let tracking precision catch up now that exploration found the right
+gait family; (3) RSI (reference-state init) is still absent. None of these are
+blockers -- run_06 already satisfies the "first working Locomotion 2 controller"
+bar the brief asked for.
+
+## Standing instructions for this workstream (from the user's original brief)
+
+- Do not modify `docs/walk_ref/`, canonical Stage 1-5 assets, `bingo_v4.py`
+  actuator config, Kp/Kd, effort limits, or the InterPet4D raw dataset/previous
+  Locomotion 2 exact-retarget reports (`docs/locomotion2/LOCOMOTION2_PIPELINE_REPORT.md`
+  and its artifacts) -- read-only history, not to be deleted.
+- Keep iterating autonomously; do not stop for permission after each experiment.
+  Only stop for a genuine blocker (dataset unusable, AMP fundamentally
+  incompatible, training unstable after diagnosed bounded attempts) -- a
+  gait-quality gap that hasn't yet found its fix is NOT one of those; keep going
+  with new, evidence-based hypotheses (see "next lever" above).
+- Final deliverables still owed once a run is actually good: ONNX export +
+  parity check, comparison against `docs/walk_ref/quality_runs/run_05/`
+  (Locomotion 1's frozen best, for reference/contrast only, not a shared
+  baseline), and a finished `AMP_PIPELINE_REPORT.md` "Blockers" section.
+- GPU notes: this machine has 2 GPUs; Omniverse/PhysX always uses physical GPU 0
+  (2080 Ti) for simulation regardless of `CUDA_VISIBLE_DEVICES` (a "CUDA bad
+  state" warning for the 4090 is normal/benign here), while
+  `CUDA_VISIBLE_DEVICES=1` + PyTorch puts the actual RL neural-net compute on the
+  4090. Do NOT run two Isaac Sim instances concurrently -- this session did once
+  by accident (an orphaned crashed eval process from a since-fixed bug held GPU 0
+  for ~100 minutes) and it corrupted a subsequent training launch
+  (`'NoneType' object has no attribute 'create_articulation_view'`). Always
+  `ps aux | grep -E "train_amp|eval_locomotion2"` and confirm nothing stale is
+  running before launching a new Isaac Sim job. Wrap launches in `nohup ... &
+  disown` (not `timeout`, which killed at least one legitimate long run in
+  earlier Locomotion 2 history) and poll via Monitor/log-tailing, not blocking
+  sleeps.
+
+---
+
 # Bingo handoff for Claude
 
 Prepared 2026-09-16 (America/Toronto), after the locomotion refinement, gait-quality campaign, and repository cleanup. This file summarizes the completed work and points to authoritative records; it does not authorize further training or changes.

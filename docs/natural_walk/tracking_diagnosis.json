@@ -1,0 +1,23 @@
+{
+  "baseline": {
+    "bl_swing_samples": 258,
+    "residual_foot_height_shift_mean_mm": -1.0749495166411274,
+    "target_minus_actual_foot_height_mean_mm": 0.0860330755686959,
+    "ref_foot_z_mean_mm": 14.034175953473996,
+    "actual_foot_z_mean_mm": 12.87319336126417
+  },
+  "attempt_01": {
+    "bl_swing_samples": 258,
+    "residual_foot_height_shift_mean_mm": -1.866640177854199,
+    "target_minus_actual_foot_height_mean_mm": 0.005284001849321939,
+    "ref_foot_z_mean_mm": 14.916604012103326,
+    "actual_foot_z_mean_mm": 13.044679832399803
+  },
+  "reference_02b_preflight": {
+    "bl_swing_samples": 84,
+    "residual_foot_height_shift_mean_mm": -0.7176246800127426,
+    "target_minus_actual_foot_height_mean_mm": 0.20460051355814762,
+    "ref_foot_z_mean_mm": 18.338719667011976,
+    "actual_foot_z_mean_mm": 17.41649447344108
+  }
+}

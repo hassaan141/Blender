@@ -1,0 +1,13 @@
+{
+  "source": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/reference.npz",
+  "mocap_profile_count": 4,
+  "lift_mm": 6.0,
+  "lift_legs": "bl",
+  "recovery_swing": true,
+  "task_space_smoothing": 0.15,
+  "joint_delta_max_rad": 0.09475968185439987,
+  "ik_error_max_m": 9.990512806461273e-07,
+  "cadence_and_body_motion": "unchanged",
+  "contact_timing": "selected-leg swing follows existing forward recovery strokes",
+  "body_arrays": "FK recomputed; no copied dog angles"
+}

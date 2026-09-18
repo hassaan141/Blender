@@ -8,6 +8,7 @@ from . import track_v4  # noqa: F401  (registers Bingo-TrackV4-Deadpan-Direct-v0
 from . import stage5  # noqa: F401  (registers Bingo-Stage5-Timid-Direct-v0, residual RL on Stage 4)
 from . import locomotion  # noqa: F401  (registers Bingo-Velocity-Flat-v4-v0, free locomotion on v4)
 from . import walk_ref  # noqa: F401  (registers Bingo-WalkRef-v4-{A,B,C,Play}-v0, cyclic-walk residual RL)
+from . import locomotion2_amp  # noqa: F401  (registers Bingo-Locomotion2-AMP-Direct-{,Play}-v0, dog-style AMP prior on v4)
 
 # track_expr/ (a track_v4/stage5 ancestor, superseded) archived to archive/rl_orphaned/ -
 # nothing current imports it. agents.py, bingo.py, env_cfg.py were archived there too in an

@@ -1,0 +1,283 @@
+[
+  {
+    "clip_id": "interpet_dog06_p14_take02_ego_001",
+    "dog": "dog06",
+    "window": {
+      "t0": 3.9,
+      "t1": 7.65,
+      "duration_s": 3.75,
+      "straightness": 0.18768314871146788,
+      "n_cycles": 5.0,
+      "per_leg_counts": [
+        5,
+        5,
+        5,
+        4
+      ],
+      "count_consistency": 0.9088394311805854,
+      "speed_mean": 0.11753804041671018,
+      "speed_std": 0.032691002685912934,
+      "speed_cv": 0.2781312549538244,
+      "duty": [
+        0.17699115044247787,
+        0.2743362831858407,
+        0.1592920353982301,
+        0.35398230088495575
+      ],
+      "n_candidates_found": 483,
+      "fully_qualified": false
+    },
+    "kp24_check": {
+      "paw_mean_height_vs_root": -0.14636559996532314,
+      "withers_mean_height_vs_root": 0.08128541871567624,
+      "consistent": true
+    },
+    "pet20_check": {
+      "paw_mean_height_vs_withers": -0.23275323114538074,
+      "consistent": true
+    },
+    "dropped_frame_ratio": 0.0,
+    "mean_kp_weight": 0.4821634411256881,
+    "mean_pet_confidence": 0.6607067584991455,
+    "body_length_m": 0.5143281798978784,
+    "withers_height_m": 0.3797814334243272,
+    "leg_lengths_m": {
+      "left_front": 0.12387312679601109,
+      "left_rear": 0.08813475291690724,
+      "right_front": 0.14104315676293602,
+      "right_rear": 0.11337542443872803
+    },
+    "mean_leg_length_m": 0.1166066152286456,
+    "foot_sliding_m": {
+      "left_front": 0.026336197070950584,
+      "left_rear": 0.045408316754453525,
+      "right_front": 0.03876441596336324,
+      "right_rear": 0.02565944132932248
+    },
+    "plot_path": "/pub0/muhammadf/Blender/docs/locomotion2/motions/candidates/interpet_dog06_p14_take02_ego_001_candidate.png",
+    "mean_forward_speed_mps": 0.013230693541018673,
+    "n_frames": 113,
+    "nan_ok": true,
+    "scores": {
+      "duration_s": 3.75,
+      "speed_cv": 0.2781312549538244,
+      "n_cycles": 5.0,
+      "straightness": 0.18768314871146788,
+      "contact_quality": 0.6643094111673685,
+      "tracking_quality": 0.9312620073233181,
+      "morphology_similarity": 0.7806020452337797,
+      "composite": 0.6944754848926243
+    }
+  },
+  {
+    "clip_id": "interpet_dog01_p01_take10_ego_001",
+    "dog": "dog01",
+    "window": {
+      "t0": 9.6,
+      "t1": 12.35,
+      "duration_s": 2.75,
+      "straightness": 0.3627888841318048,
+      "n_cycles": 4.0,
+      "per_leg_counts": [
+        4,
+        4,
+        3,
+        6
+      ],
+      "count_consistency": 0.743594179791725,
+      "speed_mean": 0.15187012353173077,
+      "speed_std": 0.027030686879115334,
+      "speed_cv": 0.17798554613980883,
+      "duty": [
+        0.3253012048192771,
+        0.40963855421686746,
+        0.5060240963855421,
+        0.30120481927710846
+      ],
+      "n_candidates_found": 246,
+      "fully_qualified": false
+    },
+    "kp24_check": {
+      "paw_mean_height_vs_root": -0.1517830248901228,
+      "withers_mean_height_vs_root": 0.11404037504820279,
+      "consistent": true
+    },
+    "pet20_check": {
+      "paw_mean_height_vs_withers": -0.2639480945697715,
+      "consistent": true
+    },
+    "dropped_frame_ratio": 0.0,
+    "mean_kp_weight": 0.46344133436560153,
+    "mean_pet_confidence": 0.5955453515052795,
+    "body_length_m": 0.4343885739891448,
+    "withers_height_m": 0.33464663006096,
+    "leg_lengths_m": {
+      "left_front": 0.12125818889828939,
+      "left_rear": 0.10292440798765186,
+      "right_front": 0.12175336251606028,
+      "right_rear": 0.12364329075423677
+    },
+    "mean_leg_length_m": 0.11739481253905956,
+    "foot_sliding_m": {
+      "left_front": 0.036331787912484904,
+      "left_rear": 0.024498525963057384,
+      "right_front": 0.03905345431017467,
+      "right_rear": 0.01637651320407054
+    },
+    "plot_path": "/pub0/muhammadf/Blender/docs/locomotion2/motions/candidates/interpet_dog01_p01_take10_ego_001_candidate.png",
+    "mean_forward_speed_mps": 0.048761061184443955,
+    "n_frames": 83,
+    "nan_ok": true,
+    "scores": {
+      "duration_s": 2.75,
+      "speed_cv": 0.17798554613980883,
+      "n_cycles": 4.0,
+      "straightness": 0.3627888841318048,
+      "contact_quality": 0.7055048974188028,
+      "tracking_quality": 0.9184846748404674,
+      "morphology_similarity": 0.728455031600105,
+      "composite": 0.466504279061836
+    }
+  },
+  {
+    "clip_id": "interpet_dog02_p05_take06_ego_001",
+    "dog": "dog02",
+    "window": {
+      "t0": 0.6,
+      "t1": 2.6,
+      "duration_s": 2.0,
+      "straightness": 0.7638266641574999,
+      "n_cycles": 3.0,
+      "per_leg_counts": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "count_consistency": 1.0,
+      "speed_mean": 0.20085861958546444,
+      "speed_std": 0.08019176764899046,
+      "speed_cv": 0.39924484104536634,
+      "duty": [
+        0.35,
+        0.45,
+        0.65,
+        0.48333333333333334
+      ],
+      "n_candidates_found": 166,
+      "fully_qualified": false
+    },
+    "kp24_check": {
+      "paw_mean_height_vs_root": -0.2673637555535748,
+      "withers_mean_height_vs_root": 0.10552613136064204,
+      "consistent": true
+    },
+    "pet20_check": {
+      "paw_mean_height_vs_withers": -0.3948581029649934,
+      "consistent": true
+    },
+    "dropped_frame_ratio": 0.0,
+    "mean_kp_weight": 0.5521423697181874,
+    "mean_pet_confidence": 0.7165292501449585,
+    "body_length_m": 0.609695484481798,
+    "withers_height_m": 0.44001305749019004,
+    "leg_lengths_m": {
+      "left_front": 0.1938942686003557,
+      "left_rear": 0.14867393787589533,
+      "right_front": 0.1987667903913613,
+      "right_rear": 0.16575435032664276
+    },
+    "mean_leg_length_m": 0.17677233679856377,
+    "foot_sliding_m": {
+      "left_front": 0.01880553662260696,
+      "left_rear": 0.023475473255696395,
+      "right_front": 0.023176173206542434,
+      "right_rear": 0.024660949092492206
+    },
+    "plot_path": "/pub0/muhammadf/Blender/docs/locomotion2/motions/candidates/interpet_dog02_p05_take06_ego_001_candidate.png",
+    "mean_forward_speed_mps": 0.1385631118606514,
+    "n_frames": 75,
+    "nan_ok": true,
+    "scores": {
+      "duration_s": 2.5,
+      "speed_cv": 0.39924484104536634,
+      "n_cycles": 3.0,
+      "straightness": 0.6797880771168956,
+      "contact_quality": 0.8292348898522183,
+      "tracking_quality": 0.972083049002276,
+      "morphology_similarity": 0.4872824493285784,
+      "composite": 0.42832771878151976
+    },
+    "note": "Window manually refined from the auto-picked [0.6,3.1] to [0.6,2.6] after visual review showed a wobbly near-stop tail after t=2.6s; see CANDIDATE_COMPARISON.md."
+  },
+  {
+    "clip_id": "interpet_dog10_p09_take01_ego_001",
+    "dog": "dog10",
+    "window": {
+      "t0": 2.4,
+      "t1": 5.9,
+      "duration_s": 3.5,
+      "straightness": 0.05503389954529505,
+      "n_cycles": 4.0,
+      "per_leg_counts": [
+        4,
+        3,
+        4,
+        4
+      ],
+      "count_consistency": 0.8845299461620748,
+      "speed_mean": 0.09602800441504972,
+      "speed_std": 0.06393404285549914,
+      "speed_cv": 0.6657853950516882,
+      "duty": [
+        0.5333333333333333,
+        0.6190476190476191,
+        0.3238095238095238,
+        0.18095238095238095
+      ],
+      "n_candidates_found": 46,
+      "fully_qualified": false
+    },
+    "kp24_check": {
+      "paw_mean_height_vs_root": -0.20895544569208926,
+      "withers_mean_height_vs_root": 0.30211755874402385,
+      "consistent": true
+    },
+    "pet20_check": {
+      "paw_mean_height_vs_withers": -0.5411732917573431,
+      "consistent": true
+    },
+    "dropped_frame_ratio": 0.0,
+    "mean_kp_weight": 0.4737125007494811,
+    "mean_pet_confidence": 0.604231595993042,
+    "body_length_m": 1.0289461205022763,
+    "withers_height_m": 0.5963565110734529,
+    "leg_lengths_m": {
+      "left_front": 0.2742058533364584,
+      "left_rear": 0.13902720009676192,
+      "right_front": 0.2763123072817829,
+      "right_rear": 0.1593991128544986
+    },
+    "mean_leg_length_m": 0.21223611839237547,
+    "foot_sliding_m": {
+      "left_front": 0.014937121659402754,
+      "left_rear": 0.020073537149743356,
+      "right_front": 0.006086476459151645,
+      "right_rear": 0.016104514619323548
+    },
+    "plot_path": "/pub0/muhammadf/Blender/docs/locomotion2/motions/candidates/interpet_dog10_p09_take01_ego_001_candidate.png",
+    "mean_forward_speed_mps": 0.003937929694612592,
+    "n_frames": 105,
+    "nan_ok": true,
+    "scores": {
+      "duration_s": 3.5,
+      "speed_cv": 0.6657853950516882,
+      "n_cycles": 4.0,
+      "straightness": 0.05503389954529505,
+      "contact_quality": 0.7870371008665825,
+      "tracking_quality": 0.926332292103864,
+      "morphology_similarity": 0.22069919536559007,
+      "composite": 0.4269645500036688
+    }
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "numeric_and_artifact_metadata_match_except_task_name": true,
+  "differences": {},
+  "task_name_note": "Isolated NaturalWalk task inherits original WalkRef with the exact original reference and contact correction disabled."
+}

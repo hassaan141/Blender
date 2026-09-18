@@ -1,0 +1,20 @@
+{
+  "protected_files_checked": 940,
+  "mismatches": [],
+  "training_attempts_completed": 3,
+  "all_full_evaluations_survived": true,
+  "original_baseline_metrics_reproduced": true,
+  "new_work_locations": [
+    "docs/natural_walk/",
+    "rl/bingo_rl/bingo_rl/natural_walk/"
+  ],
+  "protected_integrity": "PASS",
+  "outcome": "No visual pass; canonical baseline retained",
+  "active_report_links": "PASS",
+  "python_syntax_and_reproduction_shell_syntax": "PASS",
+  "visual_decisions": {
+    "attempt_01": "REJECT",
+    "attempt_02": "REJECT",
+    "attempt_03": "REJECT"
+  }
+}

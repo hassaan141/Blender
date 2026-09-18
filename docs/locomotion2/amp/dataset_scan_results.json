@@ -1,0 +1,1292 @@
+[
+  {
+    "file": "dog_back_001.bvh",
+    "name_category": "backward",
+    "n_frames": 977,
+    "fps": 120.0000480000192,
+    "duration_s": 8.14166341,
+    "speed_mean": 0.6173870157790273,
+    "speed_p95": 1.3223776464143442,
+    "speed_max": 1.4169304701393108,
+    "root_y_min": 0.49131700000000006,
+    "root_y_max": 0.5984550000000001,
+    "heading_std_mean_deg": 41.9911336314359,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 2.4166657,
+        "t1": 6.466664079999999,
+        "dur": 4.04999838,
+        "speed_mean": 1.1074067008551975,
+        "speed_std": 0.1711197001011554,
+        "straightness": 0.9847999291841835
+      }
+    ],
+    "frac_stationary": 0.150460593654043,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_back_002.bvh",
+    "name_category": "backward",
+    "n_frames": 1453,
+    "fps": 120.0000480000192,
+    "duration_s": 12.10832849,
+    "speed_mean": 0.5964300950212413,
+    "speed_p95": 1.3958816679178727,
+    "speed_max": 1.6723885388336854,
+    "root_y_min": 0.091055,
+    "root_y_max": 0.618287,
+    "heading_std_mean_deg": 52.97509407070394,
+    "has_nan": false,
+    "n_candidate_windows": 2,
+    "best_windows": [
+      {
+        "t0": 1.77499929,
+        "t1": 4.10833169,
+        "dur": 2.3333323999999998,
+        "speed_mean": 1.2257362518587094,
+        "speed_std": 0.1592059631256539,
+        "straightness": 0.993488161692112
+      },
+      {
+        "t0": 5.05833131,
+        "t1": 7.29999708,
+        "dur": 2.24166577,
+        "speed_mean": 1.2065871578430007,
+        "speed_std": 0.21841888122981265,
+        "straightness": 0.991819916279341
+      }
+    ],
+    "frac_stationary": 0.2050929112181693,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_fast_run_02_004.bvh",
+    "name_category": "run",
+    "n_frames": 3188,
+    "fps": 120.0000480000192,
+    "duration_s": 26.566656039999998,
+    "speed_mean": 1.7636749266458187,
+    "speed_p95": 4.849184800085344,
+    "speed_max": 6.082138443507227,
+    "root_y_min": 0.136817,
+    "root_y_max": 0.627735,
+    "heading_std_mean_deg": 31.751558057159084,
+    "has_nan": false,
+    "n_candidate_windows": 5,
+    "best_windows": [
+      {
+        "t0": 11.38332878,
+        "t1": 15.183327259999999,
+        "dur": 3.7999984799999997,
+        "speed_mean": 3.857242414957552,
+        "speed_std": 0.6014262455841306,
+        "straightness": 0.9945691852640578
+      },
+      {
+        "t0": 21.93332456,
+        "t1": 25.508323129999997,
+        "dur": 3.57499857,
+        "speed_mean": 1.4664503737343457,
+        "speed_std": 0.16969111990930358,
+        "straightness": 0.9966979004845629
+      },
+      {
+        "t0": 17.45832635,
+        "t1": 20.6666584,
+        "dur": 3.2083320499999997,
+        "speed_mean": 1.3292837271024036,
+        "speed_std": 0.3628971792687883,
+        "straightness": 0.9708179498826544
+      }
+    ],
+    "frac_stationary": 0.12923462986198245,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_fast_run_02_005.bvh",
+    "name_category": "run",
+    "n_frames": 3089,
+    "fps": 120.0000480000192,
+    "duration_s": 25.741656369999998,
+    "speed_mean": 2.6127163419946573,
+    "speed_p95": 5.650089793766927,
+    "speed_max": 6.187808765561826,
+    "root_y_min": 0.23550300000000002,
+    "root_y_max": 0.639236,
+    "heading_std_mean_deg": 26.65210317133088,
+    "has_nan": false,
+    "n_candidate_windows": 6,
+    "best_windows": [
+      {
+        "t0": 6.60833069,
+        "t1": 9.99166267,
+        "dur": 3.38333198,
+        "speed_mean": 3.269927313029403,
+        "speed_std": 1.1940918235207223,
+        "straightness": 0.9585680761037568
+      },
+      {
+        "t0": 10.9999956,
+        "t1": 13.61666122,
+        "dur": 2.61666562,
+        "speed_mean": 4.37984024038287,
+        "speed_std": 1.4187985245969705,
+        "straightness": 0.9988095739709256
+      },
+      {
+        "t0": 14.55832751,
+        "t1": 16.8333266,
+        "dur": 2.27499909,
+        "speed_mean": 4.379945889659539,
+        "speed_std": 1.1269481760799034,
+        "straightness": 0.9922386093768819
+      }
+    ],
+    "frac_stationary": 0.009711880867594691,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_fast_run_02_006.bvh",
+    "name_category": "run",
+    "n_frames": 3965,
+    "fps": 120.0000480000192,
+    "duration_s": 33.04165345,
+    "speed_mean": 2.049886325290006,
+    "speed_p95": 4.9303409603676585,
+    "speed_max": 5.815920335762697,
+    "root_y_min": 0.28207,
+    "root_y_max": 0.642055,
+    "heading_std_mean_deg": 30.278543487180293,
+    "has_nan": false,
+    "n_candidate_windows": 8,
+    "best_windows": [
+      {
+        "t0": 15.44999382,
+        "t1": 18.10832609,
+        "dur": 2.65833227,
+        "speed_mean": 2.938365369123938,
+        "speed_std": 1.5108480860314595,
+        "straightness": 0.9844238513489295
+      },
+      {
+        "t0": 23.31665734,
+        "t1": 25.899989639999998,
+        "dur": 2.5833323,
+        "speed_mean": 2.7009557801062547,
+        "speed_std": 1.433184456811141,
+        "straightness": 0.9954029754728845
+      },
+      {
+        "t0": 12.416661699999999,
+        "t1": 14.48332754,
+        "dur": 2.0666658399999998,
+        "speed_mean": 3.7692138087855076,
+        "speed_std": 1.304231010741397,
+        "straightness": 0.9754495425503027
+      }
+    ],
+    "frac_stationary": 0.03707440100882724,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_fast_run_02_007.bvh",
+    "name_category": "run",
+    "n_frames": 5443,
+    "fps": 120.0000480000192,
+    "duration_s": 45.35831519,
+    "speed_mean": 2.5287404204807253,
+    "speed_p95": 5.110522423889105,
+    "speed_max": 6.04876140015142,
+    "root_y_min": 0.31095700000000004,
+    "root_y_max": 0.6458419999999999,
+    "heading_std_mean_deg": 26.118542130116307,
+    "has_nan": false,
+    "n_candidate_windows": 13,
+    "best_windows": [
+      {
+        "t0": 22.76665756,
+        "t1": 25.4166565,
+        "dur": 2.6499989399999997,
+        "speed_mean": 2.7684862577922016,
+        "speed_std": 0.5616323152867907,
+        "straightness": 0.9768213517386732
+      },
+      {
+        "t0": 35.88331898,
+        "t1": 38.366651319999995,
+        "dur": 2.48333234,
+        "speed_mean": 2.6968470948894505,
+        "speed_std": 0.9882031113739728,
+        "straightness": 0.9903801398117626
+      },
+      {
+        "t0": 7.36666372,
+        "t1": 9.77499609,
+        "dur": 2.4083323699999997,
+        "speed_mean": 2.7022995225319275,
+        "speed_std": 1.3576579656636127,
+        "straightness": 0.9919750635298805
+      }
+    ],
+    "frac_stationary": 0.017453610141466104,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_fast_run_02_008.bvh",
+    "name_category": "run",
+    "n_frames": 3663,
+    "fps": 120.0000480000192,
+    "duration_s": 30.524987789999997,
+    "speed_mean": 1.8754608050675743,
+    "speed_p95": 3.808964199354978,
+    "speed_max": 4.509403007894314,
+    "root_y_min": 0.25580600000000003,
+    "root_y_max": 1.05935,
+    "heading_std_mean_deg": 31.726991581001304,
+    "has_nan": false,
+    "n_candidate_windows": 5,
+    "best_windows": [
+      {
+        "t0": 26.666656,
+        "t1": 30.15832127,
+        "dur": 3.49166527,
+        "speed_mean": 3.2855456210686858,
+        "speed_std": 0.7184800291054069,
+        "straightness": 0.9929439152122431
+      },
+      {
+        "t0": 14.48332754,
+        "t1": 16.54166005,
+        "dur": 2.05833251,
+        "speed_mean": 2.6393393725465937,
+        "speed_std": 0.3786672629035889,
+        "straightness": 0.9919280195674423
+      },
+      {
+        "t0": 11.29999548,
+        "t1": 13.07499477,
+        "dur": 1.77499929,
+        "speed_mean": 3.2240954527570116,
+        "speed_std": 0.6426294546234692,
+        "straightness": 0.9960872316842133
+      }
+    ],
+    "frac_stationary": 0.02265902265902266,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_hit_001.bvh",
+    "name_category": "other",
+    "n_frames": 3569,
+    "fps": 120.0000480000192,
+    "duration_s": 29.74165477,
+    "speed_mean": 0.37536600956903776,
+    "speed_p95": 0.9816404548274072,
+    "speed_max": 1.7501987839545854,
+    "root_y_min": 0.511382,
+    "root_y_max": 0.617025,
+    "heading_std_mean_deg": 37.8279960167735,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 1.74166597,
+        "t1": 5.05833131,
+        "dur": 3.3166653399999997,
+        "speed_mean": 0.7196849075888946,
+        "speed_std": 0.18758572408311036,
+        "straightness": 0.9680030610282272
+      },
+      {
+        "t0": 24.241656969999998,
+        "t1": 26.30832281,
+        "dur": 2.0666658399999998,
+        "speed_mean": 0.6972998602840745,
+        "speed_std": 0.1970819868404989,
+        "straightness": 0.9653308544534106
+      },
+      {
+        "t0": 8.28333002,
+        "t1": 10.183329259999999,
+        "dur": 1.8999992399999999,
+        "speed_mean": 1.1668563581957216,
+        "speed_std": 0.3811876129024072,
+        "straightness": 0.9922157308773503
+      }
+    ],
+    "frac_stationary": 0.15018212384421406,
+    "n_stationary_windows": 1,
+    "best_stationary_windows": [
+      {
+        "t0": 27.049989179999997,
+        "t1": 28.39998864,
+        "dur": 1.34999946
+      }
+    ]
+  },
+  {
+    "file": "dog_idle_001.bvh",
+    "name_category": "idle",
+    "n_frames": 3069,
+    "fps": 120.0000480000192,
+    "duration_s": 25.57498977,
+    "speed_mean": 0.9665441347009939,
+    "speed_p95": 1.9779833140350571,
+    "speed_max": 2.584385126116689,
+    "root_y_min": 0.382336,
+    "root_y_max": 0.626332,
+    "heading_std_mean_deg": 45.28923110841554,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 21.56665804,
+        "t1": 24.633323479999998,
+        "dur": 3.06666544,
+        "speed_mean": 0.912350213885809,
+        "speed_std": 0.22886372882772635,
+        "straightness": 0.9558196929342576
+      }
+    ],
+    "frac_stationary": 0.02476376669925057,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_idle_002.bvh",
+    "name_category": "idle",
+    "n_frames": 929,
+    "fps": 120.0000480000192,
+    "duration_s": 7.74166357,
+    "speed_mean": 0.9905802709412127,
+    "speed_p95": 3.283598775091665,
+    "speed_max": 3.736129852204144,
+    "root_y_min": 0.360678,
+    "root_y_max": 0.6389950000000001,
+    "heading_std_mean_deg": 57.126329345143425,
+    "has_nan": false,
+    "n_candidate_windows": 0,
+    "best_windows": [],
+    "frac_stationary": 0.2303552206673843,
+    "n_stationary_windows": 1,
+    "best_stationary_windows": [
+      {
+        "t0": 0.73333304,
+        "t1": 1.9916658699999998,
+        "dur": 1.2583328299999998
+      }
+    ]
+  },
+  {
+    "file": "dog_idle_003.bvh",
+    "name_category": "idle",
+    "n_frames": 1545,
+    "fps": 120.0000480000192,
+    "duration_s": 12.87499485,
+    "speed_mean": 1.2994836235477663,
+    "speed_p95": 2.353341804575689,
+    "speed_max": 3.200363840216495,
+    "root_y_min": 0.283078,
+    "root_y_max": 0.601176,
+    "heading_std_mean_deg": 35.27096566309091,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 9.2499963,
+        "t1": 12.87499485,
+        "dur": 3.62499855,
+        "speed_mean": 1.6922088286590695,
+        "speed_std": 0.3082571301564629,
+        "straightness": 0.9704345276220843
+      }
+    ],
+    "frac_stationary": 0.012297734627831715,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_idle_004.bvh",
+    "name_category": "idle",
+    "n_frames": 1289,
+    "fps": 120.0000480000192,
+    "duration_s": 10.74166237,
+    "speed_mean": 1.5309480966423945,
+    "speed_p95": 3.9548067328923757,
+    "speed_max": 4.525542114749777,
+    "root_y_min": 0.36556,
+    "root_y_max": 0.607741,
+    "heading_std_mean_deg": 20.905024887602938,
+    "has_nan": false,
+    "n_candidate_windows": 2,
+    "best_windows": [
+      {
+        "t0": 7.44999702,
+        "t1": 10.74166237,
+        "dur": 3.2916653499999997,
+        "speed_mean": 1.910565252497181,
+        "speed_std": 0.3366773856210771,
+        "straightness": 0.9812829468197481
+      },
+      {
+        "t0": 5.6249977499999995,
+        "t1": 7.19999712,
+        "dur": 1.57499937,
+        "speed_mean": 1.6736642395907892,
+        "speed_std": 1.018451785010109,
+        "straightness": 0.9727104239283114
+      }
+    ],
+    "frac_stationary": 0.0,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_002.bvh",
+    "name_category": "jump",
+    "n_frames": 1125,
+    "fps": 120.0000480000192,
+    "duration_s": 9.374996249999999,
+    "speed_mean": 2.046705224413908,
+    "speed_p95": 4.063093281507394,
+    "speed_max": 4.515243842502232,
+    "root_y_min": 0.32834800000000003,
+    "root_y_max": 1.0382200000000001,
+    "heading_std_mean_deg": 31.56539567958793,
+    "has_nan": false,
+    "n_candidate_windows": 2,
+    "best_windows": [
+      {
+        "t0": 6.32499747,
+        "t1": 7.99166347,
+        "dur": 1.666666,
+        "speed_mean": 2.6203137656496405,
+        "speed_std": 0.9501841192438328,
+        "straightness": 0.9939141604998523
+      },
+      {
+        "t0": 0.89999964,
+        "t1": 2.48333234,
+        "dur": 1.5833327,
+        "speed_mean": 3.3950314093461387,
+        "speed_std": 0.6475142755612405,
+        "straightness": 0.9939650207719914
+      }
+    ],
+    "frac_stationary": 0.0,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_003.bvh",
+    "name_category": "jump",
+    "n_frames": 1165,
+    "fps": 120.0000480000192,
+    "duration_s": 9.708329449999999,
+    "speed_mean": 1.9948033685355295,
+    "speed_p95": 3.927460324446985,
+    "speed_max": 4.197183941880025,
+    "root_y_min": 0.37453899999999996,
+    "root_y_max": 1.05427,
+    "heading_std_mean_deg": 27.72860772992718,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 3.6916651899999997,
+        "t1": 5.4999978,
+        "dur": 1.80833261,
+        "speed_mean": 3.1307926387049276,
+        "speed_std": 0.6402193754862038,
+        "straightness": 0.9945946819093002
+      },
+      {
+        "t0": 6.62499735,
+        "t1": 8.366663319999999,
+        "dur": 1.74166597,
+        "speed_mean": 2.524357689282554,
+        "speed_std": 0.6061431297643775,
+        "straightness": 0.997203003953466
+      },
+      {
+        "t0": 0.86666632,
+        "t1": 2.5999989599999997,
+        "dur": 1.73333264,
+        "speed_mean": 3.2909453610336907,
+        "speed_std": 0.673082122151397,
+        "straightness": 0.9842364629911842
+      }
+    ],
+    "frac_stationary": 0.010300429184549357,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_004.bvh",
+    "name_category": "jump",
+    "n_frames": 2277,
+    "fps": 120.0000480000192,
+    "duration_s": 18.97499241,
+    "speed_mean": 1.5985807930731974,
+    "speed_p95": 4.268992600546698,
+    "speed_max": 4.645688840447741,
+    "root_y_min": 0.339239,
+    "root_y_max": 1.0461,
+    "heading_std_mean_deg": 33.84113940518988,
+    "has_nan": false,
+    "n_candidate_windows": 4,
+    "best_windows": [
+      {
+        "t0": 6.19999752,
+        "t1": 8.69166319,
+        "dur": 2.4916656699999997,
+        "speed_mean": 2.8518270208781478,
+        "speed_std": 0.8803089887512248,
+        "straightness": 0.9885754833859317
+      },
+      {
+        "t0": 13.86666112,
+        "t1": 15.94166029,
+        "dur": 2.07499917,
+        "speed_mean": 0.7897898372076787,
+        "speed_std": 0.45971645654049237,
+        "straightness": 0.9817756749768191
+      },
+      {
+        "t0": 10.44999582,
+        "t1": 12.42499503,
+        "dur": 1.97499921,
+        "speed_mean": 3.8541145971459727,
+        "speed_std": 0.5729388951817289,
+        "straightness": 0.9925710304463633
+      }
+    ],
+    "frac_stationary": 0.07158541941150637,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_006.bvh",
+    "name_category": "jump",
+    "n_frames": 1713,
+    "fps": 120.0000480000192,
+    "duration_s": 14.274994289999999,
+    "speed_mean": 1.8279690090305558,
+    "speed_p95": 4.471584982708338,
+    "speed_max": 5.22856733227994,
+    "root_y_min": 0.299645,
+    "root_y_max": 1.03505,
+    "heading_std_mean_deg": 37.87183525897955,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 6.23333084,
+        "t1": 8.65832987,
+        "dur": 2.42499903,
+        "speed_mean": 3.502104640543811,
+        "speed_std": 0.8977123308084471,
+        "straightness": 0.9926157601919414
+      },
+      {
+        "t0": 3.3999986399999997,
+        "t1": 5.25833123,
+        "dur": 1.8583325899999998,
+        "speed_mean": 3.638326083654519,
+        "speed_std": 1.0940590342766787,
+        "straightness": 0.965232065518979
+      },
+      {
+        "t0": 12.64166161,
+        "t1": 14.274994289999999,
+        "dur": 1.6333326799999999,
+        "speed_mean": 0.8587309312705274,
+        "speed_std": 0.1396317806707283,
+        "straightness": 0.9780335258953704
+      }
+    ],
+    "frac_stationary": 0.04903677758318739,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_007.bvh",
+    "name_category": "jump",
+    "n_frames": 1561,
+    "fps": 120.0000480000192,
+    "duration_s": 13.008328129999999,
+    "speed_mean": 2.0758481440452514,
+    "speed_p95": 4.4736655878869405,
+    "speed_max": 4.800125625976582,
+    "root_y_min": 0.389995,
+    "root_y_max": 1.05419,
+    "heading_std_mean_deg": 36.40189507186149,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 9.016663059999999,
+        "t1": 11.466662079999999,
+        "dur": 2.44999902,
+        "speed_mean": 3.4560262772281423,
+        "speed_std": 0.9215827201505451,
+        "straightness": 0.987059206050197
+      },
+      {
+        "t0": 2.76666556,
+        "t1": 4.89999804,
+        "dur": 2.13333248,
+        "speed_mean": 3.5977917962358212,
+        "speed_std": 0.8924651183012562,
+        "straightness": 0.9860241599336625
+      },
+      {
+        "t0": 5.98333094,
+        "t1": 8.03333012,
+        "dur": 2.04999918,
+        "speed_mean": 3.5194633001488898,
+        "speed_std": 0.7833166925978855,
+        "straightness": 0.9953367945223732
+      }
+    ],
+    "frac_stationary": 0.08904548366431775,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_high_001.bvh",
+    "name_category": "jump",
+    "n_frames": 1825,
+    "fps": 120.0000480000192,
+    "duration_s": 15.20832725,
+    "speed_mean": 1.7756418590994847,
+    "speed_p95": 4.0274932594115604,
+    "speed_max": 4.49546436380277,
+    "root_y_min": 0.14295,
+    "root_y_max": 1.23573,
+    "heading_std_mean_deg": 29.33003512830421,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 3.65833187,
+        "t1": 6.00833093,
+        "dur": 2.34999906,
+        "speed_mean": 3.3807983086041267,
+        "speed_std": 0.873312276373818,
+        "straightness": 0.9940451312456957
+      },
+      {
+        "t0": 0.0,
+        "t1": 1.9166659,
+        "dur": 1.9166659,
+        "speed_mean": 0.5357754662553914,
+        "speed_std": 0.146618085617079,
+        "straightness": 0.9246573763165512
+      },
+      {
+        "t0": 10.56666244,
+        "t1": 12.44999502,
+        "dur": 1.8833325799999998,
+        "speed_mean": 3.329307073326264,
+        "speed_std": 0.4650941115367505,
+        "straightness": 0.9963191691000426
+      }
+    ],
+    "frac_stationary": 0.022465753424657533,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_jump_high_002.bvh",
+    "name_category": "jump",
+    "n_frames": 2493,
+    "fps": 120.0000480000192,
+    "duration_s": 20.77499169,
+    "speed_mean": 1.8797535290687506,
+    "speed_p95": 3.807474989554305,
+    "speed_max": 4.297723580895299,
+    "root_y_min": 0.36611800000000005,
+    "root_y_max": 1.2520900000000001,
+    "heading_std_mean_deg": 23.925187710388037,
+    "has_nan": false,
+    "n_candidate_windows": 6,
+    "best_windows": [
+      {
+        "t0": 10.76666236,
+        "t1": 13.008328129999999,
+        "dur": 2.24166577,
+        "speed_mean": 2.5240871835857464,
+        "speed_std": 1.0177621410882867,
+        "straightness": 0.9899242106828527
+      },
+      {
+        "t0": 4.3999982399999995,
+        "t1": 6.524997389999999,
+        "dur": 2.12499915,
+        "speed_mean": 2.8835322639182315,
+        "speed_std": 0.9768554669840678,
+        "straightness": 0.99462971878794
+      },
+      {
+        "t0": 14.45832755,
+        "t1": 16.499993399999997,
+        "dur": 2.04166585,
+        "speed_mean": 2.944073588987011,
+        "speed_std": 0.6745483746945476,
+        "straightness": 0.9987036580912241
+      }
+    ],
+    "frac_stationary": 0.0024067388688327317,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_play_001.bvh",
+    "name_category": "other",
+    "n_frames": 4949,
+    "fps": 120.0000480000192,
+    "duration_s": 41.24165017,
+    "speed_mean": 1.41784037338106,
+    "speed_p95": 2.739798792737659,
+    "speed_max": 3.4828261146971498,
+    "root_y_min": 0.327194,
+    "root_y_max": 0.863484,
+    "heading_std_mean_deg": 41.131574405219666,
+    "has_nan": false,
+    "n_candidate_windows": 0,
+    "best_windows": [],
+    "frac_stationary": 0.02606587189331178,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_play_002.bvh",
+    "name_category": "other",
+    "n_frames": 5677,
+    "fps": 120.0000480000192,
+    "duration_s": 47.30831441,
+    "speed_mean": 0.9722430878356525,
+    "speed_p95": 2.388260487561912,
+    "speed_max": 2.926965123105233,
+    "root_y_min": 0.39847299999999997,
+    "root_y_max": 0.941031,
+    "heading_std_mean_deg": 32.35584593856399,
+    "has_nan": false,
+    "n_candidate_windows": 5,
+    "best_windows": [
+      {
+        "t0": 0.0,
+        "t1": 2.4916656699999997,
+        "dur": 2.4916656699999997,
+        "speed_mean": 1.6765153111128464,
+        "speed_std": 0.6564316414329273,
+        "straightness": 0.9913662078734805
+      },
+      {
+        "t0": 3.73333184,
+        "t1": 5.8916643099999995,
+        "dur": 2.15833247,
+        "speed_mean": 1.759027055838148,
+        "speed_std": 0.7387344569363313,
+        "straightness": 0.9845287719795361
+      },
+      {
+        "t0": 24.69165679,
+        "t1": 26.51665606,
+        "dur": 1.82499927,
+        "speed_mean": 0.981005814763092,
+        "speed_std": 0.5669679768767244,
+        "straightness": 0.9747506521120686
+      }
+    ],
+    "frac_stationary": 0.030297692443191828,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_run_001.bvh",
+    "name_category": "run",
+    "n_frames": 4409,
+    "fps": 120.0000480000192,
+    "duration_s": 36.74165197,
+    "speed_mean": 2.0697653656014867,
+    "speed_p95": 3.1609098444095913,
+    "speed_max": 3.306072492227969,
+    "root_y_min": 0.19883299999999998,
+    "root_y_max": 0.597694,
+    "heading_std_mean_deg": 12.148307634649546,
+    "has_nan": false,
+    "n_candidate_windows": 6,
+    "best_windows": [
+      {
+        "t0": 21.45832475,
+        "t1": 31.508320729999998,
+        "dur": 10.04999598,
+        "speed_mean": 2.1516503402362908,
+        "speed_std": 0.4303872779864173,
+        "straightness": 0.07602527656586855
+      },
+      {
+        "t0": 15.833326999999999,
+        "t1": 20.46665848,
+        "dur": 4.63333148,
+        "speed_mean": 2.5292593416682765,
+        "speed_std": 0.5693535648065774,
+        "straightness": 0.9021865765519086
+      },
+      {
+        "t0": 5.7333310399999995,
+        "t1": 10.14999594,
+        "dur": 4.4166649,
+        "speed_mean": 2.52386834799662,
+        "speed_std": 0.6189839890014541,
+        "straightness": 0.9277363631240156
+      }
+    ],
+    "frac_stationary": 0.024722159219777728,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_run_002.bvh",
+    "name_category": "run",
+    "n_frames": 2977,
+    "fps": 120.0000480000192,
+    "duration_s": 24.80832341,
+    "speed_mean": 2.086991919074666,
+    "speed_p95": 4.224386304657169,
+    "speed_max": 4.740322640766075,
+    "root_y_min": 0.32528,
+    "root_y_max": 0.6723779999999999,
+    "heading_std_mean_deg": 19.33346388941063,
+    "has_nan": false,
+    "n_candidate_windows": 5,
+    "best_windows": [
+      {
+        "t0": 9.45832955,
+        "t1": 12.516661659999999,
+        "dur": 3.05833211,
+        "speed_mean": 2.3936883716366535,
+        "speed_std": 0.4300065272616561,
+        "straightness": 0.991096440522131
+      },
+      {
+        "t0": 5.23333124,
+        "t1": 7.93333016,
+        "dur": 2.69999892,
+        "speed_mean": 3.4848836589210856,
+        "speed_std": 0.7309037512644208,
+        "straightness": 0.986318078891655
+      },
+      {
+        "t0": 17.64999294,
+        "t1": 20.34999186,
+        "dur": 2.69999892,
+        "speed_mean": 2.7064234170649684,
+        "speed_std": 0.8508310124108328,
+        "straightness": 0.9906236694552275
+      }
+    ],
+    "frac_stationary": 0.002015451797111186,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_walk_001.bvh",
+    "name_category": "walk",
+    "n_frames": 13197,
+    "fps": 120.0000480000192,
+    "duration_s": 109.97495601,
+    "speed_mean": 1.0269752282028608,
+    "speed_p95": 1.4307522727436355,
+    "speed_max": 1.817557928653985,
+    "root_y_min": 0.147189,
+    "root_y_max": 0.5947910000000001,
+    "heading_std_mean_deg": 10.393916767235297,
+    "has_nan": false,
+    "n_candidate_windows": 10,
+    "best_windows": [
+      {
+        "t0": 1.6999993199999999,
+        "t1": 27.18332246,
+        "dur": 25.48332314,
+        "speed_mean": 1.187551080642041,
+        "speed_std": 0.22744243664270464,
+        "straightness": 0.33035878633124105
+      },
+      {
+        "t0": 89.88329738,
+        "t1": 108.59995656,
+        "dur": 18.71665918,
+        "speed_mean": 0.9899185946028775,
+        "speed_std": 0.12958229482019462,
+        "straightness": 0.25974212396770685
+      },
+      {
+        "t0": 39.074984369999996,
+        "t1": 54.024978389999994,
+        "dur": 14.94999402,
+        "speed_mean": 0.8660057897120053,
+        "speed_std": 0.23240815677336643,
+        "straightness": 0.7798491299328857
+      }
+    ],
+    "frac_stationary": 0.014245661892854436,
+    "n_stationary_windows": 1,
+    "best_stationary_windows": [
+      {
+        "t0": 0.14166661,
+        "t1": 1.3249994699999998,
+        "dur": 1.18333286
+      }
+    ]
+  },
+  {
+    "file": "dog_quad_walk_002.bvh",
+    "name_category": "walk",
+    "n_frames": 18073,
+    "fps": 120.0000480000192,
+    "duration_s": 150.60827308999998,
+    "speed_mean": 1.0507091158801023,
+    "speed_p95": 1.339527357474921,
+    "speed_max": 1.6131998372584073,
+    "root_y_min": 0.5190509999999999,
+    "root_y_max": 0.591374,
+    "heading_std_mean_deg": 9.85313660965469,
+    "has_nan": false,
+    "n_candidate_windows": 14,
+    "best_windows": [
+      {
+        "t0": 81.54996738,
+        "t1": 112.21662178,
+        "dur": 30.6666544,
+        "speed_mean": 1.0295749081970655,
+        "speed_std": 0.1759324879859134,
+        "straightness": 0.10706806805311896
+      },
+      {
+        "t0": 9.94166269,
+        "t1": 28.05832211,
+        "dur": 18.116659419999998,
+        "speed_mean": 1.1688899834682613,
+        "speed_std": 0.11987508939492296,
+        "straightness": 0.06334876284314606
+      },
+      {
+        "t0": 38.74165117,
+        "t1": 51.34997946,
+        "dur": 12.60832829,
+        "speed_mean": 1.0295183238018513,
+        "speed_std": 0.18645078811344903,
+        "straightness": 0.8418797959624874
+      }
+    ],
+    "frac_stationary": 0.0078016931334034196,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_walkrun_001.bvh",
+    "name_category": "transition",
+    "n_frames": 1157,
+    "fps": 120.0000480000192,
+    "duration_s": 9.64166281,
+    "speed_mean": 1.913542654063383,
+    "speed_p95": 5.421441865220728,
+    "speed_max": 5.6786188163257165,
+    "root_y_min": 0.418878,
+    "root_y_max": 0.603207,
+    "heading_std_mean_deg": 22.3322383882813,
+    "has_nan": false,
+    "n_candidate_windows": 2,
+    "best_windows": [
+      {
+        "t0": 1.5249993899999998,
+        "t1": 7.12499715,
+        "dur": 5.59999776,
+        "speed_mean": 2.5137644183706422,
+        "speed_std": 1.4363067429000396,
+        "straightness": 0.9900183400972274
+      },
+      {
+        "t0": 8.07499677,
+        "t1": 9.64166281,
+        "dur": 1.5666660399999999,
+        "speed_mean": 1.9281518500580426,
+        "speed_std": 0.4192095937651429,
+        "straightness": 0.9924376188331636
+      }
+    ],
+    "frac_stationary": 0.08124459809853068,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_walkrun_005.bvh",
+    "name_category": "transition",
+    "n_frames": 1105,
+    "fps": 120.0000480000192,
+    "duration_s": 9.20832965,
+    "speed_mean": 1.5064834943184142,
+    "speed_p95": 4.76008219023485,
+    "speed_max": 5.150572353541716,
+    "root_y_min": 0.256562,
+    "root_y_max": 0.604186,
+    "heading_std_mean_deg": 18.567617012052516,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 1.0583329099999998,
+        "t1": 6.96666388,
+        "dur": 5.90833097,
+        "speed_mean": 2.2071297922216218,
+        "speed_std": 1.3086282231625803,
+        "straightness": 0.9946358974846828
+      }
+    ],
+    "frac_stationary": 0.04072398190045249,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_walkrun_006.bvh",
+    "name_category": "transition",
+    "n_frames": 1197,
+    "fps": 120.0000480000192,
+    "duration_s": 9.97499601,
+    "speed_mean": 1.4058253558793572,
+    "speed_p95": 4.74799435646888,
+    "speed_max": 5.003979988793788,
+    "root_y_min": 0.16267900000000002,
+    "root_y_max": 0.614163,
+    "heading_std_mean_deg": 39.58110114729533,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 2.85833219,
+        "t1": 7.3333303999999995,
+        "dur": 4.47499821,
+        "speed_mean": 2.7566715047007464,
+        "speed_std": 1.1710182124818256,
+        "straightness": 0.9947952640224003
+      }
+    ],
+    "frac_stationary": 0.14786967418546365,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_quad_walkrun_007.bvh",
+    "name_category": "transition",
+    "n_frames": 801,
+    "fps": 120.0000480000192,
+    "duration_s": 6.67499733,
+    "speed_mean": 2.1716244884431384,
+    "speed_p95": 4.853124985508123,
+    "speed_max": 5.315695741927736,
+    "root_y_min": 0.405666,
+    "root_y_max": 0.609422,
+    "heading_std_mean_deg": 17.73106014261276,
+    "has_nan": false,
+    "n_candidate_windows": 1,
+    "best_windows": [
+      {
+        "t0": 1.15833287,
+        "t1": 6.67499733,
+        "dur": 5.516664459999999,
+        "speed_mean": 2.598627400603396,
+        "speed_std": 1.2177828469364362,
+        "straightness": 0.9854812003154912
+      }
+    ],
+    "frac_stationary": 0.08863920099875156,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_star_walk_001.bvh",
+    "name_category": "turn_walk",
+    "n_frames": 7949,
+    "fps": 120.0000480000192,
+    "duration_s": 66.24164017,
+    "speed_mean": 0.822929600260727,
+    "speed_p95": 1.291540516679485,
+    "speed_max": 1.6975119306906021,
+    "root_y_min": 0.138345,
+    "root_y_max": 0.610451,
+    "heading_std_mean_deg": 16.604641178085643,
+    "has_nan": false,
+    "n_candidate_windows": 10,
+    "best_windows": [
+      {
+        "t0": 16.89999324,
+        "t1": 23.924990429999998,
+        "dur": 7.02499719,
+        "speed_mean": 0.9664374850047304,
+        "speed_std": 0.272096388267404,
+        "straightness": 0.9570702789712179
+      },
+      {
+        "t0": 55.55831111,
+        "t1": 62.04164185,
+        "dur": 6.4833307399999995,
+        "speed_mean": 0.8086147771423721,
+        "speed_std": 0.25165301114028854,
+        "straightness": 0.9800687845883729
+      },
+      {
+        "t0": 24.56665684,
+        "t1": 30.81665434,
+        "dur": 6.2499975,
+        "speed_mean": 0.9655281277941264,
+        "speed_std": 0.24417540235829402,
+        "straightness": 0.9916457656477456
+      }
+    ],
+    "frac_stationary": 0.04780475531513398,
+    "n_stationary_windows": 1,
+    "best_stationary_windows": [
+      {
+        "t0": 63.558307909999996,
+        "t1": 66.24164017,
+        "dur": 2.68333226
+      }
+    ]
+  },
+  {
+    "file": "dog_star_walk_003.bvh",
+    "name_category": "turn_walk",
+    "n_frames": 4505,
+    "fps": 120.0000480000192,
+    "duration_s": 37.54165165,
+    "speed_mean": 0.9857909098012843,
+    "speed_p95": 1.5804254103315998,
+    "speed_max": 1.8039213557429101,
+    "root_y_min": 0.183554,
+    "root_y_max": 0.6066590000000001,
+    "heading_std_mean_deg": 19.03714796450916,
+    "has_nan": false,
+    "n_candidate_windows": 8,
+    "best_windows": [
+      {
+        "t0": 13.03332812,
+        "t1": 16.7499933,
+        "dur": 3.7166651799999997,
+        "speed_mean": 1.372020590700747,
+        "speed_std": 0.17235749036310816,
+        "straightness": 0.9808948435661572
+      },
+      {
+        "t0": 17.67499293,
+        "t1": 21.2499915,
+        "dur": 3.57499857,
+        "speed_mean": 1.221166790028541,
+        "speed_std": 0.22791156749890967,
+        "straightness": 0.9931245556020682
+      },
+      {
+        "t0": 26.608322689999998,
+        "t1": 30.11665462,
+        "dur": 3.5083319299999998,
+        "speed_mean": 0.8985519677076989,
+        "speed_std": 0.409742977213704,
+        "straightness": 0.9635946717215094
+      }
+    ],
+    "frac_stationary": 0.04950055493895671,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_zig_walk_001.bvh",
+    "name_category": "turn_walk",
+    "n_frames": 3701,
+    "fps": 120.0000480000192,
+    "duration_s": 30.841654329999997,
+    "speed_mean": 0.6363119375300766,
+    "speed_p95": 1.0166057368447121,
+    "speed_max": 1.231829200995977,
+    "root_y_min": 0.173971,
+    "root_y_max": 0.616256,
+    "heading_std_mean_deg": 24.480769917397534,
+    "has_nan": false,
+    "n_candidate_windows": 2,
+    "best_windows": [
+      {
+        "t0": 1.44166609,
+        "t1": 3.75833183,
+        "dur": 2.31666574,
+        "speed_mean": 1.019649649223839,
+        "speed_std": 0.15840855875329712,
+        "straightness": 0.9887952173254064
+      },
+      {
+        "t0": 28.658321869999998,
+        "t1": 30.199987919999998,
+        "dur": 1.54166605,
+        "speed_mean": 0.5735337324052857,
+        "speed_std": 0.11593681046521202,
+        "straightness": 0.9784444349881786
+      }
+    ],
+    "frac_stationary": 0.02918130235071602,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  },
+  {
+    "file": "dog_zig_walk_002.bvh",
+    "name_category": "turn_walk",
+    "n_frames": 3601,
+    "fps": 120.0000480000192,
+    "duration_s": 30.008321329999998,
+    "speed_mean": 0.6208230258336013,
+    "speed_p95": 0.981120458853929,
+    "speed_max": 1.1675764226344927,
+    "root_y_min": 0.19176700000000002,
+    "root_y_max": 0.618052,
+    "heading_std_mean_deg": 23.92085944587605,
+    "has_nan": false,
+    "n_candidate_windows": 3,
+    "best_windows": [
+      {
+        "t0": 15.241660569999999,
+        "t1": 18.19999272,
+        "dur": 2.95833215,
+        "speed_mean": 0.456667449658704,
+        "speed_std": 0.14655108831176458,
+        "straightness": 0.9586318528508772
+      },
+      {
+        "t0": 1.06666624,
+        "t1": 3.1833320599999997,
+        "dur": 2.1166658199999997,
+        "speed_mean": 0.8333188791677656,
+        "speed_std": 0.1926470968441033,
+        "straightness": 0.9938425461182121
+      },
+      {
+        "t0": 3.51666526,
+        "t1": 5.22499791,
+        "dur": 1.70833265,
+        "speed_mean": 0.7143149808848581,
+        "speed_std": 0.171312866837798,
+        "straightness": 0.9626390262049523
+      }
+    ],
+    "frac_stationary": 0.010274923632324354,
+    "n_stationary_windows": 0,
+    "best_stationary_windows": []
+  }
+]

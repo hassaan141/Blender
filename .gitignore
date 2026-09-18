@@ -20,6 +20,7 @@ raw/
 output/
 *.stp
 *.blend1
+dataset/*
 
 # NVIDIA's official Residential Pack is downloaded selectively by
 # tools/fetch_residential_assets.py. Keep the 1+ GB vendor payload local while

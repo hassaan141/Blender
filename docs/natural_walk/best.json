@@ -1,0 +1,15 @@
+{
+  "status": "bounded_loop_finished_without_visual_success",
+  "training_attempts": 3,
+  "natural_walk_milestone_achieved": false,
+  "retained_best_reference": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/reference.npz",
+  "retained_best_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+  "retained_best_video": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/best_render/eval.mp4",
+  "strongest_experimental_candidate": {
+    "run": "attempt_03",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "comparison_video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/comparison.mp4",
+    "decision": "REJECT; diagnostic improvement only, not a new canonical baseline"
+  }
+}

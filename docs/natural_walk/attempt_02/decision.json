@@ -1,0 +1,6 @@
+{
+  "decision": "REJECT",
+  "visual": "Rear-left still skims/drags; no convincing whole-gait naturalness improvement in matched sequence.",
+  "metrics": "BL duty 90.28% vs95.49%; slip .321 vs .373 m/s; speed .18495 vs .19294; acceleration11.55 vs11.00",
+  "next_hypothesis": "Existing tip-height contact label disagrees with true collision clearance; correct BL contribution only using existing validated collision hull."
+}

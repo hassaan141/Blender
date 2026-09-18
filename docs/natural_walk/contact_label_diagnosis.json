@@ -1,0 +1,26 @@
+{
+  "baseline_eval": {
+    "old_label_contact_duty": 1.0,
+    "collision_contact_duty": 0.9548611111111112,
+    "label_disagreement_pct": 4.513888888888888,
+    "physically_clear_swing_samples": 56,
+    "clear_swing_mislabeled_contact_by_old_proxy": 56,
+    "correction_weight": 0.025
+  },
+  "attempt_01/evaluation": {
+    "old_label_contact_duty": 1.0,
+    "collision_contact_duty": 0.9465277777777777,
+    "label_disagreement_pct": 5.347222222222222,
+    "physically_clear_swing_samples": 73,
+    "clear_swing_mislabeled_contact_by_old_proxy": 73,
+    "correction_weight": 0.025
+  },
+  "attempt_02/evaluation": {
+    "old_label_contact_duty": 1.0,
+    "collision_contact_duty": 0.9027777777777778,
+    "label_disagreement_pct": 9.722222222222223,
+    "physically_clear_swing_samples": 134,
+    "clear_swing_mislabeled_contact_by_old_proxy": 134,
+    "correction_weight": 0.025
+  }
+}

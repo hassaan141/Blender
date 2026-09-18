@@ -1,0 +1,4 @@
+{
+  "allow_training": false,
+  "reason": "Reference audit identifies missing first BL swing window; fix before spending training attempt. Superseded by reference_02b."
+}
