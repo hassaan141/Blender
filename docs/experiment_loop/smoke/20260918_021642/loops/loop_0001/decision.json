@@ -1,0 +1,4 @@
+{
+  "decision": "REJECT",
+  "reason": "Smoke replay is never promotable"
+}

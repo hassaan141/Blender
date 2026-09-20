@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Viewed both preview montages: no new crouch, hop, fall or exaggerated lift; both yaw directions remain controlled. Left BL clearance improves to5.47mm; both survive and acceleration9.93/10.36 below fixedcap. Bounded3mm lift IKerror<1um,maxjointchange.0452rad. Proceed with residual adaptation."
+}

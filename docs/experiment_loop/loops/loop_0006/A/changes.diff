@@ -1,0 +1,11 @@
+--- parent settings
++++ candidate settings
+@@ -6,7 +6,7 @@
+   "vertical_velocity_weight": 0.01,
+   "backward_command_vx": -0.2,
+   "signed_reference_velocity_scale": -0.4242424242424242,
+-  "lateral_scale": 0.7,
++  "lateral_scale": 0.45,
+   "contact_timing_mode": 1,
+   "all_contacts_corrected": 1
+ }

@@ -1,0 +1,14 @@
+{
+  "defect": "Left-turn side loading and rear-left abduction approach the joint limit; foot clearance and front-knee loading remain asymmetric.",
+  "evidence": "Loop6 rejected: BL_SY reaches.420205 against.42 limit at+.6yaw; qref.2292 plus residual.1883 at event. Left rollmean-7.05deg, remainingBLduty.886,maxsat11\u201312%. Retainedloop5 has same yaw geometry with less severe abduction but leftlean/drag/saturation.",
+  "hypothesis": "From retainedloop5 reduce only task-space lateral turning gain .7\u2192.45, retaining inside/outside fore-aft stride asymmetry and all learned control settings. This reduces reference-imposed lateral leg travel and lateral support demand.",
+  "expected_effect": "Less leftlean and BLabduction loading while yaw remains tracked through fore-aft stride asymmetry and existing residual controller.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "turn_lateral_gain": 0.45
+      }
+    }
+  ]
+}

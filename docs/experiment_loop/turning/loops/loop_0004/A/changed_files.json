@@ -1,0 +1,7 @@
+{
+  "source_files_changed": [],
+  "config_fields": [
+    "turn_bl_recovery"
+  ],
+  "diff": "changes.diff"
+}

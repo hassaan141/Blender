@@ -1,0 +1,31 @@
+{
+  "id": "loop_0004/A",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/policy.pt",
+  "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/reference.npz",
+  "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/metrics.json",
+  "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/eval.mp4",
+  "report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/report.md",
+  "contact_fix": false,
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "turn_geometry_gain": 0.7,
+    "turn_lateral_gain": 0.7,
+    "turn_yaw_weight": 0.3,
+    "turn_lateral_scale": 1.0,
+    "turn_yaw_smooth_weight": 0.0,
+    "turn_heading_local": 1,
+    "turn_command_vx": 0.215,
+    "turn_bl_recovery": 1
+  },
+  "status": "provisional turning best",
+  "hashes": {
+    "checkpoint": "df6ccd65ab317eee394be57267afc0ada2691bd3dd16eb7b21e888d9e71a26ec",
+    "reference": "341df6d06f57238141ff03dbc33dc417af2f4406419d0468e3aeb3fd13e3a652",
+    "metrics": "e258a3e19c78873bde9d75e50825e727d9daa13ff8667870a70c333e6a69cf39",
+    "video": "a12ff344ab3046504a8fb976f6d4e7c8aba64620ce627c0b17e09c235e4a39a6"
+  }
+}

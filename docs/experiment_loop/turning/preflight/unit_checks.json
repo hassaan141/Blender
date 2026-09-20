@@ -1,0 +1,5 @@
+{
+  "checkpoint_old_weights_unchanged": true,
+  "new_yaw_weights_zero": true,
+  "zero_yaw_reference_delta_zero": true
+}

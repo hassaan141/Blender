@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Dense comparison montage shows no convincing overall visual improvement over loop7. Survival 100%, mean vx unchanged -.183; acceleration 7.73 vs7.98 and action-rate .01239 vs.01359 improve, but RR knee saturation rises 5.0 to7.29%, mean saturation1.89 to2.02%, vx std .0651 to.0661 and roll5.38 to5.46. Yaw remains .269rad/s and below-target clearance persists at rear. Retain loop7. Eight total loops reached; no loop9 authorized."
+}

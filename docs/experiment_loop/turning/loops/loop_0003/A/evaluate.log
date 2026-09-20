@@ -1,0 +1,659 @@
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py', 'evaluate', '--context', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json', '--task', 'Bingo-Turning-Play-v0', '--checkpoint', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt', '--out_dir', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left', '--duration_s', '60', '--cmd_vx', '0.215', '--cmd_yaw', '0.4', '--diagnostics', '--headless', '--kit_args', '--/rtx/verifyDriverVersion/enabled=false --no-window']
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260919_194701.log
+2026-09-19T23:47:01Z [190ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:01Z [190ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:01Z [248ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-19T23:47:01Z [257ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-19T23:47:01Z [258ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-19T23:47:01Z [258ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-19T23:47:01Z [468ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:01Z [468ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:02Z [551ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:47:02Z [551ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-19T23:47:02Z [552ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:47:02Z [552ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122451
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2017
+|---------------------------------------------------------------------------------------------|
+2026-09-19T23:47:02Z [1,475ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-19T23:47:03Z [2,170ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,170ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,185ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,185ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,198ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,198ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,212ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,212ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,214ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,214ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,215ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:47:03Z [2,215ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:47:03Z [2,498ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+2026-09-19T23:47:04Z [2,979ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-19T23:47:04Z [3,034ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-19T23:47:06Z [5,272ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-09-19T23:47:06Z [5,511ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-09-19T23:47:06Z [5,511ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-09-19T23:47:06Z [5,512ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.rendering.kit
+[INFO]: Parsing configuration from: <class 'env.PlayCfg'>
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-19_19-47-14.log[0m
+[36m======================================================================================[0m
+
+[33m19:47:14 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+2026-09-19T23:47:12Z [10,905ms] [Warning] [omni.fabric.plugin] Warning: attribute viewportHandle not found for bucket id 7
+
+2026-09-19T23:47:14Z [13,415ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.614080 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.139882 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz): duration: 1.125 sec, frames: 136
+[33m19:47:16 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-19T23:47:17Z [16,046ms] [Warning] [omni.fabric.plugin] getAttributeCount called on non-existent path /World/envs/env_0/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-19T23:47:17Z [16,046ms] [Warning] [omni.fabric.plugin] getTypes called on non-existent path /World/envs/env_0/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-19T23:47:18Z [17,253ms] [Warning] [omni.syntheticdata.plugin] OgnSdPostRenderVarToHost : rendervar copy from texture directly to host buffer is counter-performant. Please use copy from texture to device buffer first.
+[38;20m[skrl:INFO] Environment wrapper: Isaac Lab (single-agent)[0m
+[33;20m[skrl:WARNING] The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[INFO]: Parsing configuration from: /pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/track/agents/skrl_ppo_cfg.yaml
+[33m19:47:21 [runner.py] WARNING: The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[33;20m[skrl:WARNING] The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33m19:47:21 [runner.py] WARNING: The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33;20m[skrl:WARNING] The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[33m19:47:21 [runner.py] WARNING: The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[38;20m[skrl:INFO] Seed: 42[0m
+[[ policy loaded: /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+[33m19:47:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:27 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-19T23:47:29Z [28,315ms] [Warning] [carb] Client gpu.foundation.plugin has acquired [gpu::unstable::IMemoryBudgetManagerFactory v0.1] 100 times. Consider accessing this interface with carb::getCachedInterface() (Performance warning)
+[33m19:47:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:47:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:12 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:17 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:27 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:48:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:49:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:49:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:49:12 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:49:17 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:49:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left/eval.mp4
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+command: vx=0.215 m/s  vy=0.000  yaw=0.400  (Turning extension accepts yaw; vy remains zero.)
+duration=60.0s  settle=1.0s  steps_recorded=1440  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.157  std=0.054  max=0.373  (cmd=0.215)
+base roll RMS: 6.285 deg   base pitch RMS: 1.958 deg
+joint accel RMS: 9.915 rad/s^2
+residual action-rate RMS: 0.0173 rad/step
+reference tracking error (rad): mean=0.0388  rms=0.0487  max=0.1851
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J       6.4%
+  fl_knee       9.8%
+  fr_SY_J       0.0%
+  fr_SP_J       9.6%
+  fr_knee       7.4%
+  bl_SY_J       0.0%
+  bl_SP_J       0.0%
+  bl_knee       2.7%
+  br_SY_J       0.0%
+  br_SP_J       3.2%
+  br_knee       5.7%
+====================================================================================================
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left/metrics.json
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/analyze.py', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left']
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py', 'evaluate', '--context', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json', '--task', 'Bingo-Turning-Play-v0', '--checkpoint', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt', '--out_dir', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right', '--duration_s', '60', '--cmd_vx', '0.215', '--cmd_yaw', '-0.4', '--diagnostics', '--headless', '--kit_args', '--/rtx/verifyDriverVersion/enabled=false --no-window']
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260919_194954.log
+2026-09-19T23:49:54Z [172ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:54Z [172ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:54Z [229ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-19T23:49:54Z [238ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-19T23:49:54Z [239ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-19T23:49:54Z [239ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-19T23:49:54Z [470ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:54Z [470ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:54Z [548ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:49:54Z [549ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-19T23:49:54Z [549ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:49:54Z [549ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122494
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2017
+|---------------------------------------------------------------------------------------------|
+2026-09-19T23:49:56Z [1,629ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-19T23:49:56Z [2,324ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,324ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,336ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,336ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,343ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,343ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,353ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,353ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,355ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,355ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,356ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-19T23:49:56Z [2,356ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-19T23:49:56Z [2,618ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+2026-09-19T23:49:57Z [3,284ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-19T23:49:57Z [3,347ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-19T23:49:59Z [5,569ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-09-19T23:50:00Z [5,784ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-09-19T23:50:00Z [5,784ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-09-19T23:50:00Z [5,785ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.rendering.kit
+[INFO]: Parsing configuration from: <class 'env.PlayCfg'>
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-19_19-50-07.log[0m
+[36m======================================================================================[0m
+
+[33m19:50:07 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+2026-09-19T23:50:05Z [10,797ms] [Warning] [omni.fabric.plugin] Warning: attribute viewPickingId not found for bucket id 7
+
+2026-09-19T23:50:07Z [13,307ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.598999 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.094474 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz): duration: 1.125 sec, frames: 136
+[33m19:50:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-19T23:50:10Z [15,865ms] [Warning] [omni.fabric.plugin] getAttributeCount called on non-existent path /World/envs/env_0/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-19T23:50:10Z [15,865ms] [Warning] [omni.fabric.plugin] getTypes called on non-existent path /World/envs/env_0/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-19T23:50:11Z [17,088ms] [Warning] [omni.syntheticdata.plugin] OgnSdPostRenderVarToHost : rendervar copy from texture directly to host buffer is counter-performant. Please use copy from texture to device buffer first.
+[38;20m[skrl:INFO] Environment wrapper: Isaac Lab (single-agent)[0m
+[33;20m[skrl:WARNING] The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[INFO]: Parsing configuration from: /pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/track/agents/skrl_ppo_cfg.yaml
+[33m19:50:14 [runner.py] WARNING: The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[33;20m[skrl:WARNING] The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33m19:50:14 [runner.py] WARNING: The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33;20m[skrl:WARNING] The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[33m19:50:14 [runner.py] WARNING: The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[38;20m[skrl:INFO] Seed: 42[0m
+[[ policy loaded: /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+[33m19:50:14 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-19T23:50:22Z [28,082ms] [Warning] [carb] Client gpu.foundation.plugin has acquired [gpu::unstable::IMemoryBudgetManagerFactory v0.1] 100 times. Consider accessing this interface with carb::getCachedInterface() (Performance warning)
+[33m19:50:24 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:29 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:34 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:39 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:44 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:50:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:14 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:24 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:29 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:34 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:39 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:44 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:51:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:52:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:52:10 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:52:15 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right/eval.mp4
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+command: vx=0.215 m/s  vy=0.000  yaw=-0.400  (Turning extension accepts yaw; vy remains zero.)
+duration=60.0s  settle=1.0s  steps_recorded=1440  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.136  std=0.053  max=0.264  (cmd=0.215)
+base roll RMS: 4.782 deg   base pitch RMS: 1.742 deg
+joint accel RMS: 9.609 rad/s^2
+residual action-rate RMS: 0.0174 rad/step
+reference tracking error (rad): mean=0.0299  rms=0.0368  max=0.1315
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J      10.3%
+  fl_knee      13.2%
+  fr_SY_J       0.0%
+  fr_SP_J       4.2%
+  fr_knee       5.0%
+  bl_SY_J       0.0%
+  bl_SP_J       8.3%
+  bl_knee       4.1%
+  br_SY_J       0.0%
+  br_SP_J       0.3%
+  br_knee       0.4%
+====================================================================================================
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right/metrics.json
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/analyze.py', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right']
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py', 'evaluate', '--context', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json', '--task', 'Bingo-Turning-Play-v0', '--checkpoint', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt', '--out_dir', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left_max', '--duration_s', '30', '--cmd_vx', '0.215', '--cmd_yaw', '0.6', '--diagnostics', '--headless', '--kit_args', '--/rtx/verifyDriverVersion/enabled=false --no-window', '--no_video']
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260919_195244.log
+2026-09-19T23:52:44Z [132ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-19T23:52:45Z [415ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-19T23:52:45Z [641ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-19T23:52:45Z [650ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-19T23:52:48Z [3,359ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-19T23:52:48Z [3,359ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-19T23:52:48Z [3,359ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-19T23:52:48Z [3,659ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:52:48Z [3,659ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-19T23:52:48Z [3,659ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:52:48Z [3,659ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122057
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2017
+|---------------------------------------------------------------------------------------------|
+2026-09-19T23:52:49Z [4,786ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-19T23:52:51Z [7,149ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.kit
+[INFO]: Parsing configuration from: <class 'env.PlayCfg'>
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-19_19-52-51.log[0m
+[36m======================================================================================[0m
+
+[33m19:52:52 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[38;20m[skrl:INFO] Environment wrapper: Isaac Lab (single-agent)[0m
+[33;20m[skrl:WARNING] The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.496263 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.865295 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz): duration: 1.125 sec, frames: 136
+[INFO]: Parsing configuration from: /pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/track/agents/skrl_ppo_cfg.yaml
+[33m19:52:53 [runner.py] WARNING: The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[33;20m[skrl:WARNING] The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33m19:52:53 [runner.py] WARNING: The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33;20m[skrl:WARNING] The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[33m19:52:53 [runner.py] WARNING: The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[38;20m[skrl:INFO] Seed: 42[0m
+[[ policy loaded: /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+[33m19:52:53 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:52:58 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:03 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:08 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:13 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:18 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+command: vx=0.215 m/s  vy=0.000  yaw=0.600  (Turning extension accepts yaw; vy remains zero.)
+duration=30.0s  settle=1.0s  steps_recorded=720  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.157  std=0.066  max=0.320  (cmd=0.215)
+base roll RMS: 6.819 deg   base pitch RMS: 2.031 deg
+joint accel RMS: 10.856 rad/s^2
+residual action-rate RMS: 0.0186 rad/step
+reference tracking error (rad): mean=0.0456  rms=0.0572  max=0.2223
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J       5.4%
+  fl_knee      11.7%
+  fr_SY_J       0.0%
+  fr_SP_J      11.0%
+  fr_knee       9.3%
+  bl_SY_J       0.0%
+  bl_SP_J       0.0%
+  bl_knee       1.9%
+  br_SY_J       0.0%
+  br_SP_J       8.1%
+  br_knee      10.1%
+====================================================================================================
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left_max/metrics.json
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/analyze.py', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/left_max']
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py', 'evaluate', '--context', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json', '--task', 'Bingo-Turning-Play-v0', '--checkpoint', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt', '--out_dir', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right_max', '--duration_s', '30', '--cmd_vx', '0.215', '--cmd_yaw', '-0.6', '--diagnostics', '--headless', '--kit_args', '--/rtx/verifyDriverVersion/enabled=false --no-window', '--no_video']
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260919_195322.log
+2026-09-19T23:53:22Z [152ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-19T23:53:22Z [438ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-19T23:53:22Z [601ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-19T23:53:22Z [610ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-19T23:53:25Z [3,680ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-19T23:53:25Z [3,680ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-19T23:53:25Z [3,680ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-19T23:53:26Z [3,967ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:53:26Z [3,967ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-19T23:53:26Z [3,967ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:53:26Z [3,967ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122049
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2017
+|---------------------------------------------------------------------------------------------|
+2026-09-19T23:53:27Z [4,936ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-19T23:53:29Z [7,244ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.kit
+[INFO]: Parsing configuration from: <class 'env.PlayCfg'>
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-19_19-53-29.log[0m
+[36m======================================================================================[0m
+
+[33m19:53:29 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[38;20m[skrl:INFO] Environment wrapper: Isaac Lab (single-agent)[0m
+[33;20m[skrl:WARNING] The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.520914 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.888095 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz): duration: 1.125 sec, frames: 136
+[INFO]: Parsing configuration from: /pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/track/agents/skrl_ppo_cfg.yaml
+[33m19:53:30 [runner.py] WARNING: The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[33;20m[skrl:WARNING] The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33m19:53:30 [runner.py] WARNING: The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33;20m[skrl:WARNING] The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[33m19:53:30 [runner.py] WARNING: The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[38;20m[skrl:INFO] Seed: 42[0m
+[[ policy loaded: /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+[33m19:53:31 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:36 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:41 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:46 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:51 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:53:56 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+command: vx=0.215 m/s  vy=0.000  yaw=-0.600  (Turning extension accepts yaw; vy remains zero.)
+duration=30.0s  settle=1.0s  steps_recorded=720  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.135  std=0.053  max=0.252  (cmd=0.215)
+base roll RMS: 4.432 deg   base pitch RMS: 1.589 deg
+joint accel RMS: 10.501 rad/s^2
+residual action-rate RMS: 0.0184 rad/step
+reference tracking error (rad): mean=0.0344  rms=0.0425  max=0.1333
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J      12.4%
+  fl_knee      16.8%
+  fr_SY_J       0.0%
+  fr_SP_J       4.3%
+  fr_knee       5.1%
+  bl_SY_J       0.0%
+  bl_SP_J      10.0%
+  bl_knee       4.6%
+  br_SY_J       0.0%
+  br_SP_J       0.0%
+  br_knee       0.1%
+====================================================================================================
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right_max/metrics.json
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/analyze.py', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right_max']
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py', 'evaluate', '--context', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json', '--task', 'Bingo-Turning-Play-v0', '--checkpoint', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt', '--out_dir', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/straight', '--duration_s', '30', '--cmd_vx', '0.215', '--cmd_yaw', '0.0', '--diagnostics', '--headless', '--kit_args', '--/rtx/verifyDriverVersion/enabled=false --no-window', '--no_video']
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260919_195359.log
+2026-09-19T23:53:59Z [142ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-19T23:53:59Z [423ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-19T23:53:59Z [642ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-19T23:53:59Z [651ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-19T23:54:02Z [3,451ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-19T23:54:02Z [3,451ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-19T23:54:02Z [3,451ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-19T23:54:02Z [3,707ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:54:02Z [3,707ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-19T23:54:02Z [3,707ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-19T23:54:02Z [3,707ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122044
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2017
+|---------------------------------------------------------------------------------------------|
+2026-09-19T23:54:03Z [4,642ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-19T23:54:06Z [7,001ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.kit
+[INFO]: Parsing configuration from: <class 'env.PlayCfg'>
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-19_19-54-06.log[0m
+[36m======================================================================================[0m
+
+[33m19:54:06 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[38;20m[skrl:INFO] Environment wrapper: Isaac Lab (single-agent)[0m
+[33;20m[skrl:WARNING] The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.580913 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.889669 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz): duration: 1.125 sec, frames: 136
+[INFO]: Parsing configuration from: /pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/track/agents/skrl_ppo_cfg.yaml
+[33m19:54:07 [runner.py] WARNING: The 'lambda' field in the configuration is deprecated. Use 'gae_lambda' instead[0m
+[33;20m[skrl:WARNING] The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33m19:54:07 [runner.py] WARNING: The 'clip_predicted_values' field in the configuration is deprecated. Use a 'value_clip' value greater than 0 to clip the predicted values instead[0m
+[33;20m[skrl:WARNING] The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[33m19:54:07 [runner.py] WARNING: The 'state_preprocessor' field in the configuration has been replaced by 'observation_preprocessor'. If the 'state_preprocessor' definition is desired but the `observation_preprocessor` is not, define the last one to None (null) to avoid the automatic replacement[0m
+[38;20m[skrl:INFO] Seed: 42[0m
+[[ policy loaded: /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+[33m19:54:08 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:54:13 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:54:18 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:54:23 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:54:28 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m19:54:33 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt
+command: vx=0.215 m/s  vy=0.000  yaw=0.000  (Turning extension accepts yaw; vy remains zero.)
+duration=30.0s  settle=1.0s  steps_recorded=720  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.144  std=0.053  max=0.325  (cmd=0.215)
+base roll RMS: 5.223 deg   base pitch RMS: 1.904 deg
+joint accel RMS: 8.835 rad/s^2
+residual action-rate RMS: 0.0167 rad/step
+reference tracking error (rad): mean=0.0304  rms=0.0373  max=0.1446
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J       6.5%
+  fl_knee       8.3%
+  fr_SY_J       0.0%
+  fr_SP_J       6.5%
+  fr_knee       6.0%
+  bl_SY_J       0.0%
+  bl_SP_J       2.6%
+  bl_knee       2.8%
+  br_SY_J       0.0%
+  br_SP_J       0.0%
+  br_knee       2.6%
+====================================================================================================
+[[ wrote /pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/straight/metrics.json
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/analyze.py', '/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/straight']

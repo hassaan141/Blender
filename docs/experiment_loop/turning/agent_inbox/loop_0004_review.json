@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Viewed dense stride and60s overview: stable continuous turning, no hop/fall; rear-left swing improves visibly modestly and numerically on both sides. Main BL duty .896/.839 versus .983/.955, clearance4.27/6.66 versus2.23/2.91mm. Yaw+.425/-.422 preserved, all5survive, accelerationwithin fixedcap. Still fails left clearance and saturation/slip gates; provisional improvement only, continue targeted BL lift."
+}

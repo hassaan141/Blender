@@ -1,0 +1,19 @@
+{
+  "fps": true,
+  "dof_names": true,
+  "body_names": true,
+  "dof_positions": true,
+  "dof_velocities": true,
+  "body_positions": true,
+  "body_rotations": true,
+  "body_linear_velocities": true,
+  "body_angular_velocities": true,
+  "head_tail_positions": true,
+  "ear_positions": true,
+  "source": true,
+  "ground_fix_inferred_stance": true,
+  "loop_seam_smoothed_window": true,
+  "refinement_timing_strength": true,
+  "refinement_source_frame": true,
+  "only_contact_labels_changed": true
+}

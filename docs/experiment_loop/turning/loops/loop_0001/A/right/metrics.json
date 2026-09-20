@@ -1,0 +1,68 @@
+{
+  "task": "Bingo-Turning-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0001/A/policy.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.175,
+    "vy": 0.0,
+    "yaw": -0.4,
+    "note": "Turning extension accepts yaw; vy remains zero."
+  },
+  "duration_s": 60.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 1440,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.11083123832941055,
+  "vx_std": 0.07791206240653992,
+  "vx_max": 0.30242854356765747,
+  "base_roll_rms_deg": 5.50453519821167,
+  "base_pitch_rms_deg": 2.1058874130249023,
+  "joint_accel_rms": 8.517008781433105,
+  "residual_action_rate_rms": 0.016653750091791153,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 0.6944444444444444,
+    "fl_knee": 7.569444444444444,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 3.2638888888888893,
+    "fr_knee": 4.791666666666667,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 0.8333333333333334,
+    "bl_knee": 3.194444444444444,
+    "br_SY_J": 0.0,
+    "br_SP_J": 0.0,
+    "br_knee": 0.4166666666666667
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.06078583002090454,
+    "rms": 0.0771680474281311,
+    "max": 0.24438180029392242,
+    "mean_per_joint": {
+      "fl_SY_J": 0.039516374468803406,
+      "fl_SP_J": 0.09364855289459229,
+      "fl_knee": 0.032137636095285416,
+      "fr_SY_J": 0.025395674630999565,
+      "fr_SP_J": 0.061102744191884995,
+      "fr_knee": 0.05217384174466133,
+      "bl_SY_J": 0.04033328592777252,
+      "bl_SP_J": 0.1594371646642685,
+      "bl_knee": 0.04682178422808647,
+      "br_SY_J": 0.09125246107578278,
+      "br_SP_J": 0.03621166944503784,
+      "br_knee": 0.05139881372451782
+    }
+  },
+  "yaw_mean": -0.00861717001690061,
+  "yaw_std": 0.31602800092626276,
+  "yaw_rmse": 0.5030449452832516,
+  "heading_change_deg": -29.603076420850076,
+  "vx_abs_max": 0.30242854356765747,
+  "mean_slip_m_s": 0.18534607880824458,
+  "mean_saturation_pct": 1.7303240740740742
+}

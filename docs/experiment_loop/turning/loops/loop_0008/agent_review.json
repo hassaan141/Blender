@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": true,
+  "reason": "Eight-loop budget reached. Mandatory joint-limit failure at maximumleftyaw: BL_SY_J .420264rad versus.42, violation.000264>1e-5. Bothvideo montages inspected: stable coordinatedmainturns but persistentleftlean andincompleteBLunloading. FLpenaltyreducesleftsaturation10.14 versus12.85%, but shifts load into rearabductionlimit. Cannot retain. Finalbest remainsloop5; natural-gait goal NOTfullymet. No loop9."
+}

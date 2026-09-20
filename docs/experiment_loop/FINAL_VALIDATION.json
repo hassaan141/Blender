@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "protected_inventory_entries": 1577,
+  "historical_hashes_checked": 940,
+  "sealed_loops_verified": 8,
+  "regression_tests_passed": 18,
+  "backward_best": "loop_0007/A",
+  "forward_champion_unchanged": true,
+  "best_artifact_hashes_verified": true,
+  "stop_reason": "eight total loops reached",
+  "goal_met": false,
+  "final_comparison_duration_s": 60.0,
+  "final_report_links_valid": true,
+  "no_loop_0009": true,
+  "runner_exited": true
+}

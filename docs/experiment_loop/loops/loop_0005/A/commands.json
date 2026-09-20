@@ -1,0 +1,23 @@
+{
+  "train": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py",
+    "train",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/config.json"
+  ],
+  "evaluate": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py",
+    "evaluate",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/config.json"
+  ],
+  "compare": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py",
+    "compare",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/config.json"
+  ]
+}

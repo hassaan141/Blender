@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Reviewed both physics-preview montages: original stepping and posture retained, both survive. Heading-local observations immediately improve untrained steering to +.126/-.206 rad/s for +/-.4 commands versus +.059/-.072 before. Geometry unchanged. Train to refine yaw tracking and balance."
+}

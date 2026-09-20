@@ -1,0 +1,29 @@
+{
+  "id": "loop_0007/A",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/policy.pt",
+  "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/reference.npz",
+  "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/evaluation/metrics.json",
+  "video": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/evaluation/eval.mp4",
+  "report": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/report.md",
+  "contact_fix": true,
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "backward_command_vx": -0.2,
+    "signed_reference_velocity_scale": -0.4242424242424242,
+    "lateral_scale": 0.7,
+    "contact_timing_mode": 1,
+    "all_contacts_corrected": 1,
+    "stance_shape_blend": 0.2
+  },
+  "status": "provisional backward best; target not yet met",
+  "hashes": {
+    "checkpoint": "f28d2fe6c6fa693d00f88448aa2d116b9128de9795a51754195e1f81cbdadb40",
+    "reference": "2674e28050bd80120e2f6cde3e419a5480d9f91265c83c9a737d6753904b5324",
+    "metrics": "58ec045df010638b1a5fabf25b7b7efb0dc7e05e498fdc1728c65a63469cfe97",
+    "video": "c2e15d763b3033bc93ad8ab83d2298d081f8199e5cacada343e22f6dbf81ce70"
+  }
+}

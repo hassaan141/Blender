@@ -1,0 +1,10 @@
+{
+  "failures": [
+    "left bl dragging",
+    "left saturation",
+    "left_max bl dragging",
+    "left_max saturation",
+    "right_max saturation",
+    "straight saturation"
+  ]
+}

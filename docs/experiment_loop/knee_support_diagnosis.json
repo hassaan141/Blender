@@ -1,0 +1,80 @@
+{
+  "loop_0001": {
+    "fl": {
+      "knee_sat_pct": 6.527777777777779,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.04983169212937355,
+      "knee_tracking_error_rms_rad": 0.04691345617175102
+    },
+    "fr": {
+      "knee_sat_pct": 3.2638888888888893,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.042293354868888855,
+      "knee_tracking_error_rms_rad": 0.04222193360328674
+    },
+    "bl": {
+      "knee_sat_pct": 2.2222222222222223,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.025500398129224777,
+      "knee_tracking_error_rms_rad": 0.026664260774850845
+    },
+    "br": {
+      "knee_sat_pct": 7.916666666666666,
+      "saturated_frames_in_contact_pct": 97.36842105263158,
+      "knee_residual_rms_rad": 0.03172888234257698,
+      "knee_tracking_error_rms_rad": 0.03401907905936241
+    }
+  },
+  "loop_0003": {
+    "fl": {
+      "knee_sat_pct": 2.361111111111111,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.03601611405611038,
+      "knee_tracking_error_rms_rad": 0.03365566208958626
+    },
+    "fr": {
+      "knee_sat_pct": 3.8194444444444446,
+      "saturated_frames_in_contact_pct": 96.36363636363636,
+      "knee_residual_rms_rad": 0.03808615729212761,
+      "knee_tracking_error_rms_rad": 0.03396599739789963
+    },
+    "bl": {
+      "knee_sat_pct": 1.8055555555555554,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.03800849989056587,
+      "knee_tracking_error_rms_rad": 0.03368816152215004
+    },
+    "br": {
+      "knee_sat_pct": 7.152777777777778,
+      "saturated_frames_in_contact_pct": 94.1747572815534,
+      "knee_residual_rms_rad": 0.035583607852458954,
+      "knee_tracking_error_rms_rad": 0.033586036413908005
+    }
+  },
+  "loop_0004": {
+    "fl": {
+      "knee_sat_pct": 5.972222222222222,
+      "saturated_frames_in_contact_pct": 51.162790697674424,
+      "knee_residual_rms_rad": 0.044899240136146545,
+      "knee_tracking_error_rms_rad": 0.04156024754047394
+    },
+    "fr": {
+      "knee_sat_pct": 5.277777777777778,
+      "saturated_frames_in_contact_pct": 89.47368421052632,
+      "knee_residual_rms_rad": 0.0381971076130867,
+      "knee_tracking_error_rms_rad": 0.03451395407319069
+    },
+    "bl": {
+      "knee_sat_pct": 5.138888888888888,
+      "saturated_frames_in_contact_pct": 89.1891891891892,
+      "knee_residual_rms_rad": 0.04562165215611458,
+      "knee_tracking_error_rms_rad": 0.04097713530063629
+    },
+    "br": {
+      "knee_sat_pct": 8.26388888888889,
+      "saturated_frames_in_contact_pct": 100.0,
+      "knee_residual_rms_rad": 0.04063175618648529,
+      "knee_tracking_error_rms_rad": 0.035474568605422974
+    }
+  }
+}

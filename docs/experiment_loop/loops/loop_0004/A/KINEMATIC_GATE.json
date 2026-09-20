@@ -1,0 +1,5 @@
+{
+  "allow_training": true,
+  "reviewer": "active autonomous agent",
+  "finding": "Stance-shape blend retains recognizable gait and moderate clearance. No new jump or exaggerated stepping in 4fps kinematic montage; bounded IK max error <1 micron and joint edit <.268 rad. Physical planting remains unproven."
+}

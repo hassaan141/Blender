@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "regression_tests": 18,
+  "training_launches": 0,
+  "simulator_launches": 0,
+  "live_loops": 0,
+  "protected_inventory_entries": 1577,
+  "protected_before_after_equal": true,
+  "historical_hashes_checked": 940,
+  "champion": "locomotion1_quality_run05",
+  "smoke_directory": "/pub0/muhammadf/Blender/docs/experiment_loop/smoke/20260918_021955",
+  "smoke_decision": {
+    "decision": "REJECT",
+    "reason": "Smoke replay is never promotable"
+  },
+  "comparison_duration_s": 2.0,
+  "limitations": [
+    "Native Isaac Lab commands inspected and wired, not runtime-tested",
+    "Planner hook remains unconfigured",
+    "Direct X post text unavailable; primary repository inspected instead"
+  ]
+}

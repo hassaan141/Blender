@@ -1,0 +1,6 @@
+{
+  "all_tensors_finite": true,
+  "tensor_count": 74,
+  "changed_policy_tensors": 9,
+  "training_iterations": 300
+}

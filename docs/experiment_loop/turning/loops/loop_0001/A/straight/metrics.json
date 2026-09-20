@@ -1,0 +1,68 @@
+{
+  "task": "Bingo-Turning-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0001/A/policy.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.175,
+    "vy": 0.0,
+    "yaw": 0.0,
+    "note": "Turning extension accepts yaw; vy remains zero."
+  },
+  "duration_s": 30.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 720,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.09867691248655319,
+  "vx_std": 0.04266313463449478,
+  "vx_max": 0.23526524007320404,
+  "base_roll_rms_deg": 4.539313316345215,
+  "base_pitch_rms_deg": 1.8995469808578491,
+  "joint_accel_rms": 7.002758502960205,
+  "residual_action_rate_rms": 0.013729513622820377,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 0.1388888888888889,
+    "fl_knee": 2.9166666666666665,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 0.2777777777777778,
+    "fr_knee": 5.138888888888888,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 0.0,
+    "bl_knee": 1.3888888888888888,
+    "br_SY_J": 0.0,
+    "br_SP_J": 0.0,
+    "br_knee": 0.9722222222222222
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.04941863566637039,
+    "rms": 0.06304900348186493,
+    "max": 0.22436895966529846,
+    "mean_per_joint": {
+      "fl_SY_J": 0.03601519390940666,
+      "fl_SP_J": 0.03247475624084473,
+      "fl_knee": 0.024869659915566444,
+      "fr_SY_J": 0.025712598115205765,
+      "fr_SP_J": 0.10764609277248383,
+      "fr_knee": 0.049889374524354935,
+      "bl_SY_J": 0.02125709131360054,
+      "bl_SP_J": 0.0889485776424408,
+      "bl_knee": 0.03863433375954628,
+      "br_SY_J": 0.020808842033147812,
+      "br_SP_J": 0.09296354651451111,
+      "br_knee": 0.053803618997335434
+    }
+  },
+  "yaw_mean": -0.0029388350826417926,
+  "yaw_std": 0.13269256833081944,
+  "yaw_rmse": 0.13272510855852465,
+  "heading_change_deg": -5.044469455655643,
+  "vx_abs_max": 0.23526524007320404,
+  "mean_slip_m_s": 0.1625796945946547,
+  "mean_saturation_pct": 0.9027777777777777
+}

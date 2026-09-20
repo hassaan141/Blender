@@ -1,0 +1,177 @@
+{
+  "champion": {
+    "id": "loop_0004/A",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/report.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0,
+      "turn_heading_local": 1,
+      "turn_command_vx": 0.215,
+      "turn_bl_recovery": 1
+    },
+    "status": "provisional turning best",
+    "hashes": {
+      "checkpoint": "df6ccd65ab317eee394be57267afc0ada2691bd3dd16eb7b21e888d9e71a26ec",
+      "reference": "341df6d06f57238141ff03dbc33dc417af2f4406419d0468e3aeb3fd13e3a652",
+      "metrics": "e258a3e19c78873bde9d75e50825e727d9daa13ff8667870a70c333e6a69cf39",
+      "video": "a12ff344ab3046504a8fb976f6d4e7c8aba64620ce627c0b17e09c235e4a39a6"
+    }
+  },
+  "current_candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "previous_report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/report.md",
+  "review_history": [],
+  "feedback": "",
+  "allowed_changes": {
+    "residual_ema_alpha": [
+      0.05,
+      1.0
+    ],
+    "residual_scale": [
+      0.05,
+      0.4
+    ],
+    "fl_torque_weight": [
+      0.0,
+      0.1
+    ],
+    "body_height_weight": [
+      0.0,
+      0.2
+    ],
+    "vertical_velocity_weight": [
+      0.0,
+      0.1
+    ],
+    "backward_command_vx": [
+      -0.2,
+      -0.2
+    ],
+    "signed_reference_velocity_scale": [
+      -0.4242424242424242,
+      -0.4242424242424242
+    ],
+    "lateral_scale": [
+      0.3,
+      1.0
+    ],
+    "front_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "rear_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "fl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "fr_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "bl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "br_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "phase_gain": [
+      0.8,
+      1.5
+    ],
+    "all_contacts_corrected": [
+      0,
+      1
+    ],
+    "stance_shape_blend": [
+      0.0,
+      0.8
+    ],
+    "contact_timing_mode": [
+      0,
+      1
+    ],
+    "turn_bl_recovery": [
+      0,
+      1
+    ],
+    "turn_command_vx": [
+      0.175,
+      0.25
+    ],
+    "turn_heading_local": [
+      0,
+      1
+    ],
+    "turn_geometry_gain": [
+      0.0,
+      1.5
+    ],
+    "turn_yaw_weight": [
+      0.05,
+      0.8
+    ],
+    "turn_lateral_gain": [
+      0.0,
+      1.5
+    ],
+    "turn_lateral_scale": [
+      0.4,
+      1.0
+    ],
+    "turn_yaw_smooth_weight": [
+      0.0,
+      0.15
+    ],
+    "cmd_vy": [
+      -0.3,
+      0.3
+    ],
+    "lateral_stride_scale": [
+      0.2,
+      0.8
+    ],
+    "lateral_lift_mm": [
+      5.0,
+      20.0
+    ],
+    "lateral_stance_width_scale": [
+      0.7,
+      1.3
+    ]
+  },
+  "max_related_changes": 2,
+  "output": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/proposal.json"
+}

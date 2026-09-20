@@ -1,0 +1,14 @@
+{
+  "defect": "Lateral rocking and uneven front support dominate the visible gait.",
+  "evidence": "loop_0001 comparison_stride.jpg; roll RMS 7.73 degrees, FL contact duty .831 vs FR .626; native lateral paw excursions 47\u201358 mm.",
+  "hypothesis": "Reduce lateral task-space paw excursions 30% about each foot mean, retaining stance width and x/z path, to reduce lateral rocking and improve support consistency.",
+  "expected_effect": "Lower roll/yaw oscillation and more even front support without adding speed reward or exaggerated lift.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "lateral_scale": 0.7
+      }
+    }
+  ]
+}

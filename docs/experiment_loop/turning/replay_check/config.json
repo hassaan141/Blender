@@ -1,0 +1,188 @@
+{
+  "python": "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+  "gpu": 1,
+  "num_envs": 512,
+  "iterations": 300,
+  "seed": 42,
+  "duration_s": 60,
+  "vx_min": 0.12,
+  "vx_max_mean": 0.23,
+  "require_visual_approval": false,
+  "start_from_candidate": false,
+  "fixed_baseline_metrics": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/metrics.json",
+  "candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "protected": [
+    "docs/walk_ref",
+    "docs/natural_walk",
+    "docs/locomotion2",
+    "docs/locomotion1",
+    "stage1",
+    "stage2",
+    "stage3",
+    "stage4",
+    "stage5",
+    "motions",
+    "URDF",
+    "rl/bingo_rl/bingo_rl",
+    "rl/tools",
+    "docs/walk_ref/CURRENT_BEST.md",
+    "docs/walk_ref/README.md",
+    "docs/experiment_loop/loops",
+    "docs/experiment_loop/CURRENT_BACKWARD_BEST.json",
+    "docs/experiment_loop/FROZEN_BACKWARD_BASELINE.json",
+    "docs/experiment_loop/CURRENT_CHAMPION.json",
+    "docs/experiment_loop/lateral"
+  ],
+  "planner_hook": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/agent_bridge.py",
+    "plan",
+    "--context",
+    "{context}",
+    "--output",
+    "{output}"
+  ],
+  "planner_timeout_s": 1800,
+  "plans": [],
+  "hooks": {
+    "train": [
+      "/pub0/muhammadf/miniconda3/bin/python3",
+      "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/adapter.py",
+      "train",
+      "--context",
+      "{context}"
+    ],
+    "evaluate": [
+      "/pub0/muhammadf/miniconda3/bin/python3",
+      "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/adapter.py",
+      "evaluate",
+      "--context",
+      "{context}"
+    ],
+    "compare": [
+      "/pub0/muhammadf/miniconda3/bin/python3",
+      "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/adapter.py",
+      "compare",
+      "--context",
+      "{context}"
+    ]
+  },
+  "timeouts": {
+    "train": 3600,
+    "evaluate": 1500,
+    "compare": 300
+  },
+  "protected_manifest_sources": [
+    "docs/natural_walk/protected_sha256.json"
+  ],
+  "campaign_home": "/pub0/muhammadf/Blender/docs/experiment_loop/turning",
+  "turning": true,
+  "backward": false,
+  "agent_autonomous": true,
+  "champion_file": "CURRENT_CHAMPION.json",
+  "review_hook": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/agent_bridge.py",
+    "review",
+    "--context",
+    "{context}",
+    "--output",
+    "{output}"
+  ],
+  "parent": {
+    "id": "loop_0004/A",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/report.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0,
+      "turn_heading_local": 1,
+      "turn_command_vx": 0.215,
+      "turn_bl_recovery": 1
+    },
+    "status": "provisional turning best",
+    "hashes": {
+      "checkpoint": "df6ccd65ab317eee394be57267afc0ada2691bd3dd16eb7b21e888d9e71a26ec",
+      "reference": "341df6d06f57238141ff03dbc33dc417af2f4406419d0468e3aeb3fd13e3a652",
+      "metrics": "e258a3e19c78873bde9d75e50825e727d9daa13ff8667870a70c333e6a69cf39",
+      "video": "a12ff344ab3046504a8fb976f6d4e7c8aba64620ce627c0b17e09c235e4a39a6"
+    }
+  },
+  "training_parent": {
+    "id": "loop_0004/A",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/report.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0,
+      "turn_heading_local": 1,
+      "turn_command_vx": 0.215,
+      "turn_bl_recovery": 1
+    },
+    "status": "provisional turning best",
+    "hashes": {
+      "checkpoint": "df6ccd65ab317eee394be57267afc0ada2691bd3dd16eb7b21e888d9e71a26ec",
+      "reference": "341df6d06f57238141ff03dbc33dc417af2f4406419d0468e3aeb3fd13e3a652",
+      "metrics": "e258a3e19c78873bde9d75e50825e727d9daa13ff8667870a70c333e6a69cf39",
+      "video": "a12ff344ab3046504a8fb976f6d4e7c8aba64620ce627c0b17e09c235e4a39a6"
+    }
+  },
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "turn_geometry_gain": 0.7,
+    "turn_lateral_gain": 0.7,
+    "turn_yaw_weight": 0.3,
+    "turn_lateral_scale": 1.0,
+    "turn_yaw_smooth_weight": 0.0,
+    "turn_heading_local": 1,
+    "turn_command_vx": 0.215,
+    "turn_bl_recovery": 1,
+    "bl_lift_mm": 3
+  },
+  "arm_dir": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/replay_check",
+  "smoke": false
+}

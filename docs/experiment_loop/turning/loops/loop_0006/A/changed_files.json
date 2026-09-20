@@ -1,0 +1,8 @@
+{
+  "source_files_changed": [],
+  "config_fields": [
+    "contact_timing_mode",
+    "all_contacts_corrected"
+  ],
+  "diff": "changes.diff"
+}

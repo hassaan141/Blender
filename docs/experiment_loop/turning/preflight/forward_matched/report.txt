@@ -1,0 +1,30 @@
+
+====================================================================================================
+BINGO WALK-REF LOOP EVALUATION
+====================================================================================================
+
+task=Bingo-Turning-Play-v0  checkpoint=/pub0/muhammadf/Blender/docs/experiment_loop/turning/preflight/warmstart.pt
+command: vx=0.175 m/s  vy=0.000  yaw=0.000  (Turning extension accepts yaw; vy remains zero.)
+duration=30.0s  settle=1.0s  steps_recorded=720  num_envs=1
+----------------------------------------------------------------------------------------------------
+survival: 100.0%   any_fell=False  fall_time_s=[None]
+vx: mean=0.100  std=0.047  max=0.272  (cmd=0.175)
+base roll RMS: 4.713 deg   base pitch RMS: 2.120 deg
+joint accel RMS: 8.236 rad/s^2
+residual action-rate RMS: 0.0153 rad/step
+reference tracking error (rad): mean=0.0322  rms=0.0412  max=0.1684
+
+torque saturation % per joint:
+  fl_SY_J       0.0%
+  fl_SP_J       1.7%
+  fl_knee       9.2%
+  fr_SY_J       0.0%
+  fr_SP_J       0.8%
+  fr_knee       4.9%
+  bl_SY_J       0.0%
+  bl_SP_J       0.0%
+  bl_knee       6.7%
+  br_SY_J       0.0%
+  br_SP_J       0.0%
+  br_knee       0.3%
+====================================================================================================

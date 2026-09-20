@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "docs/experiment_loop/loops/loop_0001/A/evaluation/eval.mp4",
+    "-i",
+    "docs/experiment_loop/loops/loop_0007/A/evaluation/eval.mp4",
+    "-filter_complex",
+    "[0:v]crop=720:520:280:180,drawtext=text='START - LOOP 1':x=15:y=15:fontsize=24:fontcolor=white:box=1:boxcolor=black@0.7[a];[1:v]crop=720:520:280:180,drawtext=text='BEST - LOOP 7':x=15:y=15:fontsize=24:fontcolor=white:box=1:boxcolor=black@0.7[b];[a][b]hstack=inputs=2:shortest=1[v]",
+    "-map",
+    "[v]",
+    "-t",
+    "60",
+    "-c:v",
+    "libx264",
+    "-crf",
+    "20",
+    "docs/experiment_loop/backward_start_vs_best.mp4"
+  ]
+}

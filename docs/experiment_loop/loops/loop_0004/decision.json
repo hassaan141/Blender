@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "60 s survival 100%, vx -.1701/std .0691 improve, but roll rises 6.58 to 7.14 deg, acceleration 8.70 to 9.38, mean saturation 2.45 to 3.76%, RR knee 8.26% fails regression gate. Dense comparison montage retains uneven rocking and no convincing planting improvement. Faster is not enough. Retain loop3."
+}

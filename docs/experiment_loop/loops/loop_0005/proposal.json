@@ -1,0 +1,15 @@
+{
+  "defect": "Contact supervision disagrees with the actual recovery strokes and physical planting.",
+  "evidence": "Reference FR/BR have two labelled contact bouts despite three fore-aft strokes. Old tip-height contact proxy falsely reports contact for 17\u201325% of FL/FR frames; loop4 trajectory edit increased torque and rocking.",
+  "hypothesis": "Align FL/FR/BR reference contacts with their existing fore-aft recovery phases and apply the already validated BL collision-hull contact measurement consistently to the other feet. Keep loop3 geometry and cadence unchanged.",
+  "expected_effect": "Less conflicting contact supervision, cleaner four-leg support and less slip/rocking without increasing velocity reward.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "contact_timing_mode": 1,
+        "all_contacts_corrected": 1
+      }
+    }
+  ]
+}

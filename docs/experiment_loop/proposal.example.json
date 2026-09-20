@@ -1,0 +1,14 @@
+{
+  "defect": "REPLACE with one observed defect",
+  "evidence": "REPLACE with video timestamp and diagnostic path",
+  "hypothesis": "REPLACE with causal explanation",
+  "expected_effect": "REPLACE with measurable/visible prediction",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "residual_ema_alpha": 0.28
+      }
+    }
+  ]
+}

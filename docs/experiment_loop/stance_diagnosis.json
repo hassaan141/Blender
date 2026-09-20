@@ -1,0 +1,22 @@
+{
+  "fl": {
+    "wrong_direction_fraction_during_stance": 0.3333333333333333,
+    "stance_vx_mean": 0.0859913958682663,
+    "stance_vx_std": 0.21632685386627695
+  },
+  "fr": {
+    "wrong_direction_fraction_during_stance": 0.358974358974359,
+    "stance_vx_mean": 0.05326248857573964,
+    "stance_vx_std": 0.21413190025775836
+  },
+  "bl": {
+    "wrong_direction_fraction_during_stance": 0.14444444444444443,
+    "stance_vx_mean": 0.13901227072130318,
+    "stance_vx_std": 0.10635066780322995
+  },
+  "br": {
+    "wrong_direction_fraction_during_stance": 0.3793103448275862,
+    "stance_vx_mean": 0.07946852732059626,
+    "stance_vx_std": 0.2089407064471348
+  }
+}

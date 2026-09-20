@@ -1,0 +1,9 @@
+--- parent settings
++++ candidate settings
+@@ -1,5 +1,5 @@
+ {
+-  "residual_ema_alpha": 0.3,
++  "residual_ema_alpha": 0.29,
+   "residual_scale": 0.3,
+   "fl_torque_weight": 0.03,
+   "body_height_weight": 0.05,

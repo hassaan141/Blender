@@ -1,0 +1,27 @@
+{
+  "leg_order": [
+    "fl",
+    "fr",
+    "bl",
+    "br"
+  ],
+  "left_legacy_vs_collision_mismatch": [
+    0.3125,
+    0.33402778,
+    0.10208333,
+    0.17083333
+  ],
+  "right_legacy_vs_collision_mismatch": [
+    0.25486111,
+    0.28888889,
+    0.16111111,
+    0.21180556
+  ],
+  "authored_vs_recovery_stroke_mismatch": [
+    0.25925926,
+    0.40740741,
+    0,
+    0.31111111
+  ],
+  "interpretation": "BL contact has been corrected. Other feet retain inconsistent tip-height measurements and authored swing labels; possible next targeted contact-consistency experiment, without changing contact reward weight."
+}
