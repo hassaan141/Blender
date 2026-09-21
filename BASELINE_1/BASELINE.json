@@ -1,0 +1,21 @@
+{
+  "name": "Bingo Locomotion Baseline 1",
+  "status": "frozen complete integrated baseline",
+  "checkpoint": "BASELINE_1/policy.pt",
+  "checkpoint_sha256": "35955f919f41e128fe40a1148c03b5a0d3e64a7dca4e99132feda544c0859cb9",
+  "checkpoint_origin": "unified command loop_0006",
+  "stand_runtime_origin": "stand_fix loop_0002",
+  "observation_width": 95,
+  "action_width": 12,
+  "command": ["vx_m_per_s", "yaw_rad_per_s"],
+  "interface_bounds": [[-0.2, 0.3], [-0.6, 0.6]],
+  "core_keyboard_commands": {"W": [0.2, 0.0], "S": [-0.2, 0.0], "A": [0.0, 0.4], "D": [0.0, -0.4], "WA": [0.15, 0.4], "WD": [0.15, -0.4], "SA": [-0.15, 0.4], "SD": [-0.15, -0.4], "none": [0.0, 0.0]},
+  "control_hz": 24,
+  "physics_hz": 120,
+  "ema_alpha": 0.3,
+  "residual_scale_rad": 0.3,
+  "command_alpha": 0.1,
+  "teacher_checkpoints_required_at_inference": false,
+  "onnx_available": false,
+  "repository_runtime_required": true
+}

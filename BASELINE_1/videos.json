@@ -1,0 +1,16 @@
+{
+  "all_nine_panels": "BASELINE_1/videos/all_commands.mp4",
+  "locomotion_to_stand": "BASELINE_1/videos/locomotion_to_stand.mp4",
+  "individual": {
+    "stand": "BASELINE_1/videos/stand.mp4",
+    "forward_W": "BASELINE_1/videos/forward.mp4",
+    "backward_S": "BASELINE_1/videos/backward.mp4",
+    "left_A": "BASELINE_1/videos/left.mp4",
+    "right_D": "BASELINE_1/videos/right.mp4",
+    "forward_left_WA": "BASELINE_1/videos/forward_left.mp4",
+    "forward_right_WD": "BASELINE_1/videos/forward_right.mp4",
+    "backward_left_SA": "BASELINE_1/videos/backward_left.mp4",
+    "backward_right_SD": "BASELINE_1/videos/backward_right.mp4",
+    "full_transition_sequence": "BASELINE_1/videos/transitions.mp4"
+  }
+}
