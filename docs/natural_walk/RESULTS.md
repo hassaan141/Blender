@@ -4,6 +4,8 @@
 
 ## Deliverables
 
+mimi
+
 - Strongest experimental reference: [reference_02b/reference.npz](reference_02b/reference.npz), with [construction record](reference_02b/reference.json) and [kinematic preview](reference_02b/kinematic.mp4).
 - Strongest experimental checkpoint: [attempt_03/policy.pt](attempt_03/policy.pt). **Rejected as a replacement baseline**; retained for inspection and reproducibility.
 - [Matched close-up comparison video](attempt_03/comparison.mp4), Locomotion 1 on the left, attempt 03 on the right; original playback rate and camera, identical crop. [Candidate video](attempt_03/evaluation/eval.mp4).
