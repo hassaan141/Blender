@@ -1,5 +1,0 @@
-{
-  "ik_max_error_m": 9.998227010259573e-07,
-  "max_joint_delta_rad": 0.5667341559759715,
-  "method": "Remove common fore-aft displacement; preserve teacher rotational task-space deformation and paw height/contact timing"
-}

@@ -1,5 +1,0 @@
-{
-  "ik_max_error_m": 9.996321202402365e-07,
-  "max_joint_delta_rad": 0.1473523478648313,
-  "method": "Body-twist deformation solved on retained backward teacher posture; signed phase handled by runtime"
-}
