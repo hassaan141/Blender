@@ -1,0 +1,14 @@
+{
+  "defect": "Pulsed backward progression and residual braking during planted stance.",
+  "evidence": "Retained loop5 vx std .0754. Corrected-contact reference audit still shows 13\u201316% wrong-direction stance motion and .106\u2013.131m/s stance-velocity variation. Loop4 used erroneous two-bout contacts on FR/BR; loop5 corrected those labels.",
+  "hypothesis": "Blend 20% monotone stance progression and smooth swing return into loop5 fore-aft foot paths using its corrected three-stroke contact timing. Keep lateral scale .7, ranges, lifts and cadence unchanged.",
+  "expected_effect": "Smoother planted-foot progression and less speed pulsing without the large trajectory displacement and torque regression of loop4.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "stance_shape_blend": 0.2
+      }
+    }
+  ]
+}

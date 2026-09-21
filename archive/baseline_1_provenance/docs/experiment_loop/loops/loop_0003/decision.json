@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Provisional overall backward improvement: 100% survival, FL clearance 9.4\u219235.3mm and front support duty balanced .617/.650, roll 7.73\u21926.58deg, vx -.137\u2192-.159, std .0805\u2192.0759, acceleration9.16\u21928.70, saturation2.81\u21922.45%. Montage shows clearer FL stepping and less lateral weight shift. Yaw-rate RMS slightly higher .286 vs .265; not goal-qualified."
+}

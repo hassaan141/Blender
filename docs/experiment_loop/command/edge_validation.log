@@ -1,0 +1,509 @@
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260921_154752.log
+2026-09-21T19:47:52Z [181ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-21T19:47:52Z [540ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-21T19:47:53Z [775ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-21T19:47:53Z [785ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-21T19:47:54Z [2,376ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-21T19:47:54Z [2,376ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-21T19:47:54Z [2,376ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-21T19:47:55Z [2,712ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 2080 Ti
+2026-09-21T19:47:55Z [2,712ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-21T19:47:55Z [2,712ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 2080 Ti
+2026-09-21T19:47:55Z [2,712ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       |        |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 118422
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 1877
+|---------------------------------------------------------------------------------------------|
+2026-09-21T19:47:55Z [3,478ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-21T19:47:55Z [3,484ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-21_15-47-57.log[0m
+[36m======================================================================================[0m
+
+[33m15:47:57 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+2026-09-21T19:47:55Z [3,535ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.644837 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 10
+	Environment spacing   : 5.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.813196 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/command/best/references/forward/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/command/best/references/backward/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/command/best/references/turning/reference.npz): duration: 1.125 sec, frames: 136
+[33m15:47:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 0.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m15:48:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:14 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 10.0 survivors [True, True, True, True, False, True, True, True, True, True]
+[33m15:48:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:24 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:29 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 20.0 survivors [True, True, True, True, False, True, True, True, True, True]
+[33m15:48:34 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:39 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 30.0 survivors [True, True, True, True, False, True, True, True, True, False]
+[33m15:48:44 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:48:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 40.0 survivors [True, True, True, True, False, True, True, True, True, False]
+[33m15:48:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:49:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:49:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 50.0 survivors [True, True, True, True, False, True, True, True, True, False]
+[33m15:49:14 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:49:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m15:49:24 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+{
+  "max_forward": {
+    "command": [
+      0.3,
+      0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.29046016931533813,
+    "vx_std": 0.08198472857475281,
+    "yaw_mean": -0.05705580115318298,
+    "yaw_std": 0.6393771171569824,
+    "roll_rms_deg": 4.491696322740466,
+    "pitch_rms_deg": 1.8871426344170301,
+    "height_mean": 0.1708347350358963,
+    "height_std": 0.0018299249932169914,
+    "joint_acceleration_rms": 25.881616592407227,
+    "action_rate_rms": 1.9487206935882568,
+    "torque_saturation_max_pct": 51.41242937853108,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      51.41242937853108,
+      50.7768361581921,
+      0.0,
+      43.07909604519774,
+      18.714689265536723,
+      0.0,
+      22.951977401129945,
+      20.97457627118644,
+      0.0,
+      16.38418079096045,
+      16.596045197740114
+    ],
+    "contact_duty": [
+      0.4597457627118644,
+      0.4809322033898305,
+      0.7888418079096046,
+      0.6885593220338984
+    ],
+    "slip_mean": 0.21188057959079742,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_backward": {
+    "command": [
+      -0.2,
+      0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.1823302060365677,
+    "vx_std": 0.06480979174375534,
+    "yaw_mean": 0.018540194258093834,
+    "yaw_std": 0.32049304246902466,
+    "roll_rms_deg": 5.3019565413372005,
+    "pitch_rms_deg": 1.5142624372236415,
+    "height_mean": 0.17061053216457367,
+    "height_std": 0.0014862893149256706,
+    "joint_acceleration_rms": 8.11984634399414,
+    "action_rate_rms": 1.101089358329773,
+    "torque_saturation_max_pct": 6.002824858757062,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.211864406779661,
+      0.211864406779661,
+      0.0,
+      6.002824858757062,
+      4.378531073446328,
+      0.0,
+      3.672316384180791,
+      3.036723163841808,
+      0.0,
+      1.2005649717514124,
+      5.014124293785311
+    ],
+    "contact_duty": [
+      0.5211864406779662,
+      0.6419491525423728,
+      0.6673728813559322,
+      0.6242937853107344
+    ],
+    "slip_mean": 0.10302850604057312,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_left": {
+    "command": [
+      0,
+      0.6
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.007463341578841209,
+    "vx_std": 0.06101703643798828,
+    "yaw_mean": 0.31274133920669556,
+    "yaw_std": 0.26775020360946655,
+    "roll_rms_deg": 7.393506460488614,
+    "pitch_rms_deg": 2.503745432259336,
+    "height_mean": 0.16601963341236115,
+    "height_std": 0.0032656791154295206,
+    "joint_acceleration_rms": 7.98668909072876,
+    "action_rate_rms": 1.1381372213363647,
+    "torque_saturation_max_pct": 2.754237288135593,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      1.059322033898305,
+      0.0,
+      2.754237288135593,
+      1.1299435028248588,
+      0.0,
+      1.6242937853107344,
+      0.211864406779661,
+      0.0,
+      0.211864406779661,
+      0.5649717514124294
+    ],
+    "contact_duty": [
+      0.6031073446327684,
+      0.653954802259887,
+      0.9788135593220338,
+      0.661723163841808
+    ],
+    "slip_mean": 0.0718420147895813,
+    "soft_margin_violation_rad": 0.01623857021331787,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_right": {
+    "command": [
+      0,
+      -0.6
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.0045769610442221165,
+    "vx_std": 0.056526023894548416,
+    "yaw_mean": -0.20549391210079193,
+    "yaw_std": 0.4074133336544037,
+    "roll_rms_deg": 5.705894782625401,
+    "pitch_rms_deg": 1.5878687178662243,
+    "height_mean": 0.1684744954109192,
+    "height_std": 0.0041108513250947,
+    "joint_acceleration_rms": 8.147076606750488,
+    "action_rate_rms": 1.2845762968063354,
+    "torque_saturation_max_pct": 4.872881355932203,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      1.4830508474576272,
+      4.872881355932203,
+      0.0,
+      0.9887005649717515,
+      1.059322033898305,
+      0.0,
+      0.7062146892655368,
+      0.0,
+      0.0,
+      0.0,
+      0.14124293785310735
+    ],
+    "contact_duty": [
+      0.4865819209039548,
+      0.615819209039548,
+      0.969632768361582,
+      0.7033898305084746
+    ],
+    "slip_mean": 0.08381685614585876,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_forward_left": {
+    "command": [
+      0.3,
+      0.6
+    ],
+    "survival": false,
+    "valid_seconds": 3.4166666666666665,
+    "vx_mean": 0.17991214990615845,
+    "vx_std": 0.22483934462070465,
+    "yaw_mean": 0.46728017926216125,
+    "yaw_std": 0.9638413786888123,
+    "roll_rms_deg": 14.107482523094538,
+    "pitch_rms_deg": 5.547477082563417,
+    "height_mean": 0.17022913694381714,
+    "height_std": 0.01206602156162262,
+    "joint_acceleration_rms": 44.579402923583984,
+    "action_rate_rms": 2.389195442199707,
+    "torque_saturation_max_pct": 58.536585365853654,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      57.3170731707317,
+      54.87804878048781,
+      0.0,
+      58.536585365853654,
+      23.170731707317074,
+      0.0,
+      14.634146341463413,
+      18.29268292682927,
+      0.0,
+      35.36585365853659,
+      29.268292682926827
+    ],
+    "contact_duty": [
+      0.5365853658536586,
+      0.4878048780487805,
+      0.5487804878048781,
+      0.7073170731707317
+    ],
+    "slip_mean": 0.3378784656524658,
+    "soft_margin_violation_rad": 0.042000263929367065,
+    "joint_limit_violation_rad": 2.55107879654215e-07
+  },
+  "max_forward_right": {
+    "command": [
+      0.3,
+      -0.6
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.34925299882888794,
+    "vx_std": 0.14634162187576294,
+    "yaw_mean": -0.878526508808136,
+    "yaw_std": 0.6374017596244812,
+    "roll_rms_deg": 6.016709370996001,
+    "pitch_rms_deg": 2.9550079198724393,
+    "height_mean": 0.16956736147403717,
+    "height_std": 0.004284933675080538,
+    "joint_acceleration_rms": 52.257904052734375,
+    "action_rate_rms": 2.2739806175231934,
+    "torque_saturation_max_pct": 66.24293785310734,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      66.24293785310734,
+      58.40395480225988,
+      0.0,
+      52.824858757062145,
+      20.056497175141246,
+      0.0,
+      45.33898305084746,
+      49.505649717514125,
+      0.0,
+      11.511299435028247,
+      10.522598870056497
+    ],
+    "contact_duty": [
+      0.4985875706214689,
+      0.4173728813559322,
+      0.7083333333333334,
+      0.6313559322033898
+    ],
+    "slip_mean": 0.2782161831855774,
+    "soft_margin_violation_rad": 0.06790721416473389,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_backward_left": {
+    "command": [
+      -0.2,
+      0.6
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.15915682911872864,
+    "vx_std": 0.07547114789485931,
+    "yaw_mean": 0.2847026586532593,
+    "yaw_std": 0.3305860459804535,
+    "roll_rms_deg": 6.451027866825595,
+    "pitch_rms_deg": 2.0800660232790946,
+    "height_mean": 0.16998973488807678,
+    "height_std": 0.0017573005752637982,
+    "joint_acceleration_rms": 9.73398494720459,
+    "action_rate_rms": 1.123113751411438,
+    "torque_saturation_max_pct": 6.7090395480225995,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      3.6016949152542375,
+      3.389830508474576,
+      0.0,
+      5.084745762711865,
+      6.1440677966101696,
+      0.0,
+      6.7090395480225995,
+      1.977401129943503,
+      0.0,
+      0.9887005649717515,
+      5.5790960451977405
+    ],
+    "contact_duty": [
+      0.5296610169491526,
+      0.643361581920904,
+      0.6306497175141242,
+      0.6348870056497176
+    ],
+    "slip_mean": 0.11358167976140976,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "max_backward_right": {
+    "command": [
+      -0.2,
+      -0.6
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.17257310450077057,
+    "vx_std": 0.09846384078264236,
+    "yaw_mean": -0.2358148694038391,
+    "yaw_std": 0.31842049956321716,
+    "roll_rms_deg": 4.779745036833767,
+    "pitch_rms_deg": 1.7761099053305394,
+    "height_mean": 0.17055633664131165,
+    "height_std": 0.0024361596442759037,
+    "joint_acceleration_rms": 9.409165382385254,
+    "action_rate_rms": 1.1899210214614868,
+    "torque_saturation_max_pct": 8.121468926553673,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      1.6242937853107344,
+      1.2711864406779663,
+      0.0,
+      8.121468926553673,
+      3.036723163841808,
+      0.0,
+      0.9887005649717515,
+      4.025423728813559,
+      0.0,
+      2.2598870056497176,
+      6.638418079096045
+    ],
+    "contact_duty": [
+      0.557909604519774,
+      0.606638418079096,
+      0.769774011299435,
+      0.6878531073446328
+    ],
+    "slip_mean": 0.13242456316947937,
+    "soft_margin_violation_rad": 0.004216223955154419,
+    "joint_limit_violation_rad": 0.0
+  },
+  "creep": {
+    "command": [
+      0.05,
+      0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.0016449671238660812,
+    "vx_std": 0.0312771275639534,
+    "yaw_mean": 0.011421921662986279,
+    "yaw_std": 0.18964797258377075,
+    "roll_rms_deg": 9.841032178802752,
+    "pitch_rms_deg": 2.616894986380002,
+    "height_mean": 0.16689753532409668,
+    "height_std": 0.003182468470185995,
+    "joint_acceleration_rms": 2.830150842666626,
+    "action_rate_rms": 0.56535804271698,
+    "torque_saturation_max_pct": 0.423728813559322,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.07062146892655367,
+      0.0,
+      0.0,
+      0.423728813559322,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.6913841807909604,
+      0.6588983050847458,
+      1.0,
+      0.9583333333333334
+    ],
+    "slip_mean": 0.035685814917087555,
+    "soft_margin_violation_rad": 0.016402900218963623,
+    "joint_limit_violation_rad": 0.0
+  },
+  "transitions": {
+    "command": "5-second command transitions",
+    "survival": false,
+    "valid_seconds": 23.375,
+    "vx_mean": 0.0527639277279377,
+    "vx_std": 0.19294296205043793,
+    "yaw_mean": 0.12027771770954132,
+    "yaw_std": 0.5811861753463745,
+    "roll_rms_deg": 8.778265843006169,
+    "pitch_rms_deg": 2.9726231911853134,
+    "height_mean": 0.16948141157627106,
+    "height_std": 0.005725625902414322,
+    "joint_acceleration_rms": 23.04031753540039,
+    "action_rate_rms": 1.6112759113311768,
+    "torque_saturation_max_pct": 21.74688057040998,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      19.607843137254903,
+      21.74688057040998,
+      0.0,
+      18.89483065953654,
+      9.090909090909092,
+      0.0,
+      10.87344028520499,
+      10.338680926916222,
+      0.0,
+      11.58645276292335,
+      8.55614973262032
+    ],
+    "contact_duty": [
+      0.5882352941176471,
+      0.5490196078431373,
+      0.8110516934046346,
+      0.64349376114082
+    ],
+    "slip_mean": 0.14088432490825653,
+    "soft_margin_violation_rad": 0.11076366901397705,
+    "joint_limit_violation_rad": 0.0
+  }
+}

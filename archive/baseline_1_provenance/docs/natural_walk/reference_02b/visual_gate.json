@@ -1,0 +1,6 @@
+{
+  "allow_training": true,
+  "kinematic_review": "PASS for training: original posture and cadence preserved; small rear-left lift in all three existing recovery strokes, no new hop or front lunge.",
+  "physics_review": "10 s with original checkpoint: survives; vx 0.178, acceleration 12.66. Not accepted as a controller result. Requires adaptation. BL geometric duty 92.1% vs baseline 95.5%; reference edit only partly realized.",
+  "reason": "Target missing/dragging back-left recovery while removing unnecessary front lift."
+}

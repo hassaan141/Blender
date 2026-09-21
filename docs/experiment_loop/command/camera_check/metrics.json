@@ -1,0 +1,409 @@
+{
+  "stand": {
+    "command": [
+      0.0,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.0036872783675789833,
+    "vx_std": 0.003215501317754388,
+    "yaw_mean": -0.014885767363011837,
+    "yaw_std": 0.019663045182824135,
+    "roll_rms_deg": 6.342851330750933,
+    "pitch_rms_deg": 9.613597124725082,
+    "height_mean": 0.1698014885187149,
+    "height_std": 0.0003450037620496005,
+    "joint_acceleration_rms": 1.1136642694473267,
+    "action_rate_rms": 0.14074178040027618,
+    "torque_saturation_max_pct": 0.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "slip_mean": 0.0022571913432329893,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward": {
+    "command": [
+      0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.18356649577617645,
+    "vx_std": 0.04440364986658096,
+    "yaw_mean": -0.01168206799775362,
+    "yaw_std": 0.39099574089050293,
+    "roll_rms_deg": 5.024674766696778,
+    "pitch_rms_deg": 1.9700363715052438,
+    "height_mean": 0.1719670444726944,
+    "height_std": 0.0015252558514475822,
+    "joint_acceleration_rms": 11.171891212463379,
+    "action_rate_rms": 1.4115267992019653,
+    "torque_saturation_max_pct": 20.833333333333336,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      16.666666666666664,
+      20.833333333333336,
+      0.0,
+      18.75,
+      12.5,
+      0.0,
+      6.25,
+      2.083333333333333,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.4583333333333333,
+      0.4791666666666667,
+      0.8333333333333334,
+      0.7291666666666666
+    ],
+    "slip_mean": 0.14738795161247253,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward": {
+    "command": [
+      -0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": -0.17882008850574493,
+    "vx_std": 0.07814028114080429,
+    "yaw_mean": -0.011465278454124928,
+    "yaw_std": 0.3567356467247009,
+    "roll_rms_deg": 3.834333303809051,
+    "pitch_rms_deg": 1.1066260753867023,
+    "height_mean": 0.17059342563152313,
+    "height_std": 0.0013830719981342554,
+    "joint_acceleration_rms": 7.307854175567627,
+    "action_rate_rms": 1.0577493906021118,
+    "torque_saturation_max_pct": 8.333333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.083333333333333,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      8.333333333333332
+    ],
+    "contact_duty": [
+      0.5625,
+      0.5833333333333334,
+      0.7083333333333334,
+      0.6875
+    ],
+    "slip_mean": 0.09509982168674469,
+    "joint_limit_violation_rad": 0.0
+  },
+  "left": {
+    "command": [
+      0.0,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.13376213610172272,
+    "vx_std": 0.05615447461605072,
+    "yaw_mean": 0.39059367775917053,
+    "yaw_std": 0.11639319360256195,
+    "roll_rms_deg": 9.647794174352043,
+    "pitch_rms_deg": 1.9602967351922171,
+    "height_mean": 0.1690644770860672,
+    "height_std": 0.0015056567499414086,
+    "joint_acceleration_rms": 9.594271659851074,
+    "action_rate_rms": 1.599257469177246,
+    "torque_saturation_max_pct": 8.333333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.083333333333333,
+      6.25,
+      0.0,
+      8.333333333333332,
+      4.166666666666666,
+      0.0,
+      2.083333333333333,
+      4.166666666666666,
+      0.0,
+      2.083333333333333,
+      4.166666666666666
+    ],
+    "contact_duty": [
+      0.6458333333333334,
+      0.5208333333333334,
+      0.9375,
+      0.5208333333333334
+    ],
+    "slip_mean": 0.14193761348724365,
+    "joint_limit_violation_rad": 0.0
+  },
+  "right": {
+    "command": [
+      0.0,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.11784305423498154,
+    "vx_std": 0.05999944359064102,
+    "yaw_mean": -0.27170827984809875,
+    "yaw_std": 0.16964192688465118,
+    "roll_rms_deg": 5.776467712224558,
+    "pitch_rms_deg": 1.9103385971686282,
+    "height_mean": 0.17008118331432343,
+    "height_std": 0.001973248552531004,
+    "joint_acceleration_rms": 9.73796272277832,
+    "action_rate_rms": 1.5414901971817017,
+    "torque_saturation_max_pct": 14.583333333333334,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      14.583333333333334,
+      0.0,
+      0.0,
+      4.166666666666666,
+      0.0,
+      0.0,
+      8.333333333333332,
+      4.166666666666666,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.4791666666666667,
+      0.6041666666666666,
+      0.7916666666666666,
+      0.6041666666666666
+    ],
+    "slip_mean": 0.10808520764112473,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_left": {
+    "command": [
+      0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.15421773493289948,
+    "vx_std": 0.0585942417383194,
+    "yaw_mean": 0.388057142496109,
+    "yaw_std": 0.10223793238401413,
+    "roll_rms_deg": 7.411295688181912,
+    "pitch_rms_deg": 1.6956027857487164,
+    "height_mean": 0.17023976147174835,
+    "height_std": 0.0016085077077150345,
+    "joint_acceleration_rms": 11.520683288574219,
+    "action_rate_rms": 1.6468678712844849,
+    "torque_saturation_max_pct": 12.5,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      4.166666666666666,
+      12.5,
+      0.0,
+      8.333333333333332,
+      4.166666666666666,
+      0.0,
+      4.166666666666666,
+      0.0,
+      0.0,
+      2.083333333333333,
+      6.25
+    ],
+    "contact_duty": [
+      0.625,
+      0.5,
+      0.8333333333333334,
+      0.5625
+    ],
+    "slip_mean": 0.12456929683685303,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_right": {
+    "command": [
+      0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.12815195322036743,
+    "vx_std": 0.05156088247895241,
+    "yaw_mean": -0.36851218342781067,
+    "yaw_std": 0.10801424831151962,
+    "roll_rms_deg": 6.021055078855421,
+    "pitch_rms_deg": 2.0103797376115704,
+    "height_mean": 0.17135852575302124,
+    "height_std": 0.0017051213653758168,
+    "joint_acceleration_rms": 8.918700218200684,
+    "action_rate_rms": 1.5463507175445557,
+    "torque_saturation_max_pct": 8.333333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      4.166666666666666,
+      6.25,
+      0.0,
+      4.166666666666666,
+      4.166666666666666,
+      0.0,
+      6.25,
+      8.333333333333332,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.5625,
+      0.5416666666666666,
+      0.8541666666666666,
+      0.6041666666666666
+    ],
+    "slip_mean": 0.1214374229311943,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_left": {
+    "command": [
+      -0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": -0.008390819653868675,
+    "vx_std": 0.16469132900238037,
+    "yaw_mean": -0.13165681064128876,
+    "yaw_std": 0.3721068203449249,
+    "roll_rms_deg": 9.190350792426901,
+    "pitch_rms_deg": 4.2331830541655915,
+    "height_mean": 0.1694139689207077,
+    "height_std": 0.004235621076077223,
+    "joint_acceleration_rms": 10.394169807434082,
+    "action_rate_rms": 1.2620965242385864,
+    "torque_saturation_max_pct": 27.083333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.083333333333333,
+      6.25,
+      0.0,
+      2.083333333333333,
+      2.083333333333333,
+      0.0,
+      6.25,
+      27.083333333333332,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.875,
+      0.4375,
+      0.6666666666666666,
+      0.7916666666666666
+    ],
+    "slip_mean": 0.13259127736091614,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_right": {
+    "command": [
+      -0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.013126051984727383,
+    "vx_std": 0.15873472392559052,
+    "yaw_mean": 0.12542125582695007,
+    "yaw_std": 0.41469940543174744,
+    "roll_rms_deg": 9.17384478652392,
+    "pitch_rms_deg": 2.5544162578341334,
+    "height_mean": 0.17262761294841766,
+    "height_std": 0.003499810118228197,
+    "joint_acceleration_rms": 9.287175178527832,
+    "action_rate_rms": 0.9991061091423035,
+    "torque_saturation_max_pct": 25.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      2.083333333333333,
+      0.0,
+      4.166666666666666,
+      2.083333333333333,
+      0.0,
+      0.0,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.6666666666666666,
+      0.3541666666666667,
+      0.9583333333333334,
+      0.7916666666666666
+    ],
+    "slip_mean": 0.12449643015861511,
+    "joint_limit_violation_rad": 0.0
+  },
+  "transitions": {
+    "command": "5-second command transitions",
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.004022036213427782,
+    "vx_std": 0.0032203218434005976,
+    "yaw_mean": -0.012452203780412674,
+    "yaw_std": 0.026877695694565773,
+    "roll_rms_deg": 6.605365382632142,
+    "pitch_rms_deg": 9.607886232805305,
+    "height_mean": 0.1699056178331375,
+    "height_std": 0.00048686779337003827,
+    "joint_acceleration_rms": 0.8335552215576172,
+    "action_rate_rms": 0.08155415207147598,
+    "torque_saturation_max_pct": 0.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "slip_mean": 0.0019261203706264496,
+    "joint_limit_violation_rad": 0.0
+  }
+}

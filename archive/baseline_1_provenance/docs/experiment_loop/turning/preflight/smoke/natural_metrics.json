@@ -1,0 +1,67 @@
+{
+  "contact_definition": "lowest collision-hull clearance < 3 mm; geometry proxy, not force measurement",
+  "slip_definition": "horizontal velocity of current lowest hull material point, during geometric contact",
+  "joint_limit_violation_max_rad": 0.0,
+  "feet": {
+    "fl": {
+      "duty": 0.5694444444444444,
+      "touchdown_phases": [
+        0.48120081424713135,
+        0.7836698293685913,
+        0.1273847371339798
+      ],
+      "clearance_p95_mm": 37.327014486833576,
+      "paw_local_range_mm": [
+        112.54446411132812,
+        53.74658966064453,
+        52.92670440673828
+      ],
+      "contact_slip_rms_m_s": 0.10840951803492006
+    },
+    "fr": {
+      "duty": 0.4583333333333333,
+      "touchdown_phases": [
+        0.6599324941635132,
+        0.9349043965339661,
+        0.058641765266656876,
+        0.1273847371339798
+      ],
+      "clearance_p95_mm": 46.50697253821313,
+      "paw_local_range_mm": [
+        114.14241790771484,
+        55.08399200439453,
+        31.695798873901367
+      ],
+      "contact_slip_rms_m_s": 0.1980997928213283
+    },
+    "bl": {
+      "duty": 0.9583333333333334,
+      "touchdown_phases": [
+        0.8799099922180176,
+        0.03114457242190838
+      ],
+      "clearance_p95_mm": 2.6239124904114353,
+      "paw_local_range_mm": [
+        68.99138641357422,
+        42.95115280151367,
+        28.726131439208984
+      ],
+      "contact_slip_rms_m_s": 0.2337239347533944
+    },
+    "br": {
+      "duty": 0.7777777777777778,
+      "touchdown_phases": [
+        0.7699212431907654,
+        0.9898988008499146,
+        0.0723903551697731
+      ],
+      "clearance_p95_mm": 19.924581804482248,
+      "paw_local_range_mm": [
+        104.9962158203125,
+        55.57526397705078,
+        20.072370529174805
+      ],
+      "contact_slip_rms_m_s": 0.2077276346838307
+    }
+  }
+}

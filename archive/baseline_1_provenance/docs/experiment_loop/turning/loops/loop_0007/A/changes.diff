@@ -1,0 +1,11 @@
+--- parent settings
++++ candidate settings
+@@ -5,7 +5,7 @@
+   "body_height_weight": 0.05,
+   "vertical_velocity_weight": 0.01,
+   "turn_geometry_gain": 0.7,
+-  "turn_lateral_gain": 0.7,
++  "turn_lateral_gain": 0.45,
+   "turn_yaw_weight": 0.3,
+   "turn_lateral_scale": 1.0,
+   "turn_yaw_smooth_weight": 0.0,

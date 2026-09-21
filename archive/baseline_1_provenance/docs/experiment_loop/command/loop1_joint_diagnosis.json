@@ -1,0 +1,48 @@
+{
+  "forward_left": [
+    {
+      "joint": "fl_SP_J",
+      "position_min": -0.2932173013687134,
+      "position_max": 0.8825442790985107,
+      "violation_rad": 0.0,
+      "saturation_pct": 5.720338983050848
+    },
+    {
+      "joint": "fl_knee",
+      "position_min": 0.5398662686347961,
+      "position_max": 1.3298609256744385,
+      "violation_rad": 0.0,
+      "saturation_pct": 13.135593220338984
+    },
+    {
+      "joint": "fr_SP_J",
+      "position_min": -0.9415075778961182,
+      "position_max": -0.13065941631793976,
+      "violation_rad": 0.0,
+      "saturation_pct": 6.9209039548022595
+    },
+    {
+      "joint": "fr_knee",
+      "position_min": -1.3143504858016968,
+      "position_max": -0.8331058025360107,
+      "violation_rad": 0.0,
+      "saturation_pct": 5.649717514124294
+    }
+  ],
+  "backward_left": [
+    {
+      "joint": "fl_knee",
+      "position_min": 0.40926283597946167,
+      "position_max": 1.158067226409912,
+      "violation_rad": 0.0,
+      "saturation_pct": 7.627118644067797
+    },
+    {
+      "joint": "bl_knee",
+      "position_min": 0.8711531758308411,
+      "position_max": 1.2282624244689941,
+      "violation_rad": 0.0,
+      "saturation_pct": 21.398305084745765
+    }
+  ]
+}

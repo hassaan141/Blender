@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "attempts_used": 2,
+  "maximum_attempts": 6,
+  "stopped_early_because_goal_met": true,
+  "package_manifest_files": 36,
+  "package_manifest_valid": true,
+  "python_syntax": {
+    "common.py": "PASS",
+    "env.py": "PASS",
+    "evaluate.py": "PASS",
+    "play.py": "PASS",
+    "runtime.py": "PASS"
+  },
+  "all_videos_decodable_and_nonempty": true,
+  "videos": {
+    "commands.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "locomotion_to_stand.mp4": {
+      "exit": 0,
+      "duration_s": 9.0
+    },
+    "stand.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/backward.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/backward_left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/backward_right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/forward.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/forward_left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/forward_right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/stand.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "videos/transitions.mp4": {
+      "exit": 0,
+      "duration_s": 59.0
+    }
+  },
+  "checkpoint_sha256": "35955f919f41e128fe40a1148c03b5a0d3e64a7dca4e99132feda544c0859cb9",
+  "checkpoint_matches_unified_loop6": true,
+  "stand": {
+    "survival": true,
+    "height_mean_m": 0.17946727573871613,
+    "roll_rms_deg": 0.07821382353703167,
+    "pitch_rms_deg": 0.4351805937688965,
+    "all_four_contact": true,
+    "joint_acceleration_rms": 0.06379852443933487,
+    "action_rate_rms": 0.0,
+    "torque_saturation_max_pct": 0.0,
+    "joint_limit_violation_rad": 0.0,
+    "stand_solved_joint_rmse_rad": 0.0032107821866203213,
+    "stand_solved_joint_max_error_rad": 0.006179116916656513
+  },
+  "all_numeric_stand_gates": true,
+  "visual_stand_review": "PASS: upright and level across stand_frames.jpg; no crouch/lean",
+  "visual_locomotion_to_stand_review": "PASS: smooth settle in locomotion_to_stand_frames.jpg",
+  "all_eight_held_moving_cases_exactly_match_loop6": true,
+  "transition_survival": true,
+  "protected_baselines": "verified separately by campaign.py against 2404 hashes",
+  "sealed_campaign_loops": 2,
+  "training_performed": false,
+  "physics_urdf_gains_changed": false
+}

@@ -1,0 +1,38 @@
+{
+  "defect": "Forward-trained residual policy and positive velocity metadata conflict with reversed playback required for backward travel.",
+  "evidence": "Controller _pre_physics_step already uses signed 1.4*cmd_vx/.66 and indexes contacts at that same phase. _sample_ref and reset consume unscaled, positive-direction stored joint/root velocities. Attempt03 forward-only vx_range=(.2,.3).",
+  "hypothesis": "Traversing the existing reference and contacts backward, correcting stored velocity channels to the signed playback derivative, and fine-tuning the existing residual policy at -.20 m/s will produce backward stepping without redesigning poses or physics.",
+  "expected_effect": "Reversed stance fore-aft motion and swing sequence with original clearance/duty; stable backward speed near -.20 and limited slip/acceleration.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "backward_command_vx": -0.2,
+        "signed_reference_velocity_scale": -0.4242424242424242
+      }
+    }
+  ],
+  "budget": {
+    "loops": 1,
+    "training_attempts": 1,
+    "iterations": 300,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "fixed_gates": {
+    "survival": 1,
+    "vx_mean": [
+      -0.23,
+      -0.17
+    ],
+    "vx_std_lt": 0.06,
+    "abs_vx_max_lt": 0.4,
+    "acceleration_max": 13.200232315063475,
+    "mean_slip_max_seed_ratio": 1.1,
+    "mean_torque_saturation_max_seed_ratio": 1.2,
+    "minimum_paw_clearance_p95_mm": 5,
+    "maximum_foot_duty": 0.85,
+    "heading_change_max_deg": 10,
+    "yaw_rate_rms_max_rad_s": 0.15
+  }
+}

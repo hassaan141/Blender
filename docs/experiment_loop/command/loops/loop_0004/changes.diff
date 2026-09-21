@@ -1,0 +1,74 @@
+--- /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0003/source/reference_geometry.py
++++ /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0004/source/reference_geometry.py
+@@ -3,27 +3,36 @@
+ Uses the retained task-space yaw deformation, contacts, and paw heights. All IK
+ uses the validated Bingo kinematics/limits read-only. No actuator changes.
+ """
+-import ast,sys,json
++import ast,sys,json,argparse
++from pathlib import Path
++from scipy.spatial.transform import Rotation
+ import numpy as np
+ from common import ROOT,HOME,TEACHERS
++parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=HOME/'references');parser.add_argument('--pivot-bl-lift-mm',type=float,default=0.);args=parser.parse_args()
+ sys.path.insert(0,str(ROOT/'stage2'))
+ from v4_kinematics import V4Kin,LEGS
+ fn=next(n for n in ast.parse((ROOT/'scripts/retarget.py').read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='solve_leg')
+ exec(compile(ast.Module(body=[fn],type_ignores=[]),'scripts/retarget.py','exec'))
+ r=np.load(TEACHERS['turning'][1]);b=np.load(TEACHERS['turning'][1].with_name('turn_bank.npz'))
+ kin=V4Kin(ROOT/'URDF/bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints_physics.urdf');q=r['dof_positions'].astype(float);fps=float(r['fps']);tips=np.array([[kin.leg_fk(l,row[j*3:j*3+3])[0] for j,l in enumerate(LEGS)] for row in q]);means=tips[:-1].mean(0)
++height=np.zeros(len(q));swing=~r['contacts'][:-1,2].astype(bool);count=len(swing)
++for start in [i for i in range(count) if swing[i] and not swing[(i-1)%count]]:
++ ids=[];i=start
++ while swing[i] and len(ids)<count:ids.append(i);i=(i+1)%count
++ if len(ids)>=4:height[ids]=args.pivot_bl_lift_mm/1000*np.sin(np.linspace(0,np.pi,len(ids)))**2
++height[-1]=height[0];rotation=Rotation.from_quat(r['body_rotations'][:,0][:,[1,2,3,0]]).as_matrix();lift=np.einsum('nji,nj->ni',rotation,np.stack([np.zeros_like(height),np.zeros_like(height),height],axis=1))
+ qs=[];ts=[];errors=[]
+ for k,yaw in enumerate(b['yaw']):
+- target=tips+b['tipdelta'][k];target[:,:,0]-=tips[:,:,0]-means[None,:,0]
++ target=tips+b['tipdelta'][k];target[:,:,0]-=tips[:,:,0]-means[None,:,0];target[:,2]+=lift
+  edited=q[:,:12].copy()
+  for t in range(len(q)):
+   for j,l in enumerate(LEGS):
+    sl=slice(j*3,j*3+3);edited[t,sl],err=solve_leg(kin,l,target[t,j],q[t,sl],kin.leg_limits(l));errors.append(float(err))
+  edited[-1]=edited[0];target[-1]=target[0];qs.append(edited-q[:,:12]);ts.append(target-tips)
+ qs=np.array(qs);ts=np.array(ts);assert max(errors)<.001;assert abs(qs).max()<.6
+-out=HOME/'references';out.mkdir(exist_ok=True)
++out=args.output;out.mkdir(parents=True,exist_ok=True)
+ np.savez_compressed(out/'pivot_bank.npz',qdelta=qs.astype('f4'),vdelta=np.gradient(qs,1/fps,axis=1).astype('f4'),tipdelta=ts.astype('f4'),yaw=b['yaw'],fps=fps)
+-(out/'pivot_audit.json').write_text(json.dumps({'ik_max_error_m':max(errors),'max_joint_delta_rad':float(abs(qs).max()),'method':'Remove common fore-aft displacement; preserve teacher rotational task-space deformation and paw height/contact timing'},indent=2)+'\n')
++(out/'pivot_audit.json').write_text(json.dumps({'additional_pivot_bl_lift_mm':args.pivot_bl_lift_mm,'ik_max_error_m':max(errors),'max_joint_delta_rad':float(abs(qs).max()),'method':'Remove common fore-aft displacement; preserve teacher rotational task-space deformation and paw height/contact timing'},indent=2)+'\n')
+ print((out/'pivot_audit.json').read_text())
+ # Backward geometry uses its own Jacobians/posture, not forward joint deltas.
+ r=np.load(TEACHERS['backward'][1]);q=r['dof_positions'].astype(float);fps=float(r['fps']);tips=np.array([[kin.leg_fk(l,row[j*3:j*3+3])[0] for j,l in enumerate(LEGS)] for row in q]);means=tips[:-1].mean(0);qs=[];ts=[];errors=[]
+--- /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0003/source/run.py
++++ /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0004/source/run.py
+@@ -7,7 +7,7 @@
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[4];HOME=ROOT/'docs/experiment_loop/command';CODE=Path(__file__).parent
+ PYTHON='/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python'
+-p=argparse.ArgumentParser();p.add_argument('--loop',type=int,required=True);p.add_argument('--checkpoint',required=True);p.add_argument('--hypothesis',required=True);p.add_argument('--iterations',type=int,default=400);p.add_argument('--yaw-weight',type=float,default=.3);p.add_argument('--curriculum-steps',type=int,default=1920);a=p.parse_args()
++p=argparse.ArgumentParser();p.add_argument('--loop',type=int,required=True);p.add_argument('--checkpoint',required=True);p.add_argument('--hypothesis',required=True);p.add_argument('--references',default=str(HOME/'references'));p.add_argument('--iterations',type=int,default=400);p.add_argument('--yaw-weight',type=float,default=.3);p.add_argument('--curriculum-steps',type=int,default=1920);a=p.parse_args()
+ assert 1<=a.loop<=8
+ out=HOME/'loops'/f'loop_{a.loop:04d}';out.mkdir(parents=True,exist_ok=True)
+ assert not (out/'decision.json').exists(),'Completed experiments are immutable'
+@@ -18,14 +18,17 @@
+   if not f.is_file() or hashlib.file_digest(f.open('rb'),'sha256').hexdigest()!=h:bad.append(name)
+  if bad:raise RuntimeError('Protected files changed: '+str(bad))
+  for manifest in (HOME/'loops').glob('*/MANIFEST.json'):
+-  for name,h in json.loads(manifest.read_text()).items():
++  recorded=json.loads(manifest.read_text())
++  actual={str(f.relative_to(manifest.parent)) for f in manifest.parent.rglob('*') if f.is_file() and f.name!='MANIFEST.json'}
++  if actual!=set(recorded):raise RuntimeError('Sealed experiment inventory changed: '+str(manifest.parent))
++  for name,h in recorded.items():
+    f=manifest.parent/name
+    if not f.is_file() or hashlib.file_digest(f.open('rb'),'sha256').hexdigest()!=h:raise RuntimeError('Sealed experiment changed: '+str(f))
+  return {'files':len(expected),'unchanged':True}
+ (out/'protected_before.json').write_text(json.dumps(check()))
+ (out/'hypothesis.md').write_text(a.hypothesis+'\n');(out/'config.json').write_text(json.dumps(vars(a),indent=2))
+ if not (out/'source').exists():shutil.copytree(CODE,out/'source',ignore=shutil.ignore_patterns('__pycache__'))
+-if (HOME/'references').exists() and not (out/'references').exists():shutil.copytree(HOME/'references',out/'references')
++if Path(a.references).exists() and not (out/'references').exists():shutil.copytree(a.references,out/'references')
+ env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',PYTHONDONTWRITEBYTECODE='1',COMMAND_CURRICULUM_STEPS=str(a.curriculum_steps),COMMAND_YAW_WEIGHT=str(a.yaw_weight),COMMAND_REFERENCE_DIR=str(out/'references'))
+ base=[PYTHON];app=['--headless','--device','cuda:0','--kit_args','--/rtx/verifyDriverVersion/enabled=false --no-window']
+ def run(name,cmd):

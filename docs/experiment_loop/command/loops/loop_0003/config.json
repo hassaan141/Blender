@@ -1,0 +1,8 @@
+{
+  "loop": 3,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0002/policy.pt",
+  "hypothesis": "With stable pivot/backward reference geometry established, persistent yaw undershoot is the largest remaining defect. Increase only yaw-tracking reward weight from 0.3 to 0.6, preserving geometry, teacher replay, velocity reward, action interface and all actuator physics.",
+  "iterations": 200,
+  "yaw_weight": 0.6,
+  "curriculum_steps": 1
+}

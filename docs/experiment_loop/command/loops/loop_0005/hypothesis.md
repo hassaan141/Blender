@@ -1,0 +1,1 @@
+The final mixed sampler loses explicit pivot commands, so PPO undertrains the missing skill. Starting from retained loop 3 and its original reference, use half uniformly sampled nine core commands and half continuous random commands. Preserve reward, replay and reference geometry. Test pivot tracking and stand retention without forgetting teacher gaits.

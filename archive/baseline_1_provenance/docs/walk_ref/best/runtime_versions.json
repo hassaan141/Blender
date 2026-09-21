@@ -1,0 +1,12 @@
+{
+  "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+  "executable": "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+  "packages": {
+    "torch": "2.7.0+cu128",
+    "numpy": "1.26.0",
+    "gymnasium": "1.2.1",
+    "skrl": "2.1.0"
+  },
+  "CUDA_VISIBLE_DEVICES": "1",
+  "note": "Recorded during cleanup replay; exact config snapshots are in canonical run_05."
+}

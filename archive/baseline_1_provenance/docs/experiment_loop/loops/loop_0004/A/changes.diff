@@ -1,0 +1,10 @@
+--- parent settings
++++ candidate settings
+@@ -6,5 +6,6 @@
+   "vertical_velocity_weight": 0.01,
+   "backward_command_vx": -0.2,
+   "signed_reference_velocity_scale": -0.4242424242424242,
+-  "lateral_scale": 0.7
++  "lateral_scale": 0.7,
++  "stance_shape_blend": 0.35
+ }

@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "goal_met": true,
+  "visual_stand_pass": true,
+  "locomotion_preserved": true,
+  "reason": "Stand is visibly upright and level for the full video, uses exact STAND_SOLVED, and settles with all four paws planted. It survives 60 seconds at 0.17947 m with roll 0.078 deg, pitch 0.435 deg, acceleration 0.0638 rad/s^2, zero applied action rate, zero torque saturation, and zero joint-limit violation. All eight held W/S/A/D/diagonal moving cases exactly match loop 6. The moving-to-stand video shows a smooth settle; transition survival, acceleration, and slip improve, with a small transition-only max saturation increase from 5.72% to 6.36%."
+}

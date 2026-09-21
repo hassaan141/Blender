@@ -1,0 +1,94 @@
+{
+  "left": [
+    {
+      "joint": "fl_knee",
+      "sat_pct": 11.875,
+      "mean_abs_tracking_error": 0.041957028210163116,
+      "mean_abs_residual": 0.04122187942266464,
+      "BL_swing_when_saturated": 0.7719298245614035
+    },
+    {
+      "joint": "fr_knee",
+      "sat_pct": 7.847222222222222,
+      "mean_abs_tracking_error": 0.04364544153213501,
+      "mean_abs_residual": 0.04587172344326973,
+      "BL_swing_when_saturated": 0.1592920353982301
+    },
+    {
+      "joint": "fr_SP_J",
+      "sat_pct": 7.430555555555555,
+      "mean_abs_tracking_error": 0.078990638256073,
+      "mean_abs_residual": 0.07870365679264069,
+      "BL_swing_when_saturated": 0.7476635514018691
+    }
+  ],
+  "right": [
+    {
+      "joint": "fl_knee",
+      "sat_pct": 12.152777777777777,
+      "mean_abs_tracking_error": 0.026609033346176147,
+      "mean_abs_residual": 0.02996942214667797,
+      "BL_swing_when_saturated": 0.7428571428571429
+    },
+    {
+      "joint": "fl_SP_J",
+      "sat_pct": 9.23611111111111,
+      "mean_abs_tracking_error": 0.027648253366351128,
+      "mean_abs_residual": 0.028821855783462524,
+      "BL_swing_when_saturated": 0.2556390977443609
+    },
+    {
+      "joint": "bl_SP_J",
+      "sat_pct": 8.958333333333334,
+      "mean_abs_tracking_error": 0.028327416628599167,
+      "mean_abs_residual": 0.028649531304836273,
+      "BL_swing_when_saturated": 1.0
+    }
+  ],
+  "left_max": [
+    {
+      "joint": "fl_knee",
+      "sat_pct": 12.777777777777777,
+      "mean_abs_tracking_error": 0.051327113062143326,
+      "mean_abs_residual": 0.05050966888666153,
+      "BL_swing_when_saturated": 0.7391304347826086
+    },
+    {
+      "joint": "fr_SP_J",
+      "sat_pct": 10.416666666666668,
+      "mean_abs_tracking_error": 0.09885002672672272,
+      "mean_abs_residual": 0.0990576446056366,
+      "BL_swing_when_saturated": 0.64
+    },
+    {
+      "joint": "fr_knee",
+      "sat_pct": 10.0,
+      "mean_abs_tracking_error": 0.0479273796081543,
+      "mean_abs_residual": 0.049390263855457306,
+      "BL_swing_when_saturated": 0.18055555555555555
+    }
+  ],
+  "right_max": [
+    {
+      "joint": "fl_knee",
+      "sat_pct": 12.777777777777777,
+      "mean_abs_tracking_error": 0.029375653713941574,
+      "mean_abs_residual": 0.03443976864218712,
+      "BL_swing_when_saturated": 0.6521739130434783
+    },
+    {
+      "joint": "fl_SP_J",
+      "sat_pct": 11.944444444444445,
+      "mean_abs_tracking_error": 0.029890626668930054,
+      "mean_abs_residual": 0.030710680410265923,
+      "BL_swing_when_saturated": 0.2441860465116279
+    },
+    {
+      "joint": "bl_SP_J",
+      "sat_pct": 9.583333333333334,
+      "mean_abs_tracking_error": 0.034666914492845535,
+      "mean_abs_residual": 0.0350271500647068,
+      "BL_swing_when_saturated": 1.0
+    }
+  ]
+}

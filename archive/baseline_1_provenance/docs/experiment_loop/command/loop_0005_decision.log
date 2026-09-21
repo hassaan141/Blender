@@ -1,0 +1,31 @@
+{
+  "passing_cases": 4,
+  "failed": {
+    "stand": [
+      "survival",
+      "vx",
+      "yaw",
+      "rocking",
+      "vx_std"
+    ],
+    "left": [
+      "yaw"
+    ],
+    "right": [
+      "yaw"
+    ],
+    "backward_left": [
+      "yaw",
+      "vx_std"
+    ],
+    "backward_right": [
+      "yaw",
+      "vx_std"
+    ],
+    "transitions": [
+      "survival",
+      "vx_tracking",
+      "yaw_tracking"
+    ]
+  }
+}

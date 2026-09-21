@@ -1,6 +1,8 @@
 # Bingo — Blender → Simulation Retarget
 
-Current locomotion: [reference-guided walk and canonical baseline](docs/walk_ref/README.md).
+Current locomotion: [BASELINE 1 — unified stand, forward, backward, and turning policy](BASELINE_1/README.md).
+
+Training history and selected videos: [locomotion handoff guide](docs/locomotion_history/README.md).
 
 Turning authored dog animation in Blender into motion references the Bingo quadruped
 can actually be trained on in Isaac Lab. The robot is defined by
@@ -8,10 +10,7 @@ can actually be trained on in Isaac Lab. The robot is defined by
 Blender motion into the `.npz` motion schema that URDF's simulation consumes
 (schema: [docs/BingoMocapPipelineSpec.md](docs/BingoMocapPipelineSpec.md) §A.7).
 
-**Read first:** [CONTEXT.md](CONTEXT.md) — project context, team structure, and the open
-verification question about whether the animators' rig matches the engineering URDF.
-Then [MEMORY.md](MEMORY.md) — the verified working notes, including the
-non-obvious facts that cost real time to discover. Then the spec.
+**Read first:** [MEMORY.md](MEMORY.md) — verified project context and working notes, including the non-obvious facts that cost real time to discover. Then read the spec.
 
 ## The two paths
 
@@ -28,7 +27,7 @@ build_rig.py  →  check_rig.py / test_ik.py  →  [animator]  →  bake_conform
 **Path A — legacy art rig.** The animators' Rigify rig was not derived from the URDF, so its
 motion is baked to world-space Cartesian and IK-retargeted onto Bingo's kinematics; earlier
 work cut amplitude to 50–70%. ⚠️ **Whether that loss is actually necessary is under active
-review — see [CONTEXT.md](CONTEXT.md).** Measurement shows the rig's leg chain is structurally
+review — see [MEMORY.md](MEMORY.md).** Measurement shows the rig's leg chain is structurally
 correct and proportionally within ~12–22% per segment, so which path is preferred is currently
 an open decision, not a settled one.
 
@@ -103,8 +102,8 @@ conversion on her side.
 
 The full list is MEMORY.md §6. The ones that gate 1:1 retargeting:
 
-1. **Schema: 21-DOF now implemented on the data side** (`--dof 21`, see [CONTEXT.md](CONTEXT.md)
-   §5A.1) — legs + head + tail + ears, a strict extension of the 12-DOF layout. **The RL side
+1. **Schema: 21-DOF now implemented on the data side** (`--dof 21`, implemented by
+   `scripts/bake_conform.py`) — legs + head + tail + ears, a strict extension of the 12-DOF layout. **The RL side
    still needs updating** (obs dims, `robot_ctrl_indexes`); that code is not in this repo.
 2. **No torque feasibility check** — position and velocity only. v4 ships `effort=0` on every
    joint, so rev_3's (also placeholder) values are carried forward. Blocked on real motor data.

@@ -1,0 +1,94 @@
+{
+  "provenance": {
+    "checkpoint": "/pub0/muhammadf/Blender/docs/locomotion2/amp/checkpoints/run_06_best_agent.pt",
+    "task": "Bingo-Locomotion2-AMP-Direct-Play-v0",
+    "exported_utc": "2026-09-17T21:51:00.855031+00:00",
+    "repo_commit": "3a0bbcfdb50b691f7230b8c60e7c198518a50d3d",
+    "expert_data": "docs/locomotion2/amp/cache/dog_amp_expert.npz (dog mocap style prior, AMP discriminator only -- not tracked directly by this policy)"
+  },
+  "control": {
+    "physics_hz": 120,
+    "decimation": 4,
+    "control_hz": 30
+  },
+  "observation": {
+    "total_dim": 64,
+    "order": [
+      {
+        "name": "style_features",
+        "dim": 61,
+        "note": "see docs/locomotion2/amp/extract_dog_amp_features.py's schema docstring for the exact 61-dim layout (root-local vel/leg_scale, ang_vel, gravity, 4x2 leg segment unit dirs, paw_rel/leg_scale, paw_vel/leg_scale, contacts)"
+      },
+      {
+        "name": "command_vx_vy_yaw",
+        "dim": 3,
+        "note": "m/s, m/s, rad/s"
+      }
+    ],
+    "note": "this is command-CONDITIONED but style-feature-based, not the raw dof_pos/vel observation Task 1 uses -- do not assume the two exports share a layout."
+  },
+  "action": {
+    "dim": 12,
+    "joint_order": [
+      "fl_SY_J",
+      "fl_SP_J",
+      "fl_knee",
+      "fr_SY_J",
+      "fr_SP_J",
+      "fr_knee",
+      "bl_SY_J",
+      "bl_SP_J",
+      "bl_knee",
+      "br_SY_J",
+      "br_SP_J",
+      "br_knee"
+    ],
+    "scale_rad_per_unit_action": {
+      "fl_SY_J": 0.125,
+      "fl_SP_J": 0.19499999284744263,
+      "fl_knee": 0.17000000178813934,
+      "fr_SY_J": 0.125,
+      "fr_SP_J": 0.19499999284744263,
+      "fr_knee": 0.17000000178813934,
+      "bl_SY_J": 0.125,
+      "bl_SP_J": 0.19499999284744263,
+      "bl_knee": 0.17000000178813934,
+      "br_SY_J": 0.125,
+      "br_SP_J": 0.19499999284744263,
+      "br_knee": 0.17000000178813934
+    },
+    "default_pose_rad": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 0.8100000023841858,
+      "fl_knee": 0.8931999802589417,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": -0.8108999729156494,
+      "fr_knee": -0.8938000202178955,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 0.39320001006126404,
+      "bl_knee": 0.8913000226020813,
+      "br_SY_J": 0.0,
+      "br_SP_J": 0.3935999870300293,
+      "br_knee": -0.8913000226020813
+    },
+    "note": "q_target[joint] = default_pose_rad[joint] + scale[joint] * onnx_output[joint]. No reference clip, no phase, no residual filter -- this policy is a direct velocity-command controller (unlike walk_ref's residual-on-reference)."
+  },
+  "pd_gains_expected_by_runtime": {
+    "source": "rl/bingo_rl/bingo_rl/bingo_v4.py (BINGO_V4_CFG, Stage 4 validated physics, unmodified)",
+    "legs": {
+      "Kp": {
+        "SY": 40,
+        "SP": 120,
+        "knee": 120
+      },
+      "effort_limit_Nm": 3.0
+    }
+  },
+  "onnx_verification": {
+    "max_abs_diff_vs_pytorch_random_obs": 1.9073486328125e-06,
+    "passes_1e-4": true,
+    "num_random_obs_tested": 64,
+    "rollout_vx_trace_max_abs_diff_m_s": 0.22753789834678173,
+    "rollout_steps": 96
+  }
+}

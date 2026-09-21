@@ -1,0 +1,61 @@
+{
+  "task": "Bingo-Turning-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/preflight/warmstart.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.175,
+    "vy": 0.0,
+    "yaw": 0.0,
+    "note": "Turning extension accepts yaw; vy remains zero."
+  },
+  "duration_s": 30.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 720,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.09968195110559464,
+  "vx_std": 0.046924345195293427,
+  "vx_max": 0.2721695601940155,
+  "base_roll_rms_deg": 4.713325500488281,
+  "base_pitch_rms_deg": 2.120373249053955,
+  "joint_accel_rms": 8.235901832580566,
+  "residual_action_rate_rms": 0.015311152674257755,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 1.6666666666666667,
+    "fl_knee": 9.166666666666666,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 0.8333333333333334,
+    "fr_knee": 4.861111111111112,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 0.0,
+    "bl_knee": 6.666666666666667,
+    "br_SY_J": 0.0,
+    "br_SP_J": 0.0,
+    "br_knee": 0.2777777777777778
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.03218730911612511,
+    "rms": 0.041177090257406235,
+    "max": 0.1684306263923645,
+    "mean_per_joint": {
+      "fl_SY_J": 0.024348873645067215,
+      "fl_SP_J": 0.0434131994843483,
+      "fl_knee": 0.03859477490186691,
+      "fr_SY_J": 0.021539585664868355,
+      "fr_SP_J": 0.028537867590785027,
+      "fr_knee": 0.044481225311756134,
+      "bl_SY_J": 0.015981554985046387,
+      "bl_SP_J": 0.045950088649988174,
+      "bl_knee": 0.025988461449742317,
+      "br_SY_J": 0.016863984987139702,
+      "br_SP_J": 0.03671339154243469,
+      "br_knee": 0.04383474588394165
+    }
+  }
+}

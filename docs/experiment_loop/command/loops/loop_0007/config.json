@@ -1,0 +1,9 @@
+{
+  "loop": 7,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0006/policy.pt",
+  "hypothesis": "Pivot yaw undertracks with near-zero translation. Increase pivot-only yaw-bank geometry input by 1.5, interpolating/clamping within the existing validated +/-0.6 reference bank. Preserve cadence, moving-turn geometry, clean stand replay and rewards. Short preflight survives all commands and improves pivot yaw to +0.256/-0.166; test full stability, rocking and planting after PPO.",
+  "references": "docs/experiment_loop/command/loops/loop_0006/references",
+  "iterations": 200,
+  "yaw_weight": 0.6,
+  "curriculum_steps": 1
+}

@@ -1,0 +1,12 @@
+{
+  "historical_files_changed": [],
+  "new_reference": "reference.npz",
+  "reference_change": "Only stored velocity channels multiplied by negative signed phase rate. Original pose/contact samples unchanged; existing negative phase reverses their traversal.",
+  "runtime_change": "fixed negative command range; no reward/actuator changes",
+  "code": [
+    "backward_worker.py",
+    "backward_adapter.py",
+    "backward_analyze.py",
+    "backward_kinematic.py"
+  ]
+}

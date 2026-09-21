@@ -1,0 +1,22 @@
+{
+  "passing_cases": 5,
+  "failed": {
+    "left": [
+      "yaw"
+    ],
+    "right": [
+      "yaw"
+    ],
+    "backward_left": [
+      "yaw",
+      "vx_std"
+    ],
+    "backward_right": [
+      "yaw",
+      "vx_std"
+    ],
+    "transitions": [
+      "yaw_tracking"
+    ]
+  }
+}

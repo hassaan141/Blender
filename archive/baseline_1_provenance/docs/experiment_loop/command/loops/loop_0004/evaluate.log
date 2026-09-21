@@ -1,0 +1,573 @@
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260921_103357.log
+2026-09-21T14:33:57Z [199ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:33:57Z [199ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:33:57Z [269ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-21T14:33:57Z [284ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-21T14:33:57Z [284ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-21T14:33:57Z [284ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-21T14:33:58Z [514ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:33:58Z [514ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:33:58Z [628ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-21T14:33:58Z [628ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-21T14:33:58Z [629ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 4090
+2026-09-21T14:33:58Z [629ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       | Yes: 0 |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          |        |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 122402
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 1877
+|---------------------------------------------------------------------------------------------|
+2026-09-21T14:33:59Z [1,591ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-21T14:34:00Z [2,347ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,347ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,364ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,364ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,378ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,378ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,395ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,395ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,397ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,397ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,399ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T14:34:00Z [2,399ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T14:34:00Z [2,687ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+2026-09-21T14:34:00Z [3,223ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-21T14:34:00Z [3,294ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-21T14:34:01Z [4,198ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-09-21T14:34:02Z [4,539ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-09-21T14:34:02Z [4,539ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-09-21T14:34:02Z [4,540ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.rendering.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-21_10-34-09.log[0m
+[36m======================================================================================[0m
+
+[33m10:34:09 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+2026-09-21T14:34:07Z [9,611ms] [Warning] [omni.fabric.plugin] Warning: attribute viewportHandle not found for bucket id 7
+
+2026-09-21T14:34:11Z [13,929ms] [Warning] [omni.fabric.plugin] getAttributeCount called on non-existent path /World/envs/env_9/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-21T14:34:11Z [13,929ms] [Warning] [omni.fabric.plugin] getTypes called on non-existent path /World/envs/env_9/Robot/origin/tail_yaw/visuals/tail_yaw
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.757314 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 10
+	Environment spacing   : 5.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 2.478893 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/reference.npz): duration: 1.125 sec, frames: 136
+[33m10:34:13 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-21T14:34:13Z [16,119ms] [Warning] [omni.syntheticdata.plugin] OgnSdPostRenderVarToHost : rendervar copy from texture directly to host buffer is counter-performant. Please use copy from texture to device buffer first.
+eval seconds 0.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:34:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-21T14:34:21Z [23,589ms] [Warning] [carb] Client gpu.foundation.plugin has acquired [gpu::unstable::IMemoryBudgetManagerFactory v0.1] 100 times. Consider accessing this interface with carb::getCachedInterface() (Performance warning)
+[33m10:34:25 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:31 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:36 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:53 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:34:58 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:15 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:20 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:26 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:31 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:36 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:35:58 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:03 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:14 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 10.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:36:19 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:25 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:30 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:36 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:41 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:46 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:36:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:12 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 20.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:37:17 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:27 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 30.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:37:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:37:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:12 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 40.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:38:17 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:27 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+eval seconds 50.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m10:38:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:38:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:39:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:39:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m10:39:12 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+{
+  "stand": {
+    "command": [
+      0.0,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.0016460546758025885,
+    "vx_std": 0.0035286834463477135,
+    "yaw_mean": -0.002523160772398114,
+    "yaw_std": 0.046362753957509995,
+    "roll_rms_deg": 21.95399871896331,
+    "pitch_rms_deg": 18.15228810617753,
+    "height_mean": 0.1666124165058136,
+    "height_std": 0.0014931880868971348,
+    "joint_acceleration_rms": 0.3575410842895508,
+    "action_rate_rms": 0.1330602765083313,
+    "torque_saturation_max_pct": 82.48587570621469,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      82.48587570621469,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.9879943502824858,
+      0.8403954802259888,
+      1.0,
+      0.1786723163841808
+    ],
+    "slip_mean": 0.0012277913047000766,
+    "soft_margin_violation_rad": 0.042060405015945435,
+    "joint_limit_violation_rad": 6.0396194458023356e-05
+  },
+  "forward": {
+    "command": [
+      0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.1819170117378235,
+    "vx_std": 0.046138204634189606,
+    "yaw_mean": -0.03486303985118866,
+    "yaw_std": 0.41197720170021057,
+    "roll_rms_deg": 4.9126583836480995,
+    "pitch_rms_deg": 1.9888364671957037,
+    "height_mean": 0.17186357080936432,
+    "height_std": 0.0014718107413500547,
+    "joint_acceleration_rms": 11.472564697265625,
+    "action_rate_rms": 1.4371216297149658,
+    "torque_saturation_max_pct": 15.466101694915254,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      10.734463276836157,
+      15.466101694915254,
+      0.0,
+      14.05367231638418,
+      7.768361581920905,
+      0.0,
+      6.3559322033898304,
+      3.6016949152542375,
+      0.0,
+      0.3531073446327684,
+      2.401129943502825
+    ],
+    "contact_duty": [
+      0.4569209039548023,
+      0.5127118644067796,
+      0.8601694915254238,
+      0.71045197740113
+    ],
+    "slip_mean": 0.14969488978385925,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward": {
+    "command": [
+      -0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.17910568416118622,
+    "vx_std": 0.06901387870311737,
+    "yaw_mean": 0.017833232879638672,
+    "yaw_std": 0.33514881134033203,
+    "roll_rms_deg": 5.556881826163702,
+    "pitch_rms_deg": 1.4909202657351228,
+    "height_mean": 0.1705988347530365,
+    "height_std": 0.0014485243009403348,
+    "joint_acceleration_rms": 7.962418079376221,
+    "action_rate_rms": 1.0869494676589966,
+    "torque_saturation_max_pct": 6.1440677966101696,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.49435028248587576,
+      0.7768361581920904,
+      0.0,
+      6.1440677966101696,
+      3.1073446327683616,
+      0.0,
+      3.1779661016949152,
+      2.8954802259887007,
+      0.0,
+      1.4124293785310735,
+      6.002824858757062
+    ],
+    "contact_duty": [
+      0.5388418079096046,
+      0.625,
+      0.6892655367231638,
+      0.6101694915254238
+    ],
+    "slip_mean": 0.10414084792137146,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "left": {
+    "command": [
+      0.0,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.017839083448052406,
+    "vx_std": 0.06689707934856415,
+    "yaw_mean": 0.21007943153381348,
+    "yaw_std": 0.2597663402557373,
+    "roll_rms_deg": 9.442364282232862,
+    "pitch_rms_deg": 2.1975602180421236,
+    "height_mean": 0.16531246900558472,
+    "height_std": 0.003344358177855611,
+    "joint_acceleration_rms": 9.266215324401855,
+    "action_rate_rms": 1.2185468673706055,
+    "torque_saturation_max_pct": 5.5790960451977405,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      4.519774011299435,
+      0.0,
+      1.765536723163842,
+      0.7062146892655368,
+      0.0,
+      5.5790960451977405,
+      2.048022598870056,
+      0.0,
+      0.6355932203389831,
+      0.07062146892655367
+    ],
+    "contact_duty": [
+      0.7125706214689266,
+      0.6299435028248588,
+      0.989406779661017,
+      0.4477401129943503
+    ],
+    "slip_mean": 0.06960416585206985,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "right": {
+    "command": [
+      0.0,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.01030614785850048,
+    "vx_std": 0.06339716166257858,
+    "yaw_mean": -0.08890869468450546,
+    "yaw_std": 0.38155195116996765,
+    "roll_rms_deg": 7.908800690910117,
+    "pitch_rms_deg": 2.010146443962732,
+    "height_mean": 0.16712811589241028,
+    "height_std": 0.003830568166449666,
+    "joint_acceleration_rms": 8.47093391418457,
+    "action_rate_rms": 1.2408746480941772,
+    "torque_saturation_max_pct": 4.80225988700565,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.2824858757062147,
+      4.80225988700565,
+      0.0,
+      1.2005649717514124,
+      1.3418079096045197,
+      0.0,
+      4.661016949152542,
+      0.14124293785310735,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.5932203389830508,
+      0.5607344632768362,
+      0.9929378531073446,
+      0.4985875706214689
+    ],
+    "slip_mean": 0.06618201732635498,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_left": {
+    "command": [
+      0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.1580755114555359,
+    "vx_std": 0.0566779300570488,
+    "yaw_mean": 0.3637571632862091,
+    "yaw_std": 0.11680930852890015,
+    "roll_rms_deg": 7.458211403817083,
+    "pitch_rms_deg": 1.5827252652560875,
+    "height_mean": 0.17057077586650848,
+    "height_std": 0.001579012256115675,
+    "joint_acceleration_rms": 9.65973949432373,
+    "action_rate_rms": 1.5484524965286255,
+    "torque_saturation_max_pct": 12.782485875706215,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      4.590395480225989,
+      12.782485875706215,
+      0.0,
+      7.13276836158192,
+      6.214689265536723,
+      0.0,
+      4.590395480225989,
+      2.048022598870056,
+      0.0,
+      1.5536723163841808,
+      4.519774011299435
+    ],
+    "contact_duty": [
+      0.596045197740113,
+      0.4929378531073446,
+      0.8531073446327684,
+      0.6419491525423728
+    ],
+    "slip_mean": 0.13979165256023407,
+    "soft_margin_violation_rad": 0.0006254613399505615,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_right": {
+    "command": [
+      0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.13264991343021393,
+    "vx_std": 0.047051478177309036,
+    "yaw_mean": -0.3921121656894684,
+    "yaw_std": 0.10808321833610535,
+    "roll_rms_deg": 4.766528193902969,
+    "pitch_rms_deg": 1.6827680065246162,
+    "height_mean": 0.17151741683483124,
+    "height_std": 0.0015460167778655887,
+    "joint_acceleration_rms": 9.860824584960938,
+    "action_rate_rms": 1.4423516988754272,
+    "torque_saturation_max_pct": 11.581920903954803,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      9.03954802259887,
+      11.581920903954803,
+      0.0,
+      4.096045197740112,
+      2.754237288135593,
+      0.0,
+      9.322033898305085,
+      2.9661016949152543,
+      0.0,
+      0.0,
+      0.847457627118644
+    ],
+    "contact_duty": [
+      0.5021186440677966,
+      0.5508474576271186,
+      0.809322033898305,
+      0.740819209039548
+    ],
+    "slip_mean": 0.11717968434095383,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_left": {
+    "command": [
+      -0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.16587866842746735,
+    "vx_std": 0.0770798847079277,
+    "yaw_mean": 0.16370320320129395,
+    "yaw_std": 0.37327972054481506,
+    "roll_rms_deg": 7.292558825876764,
+    "pitch_rms_deg": 1.7245604399520433,
+    "height_mean": 0.17013537883758545,
+    "height_std": 0.0015247974079102278,
+    "joint_acceleration_rms": 9.062373161315918,
+    "action_rate_rms": 1.1422619819641113,
+    "torque_saturation_max_pct": 5.508474576271186,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.9661016949152543,
+      4.025423728813559,
+      0.0,
+      3.4604519774011298,
+      2.048022598870056,
+      0.0,
+      5.508474576271186,
+      4.731638418079096,
+      0.0,
+      0.3531073446327684,
+      4.025423728813559
+    ],
+    "contact_duty": [
+      0.605225988700565,
+      0.5649717514124294,
+      0.711864406779661,
+      0.5734463276836158
+    ],
+    "slip_mean": 0.11555452644824982,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_right": {
+    "command": [
+      -0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": -0.1753028780221939,
+    "vx_std": 0.08651696145534515,
+    "yaw_mean": -0.17117801308631897,
+    "yaw_std": 0.32408398389816284,
+    "roll_rms_deg": 5.625920097633721,
+    "pitch_rms_deg": 1.5964242768536057,
+    "height_mean": 0.17059943079948425,
+    "height_std": 0.0016795326955616474,
+    "joint_acceleration_rms": 8.58315658569336,
+    "action_rate_rms": 1.087802529335022,
+    "torque_saturation_max_pct": 7.203389830508475,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.9887005649717515,
+      0.6355932203389831,
+      0.0,
+      5.720338983050848,
+      1.1299435028248588,
+      0.0,
+      0.423728813559322,
+      3.8841807909604524,
+      0.0,
+      3.4604519774011298,
+      7.203389830508475
+    ],
+    "contact_duty": [
+      0.5642655367231638,
+      0.5833333333333334,
+      0.7944915254237288,
+      0.5550847457627118
+    ],
+    "slip_mean": 0.11191808432340622,
+    "soft_margin_violation_rad": 0.0,
+    "joint_limit_violation_rad": 0.0
+  },
+  "transitions": {
+    "command": "5-second command transitions",
+    "survival": true,
+    "valid_seconds": 59.0,
+    "vx_mean": 0.00263211689889431,
+    "vx_std": 0.13584530353546143,
+    "yaw_mean": 0.008857476525008678,
+    "yaw_std": 0.31297868490219116,
+    "roll_rms_deg": 8.765194568482057,
+    "pitch_rms_deg": 6.163558438151275,
+    "height_mean": 0.16961662471294403,
+    "height_std": 0.0034591376315802336,
+    "joint_acceleration_rms": 10.752130508422852,
+    "action_rate_rms": 1.2218823432922363,
+    "torque_saturation_max_pct": 6.9209039548022595,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      3.954802259887006,
+      6.426553672316385,
+      0.0,
+      6.073446327683616,
+      3.672316384180791,
+      6.9209039548022595,
+      4.80225988700565,
+      2.824858757062147,
+      0.0,
+      1.765536723163842,
+      2.9661016949152543
+    ],
+    "contact_duty": [
+      0.6652542372881356,
+      0.5607344632768362,
+      0.8580508474576272,
+      0.6165254237288136
+    ],
+    "slip_mean": 0.09228460490703583,
+    "soft_margin_violation_rad": 0.04233381152153015,
+    "joint_limit_violation_rad": 0.00033380270004274015
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "fl": {
+    "old_tip_contact_duty": 1.0,
+    "collision_contact_duty": 0.83125,
+    "reference_duty": 0.6215277777777778,
+    "old_contact_despite_physical_clearance_fraction": 0.16875
+  },
+  "fr": {
+    "old_tip_contact_duty": 0.8763888888888889,
+    "collision_contact_duty": 0.6263888888888889,
+    "reference_duty": 0.5736111111111111,
+    "old_contact_despite_physical_clearance_fraction": 0.25
+  },
+  "bl": {
+    "old_tip_contact_duty": 0.8826388888888889,
+    "collision_contact_duty": 0.7034722222222223,
+    "reference_duty": 0.6673611111111111,
+    "old_contact_despite_physical_clearance_fraction": 0.18333333333333332
+  },
+  "br": {
+    "old_tip_contact_duty": 0.7451388888888889,
+    "collision_contact_duty": 0.6270833333333333,
+    "reference_duty": 0.6458333333333334,
+    "old_contact_despite_physical_clearance_fraction": 0.12777777777777777
+  }
+}

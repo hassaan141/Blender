@@ -1,0 +1,10 @@
+{
+  "protected_files_unchanged": 2404,
+  "sealed_loops_unchanged": 8,
+  "selected_checkpoint_matches_loop": 6,
+  "python_syntax": "PASS",
+  "documentation_paths": "PASS",
+  "bundle_runtime_smoke": "PASS: five-second forward command, exit0, local references loaded",
+  "training_stopped_at": 8,
+  "full_goal_met": false
+}

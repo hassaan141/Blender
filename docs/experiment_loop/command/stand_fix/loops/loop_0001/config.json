@@ -1,0 +1,10 @@
+{
+  "loop": 1,
+  "parent_checkpoint": "docs/experiment_loop/command/loops/loop_0006/policy.pt",
+  "training": false,
+  "single_change": "replace inherited _stand_pose with imported STAND_SOLVED",
+  "evaluation_seconds": 60,
+  "video_seconds": 12,
+  "seed": 42,
+  "cases": 10
+}

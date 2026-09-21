@@ -1,0 +1,143 @@
+{
+  "parent": {
+    "id": "locomotion1_quality_run05",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/best_render/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0
+    },
+    "status": "historical retained champion",
+    "hashes": {
+      "checkpoint": "48b6f2ca979883b7bb1650359e8fa1ae1f1cc7fc02dd5329c5b6eee46b937fbd",
+      "reference": "9bbdf82a6cbf4495871f4a06453985a86271b68d57d8f9ddeac7aede074b3d89",
+      "metrics": "2733bd1fe9406b5f654702b5f767fd263607e86cb7d21b19fa7e4dd53d4482c9",
+      "video": "bb208100ba7ac8b951973fb200a76860462c61bdf56c4a4a6efc1810269776df"
+    }
+  },
+  "outcomes": [
+    {
+      "name": "A",
+      "metrics": {
+        "task": "Bingo-Turning-Play-v0",
+        "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0001/A/policy.pt",
+        "num_envs": 1,
+        "command": {
+          "vx": 0.175,
+          "vy": 0.0,
+          "yaw": 0.4,
+          "note": "Turning extension accepts yaw; vy remains zero."
+        },
+        "duration_s": 60.0,
+        "settle_seconds": 1.0,
+        "steps_recorded": 1440,
+        "step_dt": 0.041666666666666664,
+        "effort_limit_Nm": 3.0,
+        "survival": 0.24583333333333332,
+        "any_fell": true,
+        "fall_time_s": [
+          18.5
+        ],
+        "vx_mean": 0.08724350482225418,
+        "vx_std": 0.07791206240653992,
+        "vx_max": 0.260564923286438,
+        "base_roll_rms_deg": 7.703787803649902,
+        "base_pitch_rms_deg": 2.3630857467651367,
+        "joint_accel_rms": 8.850747108459473,
+        "residual_action_rate_rms": 0.01326663512736559,
+        "torque_saturation_pct_per_joint": {
+          "fl_SY_J": 0.0,
+          "fl_SP_J": 2.7027027027027026,
+          "fl_knee": 6.981981981981981,
+          "fr_SY_J": 0.0,
+          "fr_SP_J": 0.9009009009009009,
+          "fr_knee": 5.405405405405405,
+          "bl_SY_J": 0.0,
+          "bl_SP_J": 0.0,
+          "bl_knee": 1.8018018018018018,
+          "br_SY_J": 0.0,
+          "br_SP_J": 1.8018018018018018,
+          "br_knee": 1.3513513513513513
+        },
+        "reference_tracking_error_rad": {
+          "mean": 0.07446835935115814,
+          "rms": 0.09576652944087982,
+          "max": 0.47891783714294434,
+          "mean_per_joint": {
+            "fl_SY_J": 0.03195267915725708,
+            "fl_SP_J": 0.02557525597512722,
+            "fl_knee": 0.035507261753082275,
+            "fr_SY_J": 0.07834722846746445,
+            "fr_SP_J": 0.1301100254058838,
+            "fr_knee": 0.057648297399282455,
+            "bl_SY_J": 0.07129207253456116,
+            "bl_SP_J": 0.07985879480838776,
+            "bl_knee": 0.03286357223987579,
+            "br_SY_J": 0.10730889439582825,
+            "br_SP_J": 0.18288597464561462,
+            "br_knee": 0.060270342975854874
+          }
+        },
+        "yaw_mean": 0.06296238526063495,
+        "yaw_std": 0.2789838722733825,
+        "yaw_rmse": 0.43752297623993613,
+        "heading_change_deg": 66.58804883230879,
+        "vx_abs_max": 0.260564923286438,
+        "mean_slip_m_s": 0.1798475445191885,
+        "mean_saturation_pct": 1.7454954954954953,
+        "turning_failures": [
+          "left survival",
+          "left joint limits",
+          "left forward smoothness",
+          "left yaw tracking",
+          "right forward smoothness",
+          "right yaw tracking",
+          "right yaw oscillation",
+          "left_max survival",
+          "left_max forward smoothness",
+          "left_max yaw tracking",
+          "right_max saturation",
+          "right_max forward smoothness",
+          "right_max yaw tracking",
+          "right_max yaw oscillation",
+          "straight forward smoothness"
+        ]
+      },
+      "failures": [
+        "left survival",
+        "left joint limits",
+        "left forward smoothness",
+        "left yaw tracking",
+        "right forward smoothness",
+        "right yaw tracking",
+        "right yaw oscillation",
+        "left_max survival",
+        "left_max forward smoothness",
+        "left_max yaw tracking",
+        "right_max saturation",
+        "right_max forward smoothness",
+        "right_max yaw tracking",
+        "right_max yaw oscillation",
+        "straight forward smoothness",
+        "survival",
+        "mean vx",
+        "vx std",
+        "joint limit violation"
+      ]
+    }
+  ],
+  "goal_eligible": false,
+  "report_inputs": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0001"
+}

@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "reason": "Experimental improvement only: all ten cases survive, yaw improves modestly, backward-left saturation falls from 10.24% to 6.71% and roll RMS falls to 7.8 degrees. Existing walks retained. Pivot rear-left dragging and yaw undershoot persist; NOT final or visually approved.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 5
+}

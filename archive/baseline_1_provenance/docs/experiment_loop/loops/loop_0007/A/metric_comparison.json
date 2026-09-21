@@ -1,0 +1,132 @@
+{
+  "candidate": {
+    "task": "Bingo-NaturalWalk-Play-v0",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/policy.pt",
+    "num_envs": 1,
+    "command": {
+      "vx": -0.2,
+      "vy": 0.0,
+      "yaw": 0.0,
+      "note": "vy/yaw have no effect: BingoWalkRefEnv only accepts a forward-speed command."
+    },
+    "duration_s": 60.0,
+    "settle_seconds": 1.0,
+    "steps_recorded": 1440,
+    "step_dt": 0.041666666666666664,
+    "effort_limit_Nm": 3.0,
+    "survival": 1.0,
+    "any_fell": false,
+    "fall_time_s": [
+      null
+    ],
+    "vx_mean": -0.1830025315284729,
+    "vx_std": 0.06506049633026123,
+    "vx_max": 0.0331207700073719,
+    "base_roll_rms_deg": 5.378929138183594,
+    "base_pitch_rms_deg": 1.4165294170379639,
+    "joint_accel_rms": 7.982559680938721,
+    "residual_action_rate_rms": 0.01358669251203537,
+    "torque_saturation_pct_per_joint": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 0.3472222222222222,
+      "fl_knee": 0.4861111111111111,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 6.180555555555555,
+      "fr_knee": 2.569444444444444,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 3.2638888888888893,
+      "bl_knee": 3.2638888888888893,
+      "br_SY_J": 0.0,
+      "br_SP_J": 1.597222222222222,
+      "br_knee": 5.0
+    },
+    "reference_tracking_error_rad": {
+      "mean": 0.021365636959671974,
+      "rms": 0.027774866670370102,
+      "max": 0.11451613903045654,
+      "mean_per_joint": {
+        "fl_SY_J": 0.013430028222501278,
+        "fl_SP_J": 0.04037582501769066,
+        "fl_knee": 0.017457546666264534,
+        "fr_SY_J": 0.018980519846081734,
+        "fr_SP_J": 0.023331811651587486,
+        "fr_knee": 0.020699385553598404,
+        "bl_SY_J": 0.01277200784534216,
+        "bl_SP_J": 0.018049301579594612,
+        "bl_knee": 0.03342864662408829,
+        "br_SY_J": 0.015979191288352013,
+        "br_SP_J": 0.015869982540607452,
+        "br_knee": 0.02601340040564537
+      }
+    },
+    "vx_min": -0.34293627738952637,
+    "vx_abs_max": 0.34293627738952637
+  },
+  "champion": {
+    "task": "Bingo-NaturalWalk-Play-v0",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/policy.pt",
+    "num_envs": 1,
+    "command": {
+      "vx": -0.2,
+      "vy": 0.0,
+      "yaw": 0.0,
+      "note": "vy/yaw have no effect: BingoWalkRefEnv only accepts a forward-speed command."
+    },
+    "duration_s": 60.0,
+    "settle_seconds": 1.0,
+    "steps_recorded": 1440,
+    "step_dt": 0.041666666666666664,
+    "effort_limit_Nm": 3.0,
+    "survival": 1.0,
+    "any_fell": false,
+    "fall_time_s": [
+      null
+    ],
+    "vx_mean": -0.17501063644886017,
+    "vx_std": 0.07540637254714966,
+    "vx_max": 0.032891955226659775,
+    "base_roll_rms_deg": 5.473830223083496,
+    "base_pitch_rms_deg": 1.3977218866348267,
+    "joint_accel_rms": 7.898019790649414,
+    "residual_action_rate_rms": 0.012995387427508831,
+    "torque_saturation_pct_per_joint": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 0.625,
+      "fl_knee": 0.2777777777777778,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 4.027777777777778,
+      "fr_knee": 2.8472222222222223,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 1.8055555555555554,
+      "bl_knee": 1.8055555555555554,
+      "br_SY_J": 0.0,
+      "br_SP_J": 3.888888888888889,
+      "br_knee": 4.513888888888888
+    },
+    "reference_tracking_error_rad": {
+      "mean": 0.02156158722937107,
+      "rms": 0.027784373611211777,
+      "max": 0.10742831230163574,
+      "mean_per_joint": {
+        "fl_SY_J": 0.014519399031996727,
+        "fl_SP_J": 0.03648822754621506,
+        "fl_knee": 0.01733068749308586,
+        "fr_SY_J": 0.02221294306218624,
+        "fr_SP_J": 0.02346084453165531,
+        "fr_knee": 0.018797138705849648,
+        "bl_SY_J": 0.010422750376164913,
+        "bl_SP_J": 0.0182501170784235,
+        "bl_knee": 0.033505745232105255,
+        "br_SY_J": 0.018423879519104958,
+        "br_SP_J": 0.018036074936389923,
+        "br_knee": 0.02729126438498497
+      }
+    },
+    "vx_min": -0.34022679924964905,
+    "vx_abs_max": 0.34022679924964905
+  },
+  "gate_failures": [
+    "vx std",
+    "yaw drift/oscillation"
+  ]
+}

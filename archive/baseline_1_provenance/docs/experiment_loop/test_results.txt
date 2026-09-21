@@ -1,0 +1,23 @@
+test_ab_same_hypothesis_required (__main__.LoopTests.test_ab_same_hypothesis_required) ... ok
+test_artifact_tamper_blocks_promotion (__main__.LoopTests.test_artifact_tamper_blocks_promotion) ... ok
+test_bad_metrics_fail_closed (__main__.LoopTests.test_bad_metrics_fail_closed) ... ok
+test_failed_loop_cannot_promote (__main__.LoopTests.test_failed_loop_cannot_promote) ... ok
+test_human_keep_and_immutable_review (__main__.LoopTests.test_human_keep_and_immutable_review) ... ok
+test_interrupted_run_not_retrained (__main__.LoopTests.test_interrupted_run_not_retrained) ... ok
+test_lock (__main__.LoopTests.test_lock) ... ok
+test_nonzero_exit (__main__.LoopTests.test_nonzero_exit) ... ok
+test_pending_does_not_promote (__main__.LoopTests.test_pending_does_not_promote) ... ok
+test_plan_bounds_and_physics (__main__.LoopTests.test_plan_bounds_and_physics) ... ok
+test_promotion_journal_recovery (__main__.LoopTests.test_promotion_journal_recovery) ... ok
+test_protected_tamper_blocks_promotion (__main__.LoopTests.test_protected_tamper_blocks_promotion) ... ok
+test_real_command_wiring_without_execution (__main__.LoopTests.test_real_command_wiring_without_execution) ... ok
+test_regression_cap_fixed (__main__.LoopTests.test_regression_cap_fixed) ... ok
+test_speed_not_ranked (__main__.LoopTests.test_speed_not_ranked) ... ok
+test_stale_review (__main__.LoopTests.test_stale_review) ... ok
+test_timeout_terminates (__main__.LoopTests.test_timeout_terminates) ... ok
+test_visual_rejection_preserves_champion (__main__.LoopTests.test_visual_rejection_preserves_champion) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 3.975s
+
+OK

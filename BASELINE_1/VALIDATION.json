@@ -1,0 +1,95 @@
+{
+  "phase": "pre-cleanup root bundle validation",
+  "status": "PASS",
+  "source_copy_checks": {
+    "policy_matches_final_source": true,
+    "env_matches_final_source": true,
+    "runtime_matches_final_source": true,
+    "core_metrics_match": true,
+    "all_commands_video_matches": true,
+    "stand_video_matches": true,
+    "transition_video_matches": true,
+    "reference_pivot_bank.npz": true,
+    "reference_backward_turn_audit.json": true,
+    "reference_backward_turn_bank.npz": true,
+    "reference_pivot_audit.json": true,
+    "reference_backward/reference.npz": true,
+    "reference_forward/reference.npz": true,
+    "reference_turning/reference.npz": true,
+    "reference_turning/turn_bank.npz": true
+  },
+  "all_source_copy_checks": true,
+  "python_syntax": {
+    "evaluate.py": "PASS",
+    "common.py": "PASS",
+    "env.py": "PASS",
+    "play.py": "PASS",
+    "runtime.py": "PASS"
+  },
+  "all_python_syntax_pass": true,
+  "videos": {
+    "all_commands.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "backward.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "backward_left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "backward_right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "forward.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "forward_left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "forward_right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "left.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "locomotion_to_stand.mp4": {
+      "exit": 0,
+      "duration_s": 9.0
+    },
+    "right.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "stand.mp4": {
+      "exit": 0,
+      "duration_s": 12.0
+    },
+    "transitions.mp4": {
+      "exit": 0,
+      "duration_s": 59.0
+    }
+  },
+  "all_videos_decodable": true,
+  "history_index_rows": 69,
+  "root_smoke": "PASS exit 0; local root references loaded",
+  "checkpoint_sha256": "35955f919f41e128fe40a1148c03b5a0d3e64a7dca4e99132feda544c0859cb9",
+  "stand": {
+    "survival": true,
+    "height_mean_m": 0.17946727573871613,
+    "roll_rms_deg": 0.07821382353703167,
+    "pitch_rms_deg": 0.4351805937688965,
+    "four_feet_contact": true,
+    "action_rate_rms": 0.0,
+    "torque_saturation_max_pct": 0.0
+  },
+  "historical_cleanup_authorized": true,
+  "historical_move_not_yet_performed": true
+}

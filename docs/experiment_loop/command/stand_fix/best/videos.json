@@ -1,0 +1,12 @@
+{
+  "backward": "docs/experiment_loop/command/stand_fix/best/videos/backward.mp4",
+  "backward_left": "docs/experiment_loop/command/stand_fix/best/videos/backward_left.mp4",
+  "backward_right": "docs/experiment_loop/command/stand_fix/best/videos/backward_right.mp4",
+  "forward": "docs/experiment_loop/command/stand_fix/best/videos/forward.mp4",
+  "forward_left": "docs/experiment_loop/command/stand_fix/best/videos/forward_left.mp4",
+  "forward_right": "docs/experiment_loop/command/stand_fix/best/videos/forward_right.mp4",
+  "left": "docs/experiment_loop/command/stand_fix/best/videos/left.mp4",
+  "right": "docs/experiment_loop/command/stand_fix/best/videos/right.mp4",
+  "stand": "docs/experiment_loop/command/stand_fix/best/videos/stand.mp4",
+  "transitions": "docs/experiment_loop/command/stand_fix/best/videos/transitions.mp4"
+}

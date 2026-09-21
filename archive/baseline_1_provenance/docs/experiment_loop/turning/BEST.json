@@ -1,0 +1,55 @@
+{
+  "status": "best experimental turning candidate; full natural-gait gates NOT met",
+  "stop_reason": "eight-loop limit reached",
+  "goal_met": false,
+  "best_loop": "loop_0005",
+  "paths": {
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/reference.npz",
+    "yaw_reference_bank": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/turn_bank.npz",
+    "config": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/config.json",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/turning_metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/left_right.mp4",
+    "candidate_comparison": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/comparison.mp4",
+    "forward_left_right_comparison": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/final_comparison.mp4"
+  },
+  "hashes": {
+    "checkpoint": "9e7e32e8e2a730fa3830e790080a49d96eb9185c407e960bb4b4594b3d56596e",
+    "reference": "618a383ea474d0eb3dccd2923907b3bcac1ec2c28adc273a542b681244a8fcb4",
+    "yaw_reference_bank": "4474bb5fb08d9542bd189baa8c9110e33ae15776ebe9af546811c1ee107d2ebc",
+    "config": "c20183568b5c21fdba45eea31065b3825cd0a10c6e862dc2040150353a99bbc9",
+    "metrics": "8bfa7b87a243e2200e9803242c3ba1308bad1b4e6a0faf07b1a973d01178635d",
+    "video": "febe78e3fcc691b0ca5050de1fb9a3432255ad5c12da2244e0e18790391c1fea",
+    "candidate_comparison": "05686e348f3c9db3a9a7401ee53174eff903bdc7e74c76c2c3cd829dd79b901f",
+    "forward_left_right_comparison": "19d871d0b35886957b2b58352b5327533a62cd66e9b4125abb29d9f7c17cb533"
+  },
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "turn_geometry_gain": 0.7,
+    "turn_lateral_gain": 0.7,
+    "turn_yaw_weight": 0.3,
+    "turn_lateral_scale": 1.0,
+    "turn_yaw_smooth_weight": 0.0,
+    "turn_heading_local": 1,
+    "turn_command_vx": 0.215,
+    "turn_bl_recovery": 1,
+    "bl_lift_mm": 3
+  },
+  "gates": {
+    "failures": [
+      "left bl dragging",
+      "left saturation",
+      "left_max bl dragging",
+      "left_max saturation",
+      "right_max saturation",
+      "straight saturation"
+    ]
+  },
+  "backward_baseline": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A",
+  "forward_baseline": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05",
+  "measurement_note": "Observed single-environment evaluations; contact and slip use collision geometry, not force sensors. Main turns60s; limit/straight probes30s. Cadence=3 recovery strokes per reference cycle."
+}

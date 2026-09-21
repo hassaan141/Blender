@@ -1,0 +1,14 @@
+{
+  "defect": "Rear-left inside-turn swing remains too low, especially at positive maximum yaw.",
+  "evidence": "Loop4 BL clearance/contact: left4.27mm/.896,right6.66mm/.839,left_max2.94mm/.950. Stable yaw and survival in all cases; phase/timing correction helped but left still skims.",
+  "hypothesis": "Add only3mm smooth rear-left task-space lift within the existing corrected swing windows, with matching IK/FK channels; retain cadence, contact timing and all reward weights.",
+  "expected_effect": "Clear the left-turn BL swing without large paw lifts or loss of coordinated turning.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "bl_lift_mm": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "parent": "docs/experiment_loop/command/loops/loop_0006",
+  "visual_defect": "Stable play-bow/lying pose: front body and forelegs are down rather than upright.",
+  "measured_parent_stand": {
+    "body_height_mean_m": 0.16953583,
+    "roll_mean_deg": -5.862,
+    "pitch_mean_deg": 8.587,
+    "motion_note": "Last 10 seconds are nearly static, proving stability but not correct posture."
+  },
+  "cause_1": "CommandEnv inherits BingoWalkRef/BINGO_V4 default joint pose as _stand_pose. Saved config uses obsolete SP +/-0.3 and knee +/-0.6 values, not STAND_SOLVED.",
+  "validated_target_source": "rl/bingo_rl/bingo_rl/locomotion/bingo_velocity_env_cfg.py:STAND_SOLVED",
+  "phase_audit": "At exact zero command _drive returns zero and _clip_time increment is zero; phase is already frozen.",
+  "root_command_audit": "Reward and observation use physical command [0,0]; commanded root vx/yaw are already zero.",
+  "first_hypothesis": "Replace only the inherited _stand_pose target with the existing STAND_SOLVED leg angles. Do not train initially; evaluate whether the retained policy and physics can transition to and hold the correct target without gait regression."
+}

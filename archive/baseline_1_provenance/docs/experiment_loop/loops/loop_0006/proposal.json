@@ -1,0 +1,14 @@
+{
+  "defect": "Remaining lateral rocking and cyclic yaw during otherwise improved backward stepping.",
+  "evidence": "Loop5 roll 5.47 deg, yaw-rate RMS .283 rad/s and vx std .0754 remain too large. Lateral scaling in loop3 previously reduced rocking; corrected contacts in loop5 reduced knee saturation/slip without geometry changes.",
+  "hypothesis": "Reduce local lateral foot excursions from 70% to 45% of original, about the unchanged mean stance width. Keep fore-aft trajectory, lift, contacts and cadence fixed to reduce lateral impulses and body oscillation.",
+  "expected_effect": "Calmer weight transfer and less yaw/roll without chasing faster travel.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "lateral_scale": 0.45
+      }
+    }
+  ]
+}

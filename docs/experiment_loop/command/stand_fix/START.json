@@ -1,0 +1,18 @@
+{
+  "max_loops": 6,
+  "parent": "docs/experiment_loop/command/loops/loop_0006",
+  "protected": {
+    "docs/experiment_loop/command/best/policy.pt": "35955f919f41e128fe40a1148c03b5a0d3e64a7dca4e99132feda544c0859cb9",
+    "docs/experiment_loop/command/best/MANIFEST.json": "a49d8fb33567aa791d45a68353919b432ee7d768a5b620f6551eccbaf1d8c7a1",
+    "docs/experiment_loop/command/loops/loop_0006/MANIFEST.json": "9fe47f254f20114f16ddfa342e3b5cec925e04fa4127408f4563ac37a7027dc1",
+    "docs/experiment_loop/FROZEN_BACKWARD_BASELINE.json": "937f2bc624cd7e487c5dd12797a380758848901048e9133d112f0f598e344552",
+    "docs/experiment_loop/turning/BEST.json": "c70464620e2bb1f8e2684d861d7c49a65230d46f54baab0ea99f363750556db0",
+    "docs/walk_ref/quality_runs/run_05/policy.pt": "48b6f2ca979883b7bb1650359e8fa1ae1f1cc7fc02dd5329c5b6eee46b937fbd",
+    "rl/bingo_rl/bingo_rl/locomotion/bingo_velocity_env_cfg.py": "d12e70d7311c4b3736bb7d6a3019dd70f4b66d483536c7cd4ee455605d2165fb",
+    "rl/bingo_rl/bingo_rl/bingo_v4.py": "46dd24ef7fa146a4f3ef04d30ae840f0ab54d31cd69f90836ff5295fd4ecb441"
+  },
+  "base_check": {
+    "protected_files": 2404,
+    "unchanged": true
+  }
+}

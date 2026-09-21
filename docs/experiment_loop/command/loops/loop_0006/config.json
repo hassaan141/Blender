@@ -1,0 +1,9 @@
+{
+  "loop": 6,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0005/policy.pt",
+  "hypothesis": "Loop 5 improved pivots but catastrophically forgot stand. Original forward-teacher replay includes failed stand trajectories. Replace only those stand demonstrations with complete surviving 20-second loop-3 stand rollouts (75/128 randomized phases survived; 34200 clean states). Preserve moving-teacher data, balanced commands, geometry and reward. Recover from unpromoted loop 5; loop 3 stays champion unless all mandatory retention gates improve.",
+  "references": "docs/experiment_loop/command/loops/loop_0003/references",
+  "iterations": 200,
+  "yaw_weight": 0.6,
+  "curriculum_steps": 1
+}

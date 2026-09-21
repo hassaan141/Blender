@@ -1,0 +1,19 @@
+{
+  "passing_cases": 6,
+  "failed": {
+    "stand": [
+      "rocking"
+    ],
+    "backward_left": [
+      "yaw"
+    ],
+    "backward_right": [
+      "yaw",
+      "vx_std"
+    ],
+    "transitions": [
+      "yaw_tracking"
+    ]
+  }
+}
+Artifacts ready; inspect metrics and video before review.py --decision

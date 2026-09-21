@@ -1,0 +1,7 @@
+{
+  "reference_joint_acceleration_rms_at_eval_timing": 18.004894256591797,
+  "loop_seam_joint_jump_max_rad": 0.0,
+  "reference_frame_count": 136,
+  "full_cycle_seconds": 2.1214285714285714,
+  "note": "Reference acceleration is not directly equal to actual physical joint acceleration."
+}

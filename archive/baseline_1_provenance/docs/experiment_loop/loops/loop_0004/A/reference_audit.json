@@ -1,0 +1,71 @@
+{
+  "source": "reference_02b",
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "backward_command_vx": -0.2,
+    "signed_reference_velocity_scale": -0.4242424242424242,
+    "lateral_scale": 0.7,
+    "stance_shape_blend": 0.35
+  },
+  "ik_max_error_m": 9.87847042973668e-07,
+  "max_joint_delta_rad": 0.2676467662113529,
+  "max_paw_delta_mm": 28.167188301086092,
+  "contacts_unchanged": true,
+  "signed_phase_rate": -0.4242424242424242,
+  "reference_period_s": 2.6517857142857144,
+  "task_space_geometry": "Lateral excursions scaled about each foot mean; optional fore-aft stride and compact swing lift changes. All parameters explicit and cumulative.",
+  "feet": {
+    "fl": {
+      "source_range_mm": [
+        114.32506887807234,
+        58.131517767629894,
+        41.24857717913899
+      ],
+      "target_range_mm": [
+        99.0837759962455,
+        40.69206243734093,
+        41.24857717913899
+      ]
+    },
+    "fr": {
+      "source_range_mm": [
+        105.50718865348595,
+        53.444765759295684,
+        33.174502886453375
+      ],
+      "target_range_mm": [
+        97.34867745706099,
+        37.411336031506984,
+        33.174502886453375
+      ]
+    },
+    "bl": {
+      "source_range_mm": [
+        105.26617093258224,
+        46.70799992816085,
+        29.36531015161145
+      ],
+      "target_range_mm": [
+        104.48619923764056,
+        32.695599949712594,
+        29.36531015161145
+      ]
+    },
+    "br": {
+      "source_range_mm": [
+        119.74193511039348,
+        50.53694826500664,
+        18.195352084114962
+      ],
+      "target_range_mm": [
+        117.14366687735587,
+        35.37586378550464,
+        18.195352084114962
+      ]
+    }
+  }
+}

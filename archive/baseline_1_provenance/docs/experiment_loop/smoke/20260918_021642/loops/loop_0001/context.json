@@ -1,0 +1,68 @@
+{
+  "champion": {
+    "id": "locomotion1_quality_run05",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/best_render/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "historical retained champion",
+    "hashes": {
+      "checkpoint": "48b6f2ca979883b7bb1650359e8fa1ae1f1cc7fc02dd5329c5b6eee46b937fbd",
+      "reference": "9bbdf82a6cbf4495871f4a06453985a86271b68d57d8f9ddeac7aede074b3d89",
+      "metrics": "2733bd1fe9406b5f654702b5f767fd263607e86cb7d21b19fa7e4dd53d4482c9",
+      "video": "bb208100ba7ac8b951973fb200a76860462c61bdf56c4a4a6efc1810269776df"
+    }
+  },
+  "current_candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "previous_report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+  "feedback": "",
+  "allowed_changes": {
+    "residual_ema_alpha": [
+      0.05,
+      1.0
+    ],
+    "residual_scale": [
+      0.05,
+      0.4
+    ],
+    "fl_torque_weight": [
+      0.0,
+      0.1
+    ],
+    "body_height_weight": [
+      0.0,
+      0.2
+    ],
+    "vertical_velocity_weight": [
+      0.0,
+      0.1
+    ]
+  },
+  "max_related_changes": 2,
+  "output": "/pub0/muhammadf/Blender/docs/experiment_loop/smoke/20260918_021642/loops/loop_0001/proposal.json"
+}

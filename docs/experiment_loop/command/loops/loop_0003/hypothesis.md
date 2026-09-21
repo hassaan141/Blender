@@ -1,0 +1,1 @@
+With stable pivot/backward reference geometry established, persistent yaw undershoot is the largest remaining defect. Increase only yaw-tracking reward weight from 0.3 to 0.6, preserving geometry, teacher replay, velocity reward, action interface and all actuator physics.

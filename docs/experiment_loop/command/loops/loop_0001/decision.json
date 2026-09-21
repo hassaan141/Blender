@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "reason": "All 10 cases survive 60 seconds and straight gait/transition retention improves, but backward turns visibly stall/rock, pivots translate forward, and forward-left exceeds a joint limit by 0.0113 rad. Not eligible for champion promotion.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 5
+}

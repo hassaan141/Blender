@@ -1,0 +1,6 @@
+{
+  "allow_training": true,
+  "reviewer": "Codex visual inspection, not human champion approval",
+  "evidence": "kinematic_sheet.jpg sampled at 4 fps and reference_audit.json",
+  "finding": "Reversed stepping retains the source posture and moderate foot clearance; no new pose discontinuity or exaggerated lift visible. All four stance fore-aft derivatives reverse sign. Eligibility for one physics/PPO trial, not a naturalness acceptance."
+}

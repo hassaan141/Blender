@@ -1,0 +1,6 @@
+{
+  "docs/experiment_loop/command/teachers/forward.pt": "b4bf7f2fee9041db54dc3bd8fe898996760a54582b89e078a7822ac05d2d2575",
+  "docs/experiment_loop/command/teachers/backward.pt": "32d055acd1301243e7e1cfffa90adac09191e244a1b065676f2e0399d291449c",
+  "docs/experiment_loop/command/teachers/turning.pt": "bb4e002722f6336ad5fb4c5866cb8c18a4ec548d9a0cf9cb105992ee44981e73",
+  "docs/experiment_loop/command/teachers/stand_champion3_clean.pt": "1bb201f37d4a334331ade073a022818f95add650c37baa9cfe6ab7c72b105c38"
+}

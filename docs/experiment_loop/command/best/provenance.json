@@ -1,0 +1,6 @@
+{
+  "restoration_note": "Generated handoff metadata reconstructed after cleanup; policy, runtime, references and metrics recovered by exact pre-cleanup SHA-256 match.",
+  "checkpoint_origin": "unified loop_0006",
+  "runtime_origin": "unified loop_0006",
+  "checkpoint_sha256": "35955f919f41e128fe40a1148c03b5a0d3e64a7dca4e99132feda544c0859cb9"
+}

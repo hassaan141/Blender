@@ -1,0 +1,24 @@
+{
+  "decision": "REJECT",
+  "loop": "loop_0001",
+  "reviewer": "Codex sampled-video visual review; not human champion approval",
+  "video": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/evaluation/eval.mp4",
+  "comparison": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/comparison.mp4",
+  "inspection": "8 fps stride sample at 8s plus full-run overview at 5s intervals; kinematic preview at 4 fps",
+  "finding": "Backward stepping is sustained, but lateral rocking and uneven foreleg support remain. FL spends 83.1% in geometric contact and achieves only 9.4mm p95 clearance versus 44.9mm on FR. Front-foot slip remains substantial. Not a natural, relaxed backward walk.",
+  "metric_gate_failures": [
+    "mean vx",
+    "vx std",
+    "br_knee major saturation regression",
+    "yaw drift/oscillation"
+  ],
+  "protected_hashes_match": true,
+  "historical_hashes_checked": 940,
+  "loop_manifest_sha256": "78b25c6b3818f0018ad4bc4ce290e5f83e45953b86cd4da6b729bb271030b24a",
+  "champion_unchanged": true,
+  "loops_run": 1,
+  "training_attempts": 1,
+  "training_iterations": 300,
+  "end_to_end_completed": true,
+  "loop_2_started": false
+}

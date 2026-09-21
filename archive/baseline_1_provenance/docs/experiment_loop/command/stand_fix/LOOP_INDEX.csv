@@ -1,0 +1,3 @@
+loop,change,training,decision,visual_stand_pass,locomotion_preserved,result
+loop_0001,replace obsolete stand target with STAND_SOLVED,false,REJECT,false,true,policy residual destabilizes corrected stand
+loop_0002,fade applied residual with command activity to zero at stand,false,KEEP,true,true,upright still stand and smooth transitions; held moving metrics exactly match loop6

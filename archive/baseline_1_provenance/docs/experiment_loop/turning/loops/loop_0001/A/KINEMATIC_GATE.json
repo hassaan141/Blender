@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Inspected both short physics preview montages: sustained native four-leg stepping and posture, no fall or gross path distortion. Turns have correct sign but insufficient yaw magnitude (+.059/-.072 at commands +/-.4); this is the task PPO must learn. Joint acceleration 8.3\u20138.8 within cap."
+}

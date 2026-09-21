@@ -1,0 +1,15 @@
+{
+  "authorization": "CONFIRM CONSOLIDATION AND CLEANUP",
+  "duplicate_bundle_files": 57,
+  "duplicate_bundle_bytes": 44232257,
+  "cache_files": 3,
+  "cache_bytes": 109297,
+  "empty_lock": "archive/baseline_1_provenance/docs/experiment_loop/runner.lock",
+  "empty_lock_size": 0,
+  "deleted_categories": [
+    "superseded command/best",
+    "duplicated stand_fix/best copied to root BASELINE_1",
+    "documentation __pycache__ and *.pyc",
+    "empty runner.lock"
+  ]
+}

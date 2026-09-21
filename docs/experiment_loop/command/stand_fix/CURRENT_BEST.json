@@ -1,0 +1,13 @@
+{
+  "loop": "loop_0002",
+  "status": "KEEP; visual upright stand solved and loop-6 locomotion preserved",
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0006/policy.pt",
+  "checkpoint_changed": false,
+  "runtime_source": "docs/experiment_loop/command/stand_fix/loops/loop_0002/source",
+  "stand_video": "docs/experiment_loop/command/stand_fix/loops/loop_0002/evaluation/stand.mp4",
+  "nine_command_video": "docs/experiment_loop/command/stand_fix/loops/loop_0002/commands.mp4",
+  "transition_video": "docs/experiment_loop/command/stand_fix/loops/loop_0002/locomotion_to_stand.mp4",
+  "metrics": "docs/experiment_loop/command/stand_fix/loops/loop_0002/evaluation/metrics.json",
+  "attempts_used": 2,
+  "attempts_allowed": 6
+}

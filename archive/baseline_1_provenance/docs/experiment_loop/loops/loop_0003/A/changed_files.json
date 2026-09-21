@@ -1,0 +1,12 @@
+{
+  "historical_files_changed": [],
+  "new_reference": "reference.npz",
+  "reference_change": "Task-space lateral paw excursion scaled to 70% about each foot mean; x/z paths, contact timing and playback cadence unchanged. See reference_audit.json.",
+  "runtime_change": "fixed negative command range; no reward/actuator changes",
+  "code": [
+    "backward_worker.py",
+    "backward_adapter.py",
+    "backward_analyze.py",
+    "backward_kinematic.py"
+  ]
+}

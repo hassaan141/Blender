@@ -1,0 +1,14 @@
+{
+  "defect": "Residual rapid corrections contribute to remaining yaw oscillation and velocity pulsing.",
+  "evidence": "Loop7 vx std .0651, yaw RMS .273. Trace spectrum: 35.6% raw-action power, 34.6% yaw-rate power and 21.8% vx power above 3Hz; roll is dominated by gait cadence. Geometry/contact edits have already improved planting and slip.",
+  "hypothesis": "Lower residual EMA alpha from .30 to .20, preserving reference geometry, contact timing, cadence, residual scale and rewards, so PPO adapts balance corrections to a smoother action stream.",
+  "expected_effect": "Less high-frequency yaw/speed oscillation and lower action-rate RMS while maintaining the existing stepping pattern and mean backward speed.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "residual_ema_alpha": 0.2
+      }
+    }
+  ]
+}

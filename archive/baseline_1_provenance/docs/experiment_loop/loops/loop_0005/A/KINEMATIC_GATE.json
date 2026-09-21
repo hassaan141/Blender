@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Reviewed 4fps replay montage. Geometry matches retained loop3; no added lift, crouch or pose discontinuity. Only contact supervision changes. IK error below 1e-6 m; max joint displacement relative original .0944 rad."
+}

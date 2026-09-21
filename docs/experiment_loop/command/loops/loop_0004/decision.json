@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "reason": "All cases survived, but stand roll RMS rose to 21.95 degrees and torque saturation to 82.49%; pivot rear-left duty rose to 98.9/99.3%, left pivot acceleration to 9.27 and rocking to 9.44 degrees. Video confirms a leaning stand and anchored pivot rather than clean four-leg stepping. Backward-left yaw improvement does not outweigh these regressions. Retain loop 3; discard the extra-lift reference for subsequent training.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 4
+}

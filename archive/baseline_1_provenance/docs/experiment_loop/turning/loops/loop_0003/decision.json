@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Provisional progress only: all five cases survive; main yaw +.428/-.410 tracks commands and actual vx .157/.136 improves requested travel, acceleration 9.92/9.61 below fixed cap. Inherited BL dragging remains unacceptable (duty98/95%, clearance2.23/2.91mm); saturation gates also fail. Not a finished natural walk. Next single defect is BL recovery."
+}

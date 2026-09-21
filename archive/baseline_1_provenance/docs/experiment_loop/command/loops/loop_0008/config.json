@@ -1,0 +1,9 @@
+{
+  "loop": 8,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0007/policy.pt",
+  "hypothesis": "Loop 7 turns better but develops a leaning stand. At zero command, inherited tracking rewards target a frozen walking pose despite feedforward applying the asset stand pose (0.571 rad RMS mismatch). Match pose, velocity, foot and contact tracking targets to the existing stand blend without changing reward weights, applied references, physics or replay. Recover from unpromoted loop 7; loop 6 remains champion. This is training attempt eight of eight.",
+  "references": "docs/experiment_loop/command/loops/loop_0007/references",
+  "iterations": 200,
+  "yaw_weight": 0.6,
+  "curriculum_steps": 1
+}

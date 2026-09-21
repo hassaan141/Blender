@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "reason": "Stand and transitions fall; stand video shows repeated collapse. Balanced command coverage modestly improves left/right pivot yaw to +0.237/-0.126 and reduces rocking, but survival is mandatory. Loop 3 remains champion. The next targeted recovery may use this rejected checkpoint as an unpromoted training parent while repairing stand supervision.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 4
+}

@@ -1,0 +1,10 @@
+{
+  "loop": "loop_0006",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0006/policy.pt",
+  "video": "/pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0006/commands.mp4",
+  "decision": "KEEP",
+  "reason": "Experimental recovery, not final visual approval. All ten cases survive 60 seconds again; stand has 0% torque saturation and 0.14 rad/s\u00b2 acceleration. Versus loop 3, right pivot yaw improves from -0.086 to -0.128 with reduced rocking, left pivot rocking falls below 8 degrees, and backward-left acceleration/saturation improve. Teacher-like straight and forward turning gaits remain. Pivot feet still anchor and yaw/transition tracking gates fail, so goal_met remains false.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 5
+}

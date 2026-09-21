@@ -1,0 +1,19 @@
+"""Read-only FK reconstruction of actual paw clearance from simulator states."""
+import argparse,sys,json
+from pathlib import Path
+import numpy as np
+from scipy.spatial.transform import Rotation
+from common import ROOT
+sys.path.insert(0,str(ROOT/'stage2'))
+from v4_kinematics import V4Kin,LEGS
+p=argparse.ArgumentParser();p.add_argument('evaluation',type=Path);p.add_argument('--out',type=Path,required=True);a=p.parse_args();d=np.load(a.evaluation/'trajectories.npz');kin=V4Kin(ROOT/'URDF/bingo_urdf v4_w_ear_joints/urdf/bingo_urdf_w_ear_joints_physics.urdf');h=np.load(ROOT/'stage4/out/collision_hulls.npz');report={}
+for name,i in [('left',3),('right',4),('backward_left',7),('backward_right',8)]:
+ heights=[]
+ for t in range(0,len(d['jpos']),3):
+  if not d['alive'][t,i]:continue
+  quat=d['root_quaternion'][t,i];rotation=Rotation.from_quat(quat[[1,2,3,0]]).as_matrix();root=d['root_position'][t,i];row=[]
+  for j,leg in enumerate(LEGS):
+   _,kr,kp=kin.leg_fk(leg,d['jpos'][t,i,j*3:j*3+3]);verts=root+(kp+h[leg+'_knee']@kr.T)@rotation.T;row.append(verts[:,2].min())
+  heights.append(row)
+ z=np.array(heights);report[name]={leg:{'clearance_p95_mm':float(np.percentile(z[:,j],95)*1000),'duty_below_3mm':float((z[:,j]<.003).mean())} for j,leg in enumerate(LEGS)}
+a.out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

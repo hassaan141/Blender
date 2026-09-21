@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "reason": "All cases survive and pivot yaw improves to +0.271/-0.228, but stand develops a persistent 18.79-degree lean and forward saturation rises to 18.57%, failing retention. Video confirms the lean. Loop 6 remains champion. The final recovery attempt addresses the measured inconsistency between standing feedforward and frozen walking reward targets, without changing applied reference geometry or actuator physics.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 4
+}

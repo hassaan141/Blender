@@ -1,0 +1,12 @@
+{
+  "backward": "docs/experiment_loop/command/loops/loop_0006/evaluation/backward.mp4",
+  "backward_left": "docs/experiment_loop/command/loops/loop_0006/evaluation/backward_left.mp4",
+  "backward_right": "docs/experiment_loop/command/loops/loop_0006/evaluation/backward_right.mp4",
+  "forward": "docs/experiment_loop/command/loops/loop_0006/evaluation/forward.mp4",
+  "forward_left": "docs/experiment_loop/command/loops/loop_0006/evaluation/forward_left.mp4",
+  "forward_right": "docs/experiment_loop/command/loops/loop_0006/evaluation/forward_right.mp4",
+  "left": "docs/experiment_loop/command/loops/loop_0006/evaluation/left.mp4",
+  "right": "docs/experiment_loop/command/loops/loop_0006/evaluation/right.mp4",
+  "stand": "docs/experiment_loop/command/loops/loop_0006/evaluation/stand.mp4",
+  "transitions": "docs/experiment_loop/command/loops/loop_0006/evaluation/transitions.mp4"
+}

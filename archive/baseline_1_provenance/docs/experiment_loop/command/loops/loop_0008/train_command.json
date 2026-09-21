@@ -1,0 +1,22 @@
+[
+  "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+  "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/command/train.py",
+  "--task",
+  "Bingo-Command-Train-v0",
+  "--num_envs",
+  "512",
+  "--seed",
+  "42",
+  "--max_iterations",
+  "200",
+  "--checkpoint",
+  "/pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0007/policy.pt",
+  "--headless",
+  "--device",
+  "cuda:0",
+  "--kit_args",
+  "--/rtx/verifyDriverVersion/enabled=false --no-window",
+  "agent.agent.experiment.directory=/pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0008/training",
+  "agent.agent.experiment.experiment_name=ppo",
+  "hydra.run.dir=/pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0008/hydra"
+]

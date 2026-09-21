@@ -1,0 +1,1 @@
+The rear-left foot anchors pivots (95–97% contact duty). Add 8 mm smooth swing clearance only to the pivot rear-left reference, preserving phase, other feet, backward bank and rewards. The six-second reference preflight survives all cases without hard-limit violations; test whether PPO converts clearance into cleaner pivot stepping and yaw.

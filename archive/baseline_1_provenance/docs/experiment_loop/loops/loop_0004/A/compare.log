@@ -1,0 +1,2 @@
+EXEC ['/usr/bin/ffmpeg', '-v', 'error', '-i', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0004/A/comparison.mp4', '-vf', 'fps=1/5,scale=960:-1,tile=2x6', '-frames:v', '1', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0004/A/comparison_overview.jpg']
+EXEC ['/usr/bin/ffmpeg', '-v', 'error', '-ss', '8', '-i', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0004/A/comparison.mp4', '-vf', 'fps=8,scale=960:-1,tile=2x6', '-frames:v', '1', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0004/A/comparison_stride.jpg']

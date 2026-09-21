@@ -1,0 +1,14 @@
+{
+  "defect": "SMOKE ONLY: replay existing artifacts",
+  "evidence": "No simulator or training invoked",
+  "hypothesis": "Exercise bookkeeping, not locomotion",
+  "expected_effect": "No physical change",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "residual_ema_alpha": 0.29
+      }
+    }
+  ]
+}

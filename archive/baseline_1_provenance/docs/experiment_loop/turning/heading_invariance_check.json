@@ -1,0 +1,5 @@
+{
+  "headings_tested": 41,
+  "max_rotation_matrix_error": 2.3158558404290375e-16,
+  "source": "World-yaw removal algebra matching turning/env.py"
+}

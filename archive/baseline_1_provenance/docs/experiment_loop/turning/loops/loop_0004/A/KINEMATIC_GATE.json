@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Viewed both preview montages: compact stepping, no fall/hop or new posture defect; IK audit passes. Warm-start policy still cancels much BL clearance, consistent with prior diagnosis; corrected contact feedback is the targeted learning change. Both yaw signs retained; short right acceleration12.04 below13.20 fixed cap."
+}

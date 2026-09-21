@@ -1,0 +1,26 @@
+{
+  "protected_entries_unchanged": 2385,
+  "immutable_turning_loops_verified": 8,
+  "best_artifacts_exist": true,
+  "runner_regression_tests": "18 passed; runner_tests_after_bl.txt",
+  "forward_backward_lateral_and_physics_unchanged": true,
+  "goal_met": false,
+  "matching_video_replay_10s_exact": true,
+  "intermediate_yaw_checks": {
+    "check_left_02": {
+      "command": 0.2,
+      "yaw_mean": 0.2157350610924927,
+      "survival": 1.0,
+      "joint_limit_violation": 0.0
+    },
+    "check_right_02": {
+      "command": -0.2,
+      "yaw_mean": -0.2130475260245155,
+      "survival": 1.0,
+      "joint_limit_violation": 0.0
+    }
+  },
+  "broken_current_doc_links": [],
+  "active_training_or_loop_processes": [],
+  "best_artifact_hashes_still_match": true
+}

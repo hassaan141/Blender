@@ -1,0 +1,107 @@
+{
+  "stand": {
+    "survival": false,
+    "vx": false,
+    "yaw": false,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": false,
+    "vx_std": false
+  },
+  "forward": {
+    "survival": true,
+    "vx": true,
+    "yaw": true,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "backward": {
+    "survival": true,
+    "vx": true,
+    "yaw": true,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "left": {
+    "survival": true,
+    "vx": true,
+    "yaw": false,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "right": {
+    "survival": true,
+    "vx": true,
+    "yaw": false,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "forward_left": {
+    "survival": true,
+    "vx": true,
+    "yaw": true,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "forward_right": {
+    "survival": true,
+    "vx": true,
+    "yaw": true,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": true
+  },
+  "backward_left": {
+    "survival": true,
+    "vx": true,
+    "yaw": false,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": false
+  },
+  "backward_right": {
+    "survival": true,
+    "vx": true,
+    "yaw": false,
+    "acceleration": true,
+    "torque": true,
+    "joint_limits": true,
+    "slip": true,
+    "rocking": true,
+    "vx_std": false
+  },
+  "transitions": {
+    "survival": false,
+    "joint_limits": true,
+    "vx_tracking": false,
+    "yaw_tracking": false
+  }
+}

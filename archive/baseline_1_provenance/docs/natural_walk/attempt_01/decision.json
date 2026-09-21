@@ -1,0 +1,6 @@
+{
+  "decision": "REJECT",
+  "visual": "Matched close-up sequence is not convincingly more natural; rear-left continues to skim/drag.",
+  "metrics": "survival 100%; joint acceleration 11.08 essentially baseline; FL knee saturation 18.96% vs 15.97%; no meaningful naturalness gain",
+  "next_defect": "back-left clearance/planting; avoid lifting front feet further"
+}

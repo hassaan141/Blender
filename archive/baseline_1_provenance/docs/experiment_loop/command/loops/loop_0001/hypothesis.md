@@ -1,0 +1,1 @@
+A shared heading-relative interface with explicit reference targets preserves the three teachers; staged mixed-command PPO plus teacher replay can learn the missing backward-turn and start/stop corrections without forgetting the established gaits.

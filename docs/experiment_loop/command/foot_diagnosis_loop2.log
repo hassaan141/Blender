@@ -1,0 +1,74 @@
+{
+  "left": {
+    "fl": {
+      "clearance_p95_mm": 22.48948479209822,
+      "duty_below_3mm": 0.7139830508474576
+    },
+    "fr": {
+      "clearance_p95_mm": 19.657158843097154,
+      "duty_below_3mm": 0.625
+    },
+    "bl": {
+      "clearance_p95_mm": 2.5710765405172507,
+      "duty_below_3mm": 0.961864406779661
+    },
+    "br": {
+      "clearance_p95_mm": 14.7909621807208,
+      "duty_below_3mm": 0.5614406779661016
+    }
+  },
+  "right": {
+    "fl": {
+      "clearance_p95_mm": 35.27068826808244,
+      "duty_below_3mm": 0.5233050847457628
+    },
+    "fr": {
+      "clearance_p95_mm": 24.26507262191026,
+      "duty_below_3mm": 0.6588983050847458
+    },
+    "bl": {
+      "clearance_p95_mm": 2.258061324679244,
+      "duty_below_3mm": 0.9661016949152542
+    },
+    "br": {
+      "clearance_p95_mm": 14.195709313515673,
+      "duty_below_3mm": 0.673728813559322
+    }
+  },
+  "backward_left": {
+    "fl": {
+      "clearance_p95_mm": 21.95000605675399,
+      "duty_below_3mm": 0.7288135593220338
+    },
+    "fr": {
+      "clearance_p95_mm": 24.14997197208344,
+      "duty_below_3mm": 0.559322033898305
+    },
+    "bl": {
+      "clearance_p95_mm": 13.16003579697775,
+      "duty_below_3mm": 0.6716101694915254
+    },
+    "br": {
+      "clearance_p95_mm": 17.348419100828085,
+      "duty_below_3mm": 0.5741525423728814
+    }
+  },
+  "backward_right": {
+    "fl": {
+      "clearance_p95_mm": 25.588137384156934,
+      "duty_below_3mm": 0.5677966101694916
+    },
+    "fr": {
+      "clearance_p95_mm": 33.20844624075776,
+      "duty_below_3mm": 0.6016949152542372
+    },
+    "bl": {
+      "clearance_p95_mm": 7.5274318519886645,
+      "duty_below_3mm": 0.7838983050847458
+    },
+    "br": {
+      "clearance_p95_mm": 13.097884447750317,
+      "duty_below_3mm": 0.5847457627118644
+    }
+  }
+}

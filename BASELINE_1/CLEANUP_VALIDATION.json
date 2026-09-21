@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "archive": "archive/baseline_1_provenance",
+  "archive_manifest_files": 3975,
+  "pre_move_entries": 4045,
+  "preserved_entries_verified": 3976,
+  "authorized_deleted_entries": 61,
+  "archive_symlinks_repaired": 8,
+  "broken_archive_symlinks": 0,
+  "active_documentation_broken_links": [],
+  "post_cleanup_runtime_smoke": "PASS",
+  "git_commit_created": false
+}

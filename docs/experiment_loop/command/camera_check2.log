@@ -1,0 +1,508 @@
+Loading user config located at: '/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260921_022700.log
+2026-09-21T06:27:00Z [213ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:00Z [213ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:00Z [285ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-21T06:27:00Z [298ms] [Warning] [carb.cudainterop.plugin] CUDA_VISIBLE_DEVICES environment variable is set.
+2026-09-21T06:27:00Z [298ms] [Warning] [carb.cudainterop.plugin] Note CUDA device enumeration and Omniverse device enumeration are different.
+2026-09-21T06:27:00Z [298ms] [Warning] [carb.cudainterop.plugin] Setting CUDA_VISIBLE_DEVICES can lead to undesired behavior or crashes.
+2026-09-21T06:27:00Z [545ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:00Z [545ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:00Z [633ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 2080 Ti
+2026-09-21T06:27:00Z [633ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+2026-09-21T06:27:00Z [634ms] [Warning] [gpu.foundation.plugin] Skipping NVIDIA GPU due CUDA being in bad state: NVIDIA GeForce RTX 2080 Ti
+2026-09-21T06:27:00Z [634ms] [Warning] [gpu.foundation.plugin] Please restart your system if CUDA is known to work in your system.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 535.32.01     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2080 Ti       |        |     | 11510   MB | 10de      | 0          |
+|     |                                  |        |     |            | 1e07      | 5a1fbe3a.. |
+|     |                                  |        |     |            | 19        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 6c6e36d2.. |
+|     |                                  |        |     |            | 68        |            |
+|=============================================================================================|
+| OS: 22.04.1 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.1, Kernel: 5.15.0-60-generic
+| Processor: Intel(R) Core(TM) i9-9920X CPU @ 3.50GHz
+| Cores: 12 | Logical Cores: 24
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 128497 | Free Memory: 103434
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 1873
+|---------------------------------------------------------------------------------------------|
+2026-09-21T06:27:01Z [1,258ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-21T06:27:01Z [1,265ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+2026-09-21T06:27:02Z [2,000ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,000ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,014ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,014ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,020ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,020ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,031ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,031ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,032ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,032ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,034ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-09-21T06:27:02Z [2,034ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-09-21T06:27:02Z [2,362ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+2026-09-21T06:27:03Z [3,233ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-21T06:27:03Z [3,267ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-21T06:27:04Z [4,347ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-09-21T06:27:04Z [4,597ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-09-21T06:27:04Z [4,597ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-09-21T06:27:04Z [4,597ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /pub0/muhammadf/IsaacLab/apps/isaaclab.python.headless.rendering.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-21_02-27-12.log[0m
+[36m======================================================================================[0m
+
+[33m02:27:12 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+2026-09-21T06:27:09Z [9,679ms] [Warning] [omni.fabric.plugin] Warning: attribute viewPickingId not found for bucket id 7
+
+2026-09-21T06:27:14Z [14,239ms] [Warning] [omni.fabric.plugin] getAttributeCount called on non-existent path /World/envs/env_9/Robot/origin/tail_yaw/visuals/tail_yaw
+2026-09-21T06:27:14Z [14,240ms] [Warning] [omni.fabric.plugin] getTypes called on non-existent path /World/envs/env_9/Robot/origin/tail_yaw/visuals/tail_yaw
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.041666666666666664
+	Environment step-size : 0.041666666666666664
+[INFO]: Time taken for scene creation : 0.868145 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 10
+	Environment spacing   : 5.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 2.432793 seconds
+[INFO]: Completed setting up the environment...
+Motion loaded (/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/reference.npz): duration: 1.125 sec, frames: 136
+Motion loaded (/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/reference.npz): duration: 1.125 sec, frames: 136
+[33m02:27:16 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-21T06:27:16Z [16,511ms] [Warning] [omni.syntheticdata.plugin] OgnSdPostRenderVarToHost : rendervar copy from texture directly to host buffer is counter-performant. Please use copy from texture to device buffer first.
+eval seconds 0.0 survivors [True, True, True, True, True, True, True, True, True, True]
+[33m02:27:21 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+2026-09-21T06:27:23Z [23,228ms] [Warning] [carb] Client gpu.foundation.plugin has acquired [gpu::unstable::IMemoryBudgetManagerFactory v0.1] 100 times. Consider accessing this interface with carb::getCachedInterface() (Performance warning)
+[33m02:27:26 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m02:27:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m02:27:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m02:27:43 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m02:27:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+{
+  "stand": {
+    "command": [
+      0.0,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.0036872783675789833,
+    "vx_std": 0.003215501317754388,
+    "yaw_mean": -0.014885767363011837,
+    "yaw_std": 0.019663045182824135,
+    "roll_rms_deg": 6.342851330750933,
+    "pitch_rms_deg": 9.613597124725082,
+    "height_mean": 0.1698014885187149,
+    "height_std": 0.0003450037620496005,
+    "joint_acceleration_rms": 1.1136642694473267,
+    "action_rate_rms": 0.14074178040027618,
+    "torque_saturation_max_pct": 0.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "slip_mean": 0.0022571913432329893,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward": {
+    "command": [
+      0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.18356649577617645,
+    "vx_std": 0.04440364986658096,
+    "yaw_mean": -0.01168206799775362,
+    "yaw_std": 0.39099574089050293,
+    "roll_rms_deg": 5.024674766696778,
+    "pitch_rms_deg": 1.9700363715052438,
+    "height_mean": 0.1719670444726944,
+    "height_std": 0.0015252558514475822,
+    "joint_acceleration_rms": 11.171891212463379,
+    "action_rate_rms": 1.4115267992019653,
+    "torque_saturation_max_pct": 20.833333333333336,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      16.666666666666664,
+      20.833333333333336,
+      0.0,
+      18.75,
+      12.5,
+      0.0,
+      6.25,
+      2.083333333333333,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.4583333333333333,
+      0.4791666666666667,
+      0.8333333333333334,
+      0.7291666666666666
+    ],
+    "slip_mean": 0.14738795161247253,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward": {
+    "command": [
+      -0.2,
+      0.0
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": -0.1779942363500595,
+    "vx_std": 0.07321358472108841,
+    "yaw_mean": 0.008776095695793629,
+    "yaw_std": 0.3124094009399414,
+    "roll_rms_deg": 4.42183501347546,
+    "pitch_rms_deg": 1.054217286833254,
+    "height_mean": 0.17059044539928436,
+    "height_std": 0.0013042408972978592,
+    "joint_acceleration_rms": 7.2514729499816895,
+    "action_rate_rms": 1.0412282943725586,
+    "torque_saturation_max_pct": 8.333333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.166666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      8.333333333333332
+    ],
+    "contact_duty": [
+      0.5416666666666666,
+      0.6041666666666666,
+      0.6666666666666666,
+      0.6666666666666666
+    ],
+    "slip_mean": 0.0945434644818306,
+    "joint_limit_violation_rad": 0.0
+  },
+  "left": {
+    "command": [
+      0.0,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.12415293604135513,
+    "vx_std": 0.06339229643344879,
+    "yaw_mean": 0.36101675033569336,
+    "yaw_std": 0.1250351071357727,
+    "roll_rms_deg": 9.652059627488716,
+    "pitch_rms_deg": 1.8322108380172026,
+    "height_mean": 0.1692819744348526,
+    "height_std": 0.001445177593268454,
+    "joint_acceleration_rms": 8.834233283996582,
+    "action_rate_rms": 1.598223328590393,
+    "torque_saturation_max_pct": 6.25,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.083333333333333,
+      6.25,
+      0.0,
+      6.25,
+      4.166666666666666,
+      0.0,
+      2.083333333333333,
+      0.0,
+      0.0,
+      2.083333333333333,
+      4.166666666666666
+    ],
+    "contact_duty": [
+      0.6666666666666666,
+      0.5,
+      0.9166666666666666,
+      0.5
+    ],
+    "slip_mean": 0.1393408179283142,
+    "joint_limit_violation_rad": 0.0
+  },
+  "right": {
+    "command": [
+      0.0,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.10910522937774658,
+    "vx_std": 0.06520484387874603,
+    "yaw_mean": -0.3113988935947418,
+    "yaw_std": 0.178699791431427,
+    "roll_rms_deg": 5.732168385928325,
+    "pitch_rms_deg": 2.1372206193669383,
+    "height_mean": 0.16994939744472504,
+    "height_std": 0.001734939869493246,
+    "joint_acceleration_rms": 9.608914375305176,
+    "action_rate_rms": 1.567407250404358,
+    "torque_saturation_max_pct": 12.5,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      12.5,
+      0.0,
+      0.0,
+      4.166666666666666,
+      2.083333333333333,
+      0.0,
+      8.333333333333332,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.5,
+      0.6041666666666666,
+      0.8333333333333334,
+      0.5833333333333334
+    ],
+    "slip_mean": 0.10700970888137817,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_left": {
+    "command": [
+      0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.1456083208322525,
+    "vx_std": 0.06661715358495712,
+    "yaw_mean": 0.37449607253074646,
+    "yaw_std": 0.11452339589595795,
+    "roll_rms_deg": 8.312876389755363,
+    "pitch_rms_deg": 1.6056399095912455,
+    "height_mean": 0.17062878608703613,
+    "height_std": 0.001493865973316133,
+    "joint_acceleration_rms": 10.594534873962402,
+    "action_rate_rms": 1.66352379322052,
+    "torque_saturation_max_pct": 12.5,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      4.166666666666666,
+      12.5,
+      0.0,
+      6.25,
+      6.25,
+      0.0,
+      4.166666666666666,
+      4.166666666666666,
+      0.0,
+      4.166666666666666,
+      6.25
+    ],
+    "contact_duty": [
+      0.6458333333333334,
+      0.4583333333333333,
+      0.8333333333333334,
+      0.5208333333333334
+    ],
+    "slip_mean": 0.1292785257101059,
+    "joint_limit_violation_rad": 0.0
+  },
+  "forward_right": {
+    "command": [
+      0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.13539241254329681,
+    "vx_std": 0.05345277488231659,
+    "yaw_mean": -0.388370543718338,
+    "yaw_std": 0.11659082025289536,
+    "roll_rms_deg": 5.234049946835287,
+    "pitch_rms_deg": 1.913279847379965,
+    "height_mean": 0.17147676646709442,
+    "height_std": 0.001539535471238196,
+    "joint_acceleration_rms": 9.967860221862793,
+    "action_rate_rms": 1.5157198905944824,
+    "torque_saturation_max_pct": 8.333333333333332,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      6.25,
+      8.333333333333332,
+      0.0,
+      6.25,
+      4.166666666666666,
+      0.0,
+      6.25,
+      2.083333333333333,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      0.5208333333333334,
+      0.5416666666666666,
+      0.8333333333333334,
+      0.6041666666666666
+    ],
+    "slip_mean": 0.11756423115730286,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_left": {
+    "command": [
+      -0.15,
+      0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.014704275876283646,
+    "vx_std": 0.19230282306671143,
+    "yaw_mean": -0.11312732100486755,
+    "yaw_std": 0.42543458938598633,
+    "roll_rms_deg": 10.383759010251964,
+    "pitch_rms_deg": 4.964845724662051,
+    "height_mean": 0.16839055716991425,
+    "height_std": 0.004651629365980625,
+    "joint_acceleration_rms": 10.421273231506348,
+    "action_rate_rms": 1.378170371055603,
+    "torque_saturation_max_pct": 31.25,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.083333333333333,
+      8.333333333333332,
+      0.0,
+      2.083333333333333,
+      0.0,
+      0.0,
+      8.333333333333332,
+      31.25,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.8958333333333334,
+      0.3958333333333333,
+      0.7708333333333334,
+      0.7083333333333334
+    ],
+    "slip_mean": 0.1475360244512558,
+    "joint_limit_violation_rad": 0.0
+  },
+  "backward_right": {
+    "command": [
+      -0.15,
+      -0.4
+    ],
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.014250901527702808,
+    "vx_std": 0.154018372297287,
+    "yaw_mean": 0.019673997536301613,
+    "yaw_std": 0.3682418167591095,
+    "roll_rms_deg": 9.433500404237478,
+    "pitch_rms_deg": 3.4876134781887513,
+    "height_mean": 0.17232418060302734,
+    "height_std": 0.004388225730508566,
+    "joint_acceleration_rms": 7.143730640411377,
+    "action_rate_rms": 0.973789393901825,
+    "torque_saturation_max_pct": 25.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      2.083333333333333,
+      4.166666666666666,
+      0.0,
+      0.0,
+      2.083333333333333,
+      0.0,
+      0.0,
+      25.0,
+      0.0,
+      0.0,
+      2.083333333333333
+    ],
+    "contact_duty": [
+      0.9166666666666666,
+      0.3333333333333333,
+      0.9166666666666666,
+      0.5416666666666666
+    ],
+    "slip_mean": 0.10718873143196106,
+    "joint_limit_violation_rad": 0.0
+  },
+  "transitions": {
+    "command": "5-second command transitions",
+    "survival": true,
+    "valid_seconds": 2.0,
+    "vx_mean": 0.004022036213427782,
+    "vx_std": 0.0032203218434005976,
+    "yaw_mean": -0.012452203780412674,
+    "yaw_std": 0.026877695694565773,
+    "roll_rms_deg": 6.605365382632142,
+    "pitch_rms_deg": 9.607886232805305,
+    "height_mean": 0.1699056178331375,
+    "height_std": 0.00048686779337003827,
+    "joint_acceleration_rms": 0.8335552215576172,
+    "action_rate_rms": 0.08155415207147598,
+    "torque_saturation_max_pct": 0.0,
+    "torque_saturation_per_joint_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_duty": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "slip_mean": 0.0019261203706264496,
+    "joint_limit_violation_rad": 0.0
+  }
+}

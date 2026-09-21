@@ -1,0 +1,8 @@
+{
+  "loop": 2,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0001/policy.pt",
+  "hypothesis": "Correct the command-to-reference geometry: cancel common fore-aft stride for pivots, keep backward turns at the retained backward cadence, and solve conservative yaw deformation on the backward posture itself. This should restore backward stepping and near-zero translation without changing rewards or actuator physics. Loop 1 is an unpromoted learning seed, not an approved champion.",
+  "iterations": 200,
+  "yaw_weight": 0.3,
+  "curriculum_steps": 1
+}

@@ -1,0 +1,25 @@
+{
+  "parent_run": "run_04",
+  "parent_checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_04/policy.pt",
+  "hypothesis": "Add a small vertical-velocity cost to the retained height-stabilized gait, targeting remaining fast body motion while preserving the same reference and cadence.",
+  "changes": {
+    "vertical_velocity_weight": {
+      "before": 0.0,
+      "after": 0.01
+    }
+  },
+  "train_overrides": [
+    "env.vx_range=[0.2,0.3]",
+    "env.stand_prob=0.0"
+  ],
+  "training": {
+    "iterations": 100,
+    "num_envs": 512,
+    "seed": 42
+  },
+  "status": "complete",
+  "trained_checkpoint": "/pub0/muhammadf/Blender/logs/skrl/walk_quality/run_05/2026-09-16_20-21-46_ppo_torch/checkpoints/agent_2400.pt",
+  "decision": "KEEP",
+  "reason": "physical gait quality improved; speed/cadence and baseline quality guards passed",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt"
+}

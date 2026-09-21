@@ -1,0 +1,13 @@
+{
+  "diagnosis": "learned zero-command residual destabilizes STAND_SOLVED",
+  "evidence": {
+    "walking_reset_policy_survived_5s": false,
+    "walking_reset_zero_residual_survived_5s": true,
+    "stand_reset_policy_survived_5s": false,
+    "stand_reset_zero_residual_survived_5s": true,
+    "zero_residual_final_height_m": [0.1794446, 0.1794870],
+    "zero_residual_final_tilt_deg": [0.3810, 0.4302],
+    "zero_residual_final_joint_rmse_rad": [0.00237, 0.00336]
+  },
+  "next_targeted_fix": "smoothly scale residual authority to zero only as both physical vx and yaw commands settle to zero"
+}

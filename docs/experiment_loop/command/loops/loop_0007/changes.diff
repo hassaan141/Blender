@@ -1,0 +1,10 @@
+--- /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0006/source/env.py
++++ /pub0/muhammadf/Blender/docs/experiment_loop/command/loops/loop_0007/source/env.py
+@@ -66,6 +66,7 @@
+    out.append(base*(1-w*(1-b))+results['turning'][j]*w*(1-b))
+   t=torch.as_tensor(times,device=self.device,dtype=torch.float32)*self._ref_fps;lo=t.long().clamp(0,self._n_ref_frames-2);hi=lo+1;tw=t-lo
+   signed_yaw=self.commands[:,1]*torch.where(drive<0,-.5,1.)
++  signed_yaw=signed_yaw*(1+.5*pivot)
+   y=((signed_yaw+.6)/.2).clamp(0,6);yl=y.long().clamp(0,5);yh=yl+1;yw=y-yl
+   for key,j in [('qdelta',0),('vdelta',1),('tipdelta',6)]:
+    bank=self.bank[key];shape=(-1,)+(1,)*(bank.ndim-2);w=tw.reshape(shape);wy=yw.reshape(shape)

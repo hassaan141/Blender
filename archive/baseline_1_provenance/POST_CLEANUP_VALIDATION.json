@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "pre_move_entries": 4045,
+  "preserved_entries_verified": 3976,
+  "authorized_deleted_entries": 61,
+  "archive_symlinks_repaired": 8,
+  "content_mismatches": [],
+  "broken_archive_symlinks": 0,
+  "baseline_manifest_valid_before_final_report": true,
+  "active_documentation_broken_links": [],
+  "post_cleanup_runtime_smoke": "PASS exit 0; BASELINE_1 local references loaded",
+  "root_docs_entries": [
+    "BingoMocapPipelineSpec.md",
+    "Bingo_Robot_Spec_for_Animation.md",
+    "Blender_Animation_to_Robot_Motion_Guide.pdf",
+    "README.md"
+  ],
+  "deleted_record": {
+    "authorization": "CONFIRM CONSOLIDATION AND CLEANUP",
+    "duplicate_bundle_files": 57,
+    "duplicate_bundle_bytes": 44232257,
+    "cache_files": 3,
+    "cache_bytes": 109297,
+    "empty_lock": "archive/baseline_1_provenance/docs/experiment_loop/runner.lock",
+    "empty_lock_size": 0,
+    "deleted_categories": [
+      "superseded command/best",
+      "duplicated stand_fix/best copied to root BASELINE_1",
+      "documentation __pycache__ and *.pyc",
+      "empty runner.lock"
+    ]
+  }
+}

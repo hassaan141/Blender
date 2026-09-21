@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "goal_met": false,
+  "visual_stand_pass": false,
+  "locomotion_preserved": true,
+  "reason": "Correct target alone is insufficient: stand falls before the 1-second measurement window and repeatedly tumbles/resets in video. Moving commands remain identical to loop 6. Four-arm probe proves STAND_SOLVED with zero residual survives from both walking and stand reset, while policy residual arms fail; the learned zero-command residual conflicts with the corrected target."
+}

@@ -1,0 +1,26 @@
+{
+  "passing_cases": 4,
+  "failed": {
+    "stand": [
+      "torque",
+      "rocking"
+    ],
+    "left": [
+      "yaw",
+      "rocking"
+    ],
+    "right": [
+      "yaw"
+    ],
+    "backward_left": [
+      "yaw"
+    ],
+    "backward_right": [
+      "yaw",
+      "vx_std"
+    ],
+    "transitions": [
+      "yaw_tracking"
+    ]
+  }
+}

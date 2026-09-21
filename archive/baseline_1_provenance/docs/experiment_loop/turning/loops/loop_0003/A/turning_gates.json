@@ -1,0 +1,7 @@
+{
+  "failures": [
+    "right saturation",
+    "left_max saturation",
+    "right_max saturation"
+  ]
+}

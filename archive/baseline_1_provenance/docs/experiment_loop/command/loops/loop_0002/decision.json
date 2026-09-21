@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "reason": "KEEP as experimental learning baseline only: all ten cases survive, pivot translation is near zero, backward turns now move backward, hard limits remain valid and saturation improves. Yaw undershoot, rocking and backward speed variation remain; NOT a final command policy and visual goal not passed.",
+  "visual_pass": false,
+  "goal_met": false,
+  "passing_cases": 5
+}

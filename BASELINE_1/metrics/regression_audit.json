@@ -1,0 +1,46 @@
+{
+  "held_moving_cases_exact_match_loop6": {
+    "forward": true,
+    "backward": true,
+    "left": true,
+    "right": true,
+    "forward_left": true,
+    "forward_right": true,
+    "backward_left": true,
+    "backward_right": true
+  },
+  "all_held_moving_exact": true,
+  "stand_gates": {
+    "survival": true,
+    "all_four_contact": true,
+    "height_0p175_to_0p185": true,
+    "roll_under_2deg": true,
+    "pitch_under_2deg": true,
+    "acceleration_under_1": true,
+    "action_rate_under_0p01": true,
+    "zero_velocity": true,
+    "no_torque_saturation": true,
+    "no_joint_limit": true
+  },
+  "transition_gates": {
+    "survival": true,
+    "acceleration_no_worse_than_loop6": true,
+    "saturation_no_worse_than_loop6": false,
+    "slip_no_worse_than_loop6": true,
+    "no_joint_limit": true
+  },
+  "base_transition": {
+    "survival": true,
+    "joint_acceleration_rms": 10.058839797973633,
+    "torque_saturation_max_pct": 5.720338983050848,
+    "slip_mean": 0.09025057405233383
+  },
+  "candidate_transition": {
+    "survival": true,
+    "joint_acceleration_rms": 8.780993461608887,
+    "torque_saturation_max_pct": 6.3559322033898304,
+    "slip_mean": 0.08861077576875687
+  },
+  "all_numeric_stand_gates": true,
+  "all_transition_gates": false
+}

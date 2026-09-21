@@ -1,0 +1,41 @@
+{
+  "stand_applied_joint_target": [
+    0.0,
+    -0.3,
+    0.6,
+    0.0,
+    0.3,
+    -0.6,
+    0.0,
+    -0.3,
+    0.6,
+    0.0,
+    -0.3,
+    -0.6
+  ],
+  "walking_reward_target_rms_difference_rad": 0.5709663209915137,
+  "maximum_difference_rad": 1.25720112323761,
+  "stand_tips_local_m": [
+    [
+      0.17885066130477442,
+      0.082709,
+      -0.15710143082273498
+    ],
+    [
+      0.17886884638710265,
+      -0.082711785396131,
+      -0.15709836288605744
+    ],
+    [
+      0.0011078736780448378,
+      0.08271178539613,
+      -0.15690655881090712
+    ],
+    [
+      0.0011461420212812434,
+      -0.082711785396131,
+      -0.15681567052573367
+    ]
+  ],
+  "diagnosis": "At zero commands, phase freezes at the sampled starting phase. Feedforward uses asset default stand pose, while pose/velocity/foot/contact rewards still target that walking phase."
+}

@@ -1,0 +1,25 @@
+{
+  "samples": 240,
+  "duration_s": 10,
+  "prefix_max_abs_difference": {
+    "vx": 0.2791499197483063,
+    "q_act": 0.06742596626281738,
+    "roll_deg": 6.090023040771484,
+    "phase": 0.0
+  },
+  "exact_match": false,
+  "source": "loops/loop_0005/A/left",
+  "replay": "replay_check/evaluation",
+  "no_video_note": "Different evaluator reset/render initialization path; aggregate behavior matches, trajectories differ.",
+  "matching_video_mode": {
+    "samples": 240,
+    "prefix_max_abs_difference": {
+      "vx": 0.0,
+      "q_act": 0.0,
+      "roll_deg": 0.0,
+      "phase": 0.0
+    },
+    "exact_match": true,
+    "path": "replay_video_check/evaluation"
+  }
+}

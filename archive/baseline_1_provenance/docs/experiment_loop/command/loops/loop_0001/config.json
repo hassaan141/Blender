@@ -1,0 +1,8 @@
+{
+  "loop": 1,
+  "checkpoint": "docs/experiment_loop/command/distilled.pt",
+  "hypothesis": "A shared heading-relative interface with explicit reference targets preserves the three teachers; staged mixed-command PPO plus teacher replay can learn the missing backward-turn and start/stop corrections without forgetting the established gaits.",
+  "iterations": 400,
+  "yaw_weight": 0.3,
+  "curriculum_steps": 1920
+}

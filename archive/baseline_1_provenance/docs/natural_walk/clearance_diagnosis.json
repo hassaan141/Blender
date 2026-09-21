@@ -1,0 +1,62 @@
+{
+  "baseline": {
+    "reference": {
+      "swing_mean_mm": 4.198315378243457,
+      "swing_fraction_below_3mm": 0.2713178294573643
+    },
+    "residual_target": {
+      "swing_mean_mm": 1.4791789519094485,
+      "swing_fraction_below_3mm": 0.7674418604651163
+    },
+    "actual_fk": {
+      "swing_mean_mm": 1.5843420411373847,
+      "swing_fraction_below_3mm": 0.7829457364341085
+    },
+    "fk_vs_recorded_collision_height_max_error_mm": 8.13635802621171e-05
+  },
+  "attempt_01": {
+    "reference": {
+      "swing_mean_mm": 5.2545998157431795,
+      "swing_fraction_below_3mm": 0.2713178294573643
+    },
+    "residual_target": {
+      "swing_mean_mm": 1.535910765514373,
+      "swing_fraction_below_3mm": 0.7054263565891473
+    },
+    "actual_fk": {
+      "swing_mean_mm": 1.7307285087452242,
+      "swing_fraction_below_3mm": 0.7170542635658915
+    },
+    "fk_vs_recorded_collision_height_max_error_mm": 8.474299550975672e-05
+  },
+  "ref02_preflight": {
+    "reference": {
+      "swing_mean_mm": 2.7976585339311195,
+      "swing_fraction_below_3mm": 0.5
+    },
+    "residual_target": {
+      "swing_mean_mm": 1.3716627626363211,
+      "swing_fraction_below_3mm": 0.8095238095238095
+    },
+    "actual_fk": {
+      "swing_mean_mm": 1.2614600127412479,
+      "swing_fraction_below_3mm": 0.8095238095238095
+    },
+    "fk_vs_recorded_collision_height_max_error_mm": 5.698065687342879e-05
+  },
+  "attempt_02": {
+    "reference": {
+      "swing_mean_mm": 3.179976376702116,
+      "swing_fraction_below_3mm": 0.5279503105590062
+    },
+    "residual_target": {
+      "swing_mean_mm": 1.7809489445148161,
+      "swing_fraction_below_3mm": 0.7204968944099379
+    },
+    "actual_fk": {
+      "swing_mean_mm": 1.7249280194586787,
+      "swing_fraction_below_3mm": 0.722567287784679
+    },
+    "fk_vs_recorded_collision_height_max_error_mm": 8.146076321824403e-05
+  }
+}

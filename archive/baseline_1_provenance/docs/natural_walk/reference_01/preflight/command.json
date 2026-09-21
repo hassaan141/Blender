@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/bingo_rl/natural_walk/evaluate.py",
+    "--headless",
+    "--diagnostics",
+    "--checkpoint",
+    "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+    "--out_dir",
+    "/pub0/muhammadf/Blender/docs/natural_walk/reference_01/preflight",
+    "--duration_s",
+    "20.0",
+    "--kit_args",
+    "--/rtx/verifyDriverVersion/enabled=false --no-window"
+  ],
+  "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_01/reference.npz",
+  "pd_only": false
+}

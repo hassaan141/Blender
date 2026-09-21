@@ -1,0 +1,9 @@
+{
+  "loop": 4,
+  "checkpoint": "docs/experiment_loop/command/loops/loop_0003/policy.pt",
+  "hypothesis": "The rear-left foot anchors pivots (95\u201397% contact duty). Add 8 mm smooth swing clearance only to the pivot rear-left reference, preserving phase, other feet, backward bank and rewards. The six-second reference preflight survives all cases without hard-limit violations; test whether PPO converts clearance into cleaner pivot stepping and yaw.",
+  "references": "docs/experiment_loop/command/reference_04",
+  "iterations": 200,
+  "yaw_weight": 0.6,
+  "curriculum_steps": 1
+}

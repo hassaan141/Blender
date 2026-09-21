@@ -1,0 +1,7 @@
+{
+  "source_files_changed": [],
+  "config_fields": [
+    "lateral_scale"
+  ],
+  "diff": "changes.diff"
+}

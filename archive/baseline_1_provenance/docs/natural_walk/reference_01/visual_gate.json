@@ -1,0 +1,10 @@
+{
+  "allow_training": true,
+  "kinematic_review": "PASS: original gait/posture retained, small swing clearance edit; no exaggerated lift or new lunge in 8-second preview. This is eligibility to train, not a claim of improved naturalness.",
+  "physics_review": "PASS for continued testing: canonical controller survives 20 seconds at vx=0.1934; close-up sequence resembles baseline with no new obvious failure. Acceleration 11.59 vs canonical 11.00; PPO must recover this cost.",
+  "review_frames": [
+    "kinematic_sheet.jpg",
+    "preflight/sheet.jpg"
+  ],
+  "reference_hypothesis": "modest extra clearance and lightly smoothed task-space path reduce shuffling without changing cadence"
+}

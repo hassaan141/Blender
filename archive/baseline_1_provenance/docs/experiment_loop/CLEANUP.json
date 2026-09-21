@@ -1,0 +1,18 @@
+{
+  "removed_paths": [
+    "docs/experiment_loop/lateral",
+    "rl/bingo_rl/experiment_loop/lateral",
+    "rl/bingo_rl/experiment_loop/lateral_adapter.py",
+    "HANDOFF_LATERAL_FOR_CODEX.md"
+  ],
+  "file_count": 172,
+  "bytes_removed": 127750455,
+  "reused_pattern_kept": "gym.make/gym.spec lazy registration in turning/worker.py; no imports of lateral implementation.",
+  "sealed_history": "Forward/backward/turning runs and exact source snapshots unchanged.",
+  "guard_migration": {
+    "old_sha256": "af13ff7a5ab609e7987cb63d08f0de776df52fef17d93082422baa524e2304e8",
+    "authorized_removed_entries": 163,
+    "note": "Only intentionally deleted lateral paths pruned from live guard; historical manifests untouched.",
+    "new_sha256": "3d262e5a78697507b7225d3abb9459fc4086c88482474aa2789f5dae9469075f"
+  }
+}

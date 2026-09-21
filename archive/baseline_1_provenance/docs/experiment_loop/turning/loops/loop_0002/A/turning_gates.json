@@ -1,0 +1,9 @@
+{
+  "failures": [
+    "left forward smoothness",
+    "right forward smoothness",
+    "left_max forward smoothness",
+    "right_max forward smoothness",
+    "straight forward smoothness"
+  ]
+}

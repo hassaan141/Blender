@@ -1,1 +1,1 @@
-../archive/quality_history/PROTOCOL.md
+../../../archive/baseline_1_provenance/archive/walk_ref/quality_history/PROTOCOL.md

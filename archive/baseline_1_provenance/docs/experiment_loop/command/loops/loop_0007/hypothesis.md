@@ -1,0 +1,1 @@
+Pivot yaw undertracks with near-zero translation. Increase pivot-only yaw-bank geometry input by 1.5, interpolating/clamping within the existing validated +/-0.6 reference bank. Preserve cadence, moving-turn geometry, clean stand replay and rewards. Short preflight survives all commands and improves pivot yaw to +0.256/-0.166; test full stability, rocking and planting after PPO.

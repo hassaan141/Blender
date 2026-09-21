@@ -1,0 +1,19 @@
+{
+  "failures": [
+    "left survival",
+    "left joint limits",
+    "left forward smoothness",
+    "left yaw tracking",
+    "right forward smoothness",
+    "right yaw tracking",
+    "right yaw oscillation",
+    "left_max survival",
+    "left_max forward smoothness",
+    "left_max yaw tracking",
+    "right_max saturation",
+    "right_max forward smoothness",
+    "right_max yaw tracking",
+    "right_max yaw oscillation",
+    "straight forward smoothness"
+  ]
+}
