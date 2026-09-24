@@ -89,8 +89,9 @@ export async function buildRenderRig(kin) {
       geo.dispose();
       welded.dispose();
       mm.dispose();
-      const mesh = new THREE.Mesh(
-        shaded, b.name === "head_roll" || b.name.includes("ear") ? MAT_ACCENT : MAT);
+      // One material for the whole robot. The head and ears used to take MAT_ACCENT,
+      // which read as a different-coloured head rather than a deliberate accent.
+      const mesh = new THREE.Mesh(shaded, MAT);
       mesh.castShadow = true;
       mesh.receiveShadow = true;
       const mp = b.mesh_pos || [0, 0, 0];

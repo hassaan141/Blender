@@ -10,14 +10,18 @@
 // this, and Microduck's loop carries the same "fell behind: don't spiral" guard,
 // without which a slow tab death-spirals trying to catch up.
 
+// Ease a gesture in at this joint rate (rad/s) from whatever pose we were in.
+const GESTURE_BLEND_RATE = 2.0;
+
 import {
   CTRL_DT, DECIMATION, JOINT_NAMES, LEG_JOINTS, EXPR_JOINTS, NUM_JOINTS,
-  DEFAULT_POSE, OBS_SIZE, ACTION_SIZE, STAND_BASE_HEIGHT,
+  DEFAULT_POSE, OBS_SIZE, ACTION_SIZE, STAND_BASE_HEIGHT, EXPR_OBS_TRAINING_MEAN,
 } from "../constants.js";
 import {createBingoPhysics, worldToBase, tiltDeg} from "../physics/mujoco.js";
 import {fetchManifest, loadPolicy, PolicyRefused} from "../policies/loader.js";
 import {ExpressionController} from "../controllers/expression.js";
 import {SkillManager, State} from "../skills/manager.js";
+import {loadCommandReferences, buildCommandObs, CommandState} from "./command_runtime.js";
 
 const LEG_IDX = LEG_JOINTS.map((n) => JOINT_NAMES.indexOf(n));
 const EXPR_IDX = EXPR_JOINTS.map((n) => JOINT_NAMES.indexOf(n));
@@ -31,8 +35,10 @@ export class BingoRuntime {
     this.expr = new ExpressionController();
     this.skills = new SkillManager();
     this.obs = new Float32Array(OBS_SIZE);
+    this.lastObservation = new Float32Array(OBS_SIZE);
     this.lastAction = new Float32Array(ACTION_SIZE);
-    this.cmd = [0, 0, 0];
+    this.filteredResidual = new Float32Array(ACTION_SIZE);
+    this.cmd = [0, 0]; this.cmdTarget = [0, 0]; this.phase = 0; this.refs = null;
     this.running = false;
     this.ctrlHz = 0;
     this.physHz = 0;
@@ -47,6 +53,8 @@ export class BingoRuntime {
     try {
       this.manifest = await fetchManifest();
       this.policy = await loadPolicy(this.manifest);
+      this.refs = await loadCommandReferences();
+      this.commandState = new CommandState(this.refs);
       if (!this.policy) {
         this.policyError = this.manifest.status_detail
           || "the manifest declares no policies";
@@ -62,13 +70,15 @@ export class BingoRuntime {
 
   get hasPolicy() { return this.policy !== null; }
 
-  setCommand(vx, vy, wz) { this.cmd[0] = vx; this.cmd[1] = vy; this.cmd[2] = wz; }
+  setCommand(vx, yaw) { this.cmdTarget[0] = Math.max(-.2, Math.min(.3, vx)); this.cmdTarget[1] = Math.max(-.6, Math.min(.6, yaw)); }
 
   reset() {
     this.sim.reset();
     this.skills.reset();
     this.lastAction.fill(0);
+    this.filteredResidual.fill(0); this.phase = 0; this.cmd=[0,0]; this.cmdTarget=[0,0];
     this.expr.t = 0;
+    if (this.refs) this.commandState = new CommandState(this.refs);
   }
 
   push(strength = 0.6) {
@@ -78,41 +88,24 @@ export class BingoRuntime {
 
   // ------------------------------------------------------------- observation
   /**
-   * Build the 66-float observation in EXACTLY the training layout
-   * (docs/locomotion/TASK1_DESIGN.md). Order and content must match the env or the
+   * Build the 95-float observation in EXACTLY the training layout
+   * (BASELINE_1/common.py). Order and content must match the env or the
    * policy is being fed noise that happens to be the right length.
    */
   buildObs() {
-    const {data, qposAdr, dofAdr} = this.sim;
-    const o = this.obs;
-    const q = this.sim.baseQuat();
-    let i = 0;
-
-    // base linear + angular velocity, in the BODY frame (qvel[0..5] is world for a
-    // free joint, so it has to be rotated)
-    const lin = worldToBase(q, [data.qvel[0], data.qvel[1], data.qvel[2]]);
-    const ang = worldToBase(q, [data.qvel[3], data.qvel[4], data.qvel[5]]);
-    o[i++] = lin[0]; o[i++] = lin[1]; o[i++] = lin[2];
-    o[i++] = ang[0]; o[i++] = ang[1]; o[i++] = ang[2];
-
-    const g = worldToBase(q, [0, 0, -1]);
-    o[i++] = g[0]; o[i++] = g[1]; o[i++] = g[2];
-
-    o[i++] = this.cmd[0]; o[i++] = this.cmd[1]; o[i++] = this.cmd[2];
-
-    // ALL 21 joints, relative to the stance pose
-    for (let j = 0; j < NUM_JOINTS; j++) {
-      o[i++] = data.qpos[qposAdr[JOINT_NAMES[j]]] - DEFAULT_POSE[j];
+    const proprio = buildCommandObs(this.sim,this.cmd,this.phase,this.nextFeedforward(),this.filteredResidual).slice(0,67);
+    const obs = this.commandState.observation(proprio);
+    // Expressive joints enter the observation at their training values; see
+    // EXPR_OBS_TRAINING_MEAN. The live values would saturate the policy's normalizer.
+    for (let k = 0; k < 9; k++) {
+      obs[12 + k] = EXPR_OBS_TRAINING_MEAN[k];
+      obs[33 + k] = EXPR_OBS_TRAINING_MEAN[9 + k];
     }
-    for (let j = 0; j < NUM_JOINTS; j++) {
-      o[i++] = data.qvel[dofAdr[JOINT_NAMES[j]]];
-    }
-    // previous LEG actions only
-    for (let j = 0; j < ACTION_SIZE; j++) o[i++] = this.lastAction[j];
-
-    if (i !== OBS_SIZE) throw new Error(`observation built ${i} floats, expected ${OBS_SIZE}`);
-    return o;
+    this.lastObservation.set(obs);
+    return obs;
   }
+
+  nextFeedforward() { return this.commandState ? this.commandState.feedforward() : DEFAULT_POSE.slice(0,12); }
 
   // ------------------------------------------------------------- control step
   async controlStep() {
@@ -124,28 +117,77 @@ export class BingoRuntime {
       sim.setTarget(EXPR_JOINTS[k], exprTargets[k]);
     }
 
-    // 2. a running gesture overrides ALL 21 joints with its validated reference.
-    //    The root is never touched - the PD controllers track it under gravity and
+    // 2. a running gesture. Which channels it drives depends on the clip:
+    //    - expression-only clips (Yes/No/What) author ONLY head/tail/ears and leave
+    //      the 12 leg channels at exactly zero. Applying those zeros commands the
+    //      legs straight and topples the robot, so the legs are left to stand /
+    //      locomotion below.
+    //    - full-body clips drive all 21, eased in from the pose the gesture started
+    //      from (they can begin 2.1 rad away from the stand pose).
+    //    The root is never touched: the PD controllers track this under gravity and
     //    contact, exactly as Stage 4 does.
-    const frame = this.skills.motionFrame();
-    if (frame) {
-      for (let k = 0; k < NUM_JOINTS; k++) sim.setTarget(JOINT_NAMES[k], frame[k]);
-    } else if (this.policy && this.skills.state === State.WALK) {
-      // 3. legs from the policy. No policy -> the legs simply hold the stance; the
-      //    simulator never substitutes an animation for inference.
-      const act = await this.policy.run(this.buildObs());
-      this.lastAction.set(act);
-      const scale = this.policy.actionScale;
+    const g = this.skills.gestureFrame();
+    if (g) {
+      if (g.name !== this._gestureName) {      // new gesture: remember where we were
+        this._gestureName = g.name;
+        this._gestureFrom = JOINT_NAMES.map((n) => sim.getQ(n));
+        // Ease in at a bounded joint rate. A clip can start 2.1 rad away from the
+        // stand pose, and snapping there throws the robot; but a long blend would
+        // swallow a short clip, so cap it at half the clip.
+        // Only the channels the clip actually drives set the blend time. An
+        // expression-only clip leaves the legs alone, so their (large) distance to
+        // the clip's unused zero channels must not stretch the ease-in.
+        let d = 0;
+        for (let i = 0; i < NUM_JOINTS; i++) {
+          const isLeg = LEG_IDX.includes(i);
+          if (g.expressionOnly && isLeg) continue;
+          d = Math.max(d, Math.abs(g.frame[i] - this._gestureFrom[i]));
+        }
+        this._gestureBlendS = Math.min(Math.max(d / GESTURE_BLEND_RATE, 0.25),
+                                       Math.max(0.25, 0.5 * g.duration));
+      }
+      const blend = Math.max(0, Math.min(1, g.playhead / this._gestureBlendS));
+      // Blend the expressive channels in too. Some clips (No) begin ALREADY at an
+      // extreme - head_pitch -0.65 rad and tail_pitch 0.60 rad on frame 0 - so
+      // applying frame 0 directly snaps the head and tail over and the impulse
+      // flips the robot.
+      for (let k = 0; k < EXPR_JOINTS.length; k++) {
+        const gi = JOINT_NAMES.indexOf(EXPR_JOINTS[k]);
+        const a = this._gestureFrom ? this._gestureFrom[gi] : g.frame[gi];
+        sim.setTarget(EXPR_JOINTS[k], a + (g.frame[gi] - a) * blend);
+      }
+    } else {
+      this._gestureName = null;
+    }
+
+    if (g && !g.expressionOnly) {
+      const from = this._gestureFrom;
+      const b = Math.max(0, Math.min(1, g.playhead / this._gestureBlendS));
       for (let k = 0; k < ACTION_SIZE; k++) {
         const gi = LEG_IDX[k];
-        sim.setTarget(JOINT_NAMES[gi], DEFAULT_POSE[gi] + act[k] * scale[k]);
+        const a = from ? from[gi] : g.frame[gi];
+        sim.setTarget(JOINT_NAMES[gi], a + (g.frame[gi] - a) * b);
       }
+    } else if (this.policy &&
+               ([State.WALK, State.STAND].includes(this.skills.state) ||
+                (g && g.expressionOnly))) {
+      // An expression-only gesture does not touch the legs, so locomotion keeps
+      // running underneath it - the robot nods while the stand policy holds it up.
+      // 3. legs from the policy. No policy -> the legs simply hold the stance; the
+      // simulator never substitutes an animation for inference.
+      const act = await this.policy.run(this.buildObs());
+      this.lastAction.set(act);
+      const {qTarget} = this.commandState.advance(act,this.cmdTarget);
+      this.cmd = [...this.commandState.command];
+      this.phase = this.commandState.phase;
+      this.filteredResidual.set(this.commandState.filtered);
+      for (let k = 0; k < ACTION_SIZE; k++) sim.setTarget(JOINT_NAMES[LEG_IDX[k]],qTarget[k]);
     } else {
       for (let k = 0; k < ACTION_SIZE; k++) {
         const gi = LEG_IDX[k];
         sim.setTarget(JOINT_NAMES[gi], DEFAULT_POSE[gi]);
       }
-      this.lastAction.fill(0);
+      this.lastAction.fill(0); this.filteredResidual.fill(0);
     }
 
     // 4. physics
@@ -159,6 +201,7 @@ export class BingoRuntime {
     this.skills.update(CTRL_DT, m);
     this.stats = m;
     this._counters.ctrl++;
+
   }
 
   measure() {
@@ -248,6 +291,7 @@ export class BingoRuntime {
       activeSkill: this.skills.active?.name ?? null,
       lastRefusal: this.skills.lastRefusal,
       jointPos, jointTarget,
+      observation: Array.from(this.lastObservation),
     };
   }
 }

@@ -20,20 +20,19 @@ export function createController(target = window) {
 
   return {
     attachMouse(el) { el.addEventListener("mousemove", onMove); return () => el.removeEventListener("mousemove", onMove); },
-    /** {cmd:[vx,vy,yaw], look:[x,y], events:[...]} */
+    /** {cmd:[vx,yaw], look:[x,y], events:[...]} */
     sample() {
       const g = pad.poll();
-      let vx = 0, vy = 0, wz = 0;
-      if (kb.isDown("fwd")) vx += VEL_FWD;
-      if (kb.isDown("back")) vx += VEL_BACK;
-      if (kb.isDown("strafeL")) vy += VEL_LAT;
-      if (kb.isDown("strafeR")) vy -= VEL_LAT;
+      let vx = 0, wz = 0;
+      const forward = kb.isDown("fwd"), back = kb.isDown("back");
+      const yawLeft = kb.isDown("yawL"), yawRight = kb.isDown("yawR");
+      if (forward) vx += (yawLeft || yawRight) ? 0.15 : VEL_FWD;
+      if (back) vx += (yawLeft || yawRight) ? -0.15 : VEL_BACK;
       if (kb.isDown("yawL")) wz += VEL_YAW;
       if (kb.isDown("yawR")) wz -= VEL_YAW;
 
       if (g) {
         vx += g.moveX * (g.moveX > 0 ? VEL_FWD : -VEL_BACK);
-        vy += g.moveY * VEL_LAT;
         wz += g.yaw * VEL_YAW;
       }
       const events = kb.drain();
@@ -46,7 +45,6 @@ export function createController(target = window) {
       return {
         cmd: [
           Math.max(VEL_BACK, Math.min(VEL_FWD, vx)),
-          Math.max(-VEL_LAT, Math.min(VEL_LAT, vy)),
           Math.max(-VEL_YAW, Math.min(VEL_YAW, wz)),
         ],
         look: [g ? g.lookX : look.x, g ? g.lookY : look.y],

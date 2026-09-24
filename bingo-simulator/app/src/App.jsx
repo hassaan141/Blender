@@ -21,12 +21,16 @@ export default function App() {
   const setReady = useStore((s) => s.setReady);
   const setError = useStore((s) => s.setError);
   const toggleHud = useStore((s) => s.toggleHud);
+  const setSnapshot = useStore((s) => s.setSnapshot);
+  const started = useStore((s) => s.started);
+  const setStarted = useStore((s) => s.setStarted);
   const ctrlRef = useRef(null);
   const detachMouse = useRef(null);
 
   // ---- boot ----------------------------------------------------------------
   useEffect(() => {
     let rt = null;
+    let pump = 0;
     (async () => {
       try {
         const skills = await loadSkills();
@@ -34,12 +38,19 @@ export default function App() {
         rt.start();
         setRuntime(rt);
         setReady(true);
+        // Publish the snapshot on a plain interval, armed here where `rt` is in
+        // scope. NOT from the R3F frame loop: setting React state inside useFrame
+        // can re-enter React's scheduler ("Should not already be working"), which
+        // kills the root and takes the HUD with it.
+        pump = setInterval(() => {
+          try { setSnapshot(rt.snapshot()); } catch { /* transient WASM hiccup */ }
+        }, 100);
       } catch (e) {
         console.error(e);
         setError(e.message || String(e));
       }
     })();
-    return () => { rt?.stop(); };
+    return () => { clearInterval(pump); rt?.stop(); };
   }, [setReady, setError]);
 
   // ---- input pump ----------------------------------------------------------
@@ -51,11 +62,11 @@ export default function App() {
 
     const pump = () => {
       const s = ctrl.sample();
-      runtime.setCommand(s.cmd[0], s.cmd[1], s.cmd[2]);
+      runtime.setCommand(s.cmd[0], s.cmd[1]);
       runtime.expr.setLook(s.look[0], s.look[1]);
 
       // A non-zero command REQUESTS walking; the skill manager decides if it may.
-      const moving = Math.hypot(s.cmd[0], s.cmd[1], s.cmd[2]) > 1e-3;
+      const moving = Math.hypot(s.cmd[0], s.cmd[1]) > 1e-3;
       if (moving) runtime.skills.requestWalk(runtime.hasPolicy);
       else runtime.skills.requestStand();
 
@@ -105,6 +116,19 @@ export default function App() {
                      placeItems: "center", color: "#7d8794"}}>
           loading MuJoCo, robot model and policies…
         </div>
+      )}
+      {ready && !started && (
+        <button
+          onClick={() => setStarted(true)}
+          style={{position: "absolute", left: 24, top: "50%",
+                  transform: "translateY(-50%)", zIndex: 5,
+                  padding: "14px 34px", borderRadius: 10,
+                  background: "#1d2630", border: "1px solid #3a4b5e",
+                  color: "#e6edf5", font: "inherit", fontSize: 18,
+                  letterSpacing: 1, cursor: "pointer"}}
+        >
+          Start
+        </button>
       )}
       {ready && <Hud runtime={runtime} />}
       {ready && <SkillBar runtime={runtime} />}

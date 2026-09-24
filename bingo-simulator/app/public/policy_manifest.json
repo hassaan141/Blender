@@ -14,46 +14,29 @@
   "decimation": 5
  },
  "observation": {
-  "dim": 66,
+  "dim": 95,
   "schema": [
    {
-    "name": "base_lin_vel",
-    "dim": 3,
-    "frame": "body"
+    "name": "heading_relative_proprioception",
+    "dim": 67,
+    "frame": "heading-local"
    },
    {
-    "name": "base_ang_vel",
-    "dim": 3,
-    "frame": "body"
+    "name": "phase",
+    "dim": 2
    },
    {
-    "name": "projected_gravity",
-    "dim": 3,
-    "frame": "body"
+    "name": "command",
+    "dim": 2,
+    "order": ["vx", "yaw_rate"]
    },
    {
-    "name": "velocity_commands",
-    "dim": 3,
-    "order": [
-     "vx",
-     "vy",
-     "yaw_rate"
-    ]
+    "name": "next_feedforward_leg_target",
+    "dim": 12
    },
    {
-    "name": "joint_pos_rel",
-    "dim": 21,
-    "note": "all 21 joints, minus default_joint_pose"
-   },
-   {
-    "name": "joint_vel",
-    "dim": 21,
-    "note": "all 21 joints"
-   },
-   {
-    "name": "last_action",
-    "dim": 12,
-    "note": "leg actions only"
+    "name": "previous_filtered_residual",
+    "dim": 12
    }
   ],
   "note": "All 21 joints are observed although only 12 are actioned, so the Task-2 expressive joints are already in the leg policy's observation and it can learn to balance against head/tail/ear motion without an obs-shape change."
@@ -74,21 +57,8 @@
    "br_SP_J",
    "br_knee"
   ],
-  "transform": "q_target = default_joint_pose[j] + action_scale[j] * action[j]",
-  "scale": [
-   0.125,
-   0.195,
-   0.17,
-   0.125,
-   0.195,
-   0.17,
-   0.125,
-   0.195,
-   0.17,
-   0.125,
-   0.195,
-   0.17
-  ]
+  "transform": "q_target = feedforward_reference_leg[j] + ema(action)[j] * 0.3 rad",
+  "scale": [0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3]
  },
  "joint_order": [
   "fl_SY_J",
@@ -137,14 +107,15 @@
   0
  ],
  "normalization": {
-  "type": "none",
-  "note": "Task-1 env sets actor_obs_normalization=False (agents.py)."
+  "type": "embedded_in_onnx",
+  "note": "running mean/variance from the matched BASELINE_1 checkpoint are part of the ONNX graph."
  },
- "policies": [],
- "status": "NO_POLICY",
- "status_detail": "No Bingo locomotion policy has been trained yet. The Task-1 environment exists on branch claude/bingo-locomotion-rl but has never been run: this environment has no GPU and no Isaac Lab. The simulator therefore runs physics and expression only, and reports NO_POLICY rather than faking locomotion with animation.",
+ "policies": [{"name":"bingo_baseline_1","file":"./policies/policy.onnx","format":"onnx","input":"observation","output":"actions"}],
+ "status": "READY",
+ "status_detail": "BASELINE_1 unified command locomotion policy; matched 95D runtime and local references.",
  "provenance": {
-  "generated_by": "bingo-simulator (hand-authored placeholder)",
-  "replace_with": "an exporter run against the trained checkpoint"
+  "generated_by": "tools/export_bingo_policy.py",
+  "source": "BASELINE_1/policy.pt",
+  "normalization": "embedded in ONNX"
  }
 }

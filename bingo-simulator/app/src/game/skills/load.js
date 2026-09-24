@@ -31,7 +31,8 @@ export async function loadSkills() {
       ready: true,
       reason: entry.evidence,
       motion: RobotMotion.fromJson({name: j.name, fps: j.fps,
-                                    dof_positions: j.dof_positions}),
+                                    dof_positions: j.dof_positions,
+                                    expression_only: j.expression_only}),
     }));
   }
 

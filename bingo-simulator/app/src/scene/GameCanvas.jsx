@@ -39,32 +39,99 @@ function Rig({runtime}) {
     };
   }, [scene]);
 
+
   useFrame((_, dt) => {
     const rig = rigRef.current;
     if (!rig || !runtime?.sim) return;
     if (typeof window !== "undefined" && !window.__bingo?.runtime) {
       window.__bingo = {...(window.__bingo || {}), runtime};
     }
-    const snap = runtime.snapshot();
-    rig.setFromPhysics(snap.basePos, runtime.sim.baseQuat(), snap.jointPos);
+    // Guarded: the MuJoCo/ORT Embind glue can throw intermittently
+    // ("_emval_take_value has unknown type memory_view<bool>"). An uncaught throw
+    // here escapes the R3F frame loop and corrupts React's scheduler
+    // ("Should not already be working"), which kills the root and the HUD with it.
+    try {
+      const snap = runtime.snapshot();
+      rig.setFromPhysics(snap.basePos, runtime.sim.baseQuat(), snap.jointPos);
+    } catch { /* skip this frame */ }
     // The HUD does not need 120 updates a second.
-    acc.current += dt;
-    if (acc.current > 0.1) { acc.current = 0; setSnapshot(snap); }
+    // NOTE: do NOT call setSnapshot() here. Pushing React state from inside the
+    // R3F frame loop can re-enter React's scheduler ("Should not already be
+    // working"), which kills the root and takes the HUD with it. The snapshot is
+    // published from a plain interval below instead.
   });
   return null;
 }
 
+// Third-person chase camera (Microduck-style): before Start it holds a fixed
+// overview; after Start it sits BEHIND Bingo along the robot's own heading and
+// follows. The old camera used a fixed WORLD offset, so once Bingo turned, the
+// camera ended up in front of it looking at its face.
+const CAM_DIST = 1.05;     // metres behind the robot
+const CAM_HEIGHT = 0.68;   // metres above the look-at point (elevated 3rd-person)
+const CAM_IDLE = new THREE.Vector3(0.85, 0.45, 0.85);
+
+const CAM_TRANSITION_MS = 1400;   // ease from the idle angle into the chase pose
+
+// easeInOutCubic
+const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
 function CameraFollow({runtime}) {
   const {camera} = useThree();
+  const started = useStore((s) => s.started);
   const target = useRef(new THREE.Vector3(0, 0.18, 0));
+  const desired = useRef(new THREE.Vector3());
+  const here = useRef(new THREE.Vector3());
+  const fromPos = useRef(new THREE.Vector3());
+  const fromTarget = useRef(new THREE.Vector3());
+  const t0 = useRef(0);
+  const wasStarted = useRef(false);
+
   useFrame(() => {
     if (!runtime?.sim) return;
-    const p = runtime.sim.basePos();
+    let p, q;
+    try { p = runtime.sim.basePos(); q = runtime.sim.baseQuat(); }
+    catch { return; }                       // transient WASM hiccup: skip the frame
     // MJCF (x, y, z) -> three (x, z, -y)
-    target.current.lerp(new THREE.Vector3(p[0], p[2] + 0.05, -p[1]), 0.12);
-    const desired = new THREE.Vector3(
-      target.current.x + 0.85, target.current.y + 0.45, target.current.z + 0.85);
-    camera.position.lerp(desired, 0.06);
+    here.current.set(p[0], p[2] + 0.05, -p[1]);
+
+    if (!started) {
+      wasStarted.current = false;
+      target.current.lerp(here.current, 0.12);
+      desired.current.set(target.current.x + CAM_IDLE.x,
+                          target.current.y + CAM_IDLE.y,
+                          target.current.z + CAM_IDLE.z);
+      camera.position.lerp(desired.current, 0.06);
+      camera.lookAt(target.current);
+      return;
+    }
+
+    // Start pressed: remember where we were, then ease across to the chase pose.
+    if (!wasStarted.current) {
+      wasStarted.current = true;
+      t0.current = performance.now();
+      fromPos.current.copy(camera.position);
+      fromTarget.current.copy(target.current);
+    }
+
+    // Heading from the base quaternion (MuJoCo order is w, x, y, z).
+    const yaw = Math.atan2(2 * (q[0] * q[3] + q[1] * q[2]),
+                           1 - 2 * (q[2] * q[2] + q[3] * q[3]));
+    // MJCF forward is +x; in three that is (cos yaw, 0, -sin yaw).
+    const fx = Math.cos(yaw), fz = -Math.sin(yaw);
+    desired.current.set(here.current.x - fx * CAM_DIST,
+                        here.current.y + CAM_HEIGHT,
+                        here.current.z - fz * CAM_DIST);
+
+    const k = Math.min(1, (performance.now() - t0.current) / CAM_TRANSITION_MS);
+    if (k < 1) {                            // eased fly-in, not a snap
+      const e = ease(k);
+      camera.position.lerpVectors(fromPos.current, desired.current, e);
+      target.current.lerpVectors(fromTarget.current, here.current, e);
+    } else {                                // steady chase
+      target.current.lerp(here.current, 0.18);
+      camera.position.lerp(desired.current, 0.10);
+    }
     camera.lookAt(target.current);
   });
   return null;

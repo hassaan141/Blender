@@ -102,8 +102,7 @@ export default function Hud({runtime, skills}) {
           <span style={{color: "#6fb3e0"}}>▮</span>
         </div>
         <Bar label="vx (m/s)" cmd={snap.cmd[0]} act={snap.vx ?? 0} range={0.5} />
-        <Bar label="vy (m/s)" cmd={snap.cmd[1]} act={snap.vy ?? 0} range={0.4} />
-        <Bar label="yaw (rad/s)" cmd={snap.cmd[2]} act={snap.yawRate ?? 0} range={1.5} />
+        <Bar label="yaw (rad/s)" cmd={snap.cmd[1]} act={snap.yawRate ?? 0} range={0.6} />
         <div style={{marginTop: 8, fontSize: 11}}>
           {dot(c.fl)}FL {dot(c.fr)}FR {dot(c.bl)}BL {dot(c.br)}BR
           <span style={{color: "#7d8794", marginLeft: 8}}>
@@ -151,7 +150,7 @@ export default function Hud({runtime, skills}) {
       <div style={{...box, bottom: 12, right: 12, width: 250}}>
         <div style={{fontSize: 11, color: "#7d8794", marginBottom: 5}}>CONTROLS</div>
         <div style={{fontSize: 11, color: "#9aa4b0", lineHeight: 1.7}}>
-          <b>W/S</b> forward·back &nbsp; <b>A/D</b> turn &nbsp; <b>Q/E</b> strafe<br />
+                  <b>W/S</b> forward/back &nbsp; <b>A/D</b> turn<br />
           <b>1-6</b> personality &nbsp; <b>mouse</b> head look<br />
           <b>Space</b> reset &nbsp; <b>P</b> push &nbsp; <b>H</b> HUD mode
         </div>

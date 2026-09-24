@@ -141,6 +141,24 @@ export class SkillManager {
     return this.active.motion.sample(this.playhead);
   }
 
+  /**
+   * The running gesture, with everything the runtime needs to apply it safely:
+   * which channels it actually authors, and how far it has eased in. Full-body
+   * clips start as much as 2.1 rad away from the stand pose, so snapping straight
+   * to frame 0 throws the robot over; the runtime blends in over GESTURE_BLEND_S.
+   */
+  gestureFrame() {
+    if (this.state !== State.GESTURE || !this.active?.motion) return null;
+    const m = this.active.motion;
+    return {
+      name: this.active.name,
+      frame: m.sample(this.playhead),
+      expressionOnly: m.expressionOnly,
+      playhead: this.playhead,
+      duration: m.duration,
+    };
+  }
+
   reset() {
     this.state = State.STAND;
     this.active = null;
@@ -158,15 +176,20 @@ export class SkillManager {
  * the whole point of Stage-4 validation.
  */
 export class RobotMotion {
-  constructor({name, fps, frames}) {
+  constructor({name, fps, frames, expressionOnly = false}) {
     this.name = name;
     this.fps = fps;
     this.frames = frames;              // [T][21]
+    // True when the clip authors ONLY the 9 head/tail/ear channels and leaves the
+    // 12 leg channels at zero. Driving those zeros straightens the legs and topples
+    // the robot, so the runtime must not apply them.
+    this.expressionOnly = expressionOnly;
     this.duration = frames.length / fps;
   }
 
   static fromJson(j) {
-    return new RobotMotion({name: j.name, fps: j.fps, frames: j.dof_positions});
+    return new RobotMotion({name: j.name, fps: j.fps, frames: j.dof_positions,
+                            expressionOnly: !!j.expression_only});
   }
 
   /** Linear interpolation between reference frames, matching Stage 4's first-order hold. */

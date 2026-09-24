@@ -58,14 +58,19 @@ export const ACTION_SCALE = new Float32Array([
 ]);
 
 // 3 lin vel + 3 ang vel + 3 gravity + 3 command + 21 qpos + 21 qvel + 12 action
-export const OBS_SIZE = 3 + 3 + 3 + 3 + 21 + 21 + 12; // 66
+// heading-relative proprioception 67 + phase 2 + normalized command 2 +
+// next feedforward leg target 12 + previous filtered residual 12.
+export const OBS_SIZE = 95;
 export const ACTION_SIZE = 12;
 
 // Command limits, sized for a 0.18 m / 2.46 kg quadruped. Every authored Bingo clip
 // walks at 0.06-0.14 m/s (rl/tools/analyze_style_motions.py), so these ask for
 // meaningfully more than the animation while staying far under the Froude-3 ceiling
 // of ~2.3 m/s.
-export const VEL_FWD = 0.40, VEL_BACK = -0.25, VEL_LAT = 0.25, VEL_YAW = 1.2;
+export const VEL_FWD = 0.20, VEL_BACK = -0.20, VEL_LAT = 0.0, VEL_YAW = 0.4;
+export const COMMAND_ALPHA = 0.1;
+export const RESIDUAL_EMA_ALPHA = 0.3;
+export const RESIDUAL_SCALE = 0.3;
 
 // Actuator ceilings from bingo_v4.py, for the HUD's saturation readout.
 export const EFFORT_LIMIT = {leg: 3.0, head: 6.0, tail: 6.0, ear: 1.0};
@@ -110,3 +115,18 @@ export const ORT_WASM_DIR = CDN
 // (stage5/bingo_stage5_env_cfg.py: root_z < 0.5*z_ref[0], tilt > 70 deg).
 export const FALL_HEIGHT = 0.5 * STAND_BASE_HEIGHT;
 export const FALL_TILT_DEG = 70;
+
+// BASELINE_1 observation-normalizer means for the 9 expressive joints: positions
+// (obs 12-20) then velocities (obs 33-41), EXPR_JOINTS order. The policy was trained
+// with these joints static, so its normalizer std for them is ~0.0003-0.005 rad and the
+// live expression (ears held at +-0.2 rad) saturates those inputs at +-5 sigma. The leg
+// policy is therefore fed these training values instead; physics still runs the real
+// expression. Browser gate: 2/9 -> 8/9 (docs/experiment_loop/sim2sim/python_browser_match.md).
+export const EXPR_OBS_TRAINING_MEAN = new Float32Array([
+  -0.006773754572658886, -0.014139362744507352, -0.006733530002451934, 0.0026720739463959127,
+  0.00043322165482683985, -0.001620778714630172, -0.00037171963314017544, -0.0015291097243702407,
+  9.869841833341386e-05,
+  -0.008447833303575571, 0.0015250453908680658, 0.0003735199808641575, 0.0009366658652269389,
+  -1.2980270498231318e-05, 0.0018321913605973713, -0.0020407356196855972, 0.001980557466711164,
+  0.0021347867040716613,
+]);

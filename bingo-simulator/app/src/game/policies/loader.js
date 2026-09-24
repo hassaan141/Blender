@@ -82,7 +82,7 @@ export async function loadPolicy(man, name = null) {
   }
 
   const ort = await loadOrt();
-  const session = await ort.InferenceSession.create(entry.file);
+  const session = await ort.InferenceSession.create(entry.file, {executionProviders: ["wasm"]});
 
   // The manifest can still lie. Check the graph itself, as Microduck's daemon does.
   const inName = session.inputNames[0];
