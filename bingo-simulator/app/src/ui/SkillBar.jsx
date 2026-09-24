@@ -51,7 +51,7 @@ export default function SkillBar({runtime}) {
       <div style={{padding: "9px 11px", borderRadius: 8,
                    background: "rgba(14,17,21,0.86)", border: "1px solid #232a33"}}>
         <div style={{fontSize: 11, color: "#7d8794", marginBottom: 6}}>
-          GESTURES — Stage-4 validated only
+          GESTURES — Stage-4 validated, or tracked by a balance policy
         </div>
         <div style={{display: "flex", gap: 6, flexWrap: "wrap", maxWidth: 340}}>
           {gestures.map((s) => (

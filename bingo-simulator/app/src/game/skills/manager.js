@@ -36,8 +36,9 @@ export const SkillKind = {
  * because Stage-4 status is authoritative (MEMORY.md).
  */
 export class BingoSkill {
-  constructor({name, kind, ready = false, reason = "", motion = null, requiresPolicy = false}) {
-    Object.assign(this, {name, kind, ready, reason, motion, requiresPolicy});
+  constructor({name, kind, ready = false, reason = "", motion = null, requiresPolicy = false, tracker = null}) {
+    // tracker: a SkillTracker (reference + residual policy) for full-body skills.
+    Object.assign(this, {name, kind, ready, reason, motion, requiresPolicy, tracker});
   }
 }
 
@@ -78,6 +79,7 @@ export class SkillManager {
       return false;
     }
     this.active = s;
+    if (s.tracker) s.tracker.k = null;   // the runtime anchors and starts it next control step
     this.playhead = 0;
     this.state = State.GESTURE;
     this.lastRefusal = null;
@@ -105,7 +107,10 @@ export class SkillManager {
    * @param phys {baseZ, tiltDeg, contacts} measured from MuJoCo this step
    */
   update(dt, phys) {
-    const down = phys.baseZ < FALL_HEIGHT || phys.tiltDeg > FALL_TILT_DEG;
+    // A tracked skill may legitimately crouch below FALL_HEIGHT; it falls when it
+    // leaves its reference (same criterion as training), not at a fixed height.
+    const tracker = this.state === State.GESTURE ? this.active?.tracker : null;
+    const down = tracker ? tracker.fallen : (phys.baseZ < FALL_HEIGHT || phys.tiltDeg > FALL_TILT_DEG);
 
     if (this.state !== State.FALLEN && this.state !== State.RECOVER) {
       this._fallT = down ? this._fallT + dt : 0;
@@ -119,6 +124,7 @@ export class SkillManager {
 
     if (this.state === State.GESTURE && this.active) {
       this.playhead += dt;
+      if (tracker && tracker.done) { this.active = null; this.state = State.STAND; return this.state; }
       if (this.active.motion && this.playhead >= this.active.motion.duration) {
         this.active = null;
         this.state = State.STAND;

@@ -99,6 +99,8 @@ export async function createBingoPhysics() {
     },
     basePos() { return [data.qpos[0], data.qpos[1], data.qpos[2]]; },
     baseQuat() { return [data.qpos[3], data.qpos[4], data.qpos[5], data.qpos[6]]; },
+    bodyPos(name) { const b=id(OBJ.mjOBJ_BODY,name); return [data.xpos[3*b],data.xpos[3*b+1],data.xpos[3*b+2]]; },
+    bodyQuat(name) { const b=id(OBJ.mjOBJ_BODY,name); return [data.xquat[4*b],data.xquat[4*b+1],data.xquat[4*b+2],data.xquat[4*b+3]]; },
     /**
      * Which paws are touching anything, as a {fl,fr,bl,br} boolean map.
      * `data.contact` is an Embind vector and goes stale after every step, so it is

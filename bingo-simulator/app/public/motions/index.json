@@ -28,10 +28,6 @@
    "reason": "Stage 4 completes but world-space fidelity is not a holistic pass (1.405 m / 77.8 deg error). MEMORY.md: survival alone is not complete."
   },
   {
-   "name": "Timid",
-   "reason": "Stage 4 completes but world-space fidelity is not a holistic pass (0.611 m / 11.3 deg error)."
-  },
-  {
    "name": "DeadPan",
    "reason": "No Stage-4 pass recorded."
   },
@@ -46,6 +42,30 @@
   {
    "name": "Laidback",
    "reason": "No Stage-4 pass recorded."
+  }
+ ],
+ "tracked": [
+  {
+   "name": "Timid",
+   "reference": "./motions/timid_skill.json",
+   "policy": "./policies/skill_timid.onnx",
+   "obs_dim": 82,
+   "residual_scale": [
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   "evidence": "attempt 05: Python 400/400 browser-like starts; browser 20/20 + clean stand handoff; parity PASS; residual rms 0.071 vs motion 0.266 rad",
+   "onnx_sha256": "c4cdd2080c91a3542ed0358cca0c141d8d4dbd4ad9814bf387a1a2aaaf9efc3e"
   }
  ]
 }

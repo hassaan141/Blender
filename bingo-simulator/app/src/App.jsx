@@ -51,11 +51,11 @@ export default function App() {
 
     const pump = () => {
       const s = ctrl.sample();
-      runtime.setCommand(s.cmd[0], s.cmd[1], s.cmd[2]);
+      runtime.setCommand(s.cmd[0], s.cmd[1]);
       runtime.expr.setLook(s.look[0], s.look[1]);
 
       // A non-zero command REQUESTS walking; the skill manager decides if it may.
-      const moving = Math.hypot(s.cmd[0], s.cmd[1], s.cmd[2]) > 1e-3;
+      const moving = Math.hypot(s.cmd[0], s.cmd[1]) > 1e-3;
       if (moving) runtime.skills.requestWalk(runtime.hasPolicy);
       else runtime.skills.requestStand();
 
