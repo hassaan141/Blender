@@ -1,0 +1,6 @@
+{
+  "iterations": 200,
+  "steps": 4800,
+  "sha256": "f772dac9393e66020c8fcc4d62a24c88f005679eb2e3ed3dd32788fa89e83927",
+  "source": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/training/2026-09-18_13-55-39_ppo_torch/checkpoints/agent_4800.pt"
+}

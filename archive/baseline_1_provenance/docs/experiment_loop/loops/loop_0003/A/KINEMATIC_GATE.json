@@ -1,0 +1,6 @@
+{
+  "allow_training": true,
+  "reviewer": "active autonomous agent",
+  "evidence": "kinematic_sheet.jpg; reference_audit.json",
+  "finding": "Original step sequence and posture preserved, no exaggerated lift or visible discontinuity. Paw edits under 9.5mm; IK error under 1 micron. Train one candidate to assess physical rocking."
+}

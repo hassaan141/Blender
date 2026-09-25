@@ -25,29 +25,30 @@ setsid nohup tools/experiment_loop/run_and_wake.sh \
 
 End the turn after launch. When the queued message arrives, inspect the result directory once and continue. If `queue_status=failed`, the logs still exist, but automatic resumption did not happen. Do not add a polling fallback. See [the existing runner notes](docs/experiment_loop/LONG_COMMAND_WAKEUP.md).
 
-## Claude Code: stop and manually resume
+## Claude Code: one automatic wake-up (preferred)
 
-The locally installed `claude` CLI supports background sessions and `--resume`, but its help does **not** show a `codex queue` equivalent. Do not assume Codex's queue command can wake a Claude conversation. For a long experiment, ask Claude to launch a bounded detached command that writes status and logs, then end its turn. When you return, resume the Claude session and have it inspect those artifacts once. `claude --bg` can keep a Claude session running, but by itself does not prevent the model from repeatedly checking the job.
+Correction to what this file said before: Claude **can** resume itself after a long job, as long as the conversation is still open. Claude Code's `Bash` tool takes `run_in_background: true`; the harness owns the process, keeps it alive across turns, and re-invokes Claude exactly once when it exits. That is a wake-up, not polling - Claude spends zero turns waiting. It is how the BASELINE_1, Timid and Laidback runs here were actually driven, and it needs no `CODEX_THREAD_ID`, `codex queue`, `claude --bg` or `--resume`.
 
-A shell pattern for Claude's terminal, with the actual command passed as arguments after the result directory:
+The cost to control is therefore not the waiting, it is the **completion message**: a training run that prints 4000 lines drops all 4000 into Claude's context at wake-up. [run_bg.sh](tools/experiment_loop/run_bg.sh) fixes that. It stays in the foreground of its own shell (so the harness still owns it), bounds the command with `timeout`, writes `command.txt`, `stdout.log`, `stderr.log` and `status.env`, and prints only a summary.
 
 ```bash
-result_dir=tools/experiment_loop/results/NAME
-mkdir -p "$result_dir"
-setsid nohup bash -c '
-  result_dir=$1; shift
-  timeout --foreground --signal=TERM --kill-after=30s 1800 "$@" \
-    >"$result_dir/stdout.log" 2>"$result_dir/stderr.log"
-  code=$?
-  printf "exit_code=%s\n" "$code" >"$result_dir/status.env"
-' _ "$result_dir" EXACT_COMMAND ARGUMENTS \
-  >"$result_dir/launch.log" 2>&1 </dev/null &
+cd /pub0/muhammadf/Blender
+tools/experiment_loop/run_bg.sh --timeout 1800 \
+  --result-dir tools/experiment_loop/results/NAME \
+  --grep 'mean_reward|survival|KEEP|REJECT' --tail 15 \
+  -- EXACT_COMMAND ARGUMENTS
 ```
 
-Claude should report the result directory and say: **“I’m stopping polling. Please check back with me to inspect the result and continue; I won’t automatically resume.”** When you return, `claude --resume <session-id>` is available if you are using Claude Code's CLI; otherwise return to the same conversation.
+Launch that with `run_in_background: true`, confirm only that it started, and end the turn. The wake-up then costs about twenty lines instead of the whole log: verdict (`OK`, `TIMEOUT after Ns`, or `FAILED exit=N`), stdout/stderr line counts, the lines matching `--grep`, the stdout tail, and stderr's tail on failure. Choose `--grep` so the KEEP/REJECT call is visible without opening a file; open `stdout.log` only when the summary is genuinely ambiguous.
+
+The other rules still hold: one bounded job per attempt, a named result directory, no `sleep`/poll loops, and no `Monitor` or `ScheduleWakeup` polling a job the harness already tracks. A long `ScheduleWakeup` fallback is justified only for work that can hang without ever exiting, which a `timeout`-bounded job cannot.
+
+### Fallback: fully detached, no wake-up
+
+If the conversation may be closed before the job finishes, use [run_detached.sh](tools/experiment_loop/run_detached.sh) instead: same artifacts, but `setsid`-detached and silent. Claude reports the result directory and says: **"I'm stopping polling. Please check back with me to inspect the result and continue; I won't automatically resume."** When you return, resume the session and have it read `status.env` and the logs once.
 
 ### Prompt to give Claude
 
-> Read `SIM2SIM_BROWSER_HANDOFF.md` and `LOW_USAGE_WORKFLOW_FOR_CODEX_AND_CLAUDE.md` first. Continue from the recorded browser-probe decision. Use targeted file reads. For any training or evaluation expected to take more than two minutes, launch one bounded detached job with a named result directory, saved logs, and a finite timeout. Confirm only that it started, then end your turn without polling. Tell me the result path. When I return, inspect status and logs once, decide what they mean, and continue. Do not run more experiments than the agreed bound, overwrite protected baselines, or promote a candidate that fails the normal browser survival probe.
+> Read `SIM2SIM_BROWSER_HANDOFF.md` and `LOW_USAGE_WORKFLOW_FOR_CODEX_AND_CLAUDE.md` first. Continue from the recorded browser-probe decision. Use targeted file reads. For any training or evaluation expected to take more than two minutes, launch one bounded job through `tools/experiment_loop/run_bg.sh` with `run_in_background: true`, a named result directory, a finite timeout, and a `--grep` pattern covering the metrics the decision turns on. Confirm only that it started, then end your turn without polling; the harness will wake you when it exits. Read the summary first and open the logs only if it is ambiguous. Do not run more experiments than the agreed bound, overwrite protected baselines, or promote a candidate that fails the normal browser survival probe.
 
 For the next Bingo attempt, the highest-value work is matching Python training/evaluation to the browser's expressive-joint targets and real stand-to-command transition. [The probe evidence](docs/experiment_loop/sim2sim/browser_probe.md) already shows that adding timing jitter is not the first fix.

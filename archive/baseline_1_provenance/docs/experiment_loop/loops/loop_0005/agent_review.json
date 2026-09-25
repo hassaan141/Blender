@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Reviewed dense stride and full-duration overview montages: more even compact four-leg stepping, reduced lateral lean, no new hop/crouch or excessive lift. Full survival; vx -.175 vs -.159; roll 5.47 vs 6.58; acceleration 7.90 vs 8.70; mean slip .167 vs .202; mean saturation 1.65 vs 2.45%; RR knee 4.51 vs 7.15%. Goal not met: vx std .0754 and yaw RMS .283 still high. Provisional overall improvement."
+}

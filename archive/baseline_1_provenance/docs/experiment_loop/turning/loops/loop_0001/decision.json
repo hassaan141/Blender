@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Full-duration overview and left-fall montage inspected: left tips over at18.5s; right survives but barely turns. Left/right measured yaw +.063/-.009 for +/-.4 commands; maximum-left also falls. Straight vx .0987 matches original policy .0997 at same .175 command, so low speed is inherited calibration rather than a training regression. Mandatory survival and yaw tracking fail; next isolate heading-local observations."
+}

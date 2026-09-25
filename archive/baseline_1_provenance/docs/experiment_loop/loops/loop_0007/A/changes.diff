@@ -1,0 +1,10 @@
+--- parent settings
++++ candidate settings
+@@ -8,5 +8,6 @@
+   "signed_reference_velocity_scale": -0.4242424242424242,
+   "lateral_scale": 0.7,
+   "contact_timing_mode": 1,
+-  "all_contacts_corrected": 1
++  "all_contacts_corrected": 1,
++  "stance_shape_blend": 0.2
+ }

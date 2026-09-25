@@ -1,0 +1,14 @@
+{
+  "defect": "Rear-left dragging during otherwise stable left/right turns",
+  "evidence": "Loop3 BL duty .983/.955 and p95 clearance2.23/2.91mm; original forward baseline has same inherited defect. Prior natural_walk attempt03 showed corrected collision contact definition and6mm recovery improved BL clearance.",
+  "hypothesis": "Enable only the known BL recovery channels from reference02b and their matching collision-hull contact definition; preserve all other reference channels, yaw geometry, cadence, rewards weights and physics.",
+  "expected_effect": "Clear rear-left swing and cleaner planting without losing stable yaw tracking.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "turn_bl_recovery": 1
+      }
+    }
+  ]
+}

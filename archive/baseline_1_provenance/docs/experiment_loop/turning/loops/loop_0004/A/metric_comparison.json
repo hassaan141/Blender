@@ -1,0 +1,165 @@
+{
+  "candidate": {
+    "task": "Bingo-Turning-Play-v0",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0004/A/policy.pt",
+    "num_envs": 1,
+    "command": {
+      "vx": 0.215,
+      "vy": 0.0,
+      "yaw": 0.4,
+      "note": "Turning extension accepts yaw; vy remains zero."
+    },
+    "duration_s": 60.0,
+    "settle_seconds": 1.0,
+    "steps_recorded": 1440,
+    "step_dt": 0.041666666666666664,
+    "effort_limit_Nm": 3.0,
+    "survival": 1.0,
+    "any_fell": false,
+    "fall_time_s": [
+      null
+    ],
+    "vx_mean": 0.15462201833724976,
+    "vx_std": 0.05651262775063515,
+    "vx_max": 0.3297167122364044,
+    "base_roll_rms_deg": 6.68588399887085,
+    "base_pitch_rms_deg": 1.7037831544876099,
+    "joint_accel_rms": 11.092151641845703,
+    "residual_action_rate_rms": 0.01886487752199173,
+    "torque_saturation_pct_per_joint": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 4.236111111111112,
+      "fl_knee": 12.01388888888889,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 7.430555555555555,
+      "fr_knee": 7.847222222222222,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 2.638888888888889,
+      "bl_knee": 1.7361111111111112,
+      "br_SY_J": 0.0,
+      "br_SP_J": 2.638888888888889,
+      "br_knee": 5.069444444444445
+    },
+    "reference_tracking_error_rad": {
+      "mean": 0.04526723921298981,
+      "rms": 0.05549897253513336,
+      "max": 0.20045369863510132,
+      "mean_per_joint": {
+        "fl_SY_J": 0.036024075001478195,
+        "fl_SP_J": 0.026569103822112083,
+        "fl_knee": 0.041957028210163116,
+        "fr_SY_J": 0.031670354306697845,
+        "fr_SP_J": 0.078990638256073,
+        "fr_knee": 0.04364544153213501,
+        "bl_SY_J": 0.05992792919278145,
+        "bl_SP_J": 0.04183299094438553,
+        "bl_knee": 0.0389120914041996,
+        "br_SY_J": 0.02494223043322563,
+        "br_SP_J": 0.08312825113534927,
+        "br_knee": 0.035606738179922104
+      }
+    },
+    "yaw_mean": 0.4246893481824805,
+    "yaw_std": 0.13775420459279863,
+    "yaw_rmse": 0.13994922220816514,
+    "heading_change_deg": 1458.960564165457,
+    "vx_abs_max": 0.3297167122364044,
+    "mean_slip_m_s": 0.21360595872751573,
+    "mean_saturation_pct": 3.6342592592592595,
+    "turning_failures": [
+      "left bl dragging",
+      "left saturation",
+      "right saturation",
+      "left_max bl dragging",
+      "left_max slip",
+      "left_max saturation",
+      "right_max saturation",
+      "straight bl dragging",
+      "straight saturation"
+    ]
+  },
+  "champion": {
+    "task": "Bingo-Turning-Play-v0",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt",
+    "num_envs": 1,
+    "command": {
+      "vx": 0.215,
+      "vy": 0.0,
+      "yaw": 0.4,
+      "note": "Turning extension accepts yaw; vy remains zero."
+    },
+    "duration_s": 60.0,
+    "settle_seconds": 1.0,
+    "steps_recorded": 1440,
+    "step_dt": 0.041666666666666664,
+    "effort_limit_Nm": 3.0,
+    "survival": 1.0,
+    "any_fell": false,
+    "fall_time_s": [
+      null
+    ],
+    "vx_mean": 0.15727080404758453,
+    "vx_std": 0.053827542811632156,
+    "vx_max": 0.372781366109848,
+    "base_roll_rms_deg": 6.285074234008789,
+    "base_pitch_rms_deg": 1.9575244188308716,
+    "joint_accel_rms": 10.856243133544922,
+    "residual_action_rate_rms": 0.01730879209935665,
+    "torque_saturation_pct_per_joint": {
+      "fl_SY_J": 0.0,
+      "fl_SP_J": 6.388888888888888,
+      "fl_knee": 9.791666666666666,
+      "fr_SY_J": 0.0,
+      "fr_SP_J": 9.583333333333334,
+      "fr_knee": 7.361111111111112,
+      "bl_SY_J": 0.0,
+      "bl_SP_J": 0.0,
+      "bl_knee": 2.7083333333333335,
+      "br_SY_J": 0.0,
+      "br_SP_J": 3.194444444444444,
+      "br_knee": 5.694444444444445
+    },
+    "reference_tracking_error_rad": {
+      "mean": 0.03883504122495651,
+      "rms": 0.04871906340122223,
+      "max": 0.18505090475082397,
+      "mean_per_joint": {
+        "fl_SY_J": 0.032221470028162,
+        "fl_SP_J": 0.0232294499874115,
+        "fl_knee": 0.04130862280726433,
+        "fr_SY_J": 0.023858902975916862,
+        "fr_SP_J": 0.08174809068441391,
+        "fr_knee": 0.041534435003995895,
+        "bl_SY_J": 0.033050086349248886,
+        "bl_SP_J": 0.04056420177221298,
+        "bl_knee": 0.03700494393706322,
+        "br_SY_J": 0.02148633822798729,
+        "br_SP_J": 0.05839971825480461,
+        "br_knee": 0.03161420673131943
+      }
+    },
+    "yaw_mean": 0.4281650325339774,
+    "yaw_std": 0.13917923374062702,
+    "yaw_rmse": 0.14200045127487482,
+    "heading_change_deg": 1470.900789235906,
+    "vx_abs_max": 0.372781366109848,
+    "mean_slip_m_s": 0.22459626518801176,
+    "mean_saturation_pct": 3.7268518518518516,
+    "turning_failures": [
+      "right saturation",
+      "left_max saturation",
+      "right_max saturation"
+    ]
+  },
+  "gate_failures": [
+    "left bl dragging",
+    "left saturation",
+    "right saturation",
+    "left_max bl dragging",
+    "left_max slip",
+    "left_max saturation",
+    "right_max saturation",
+    "straight bl dragging",
+    "straight saturation"
+  ]
+}

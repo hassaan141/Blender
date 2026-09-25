@@ -1,0 +1,15 @@
+{
+  "defect": "Uneven support transfer leaves left-turn rear-foot skimming and front-left knee saturation.",
+  "evidence": "Loop5 improves BL clearance6.50/8.76mm but left duty.858,max-left.903 and saturation12.85/14.86%. Contact audit: legacy tip test disagrees with collision geometry25\u201333% on front feet; authored front contact windows disagree with recovery geometry26\u201341%. Most FLknee saturation occurs during intended BLswing.",
+  "hypothesis": "Make contact supervision consistent for all feet: derive remaining feet stance/swing labels from existing recovery strokes and replace their tip-height contact tests with collision-hull clearance. Keep geometry, cadence, contact reward total weight.10 and physics unchanged.",
+  "expected_effect": "Cleaner coordinated planting and support transfer, reducing BLdrag and front loading without higher reward weights.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "contact_timing_mode": 1,
+        "all_contacts_corrected": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Both preview montages inspected: unchanged retainedloop5 reference and motion, coordinated turns, no new defect. Survival1,zerojointlimits,accel10.14/9.93. Only trainingFLtorqueweight changes; proceed final boundedrun."
+}

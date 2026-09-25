@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Both preview montages inspected: native coordinated turn preserved, no new visible defect. All non-contact reference arrays exactly equal loop5. Survival1, yaw+.435/-.422, acceleration10.14/9.93; proceed to learn corrected contact supervision."
+}

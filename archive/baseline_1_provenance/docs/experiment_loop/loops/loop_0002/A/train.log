@@ -1,0 +1,28 @@
+EXEC ['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_geometry.py', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0002/A']
+Traceback (most recent call last):
+  File "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_geometry.py", line 44, in <module>
+    np.savez_compressed(arm/'reference.npz',**d);np.savez_compressed(arm/'task_space_edit.npz',source=tips,target=target,joint_delta=q-original)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/numpy/lib/npyio.py", line 710, in savez_compressed
+    _savez(file, args, kwds, True)
+  File "/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/numpy/lib/npyio.py", line 736, in _savez
+    zipf = zipfile_factory(file, mode="w", compression=compression)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/site-packages/numpy/lib/npyio.py", line 103, in zipfile_factory
+    return zipfile.ZipFile(file, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pub0/muhammadf/miniconda3/envs/isaaclab/lib/python3.11/zipfile.py", line 1311, in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0002/A/reference.npz'
+Traceback (most recent call last):
+  File "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py", line 19, in <module>
+    run([c['python'],str(ROOT/'rl/bingo_rl/experiment_loop/backward_geometry.py'),str(arm)]) if c.get('agent_autonomous') else run([c['python'],str(ROOT/'rl/bingo_rl/experiment_loop/backward_analyze.py'),'reference',str(arm)])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py", line 11, in run
+    print('EXEC',cmd,flush=True);subprocess.run(cmd,cwd=ROOT,env=env,check=True)
+                                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pub0/muhammadf/miniconda3/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python', '/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_geometry.py', '/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0002/A']' returned non-zero exit status 1.

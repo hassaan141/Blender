@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "argv": [
+    "/pub0/muhammadf/miniconda3/bin/python3",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_adapter.py",
+    "train",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0007/A/config.json"
+  ],
+  "completed_at": 1789755568.792492
+}

@@ -1,0 +1,68 @@
+{
+  "task": "Bingo-Turning-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0002/A/warmstart.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.175,
+    "vy": 0.0,
+    "yaw": 0.4,
+    "note": "Turning extension accepts yaw; vy remains zero."
+  },
+  "duration_s": 6.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 144,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.09446573257446289,
+  "vx_std": 0.06775333732366562,
+  "vx_max": 0.308320015668869,
+  "base_roll_rms_deg": 6.331160545349121,
+  "base_pitch_rms_deg": 1.9511173963546753,
+  "joint_accel_rms": 7.868427276611328,
+  "residual_action_rate_rms": 0.014773588627576828,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 0.6944444444444444,
+    "fl_knee": 6.25,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 1.3888888888888888,
+    "fr_knee": 6.25,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 0.0,
+    "bl_knee": 4.861111111111112,
+    "br_SY_J": 0.0,
+    "br_SP_J": 0.0,
+    "br_knee": 0.0
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.03465104475617409,
+    "rms": 0.04356656223535538,
+    "max": 0.16544854640960693,
+    "mean_per_joint": {
+      "fl_SY_J": 0.02523363009095192,
+      "fl_SP_J": 0.05013219639658928,
+      "fl_knee": 0.04145349562168121,
+      "fr_SY_J": 0.021227354183793068,
+      "fr_SP_J": 0.033203125,
+      "fr_knee": 0.04677899181842804,
+      "bl_SY_J": 0.018575530499219894,
+      "bl_SP_J": 0.049877338111400604,
+      "bl_knee": 0.03175099939107895,
+      "br_SY_J": 0.01504242792725563,
+      "br_SP_J": 0.042773399502038956,
+      "br_knee": 0.03976404666900635
+    }
+  },
+  "yaw_mean": 0.12633867592743284,
+  "yaw_std": 0.3696193094065489,
+  "yaw_rmse": 0.45990102650388237,
+  "heading_change_deg": 43.13042614781468,
+  "vx_abs_max": 0.308320015668869,
+  "mean_slip_m_s": 0.1691044107904043,
+  "mean_saturation_pct": 1.6203703703703705
+}

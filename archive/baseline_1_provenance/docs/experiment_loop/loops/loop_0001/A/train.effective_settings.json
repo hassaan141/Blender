@@ -1,0 +1,21 @@
+{
+  "vx_range": [
+    -0.2,
+    -0.2
+  ],
+  "stand_prob": 0.0,
+  "motion_file": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/reference.npz",
+  "correct_bl_contact": true,
+  "physics_dt": 0.008333333333333333,
+  "decimation": 5,
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "backward_command_vx": -0.2,
+    "signed_reference_velocity_scale": -0.4242424242424242
+  },
+  "phase_rate": "native signed 1.4 * command / 0.66"
+}

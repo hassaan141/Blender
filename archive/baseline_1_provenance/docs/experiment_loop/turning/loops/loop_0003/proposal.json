@@ -1,0 +1,14 @@
+{
+  "defect": "Actual forward travel remains .10\u2013.11m/s during otherwise stable coordinated turns, below requested .15\u2013.20m/s.",
+  "evidence": "Loop2 survives all five cases and tracks yaw within .15rad/s. Matched original forward policy also travels .0997m/s at .175 command; canonical .25 command gives .1929. Native stand-blend threshold .198 attenuates stride below that command.",
+  "hypothesis": "Calibrate the existing speed input to .215m/s (training .190\u2013.240) while retaining reference geometry, yaw reward and heading-local observations. Interpolation between measured forward baselines predicts actual travel near .15m/s.",
+  "expected_effect": "Requested slow travel speed with fully engaged native stepping and continued left/right stability; no speed reward increase.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "turn_command_vx": 0.215
+      }
+    }
+  ]
+}

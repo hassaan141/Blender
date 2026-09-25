@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Dense comparison montage shows no convincing overall gain; rear lift is reduced. Survival 100%, vx unchanged -.175, std .07195 and roll 5.10 improve modestly, but RR knee saturation rises 4.51 to 6.74%, mean saturation 1.65 to 1.86%, rear clearance falls from 12\u201313mm to 9.6\u201310.6mm and yaw RMS .283 to .298. Retain loop5 for better balanced support and torque margin."
+}

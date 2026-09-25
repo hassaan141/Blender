@@ -1,0 +1,50 @@
+{
+  "fl": {
+    "source": {
+      "wrong_stance_fraction": 0.3333333333333333,
+      "stance_velocity_mean": 0.0859913958682663,
+      "stance_velocity_std": 0.21632685386627695
+    },
+    "target": {
+      "wrong_stance_fraction": 0.23809523809523808,
+      "stance_velocity_mean": 0.12846323805914478,
+      "stance_velocity_std": 0.15314158800200164
+    }
+  },
+  "fr": {
+    "source": {
+      "wrong_stance_fraction": 0.358974358974359,
+      "stance_velocity_mean": 0.05326248857573964,
+      "stance_velocity_std": 0.21413190025775836
+    },
+    "target": {
+      "wrong_stance_fraction": 0.2692307692307692,
+      "stance_velocity_mean": 0.0827420836136934,
+      "stance_velocity_std": 0.14269657827746543
+    }
+  },
+  "bl": {
+    "source": {
+      "wrong_stance_fraction": 0.14444444444444443,
+      "stance_velocity_mean": 0.13901227072130318,
+      "stance_velocity_std": 0.10635066780322995
+    },
+    "target": {
+      "wrong_stance_fraction": 0.08888888888888889,
+      "stance_velocity_mean": 0.1527340778540217,
+      "stance_velocity_std": 0.08919026774402503
+    }
+  },
+  "br": {
+    "source": {
+      "wrong_stance_fraction": 0.3793103448275862,
+      "stance_velocity_mean": 0.07946852732059626,
+      "stance_velocity_std": 0.2089407064471348
+    },
+    "target": {
+      "wrong_stance_fraction": 0.3103448275862069,
+      "stance_velocity_mean": 0.10062281178862671,
+      "stance_velocity_std": 0.14601269442275558
+    }
+  }
+}

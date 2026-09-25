@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "turn_geometry_gain": 0.7,
+    "turn_lateral_gain": 0.45,
+    "turn_yaw_weight": 0.3,
+    "turn_lateral_scale": 1.0,
+    "turn_yaw_smooth_weight": 0.0,
+    "turn_heading_local": 1,
+    "turn_command_vx": 0.215,
+    "turn_bl_recovery": 1,
+    "bl_lift_mm": 3
+  },
+  "motion_file": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0007/A/reference.npz",
+  "physics_dt": 0.008333333333333333,
+  "decimation": 5,
+  "observation_space": 71,
+  "vx_range": [
+    0.19,
+    0.24
+  ]
+}

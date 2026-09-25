@@ -1,0 +1,166 @@
+{
+  "champion": {
+    "id": "locomotion1_quality_run05",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/walk_ref/refinement_runs/run_05/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/best_render/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0
+    },
+    "status": "historical retained champion",
+    "hashes": {
+      "checkpoint": "48b6f2ca979883b7bb1650359e8fa1ae1f1cc7fc02dd5329c5b6eee46b937fbd",
+      "reference": "9bbdf82a6cbf4495871f4a06453985a86271b68d57d8f9ddeac7aede074b3d89",
+      "metrics": "2733bd1fe9406b5f654702b5f767fd263607e86cb7d21b19fa7e4dd53d4482c9",
+      "video": "bb208100ba7ac8b951973fb200a76860462c61bdf56c4a4a6efc1810269776df"
+    }
+  },
+  "current_candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "previous_report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0001/report.md",
+  "review_history": [],
+  "feedback": "",
+  "allowed_changes": {
+    "residual_ema_alpha": [
+      0.05,
+      1.0
+    ],
+    "residual_scale": [
+      0.05,
+      0.4
+    ],
+    "fl_torque_weight": [
+      0.0,
+      0.1
+    ],
+    "body_height_weight": [
+      0.0,
+      0.2
+    ],
+    "vertical_velocity_weight": [
+      0.0,
+      0.1
+    ],
+    "backward_command_vx": [
+      -0.2,
+      -0.2
+    ],
+    "signed_reference_velocity_scale": [
+      -0.4242424242424242,
+      -0.4242424242424242
+    ],
+    "lateral_scale": [
+      0.3,
+      1.0
+    ],
+    "front_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "rear_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "fl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "fr_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "bl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "br_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "phase_gain": [
+      0.8,
+      1.5
+    ],
+    "all_contacts_corrected": [
+      0,
+      1
+    ],
+    "stance_shape_blend": [
+      0.0,
+      0.8
+    ],
+    "contact_timing_mode": [
+      0,
+      1
+    ],
+    "turn_heading_local": [
+      0,
+      1
+    ],
+    "turn_geometry_gain": [
+      0.0,
+      1.5
+    ],
+    "turn_yaw_weight": [
+      0.05,
+      0.8
+    ],
+    "turn_lateral_gain": [
+      0.0,
+      1.5
+    ],
+    "turn_lateral_scale": [
+      0.4,
+      1.0
+    ],
+    "turn_yaw_smooth_weight": [
+      0.0,
+      0.15
+    ],
+    "cmd_vy": [
+      -0.3,
+      0.3
+    ],
+    "lateral_stride_scale": [
+      0.2,
+      0.8
+    ],
+    "lateral_lift_mm": [
+      5.0,
+      20.0
+    ],
+    "lateral_stance_width_scale": [
+      0.7,
+      1.3
+    ]
+  },
+  "max_related_changes": 2,
+  "output": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0002/proposal.json"
+}

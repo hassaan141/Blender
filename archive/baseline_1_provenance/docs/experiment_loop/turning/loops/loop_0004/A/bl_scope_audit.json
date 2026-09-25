@@ -1,0 +1,8 @@
+{
+  "dof_positions_non_bl_unchanged": true,
+  "dof_velocities_non_bl_unchanged": true,
+  "contacts_non_bl_unchanged": true,
+  "old_bl_contact_fraction": 0.8235294117647058,
+  "new_bl_contact_fraction": 0.6691176470588235,
+  "max_bl_q_change": 0.09475970268249512
+}

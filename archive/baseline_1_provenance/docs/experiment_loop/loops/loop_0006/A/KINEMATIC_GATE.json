@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Reviewed replay montage: reduced lateral reach preserves mean stance, front/rear stride, compact clearance and original coordination. No extra crouch or visible jump. IK error <1e-6m, maximum change from original .166rad."
+}

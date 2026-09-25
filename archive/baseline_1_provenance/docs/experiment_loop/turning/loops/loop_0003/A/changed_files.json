@@ -1,0 +1,7 @@
+{
+  "source_files_changed": [],
+  "config_fields": [
+    "turn_command_vx"
+  ],
+  "diff": "changes.diff"
+}

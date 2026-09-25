@@ -1,0 +1,25 @@
+{
+  "id": "loop_0001/A",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/policy.pt",
+  "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/reference.npz",
+  "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/evaluation/metrics.json",
+  "video": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/evaluation/eval.mp4",
+  "report": "/pub0/muhammadf/Blender/docs/experiment_loop/BACKWARD_LOOP_0001.md",
+  "contact_fix": true,
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "backward_command_vx": -0.2,
+    "signed_reference_velocity_scale": -0.4242424242424242
+  },
+  "status": "user-authorized provisional backward starting point; goal not met",
+  "hashes": {
+    "checkpoint": "dc10b8877804dbf039edd059059fd488f707c2df61076c1a4d0cc0a478210afa",
+    "reference": "d9bc53e41ec10a4b19454c0961450f49b3356318c6098060a42244b3e364c2b7",
+    "metrics": "fef2d3be1452a23ba36c6df09017d94637c478b4948780edcb5b45ef743cb37d",
+    "video": "e0de05b06736962131fe52cb6e9367ebfdb685f151e29c28114bf1a07537458b"
+  }
+}

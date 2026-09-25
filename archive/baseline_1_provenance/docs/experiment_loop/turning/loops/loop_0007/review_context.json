@@ -1,0 +1,121 @@
+{
+  "parent": {
+    "id": "loop_0005/A",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/report.md",
+    "contact_fix": false,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "turn_geometry_gain": 0.7,
+      "turn_lateral_gain": 0.7,
+      "turn_yaw_weight": 0.3,
+      "turn_lateral_scale": 1.0,
+      "turn_yaw_smooth_weight": 0.0,
+      "turn_heading_local": 1,
+      "turn_command_vx": 0.215,
+      "turn_bl_recovery": 1,
+      "bl_lift_mm": 3
+    },
+    "status": "provisional turning best",
+    "hashes": {
+      "checkpoint": "9e7e32e8e2a730fa3830e790080a49d96eb9185c407e960bb4b4594b3d56596e",
+      "reference": "618a383ea474d0eb3dccd2923907b3bcac1ec2c28adc273a542b681244a8fcb4",
+      "metrics": "3a5ec009b58d512f0e704b7f17df8225d69762b79a5bf2bfff771302a61f632d",
+      "video": "969bbf0bf4679916794259ed1b0872a053389229c3841dbda5f8879a4fd1e1dd"
+    }
+  },
+  "outcomes": [
+    {
+      "name": "A",
+      "metrics": {
+        "task": "Bingo-Turning-Play-v0",
+        "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0007/A/policy.pt",
+        "num_envs": 1,
+        "command": {
+          "vx": 0.215,
+          "vy": 0.0,
+          "yaw": 0.4,
+          "note": "Turning extension accepts yaw; vy remains zero."
+        },
+        "duration_s": 60.0,
+        "settle_seconds": 1.0,
+        "steps_recorded": 1440,
+        "step_dt": 0.041666666666666664,
+        "effort_limit_Nm": 3.0,
+        "survival": 1.0,
+        "any_fell": false,
+        "fall_time_s": [
+          null
+        ],
+        "vx_mean": 0.16012778878211975,
+        "vx_std": 0.05601220577955246,
+        "vx_max": 0.3674315810203552,
+        "base_roll_rms_deg": 8.80488395690918,
+        "base_pitch_rms_deg": 1.7499054670333862,
+        "joint_accel_rms": 10.938955307006836,
+        "residual_action_rate_rms": 0.02116946503520012,
+        "torque_saturation_pct_per_joint": {
+          "fl_SY_J": 0.0,
+          "fl_SP_J": 7.152777777777778,
+          "fl_knee": 7.222222222222221,
+          "fr_SY_J": 0.0,
+          "fr_SP_J": 6.736111111111111,
+          "fr_knee": 4.722222222222222,
+          "bl_SY_J": 0.0,
+          "bl_SP_J": 3.194444444444444,
+          "bl_knee": 1.7361111111111112,
+          "br_SY_J": 0.0,
+          "br_SP_J": 1.6666666666666667,
+          "br_knee": 3.2638888888888893
+        },
+        "reference_tracking_error_rad": {
+          "mean": 0.07361719757318497,
+          "rms": 0.09301804006099701,
+          "max": 0.25809168815612793,
+          "mean_per_joint": {
+            "fl_SY_J": 0.07437862455844879,
+            "fl_SP_J": 0.04527423530817032,
+            "fl_knee": 0.06870453804731369,
+            "fr_SY_J": 0.035065196454524994,
+            "fr_SP_J": 0.14259971678256989,
+            "fr_knee": 0.04620613157749176,
+            "bl_SY_J": 0.18637466430664062,
+            "bl_SP_J": 0.024959450587630272,
+            "bl_knee": 0.05966474115848541,
+            "br_SY_J": 0.05728314816951752,
+            "br_SP_J": 0.10439202189445496,
+            "br_knee": 0.038503844290971756
+          }
+        },
+        "yaw_mean": 0.4554220669077687,
+        "yaw_std": 0.14521834018371932,
+        "yaw_rmse": 0.1554347831923203,
+        "heading_change_deg": 1564.538499759262,
+        "vx_abs_max": 0.3674315810203552,
+        "mean_slip_m_s": 0.20147097779992612,
+        "mean_saturation_pct": 2.9745370370370368,
+        "turning_failures": [
+          "right saturation",
+          "left_max bl dragging",
+          "right_max saturation",
+          "straight saturation"
+        ]
+      },
+      "failures": [
+        "right saturation",
+        "left_max bl dragging",
+        "right_max saturation",
+        "straight saturation"
+      ]
+    }
+  ],
+  "goal_eligible": false,
+  "report_inputs": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0007"
+}

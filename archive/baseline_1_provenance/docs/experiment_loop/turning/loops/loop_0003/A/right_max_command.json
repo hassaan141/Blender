@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py",
+    "evaluate",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/config.json",
+    "--task",
+    "Bingo-Turning-Play-v0",
+    "--checkpoint",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/policy.pt",
+    "--out_dir",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/right_max",
+    "--duration_s",
+    "30",
+    "--cmd_vx",
+    "0.215",
+    "--cmd_yaw",
+    "-0.6",
+    "--diagnostics",
+    "--headless",
+    "--kit_args",
+    "--/rtx/verifyDriverVersion/enabled=false --no-window",
+    "--no_video"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "BINGO_NATURAL_REFERENCE": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0003/A/reference.npz"
+  }
+}

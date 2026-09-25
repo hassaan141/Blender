@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Both video montages inspected. Stable coordinatedturns and improvedBLclearance, but leftlean grows8.80degRMS versus7.74; rightmain saturation13.89 versus9.51%, maximumright17.22 versus13.33% (+29%). Reducedlateralreference shifts loading between sides rather than improving overallgait. Allsurvive,no limits,accelwithincap, but rejectphysicaltradeoff. Retainloop5; finalrun targetsFLload only."
+}

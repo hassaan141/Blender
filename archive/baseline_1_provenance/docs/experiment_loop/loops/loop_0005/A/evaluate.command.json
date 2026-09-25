@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/backward_worker.py",
+    "evaluate",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/config.json",
+    "--headless",
+    "--task",
+    "Bingo-NaturalWalk-Play-v0",
+    "--diagnostics",
+    "--checkpoint",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/policy.pt",
+    "--out_dir",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/evaluation",
+    "--duration_s",
+    "60",
+    "--settle_seconds",
+    "1",
+    "--cmd_vx",
+    "-0.20",
+    "--kit_args",
+    "--/rtx/verifyDriverVersion/enabled=false --no-window"
+  ]
+}

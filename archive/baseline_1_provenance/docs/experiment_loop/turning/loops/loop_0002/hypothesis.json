@@ -1,0 +1,14 @@
+{
+  "defect": "Heading changes move policy observations outside the straight-walking coordinate distribution, causing asymmetric steering and eventual falls.",
+  "evidence": "Loop1 left falls at18.5s, right yaw=-.009 for-.4 command. Native compute_obs exposes world-axis orientation/velocities/foot offsets. Full evaluation and fall montage reviewed.",
+  "hypothesis": "Express orientation, linear/angular velocity and foot offsets relative to current heading, retaining roll/pitch and native gait phase; leave geometry, rewards and training budget unchanged.",
+  "expected_effect": "Stable controller behavior as heading rotates, allowing the existing yaw task signal to learn both signs.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "turn_heading_local": 1
+      }
+    }
+  ]
+}
