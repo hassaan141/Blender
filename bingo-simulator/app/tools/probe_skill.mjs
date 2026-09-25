@@ -60,7 +60,7 @@ try {
       tr.observe = (sim) => { const o = origObserve(sim); cur = {obs: Array.from(o)}; return o; };
       tr.step = (a) => { cur.act = Array.from(a); return origStep(a); };
       let state = rt.skills.state, n = 0;
-      while (rt.skills.state === 'GESTURE' && n < 400) {
+      while (rt.skills.state === 'GESTURE' && n < tr.n + 200) {   // cap only guards against a stuck skill
         await rt.controlStep(); n++;
         if (run === 0) steps.push({...cur, ...snap(), k: tr.k});
       }

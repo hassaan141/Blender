@@ -43,11 +43,12 @@ A new skill supplies: the reference npz, a training command, the trained policy,
 | Skill | Status | Python (browser-like starts) | Browser | Notes |
 |---|---|---|---|---|
 | Timid | **deployed** (attempt 05, ONNX `c4cdd208…`) | 400/400 | 20/20 + deployed 10/10, handoff clean | parity PASS; residual rms 0.071 vs motion 0.266 rad; ori err 3.3° mean |
-| Laidback | training (attempt 01) | – | – | most stable open-loop (56 %) |
+| Laidback | **deployed** (attempt 02, ONNX `dc378bc5…`) | 398/400 | 20/20 + deployed 10/10, handoff clean | parity PASS; residual rms 0.052 vs motion 0.512 rad; ori err 3.0° mean |
+| Enthusiastic | training (attempt 01: scratch 2000 it → push fine-tune 2000 it) | – | – | open-loop 35 % |
 
 Open-loop survival ranking (for ordering): Laidback 56 %, Enthusiastic 35 %, Timid 25 %, Deadpan 19 %, Cheeky 13 %, Eccentric 6 %.
 
-## What worked for Timid (use as the default recipe)
+## Default recipe (Timid, confirmed on Laidback: scratch → push fine-tune gave 398/400 with no other changes)
 
 1. From scratch: 2000 it, lr 3e-4, 30 % stand starts → ~92 %.
 2. Fine-tune: 1000 it, lr 1e-4, 50 % stand starts → ~98 %.
