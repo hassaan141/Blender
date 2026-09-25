@@ -1,0 +1,14 @@
+{
+  "defect": "The inherited controller has no learned yaw-command response; task-space steering alone is insufficient.",
+  "evidence": "Forward baseline has no yaw channel. Smoke test confirms migrated checkpoint loads and the yaw-conditioned reference executes without physics modifications.",
+  "hypothesis": "Warm-start the native forward policy with one zero-initialized yaw observation, conservative body-twist reference geometry and one yaw-tracking reward, learning both signs together at vx .15\u2013.20.",
+  "expected_effect": "Left/right heading control with native stepping cadence and bounded joint loading.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "turn_geometry_gain": 0.7
+      }
+    }
+  ]
+}

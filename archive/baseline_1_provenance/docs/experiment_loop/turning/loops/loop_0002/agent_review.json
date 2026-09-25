@@ -1,0 +1,7 @@
+{
+  "decision": "KEEP",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Reviewed dense stride and full-duration left/right montages. Stable continuous turning through multiple headings with visible alternating four-leg lift, no new crouch/hop or collapse. All five cases survive100%, zero limits. Main yaw +.327/-.350 vs+/-.4; max yaw+.476/-.534 vs+/-.6. Acceleration6.9\u20137.6, mean slip .172\u2013.184, max joint saturation9.03%. Clear overall improvement from failed loop1. Retain provisionally: actual vx .10\u2013.112 misses speed gate."
+}

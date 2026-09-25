@@ -1,0 +1,10 @@
+--- parent settings
++++ candidate settings
+@@ -10,5 +10,6 @@
+   "turn_lateral_scale": 1.0,
+   "turn_yaw_smooth_weight": 0.0,
+   "turn_heading_local": 1,
+-  "turn_command_vx": 0.215
++  "turn_command_vx": 0.215,
++  "turn_bl_recovery": 1
+ }

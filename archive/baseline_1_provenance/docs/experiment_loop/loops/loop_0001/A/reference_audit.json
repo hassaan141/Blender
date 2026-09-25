@@ -1,0 +1,53 @@
+{
+  "method": "Reverse time via existing signed phase; reverse/scale all stored velocity channels",
+  "signed_phase_rate": -0.4242424242424242,
+  "cycle_period_s": 2.6517857142857144,
+  "velocity_keys_changed": [
+    "dof_velocities",
+    "body_linear_velocities",
+    "body_angular_velocities"
+  ],
+  "positions_contacts_unchanged": true,
+  "feet": {
+    "fl": {
+      "contact_duty": 0.6176470588235294,
+      "stance_local_vx_forward_m_s": -0.20269401253373515,
+      "stance_local_vx_backward_m_s": 0.08599139925673609,
+      "paw_range_mm": [
+        114.32507514732276,
+        58.13151804561488,
+        41.248572065215676
+      ]
+    },
+    "fr": {
+      "contact_duty": 0.5808823529411765,
+      "stance_local_vx_forward_m_s": -0.12875643459710476,
+      "stance_local_vx_backward_m_s": 0.05462394195028686,
+      "paw_range_mm": [
+        105.50719567387912,
+        53.44476409564657,
+        33.17449671233086
+      ]
+    },
+    "bl": {
+      "contact_duty": 0.6691176470588235,
+      "stance_local_vx_forward_m_s": -0.3260340482403427,
+      "stance_local_vx_backward_m_s": 0.13831747501105443,
+      "paw_range_mm": [
+        105.26616790322495,
+        46.707999332663825,
+        29.36530643248045
+      ]
+    },
+    "br": {
+      "contact_duty": 0.6397058823529411,
+      "stance_local_vx_forward_m_s": -0.18731868975314547,
+      "stance_local_vx_backward_m_s": 0.07946853504678901,
+      "paw_range_mm": [
+        119.74193897031574,
+        50.53694949728011,
+        18.195344497170833
+      ]
+    }
+  }
+}

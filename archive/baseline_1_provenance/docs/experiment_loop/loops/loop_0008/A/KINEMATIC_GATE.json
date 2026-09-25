@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Replay montage inspected; reference SHA256 exactly equals retained loop7. Geometry/cadence unchanged. Only residual EMA changes from .30 to .20."
+}

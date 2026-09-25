@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Both 6s previews reviewed: four-leg gait and stable curving travel preserved; actual speed .153/.156 reaches requested band, yaw +.457/-.419. Accel10.5\u201311.0 below fixed cap. Short-preview saturation increased and must be reduced/checked in full evaluation; no geometric pose distortion or fall. Training adapts existing retained policy to the calibrated command."
+}

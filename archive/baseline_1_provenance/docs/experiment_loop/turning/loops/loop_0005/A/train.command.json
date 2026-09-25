@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+    "/pub0/muhammadf/Blender/rl/bingo_rl/experiment_loop/turning/worker.py",
+    "train",
+    "--context",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/config.json",
+    "--task",
+    "Bingo-Turning-Train-v0",
+    "--num_envs",
+    "512",
+    "--seed",
+    "42",
+    "--max_iterations",
+    "300",
+    "--checkpoint",
+    "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/warmstart.pt",
+    "agent.agent.experiment.directory=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/training",
+    "hydra.run.dir=/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/hydra",
+    "--headless",
+    "--kit_args",
+    "--/rtx/verifyDriverVersion/enabled=false --no-window"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "BINGO_NATURAL_REFERENCE": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/reference.npz"
+  }
+}

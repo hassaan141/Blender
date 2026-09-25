@@ -1,0 +1,76 @@
+{
+  "task": "Bingo-Turning-Play-v0",
+  "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/turning/loops/loop_0005/A/policy.pt",
+  "num_envs": 1,
+  "command": {
+    "vx": 0.215,
+    "vy": 0.0,
+    "yaw": 0.4,
+    "note": "Turning extension accepts yaw; vy remains zero."
+  },
+  "duration_s": 60.0,
+  "settle_seconds": 1.0,
+  "steps_recorded": 1440,
+  "step_dt": 0.041666666666666664,
+  "effort_limit_Nm": 3.0,
+  "survival": 1.0,
+  "any_fell": false,
+  "fall_time_s": [
+    null
+  ],
+  "vx_mean": 0.1580190807580948,
+  "vx_std": 0.056244220584630966,
+  "vx_max": 0.40957316756248474,
+  "base_roll_rms_deg": 7.744983196258545,
+  "base_pitch_rms_deg": 1.6159406900405884,
+  "joint_accel_rms": 10.821159362792969,
+  "residual_action_rate_rms": 0.019724849611520767,
+  "torque_saturation_pct_per_joint": {
+    "fl_SY_J": 0.0,
+    "fl_SP_J": 5.416666666666667,
+    "fl_knee": 12.847222222222221,
+    "fr_SY_J": 0.0,
+    "fr_SP_J": 6.736111111111111,
+    "fr_knee": 5.625,
+    "bl_SY_J": 0.0,
+    "bl_SP_J": 4.097222222222222,
+    "bl_knee": 1.7361111111111112,
+    "br_SY_J": 0.0,
+    "br_SP_J": 2.083333333333333,
+    "br_knee": 4.791666666666667
+  },
+  "reference_tracking_error_rad": {
+    "mean": 0.0560452975332737,
+    "rms": 0.06949029862880707,
+    "max": 0.22606796026229858,
+    "mean_per_joint": {
+      "fl_SY_J": 0.042285844683647156,
+      "fl_SP_J": 0.03127017989754677,
+      "fl_knee": 0.04950844869017601,
+      "fr_SY_J": 0.0358407124876976,
+      "fr_SP_J": 0.1064256951212883,
+      "fr_knee": 0.046919964253902435,
+      "bl_SY_J": 0.1197446808218956,
+      "bl_SP_J": 0.037108536809682846,
+      "bl_knee": 0.049722470343112946,
+      "br_SY_J": 0.03139950707554817,
+      "br_SP_J": 0.08636400103569031,
+      "br_knee": 0.0359535850584507
+    }
+  },
+  "yaw_mean": 0.4307371766314857,
+  "yaw_std": 0.13828755858792913,
+  "yaw_rmse": 0.14166235522355639,
+  "heading_change_deg": 1479.7370287593965,
+  "vx_abs_max": 0.40957316756248474,
+  "mean_slip_m_s": 0.21270107474133368,
+  "mean_saturation_pct": 3.611111111111111,
+  "turning_failures": [
+    "left bl dragging",
+    "left saturation",
+    "left_max bl dragging",
+    "left_max saturation",
+    "right_max saturation",
+    "straight saturation"
+  ]
+}

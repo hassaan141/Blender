@@ -1,0 +1,12 @@
+{
+  "historical_files_changed": [],
+  "new_reference": "reference.npz",
+  "reference_change": "See reference_audit.json and task_space_edit.npz for explicit bounded geometry edits and signed velocity channels.",
+  "runtime_change": "fixed negative command range; no reward/actuator changes",
+  "code": [
+    "backward_worker.py",
+    "backward_adapter.py",
+    "backward_analyze.py",
+    "backward_kinematic.py"
+  ]
+}

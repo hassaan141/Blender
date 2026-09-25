@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Viewed both previews: coordinated compact turn retained, no new visible drag/hop or posture failure. Both survive with zero joint-limit violations, acceleration9.74/10.30. Yaw+.356/-.371 remains within tracking tolerance and can adapt; reduced lateral geometry audit passes."
+}

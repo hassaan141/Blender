@@ -1,0 +1,5 @@
+candidate,source,command_survival,tracking_error_mean,accel_rms_mean_rad_s2,action_rate_rms_mean,torque_saturation_mean_pct,slip_mean_mps,decision
+BASELINE_1,BASELINE_1/policy.pt,8/9,0.3472,11.6738,1.3692,5.5055,0.1593,baseline
+attempt_01,BASELINE_1,6/9,0.4282,,,,,REJECT
+attempt_02,BASELINE_1,8/9,0.3602,,,,,REJECT
+attempt_03,BASELINE_1,9/9,0.3272,11.3229,1.4490,5.5230,0.1568,REJECT browser deployment (1/9)

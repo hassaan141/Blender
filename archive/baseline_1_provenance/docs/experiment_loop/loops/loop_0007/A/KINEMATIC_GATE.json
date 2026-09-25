@@ -1,0 +1,4 @@
+{
+  "allow_training": true,
+  "reason": "Reviewed replay montage: conservative fore-aft blend retains native four-leg coordination, compact clearance and posture; no obvious pose discontinuity. Maximum displacement 10.8mm and joint delta .0864rad vs original, materially smaller than rejected loop4."
+}

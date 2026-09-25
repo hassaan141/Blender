@@ -1,0 +1,53 @@
+{
+  "ik_max_error_m": 9.954828452938924e-07,
+  "max_joint_delta_rad": 0.12743838010962807,
+  "yaw_grid": [
+    -0.6,
+    -0.4,
+    -0.2,
+    0.0,
+    0.19999999999999996,
+    0.3999999999999999,
+    0.6
+  ],
+  "mean_foot_positions_m": [
+    [
+      0.11119430043759054,
+      0.09297089321511968,
+      -0.15419060443412097
+    ],
+    [
+      0.09585625334661209,
+      -0.06750894752228202,
+      -0.16139294700899562
+    ],
+    [
+      -0.10986935920221848,
+      0.08480987915031223,
+      -0.14505836972693703
+    ],
+    [
+      -0.11318688258847753,
+      -0.07166682870007332,
+      -0.15100067221888266
+    ]
+  ],
+  "settings": {
+    "residual_ema_alpha": 0.3,
+    "residual_scale": 0.3,
+    "fl_torque_weight": 0.03,
+    "body_height_weight": 0.05,
+    "vertical_velocity_weight": 0.01,
+    "turn_geometry_gain": 0.7,
+    "turn_lateral_gain": 0.45,
+    "turn_yaw_weight": 0.3,
+    "turn_lateral_scale": 1.0,
+    "turn_yaw_smooth_weight": 0.0,
+    "turn_heading_local": 1,
+    "turn_command_vx": 0.215,
+    "turn_bl_recovery": 1,
+    "bl_lift_mm": 3
+  },
+  "zero_yaw_delta_max": 0.0,
+  "method": "stance body twist: vx-w*y, vy=w*x; preserve native timing and height"
+}

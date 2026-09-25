@@ -1,0 +1,59 @@
+{
+  "python": "/pub0/muhammadf/miniconda3/envs/isaaclab/bin/python",
+  "gpu": 1,
+  "num_envs": 512,
+  "iterations": 100,
+  "seed": 42,
+  "duration_s": 60,
+  "vx_min": 0.19,
+  "vx_max_mean": 0.3,
+  "require_visual_approval": true,
+  "start_from_candidate": true,
+  "fixed_baseline_metrics": "/pub0/muhammadf/Blender/docs/walk_ref/quality_runs/run_05/metrics.json",
+  "candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "protected": [
+    "docs/walk_ref",
+    "docs/natural_walk",
+    "docs/locomotion2",
+    "docs/locomotion1",
+    "stage1",
+    "stage2",
+    "stage3",
+    "stage4",
+    "stage5",
+    "motions",
+    "URDF",
+    "rl/bingo_rl/bingo_rl",
+    "rl/tools",
+    "docs/walk_ref/CURRENT_BEST.md",
+    "docs/walk_ref/README.md"
+  ],
+  "planner_hook": null,
+  "planner_timeout_s": 300,
+  "plans": [],
+  "hooks": {},
+  "timeouts": {
+    "train": 3600,
+    "evaluate": 600,
+    "compare": 300
+  },
+  "protected_manifest_sources": [
+    "docs/natural_walk/protected_sha256.json"
+  ]
+}

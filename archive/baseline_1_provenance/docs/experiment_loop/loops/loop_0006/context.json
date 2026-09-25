@@ -1,0 +1,151 @@
+{
+  "champion": {
+    "id": "loop_0005/A",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/A/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/report.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01,
+      "backward_command_vx": -0.2,
+      "signed_reference_velocity_scale": -0.4242424242424242,
+      "lateral_scale": 0.7,
+      "contact_timing_mode": 1,
+      "all_contacts_corrected": 1
+    },
+    "status": "provisional backward best; target not yet met",
+    "hashes": {
+      "checkpoint": "f772dac9393e66020c8fcc4d62a24c88f005679eb2e3ed3dd32788fa89e83927",
+      "reference": "376f5a468069ae3bca0719bc09897179c78ea7a85b21a1657fb34ff9794a688a",
+      "metrics": "46f7b6d1ed22f103306e313ba96877ce779870ba6944bcec4c1c96e08ebc611e",
+      "video": "79d437a0d97bc913324c3197596b73275bb027536172d0534530bcfc128203e8"
+    }
+  },
+  "current_candidate": {
+    "id": "natural_walk_attempt03_REJECTED",
+    "checkpoint": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/policy.pt",
+    "reference": "/pub0/muhammadf/Blender/docs/natural_walk/reference_02b/reference.npz",
+    "metrics": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/metrics.json",
+    "video": "/pub0/muhammadf/Blender/docs/natural_walk/attempt_03/evaluation/eval.mp4",
+    "report": "/pub0/muhammadf/Blender/docs/natural_walk/RESULTS.md",
+    "contact_fix": true,
+    "settings": {
+      "residual_ema_alpha": 0.3,
+      "residual_scale": 0.3,
+      "fl_torque_weight": 0.03,
+      "body_height_weight": 0.05,
+      "vertical_velocity_weight": 0.01
+    },
+    "status": "experimental seed only; NOT champion"
+  },
+  "previous_report": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0005/report.md",
+  "review_history": [
+    {
+      "decision": "REJECT",
+      "loop": "loop_0001",
+      "reviewer": "Codex sampled-video visual review; not human champion approval",
+      "video": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/evaluation/eval.mp4",
+      "comparison": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0001/A/comparison.mp4",
+      "inspection": "8 fps stride sample at 8s plus full-run overview at 5s intervals; kinematic preview at 4 fps",
+      "finding": "Backward stepping is sustained, but lateral rocking and uneven foreleg support remain. FL spends 83.1% in geometric contact and achieves only 9.4mm p95 clearance versus 44.9mm on FR. Front-foot slip remains substantial. Not a natural, relaxed backward walk.",
+      "metric_gate_failures": [
+        "mean vx",
+        "vx std",
+        "br_knee major saturation regression",
+        "yaw drift/oscillation"
+      ],
+      "protected_hashes_match": true,
+      "historical_hashes_checked": 940,
+      "loop_manifest_sha256": "78b25c6b3818f0018ad4bc4ce290e5f83e45953b86cd4da6b729bb271030b24a",
+      "champion_unchanged": true,
+      "loops_run": 1,
+      "training_attempts": 1,
+      "training_iterations": 300,
+      "end_to_end_completed": true,
+      "loop_2_started": false
+    }
+  ],
+  "feedback": "",
+  "allowed_changes": {
+    "residual_ema_alpha": [
+      0.05,
+      1.0
+    ],
+    "residual_scale": [
+      0.05,
+      0.4
+    ],
+    "fl_torque_weight": [
+      0.0,
+      0.1
+    ],
+    "body_height_weight": [
+      0.0,
+      0.2
+    ],
+    "vertical_velocity_weight": [
+      0.0,
+      0.1
+    ],
+    "backward_command_vx": [
+      -0.2,
+      -0.2
+    ],
+    "signed_reference_velocity_scale": [
+      -0.4242424242424242,
+      -0.4242424242424242
+    ],
+    "lateral_scale": [
+      0.3,
+      1.0
+    ],
+    "front_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "rear_stride_scale": [
+      0.8,
+      1.5
+    ],
+    "fl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "fr_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "bl_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "br_lift_mm": [
+      0.0,
+      12.0
+    ],
+    "phase_gain": [
+      0.8,
+      1.5
+    ],
+    "all_contacts_corrected": [
+      0,
+      1
+    ],
+    "stance_shape_blend": [
+      0.0,
+      0.8
+    ],
+    "contact_timing_mode": [
+      0,
+      1
+    ]
+  },
+  "max_related_changes": 2,
+  "output": "/pub0/muhammadf/Blender/docs/experiment_loop/loops/loop_0006/proposal.json"
+}

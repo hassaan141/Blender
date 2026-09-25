@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT",
+  "selected": "A",
+  "goal_met": false,
+  "stop": false,
+  "reason": "Mandatory joint-limit failure: BL_SY_J .420205rad exceeds.42 at maximumleft yaw, violation.000205>1e-5. Video shows stable coordinated mainturns and improved footclearance, but strongerleftlean; cannot retain a limit-violating candidate despite slip/clearance improvements. All5survive,mainyaw+.438/-.413. Keep loop5; next target lateral reference demand before more reward changes."
+}

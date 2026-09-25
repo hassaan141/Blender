@@ -1,0 +1,14 @@
+{
+  "defect": "Front-left support loading remains concentrated despite stable turns and improved rear-left recovery.",
+  "evidence": "Retainedloop5 FLknee saturation12.85%left,13.33%maximumright and14.86%maximumleft; most saturation overlaps intendedBLswing. Loop6 contact correction crossedBLabductionlimit; loop7geometry traded lowerleftloading forrightmax17.22%, so both rejected.",
+  "hypothesis": "From retainedloop5 increase only existing fl_torque_weight .03\u2192.06. With current geometry and cadence fixed, modest additional cost on FLSP/knee effort should favor less concentrated support loading without sacrificing the learned turn or adding more lift.",
+  "expected_effect": "Lower FL saturation with stable yaw, clean stepping and no acceleration or joint-limit regression.",
+  "arms": [
+    {
+      "name": "A",
+      "changes": {
+        "fl_torque_weight": 0.06
+      }
+    }
+  ]
+}

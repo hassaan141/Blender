@@ -79,6 +79,7 @@ export class SkillManager {
       return false;
     }
     this.active = s;
+    if (s.tracker) s.tracker.k = null;   // the runtime anchors and starts it next control step
     this.playhead = 0;
     if (s.tracker) s.tracker.k = null;   // re-anchor; the runtime starts it next step
     this.state = State.GESTURE;
