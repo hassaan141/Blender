@@ -8,11 +8,13 @@ export const useStore = create((set) => ({
   error: null,
   snapshot: null,
   hudMode: "public",          // "public" | "engineering"
+  sceneMode: "arena",          // "arena" | "home" - cosmetic only, physics ground is unchanged
   paused: false,
   setReady: (v) => set({ready: v}),
   setStarted: (v) => set({started: v}),
   setError: (e) => set({error: e}),
   setSnapshot: (s) => set({snapshot: s}),
   toggleHud: () => set((s) => ({hudMode: s.hudMode === "public" ? "engineering" : "public"})),
+  toggleScene: () => set((s) => ({sceneMode: s.sceneMode === "arena" ? "home" : "arena"})),
   setPaused: (v) => set({paused: v}),
 }));

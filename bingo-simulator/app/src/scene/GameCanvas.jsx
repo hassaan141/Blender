@@ -10,6 +10,7 @@ import {Canvas, useFrame, useThree} from "@react-three/fiber";
 import * as THREE from "three";
 
 import {buildRenderRig, loadKinematics} from "./renderRig.js";
+import HomeScene from "./HomeScene.jsx";
 import {useStore} from "../store.js";
 
 function Rig({runtime}) {
@@ -194,25 +195,28 @@ function Ground() {
 
 export default function GameCanvas({runtime, onCanvas}) {
   const [dpr, setDpr] = useState(1.5);
+  const sceneMode = useStore((s) => s.sceneMode);
+  const home = sceneMode === "home";
   return (
     <Canvas
       shadows
       dpr={dpr}
       camera={{position: [0.9, 0.6, 0.9], fov: 45, near: 0.01, far: 100}}
       onCreated={({gl}) => {
-        gl.setClearColor("#0d0f12");
+        gl.setClearColor(home ? "#c9b48c" : "#0d0f12");
         onCanvas?.(gl.domElement);
         setDpr(Math.min(2, window.devicePixelRatio));
       }}
     >
-      <hemisphereLight args={[0xbfd4ff, 0x1a1a1a, 0.55]} />
+      <hemisphereLight args={home ? [0xfff0d8, 0x3a3226, 0.7] : [0xbfd4ff, 0x1a1a1a, 0.55]} />
       <directionalLight
-        position={[2, 3, 1.5]} intensity={1.5} castShadow
+        position={[2, 3, 1.5]} intensity={home ? 1.9 : 1.5} color={home ? "#fff1d6" : "#ffffff"}
+        castShadow
         shadow-mapSize={[1024, 1024]} shadow-camera-near={0.1} shadow-camera-far={12}
         shadow-camera-left={-2} shadow-camera-right={2}
         shadow-camera-top={2} shadow-camera-bottom={-2}
       />
-      <Ground />
+      {home ? <HomeScene /> : <Ground />}
       <Rig runtime={runtime} />
       <CameraFollow runtime={runtime} />
     </Canvas>

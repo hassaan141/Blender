@@ -54,6 +54,8 @@ export default function Hud({runtime, skills}) {
   const snap = useStore((s) => s.snapshot);
   const mode = useStore((s) => s.hudMode);
   const toggleHud = useStore((s) => s.toggleHud);
+  const sceneMode = useStore((s) => s.sceneMode);
+  const toggleScene = useStore((s) => s.toggleScene);
   if (!snap) return null;
 
   const eng = mode === "engineering";
@@ -170,6 +172,16 @@ export default function Hud({runtime, skills}) {
                 cursor: "pointer", fontFamily: "inherit", fontSize: 11}}
       >
         {eng ? "public view" : "engineering"}
+      </button>
+
+      <button
+        onClick={toggleScene}
+        style={{position: "absolute", top: 46, right: eng ? 286 : 12,
+                pointerEvents: "auto", background: "#1a1f26", color: "#9aa4b0",
+                border: "1px solid #232a33", borderRadius: 6, padding: "5px 9px",
+                cursor: "pointer", fontFamily: "inherit", fontSize: 11}}
+      >
+        {sceneMode === "home" ? "arena view" : "home view"}
       </button>
     </>
   );
