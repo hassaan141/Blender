@@ -76,7 +76,44 @@ const CAM_TRANSITION_MS = 1400;   // ease from the idle angle into the chase pos
 // easeInOutCubic
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
+// Ctrl + drag orbits the camera around Bingo, Ctrl + wheel changes distance. These
+// are OFFSETS applied to the chase pose, not a free-fly camera, so the camera still
+// follows and still sits behind the robot - the user just chooses where "behind" is.
+function useCamOrbit() {
+  const {gl} = useThree();
+  const off = useRef({az: 0, el: 0, dist: 0});
+  useEffect(() => {
+    const el = gl.domElement;
+    let drag = false, lx = 0, ly = 0;
+    const down = (e) => { if (!e.ctrlKey) return; drag = true; lx = e.clientX; ly = e.clientY; e.preventDefault(); };
+    const move = (e) => {
+      if (!drag) return;
+      off.current.az -= (e.clientX - lx) * 0.006;
+      off.current.el = Math.min(1.1, Math.max(-0.35, off.current.el + (e.clientY - ly) * 0.004));
+      lx = e.clientX; ly = e.clientY;
+    };
+    const up = () => { drag = false; };
+    const wheel = (e) => {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      off.current.dist = Math.min(3.0, Math.max(-0.6, off.current.dist + e.deltaY * 0.002));
+    };
+    el.addEventListener("mousedown", down);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+    el.addEventListener("wheel", wheel, {passive: false});
+    return () => {
+      el.removeEventListener("mousedown", down);
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+      el.removeEventListener("wheel", wheel);
+    };
+  }, [gl]);
+  return off;
+}
+
 function CameraFollow({runtime}) {
+  const orbit = useCamOrbit();
   const {camera} = useThree();
   const started = useStore((s) => s.started);
   const target = useRef(new THREE.Vector3(0, 0.18, 0));
@@ -98,9 +135,12 @@ function CameraFollow({runtime}) {
     if (!started) {
       wasStarted.current = false;
       target.current.lerp(here.current, 0.12);
-      desired.current.set(target.current.x + CAM_IDLE.x,
-                          target.current.y + CAM_IDLE.y,
-                          target.current.z + CAM_IDLE.z);
+      const o = orbit.current;
+      const r = Math.hypot(CAM_IDLE.x, CAM_IDLE.z) + o.dist;
+      const a = Math.atan2(CAM_IDLE.z, CAM_IDLE.x) + o.az;
+      desired.current.set(target.current.x + Math.cos(a) * r,
+                          target.current.y + CAM_IDLE.y + o.el,
+                          target.current.z + Math.sin(a) * r);
       camera.position.lerp(desired.current, 0.06);
       camera.lookAt(target.current);
       return;
@@ -118,10 +158,13 @@ function CameraFollow({runtime}) {
     const yaw = Math.atan2(2 * (q[0] * q[3] + q[1] * q[2]),
                            1 - 2 * (q[2] * q[2] + q[3] * q[3]));
     // MJCF forward is +x; in three that is (cos yaw, 0, -sin yaw).
-    const fx = Math.cos(yaw), fz = -Math.sin(yaw);
-    desired.current.set(here.current.x - fx * CAM_DIST,
-                        here.current.y + CAM_HEIGHT,
-                        here.current.z - fz * CAM_DIST);
+    const o = orbit.current;
+    const yawO = yaw + o.az;
+    const dist = CAM_DIST + o.dist;
+    const fx = Math.cos(yawO), fz = -Math.sin(yawO);
+    desired.current.set(here.current.x - fx * dist,
+                        here.current.y + CAM_HEIGHT + o.el,
+                        here.current.z - fz * dist);
 
     const k = Math.min(1, (performance.now() - t0.current) / CAM_TRANSITION_MS);
     if (k < 1) {                            // eased fly-in, not a snap

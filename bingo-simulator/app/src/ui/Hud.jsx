@@ -152,6 +152,7 @@ export default function Hud({runtime, skills}) {
         <div style={{fontSize: 11, color: "#9aa4b0", lineHeight: 1.7}}>
                   <b>W/S</b> forward/back &nbsp; <b>A/D</b> turn<br />
           <b>1-6</b> personality &nbsp; <b>mouse</b> head look<br />
+          <b>ctrl+drag</b> orbit &nbsp; <b>ctrl+wheel</b> zoom<br />
           <b>Space</b> reset &nbsp; <b>P</b> push &nbsp; <b>H</b> HUD mode
         </div>
         {snap.lastRefusal && (

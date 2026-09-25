@@ -31,10 +31,6 @@
    "reason": "Falls in the simulator: 114.6 deg tilt, 0/4 contacts (tools/probe_skills.mjs). Stage 4 also not a holistic pass (1.405 m root drift)."
   },
   {
-   "name": "Timid",
-   "reason": "Falls in the simulator: 106.4 deg tilt, 0/4 contacts. Stage 4 not a holistic pass (0.611 m root drift)."
-  },
-  {
    "name": "DeadPan",
    "reason": "Falls in the simulator: 101.7 deg tilt, 0/4 contacts. No Stage-4 pass recorded."
   },
@@ -49,6 +45,30 @@
   {
    "name": "Laidback",
    "reason": "Falls in the simulator: 69.7 deg tilt, 2/4 contacts. No Stage-4 pass recorded."
+  }
+ ],
+ "tracked": [
+  {
+   "name": "Timid",
+   "reference": "./motions/timid_skill.json",
+   "policy": "./policies/skill_timid.onnx",
+   "obs_dim": 82,
+   "residual_scale": [
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   "evidence": "attempt 05: Python 400/400 browser-like starts; browser 20/20 + clean stand handoff; parity PASS; residual rms 0.071 vs motion 0.266 rad",
+   "onnx_sha256": "c4cdd2080c91a3542ed0358cca0c141d8d4dbd4ad9814bf387a1a2aaaf9efc3e"
   }
  ]
 }

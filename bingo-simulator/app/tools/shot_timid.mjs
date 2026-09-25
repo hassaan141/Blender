@@ -1,0 +1,11 @@
+import {chromium} from "playwright";
+const S="/private/tmp/claude-501/-Users-hassaan-Projects-Blender/15f9b2e8-d83b-40d4-9727-047f34f7fb19/scratchpad/";
+const b=await chromium.launch({executablePath:process.env.CHROME_PATH,args:["--no-sandbox","--use-gl=angle","--use-angle=swiftshader"]});
+const p=await(await b.newContext({viewport:{width:1100,height:750}})).newPage();
+await p.goto("http://localhost:5173/",{waitUntil:"load",timeout:90000});
+await p.waitForFunction(()=>window.__bingo?.runtime?.snapshot?.().hasPolicy,null,{timeout:90000});
+await p.waitForTimeout(3000);
+await p.evaluate(()=>window.__bingo.runtime.skills.request("Timid"));
+await p.waitForTimeout(3500); await p.screenshot({path:S+"timid_a.png"});
+await p.waitForTimeout(2000); await p.screenshot({path:S+"timid_b.png"});
+console.log("ok"); await b.close();

@@ -7,6 +7,7 @@
 
 import {MOTION_DIR} from "../constants.js";
 import {BingoSkill, RobotMotion, SkillKind} from "./manager.js";
+import {loadTrackedSkill} from "../runtime/skill_runtime.js";
 
 export async function loadSkills() {
   const r = await fetch(`${MOTION_DIR}/index.json`);
@@ -34,6 +35,17 @@ export async function loadSkills() {
                                     dof_positions: j.dof_positions,
                                     expression_only: j.expression_only}),
     }));
+  }
+
+  // Full-body skills: authored reference + learned leg residual (tools/skill_track).
+  for (const entry of idx.tracked || []) {
+    try {
+      skills.push(new BingoSkill({name: entry.name, kind: SkillKind.GESTURE, ready: true,
+        reason: entry.evidence, tracker: await loadTrackedSkill(entry)}));
+    } catch (e) {
+      skills.push(new BingoSkill({name: entry.name, kind: SkillKind.GESTURE, ready: false,
+        reason: `tracked skill failed to load: ${e.message}`}));
+    }
   }
 
   for (const n of idx.not_ready || []) {

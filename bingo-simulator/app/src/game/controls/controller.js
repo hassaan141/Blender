@@ -12,6 +12,7 @@ export function createController(target = window) {
 
   // Mouse look while the pointer is over the canvas.
   const onMove = (e) => {
+    if (e.ctrlKey) return;          // ctrl + drag is the camera orbit, not head aim
     const r = e.currentTarget?.getBoundingClientRect?.();
     if (!r) return;
     look.x = ((e.clientX - r.left) / r.width) * 2 - 1;

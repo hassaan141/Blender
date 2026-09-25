@@ -126,7 +126,19 @@ export class BingoRuntime {
     //      from (they can begin 2.1 rad away from the stand pose).
     //    The root is never touched: the PD controllers track this under gravity and
     //    contact, exactly as Stage 4 does.
-    const g = this.skills.gestureFrame();
+    // 2a. A TRACKED full-body skill (authored reference + learned leg residual,
+    //     tools/skill_track): it drives all 21 joints and overrides expression.
+    //     This is the Stage-5 style closed-loop correction that plain playback lacks.
+    const tracked = this.skills.state === State.GESTURE ? this.skills.active?.tracker : null;
+    if (tracked) {
+      if (tracked.k === null) tracked.start(sim, exprTargets);
+      const {legs, expr} = tracked.step(await tracked.policy.run(tracked.observe(sim)));
+      for (let k = 0; k < 12; k++) sim.setTarget(JOINT_NAMES[k], legs[k]);
+      for (let k = 0; k < EXPR_JOINTS.length; k++) sim.setTarget(EXPR_JOINTS[k], expr[k]);
+      this._gestureName = null;
+    }
+
+    const g = tracked ? null : this.skills.gestureFrame();
     if (g) {
       if (g.name !== this._gestureName) {      // new gesture: remember where we were
         this._gestureName = g.name;
@@ -160,7 +172,9 @@ export class BingoRuntime {
       this._gestureName = null;
     }
 
-    if (g && !g.expressionOnly) {
+    if (tracked) {
+      /* legs already set by the tracked skill above */
+    } else if (g && !g.expressionOnly) {
       const from = this._gestureFrom;
       const b = Math.max(0, Math.min(1, g.playhead / this._gestureBlendS));
       for (let k = 0; k < ACTION_SIZE; k++) {
@@ -197,6 +211,7 @@ export class BingoRuntime {
     }
 
     // 5. skill machine, from measured physical state
+    if (tracked) tracked.check(sim);
     const m = this.measure();
     this.skills.update(CTRL_DT, m);
     this.stats = m;
