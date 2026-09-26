@@ -46,6 +46,7 @@ export class SkillTracker {
     this.obsDim = entry.obs_dim;
     const s = entry.residual_scale;   // one value or 12 per-joint values (rad per unit action)
     this.scale = Array.isArray(s) ? s : new Array(12).fill(s);
+    this.resEma = entry.res_ema ?? 1.0;   // low-pass on the applied residual (mirror of skill_env res_ema)
     this.k = null;              // null = not started; set by start()
   }
 
@@ -63,7 +64,7 @@ export class SkillTracker {
     const d = sim.data, q = [d.qpos[3], d.qpos[4], d.qpos[5], d.qpos[6]];
     this.anchor = [d.qpos[0], d.qpos[1], yawOf(q)]; this.aq = qz(this.anchor[2]);
     this.expr0 = Array.from(expr0); this.k = 0; this.prevAction = new Array(12).fill(0);
-    this.done = false; this.fallen = false;
+    this.done = false; this.fallen = false; this.resF = null;
   }
 
   observe(sim) {
@@ -84,13 +85,21 @@ export class SkillTracker {
     return Float32Array.from(o);
   }
 
-  /** Targets for the next control step; advances the reference frame. */
+  /** One control step: returns the segment the targets travel over (ref[k] -> ref[k+1]) and
+   *  advances the reference frame. Mirror of skill_env.step (first-order hold, residual held). */
   step(action) {
-    const a = Array.from(action, (v) => clamp(v, -1, 1)), kt = this.rk(this.k + 1);
-    const legs = this.ref.legs[kt].map((v, i) => v + this.scale[i] * a[i]);
-    const expr = this.refExpr(kt);
+    const a = Array.from(action, (v) => clamp(v, -1, 1)), k0 = this.rk(this.k), kt = this.rk(this.k + 1);
+    this.resF = (this.resEma >= 1 || this.resF === null) ? a : a.map((v, i) => this.resEma * v + (1 - this.resEma) * this.resF[i]);
+    const seg = {legs0: this.ref.legs[k0], legs1: this.ref.legs[kt], res: this.resF.map((v, i) => this.scale[i] * v),
+      expr0: this.refExpr(k0), expr1: this.refExpr(kt)};
     this.prevAction = a; this.k = kt;
-    return {legs, expr};
+    return seg;
+  }
+
+  /** Actuator targets at fraction w in (0,1] of the control step (w = (substep+1)/DECIMATION). */
+  targetsAt(seg, w) {
+    return {legs: seg.legs0.map((v, i) => v + (seg.legs1[i] - v) * w + seg.res[i]),
+      expr: Array.from(seg.expr0, (v, i) => v + (seg.expr1[i] - v) * w)};
   }
 
   /** Called after physics: same termination as skill_env.py. */

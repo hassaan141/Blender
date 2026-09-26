@@ -130,11 +130,14 @@ export class BingoRuntime {
     //     tools/skill_track): it drives all 21 joints and overrides expression.
     //     This is the Stage-5 style closed-loop correction that plain playback lacks.
     const tracked = this.skills.state === State.GESTURE ? this.skills.active?.tracker : null;
+    let trackedStep = null;
     if (tracked) {
       if (tracked.k === null) tracked.start(sim, exprTargets);
-      const {legs, expr} = tracked.step(await tracked.policy.run(tracked.observe(sim)));
-      for (let k = 0; k < 12; k++) sim.setTarget(JOINT_NAMES[k], legs[k]);
-      for (let k = 0; k < EXPR_JOINTS.length; k++) sim.setTarget(EXPR_JOINTS[k], expr[k]);
+      // First-order hold: the reference target is interpolated ref[k] -> ref[k+1] across
+      // the physics substeps below (residual held), mirroring skill_env.py / the Isaac
+      // Stage 4-5 envs exactly - a zero-order jump every 24 Hz control tick is what was
+      // producing the shake this replaces.
+      trackedStep = tracked.step(await tracked.policy.run(tracked.observe(sim)));
       this._gestureName = null;
     }
 
@@ -206,6 +209,11 @@ export class BingoRuntime {
 
     // 4. physics
     for (let s = 0; s < DECIMATION; s++) {
+      if (trackedStep) {
+        const {legs, expr} = tracked.targetsAt(trackedStep, (s + 1) / DECIMATION);
+        for (let k = 0; k < 12; k++) sim.setTarget(JOINT_NAMES[k], legs[k]);
+        for (let k = 0; k < EXPR_JOINTS.length; k++) sim.setTarget(EXPR_JOINTS[k], expr[k]);
+      }
       sim.step();
       this._counters.phys++;
     }

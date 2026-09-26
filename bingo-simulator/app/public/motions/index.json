@@ -85,8 +85,9 @@
     0.25,
     0.25
    ],
-   "evidence": "attempt 02: Python 398/400 browser-like starts; browser 20/20 + clean stand handoff; parity PASS; residual rms 0.052 vs motion 0.512 rad",
-   "onnx_sha256": "dc378bc5754f9bf07dbe820408939dd10104fc2f8be6c1228a9399b5b72e250f"
+   "evidence": "1:1 collision-free retarget of Bingo_Laidback.blend + calm fine-tune (angvel/jointvel/action-rate) + residual low-pass 0.5 + leg damping 0.05: Python 400/400, browser 20/20, parity PASS",
+   "onnx_sha256": "86897c787f5f17b7740c932157928bb235ded25735ec2f152d5161fe6d2ef54d",
+   "res_ema": 0.5
   }
  ]
 }
