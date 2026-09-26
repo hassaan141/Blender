@@ -35,10 +35,6 @@
    "reason": "Falls in the simulator: 101.7 deg tilt, 0/4 contacts. No Stage-4 pass recorded."
   },
   {
-   "name": "Eccentric",
-   "reason": "Falls in the simulator: 119.3 deg tilt, 0/4 contacts. No Stage-4 pass recorded; the clip is an authored sit."
-  },
-  {
    "name": "Enthusiastic",
    "reason": "Falls in the simulator: 114.5 deg tilt, 0/4 contacts. No Stage-4 pass recorded."
   }
@@ -88,6 +84,29 @@
    "evidence": "1:1 collision-free retarget of Bingo_Laidback.blend + calm fine-tune (angvel/jointvel/action-rate) + residual low-pass 0.5 + leg damping 0.05: Python 400/400, browser 20/20, parity PASS",
    "onnx_sha256": "86897c787f5f17b7740c932157928bb235ded25735ec2f152d5161fe6d2ef54d",
    "res_ema": 0.5
+  },
+  {
+   "name": "Eccentric",
+   "reference": "./motions/eccentric_skill.json",
+   "policy": "./policies/skill_eccentric.onnx",
+   "obs_dim": 82,
+   "residual_scale": [
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   "res_ema": 0.7,
+   "evidence": "half-drag v6 retarget, calm fine-tune: Python 400/400 (no falls), provisional - shake is elevated (58 vs 1.3 deg/s authored) and a lean fine-tune to improve it is still training",
+   "onnx_sha256": "e08e20e3acd44ba42aaf326bf177125f7cb7f7011ab8a067a215f99120f48fed"
   }
  ]
 }
